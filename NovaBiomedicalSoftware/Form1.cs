@@ -26,7 +26,7 @@ namespace NovaBiomedicalSoftware
             InitializeComponent();
 
             //disable all background
-            tabMenu.Enabled = false;
+            tabMenu.Enabled = true;
             newproductBtn.Enabled = false;
             statusText.Text = "Please fill in the details";
             statusBar.Visible = false;
