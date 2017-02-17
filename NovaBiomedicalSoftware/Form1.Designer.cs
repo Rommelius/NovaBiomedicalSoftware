@@ -45,6 +45,12 @@
             this.clearBtn_1 = new MetroFramework.Controls.MetroButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ptTab = new MetroFramework.Controls.MetroTabPage();
+            this.ptEModules = new MetroFramework.Controls.MetroTile();
+            this.ptMX450 = new MetroFramework.Controls.MetroTile();
+            this.ptX2 = new MetroFramework.Controls.MetroTile();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.ptNIBP = new MetroFramework.Controls.MetroTile();
+            this.ptECG = new MetroFramework.Controls.MetroTile();
             this.estTab = new MetroFramework.Controls.MetroTabPage();
             this.ecgClass2 = new MetroFramework.Controls.MetroTile();
             this.ecgClass1 = new MetroFramework.Controls.MetroTile();
@@ -54,12 +60,6 @@
             this.class1testBtn = new MetroFramework.Controls.MetroTile();
             this.tabMenu = new MetroFramework.Controls.MetroTabControl();
             this.newproductBtn = new MetroFramework.Controls.MetroTile();
-            this.ptECG = new MetroFramework.Controls.MetroTile();
-            this.ptNIBP = new MetroFramework.Controls.MetroTile();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.ptX2 = new MetroFramework.Controls.MetroTile();
-            this.ptMX450 = new MetroFramework.Controls.MetroTile();
-            this.ptEModules = new MetroFramework.Controls.MetroTile();
             this.statusBar = new MetroFramework.Controls.MetroProgressBar();
             this.statusText = new MetroFramework.Controls.MetroLabel();
             this.firstPrompt.SuspendLayout();
@@ -378,6 +378,102 @@
             this.ptTab.VerticalScrollbarHighlightOnWheel = false;
             this.ptTab.VerticalScrollbarSize = 10;
             // 
+            // ptEModules
+            // 
+            this.ptEModules.ActiveControl = null;
+            this.ptEModules.Enabled = false;
+            this.ptEModules.Location = new System.Drawing.Point(806, 45);
+            this.ptEModules.Name = "ptEModules";
+            this.ptEModules.Size = new System.Drawing.Size(190, 145);
+            this.ptEModules.Style = MetroFramework.MetroColorStyle.Teal;
+            this.ptEModules.TabIndex = 8;
+            this.ptEModules.Text = "Extension Modules";
+            this.ptEModules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ptEModules.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ptEModules.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.ptEModules.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.ptEModules.UseSelectable = true;
+            // 
+            // ptMX450
+            // 
+            this.ptMX450.ActiveControl = null;
+            this.ptMX450.Enabled = false;
+            this.ptMX450.Location = new System.Drawing.Point(610, 45);
+            this.ptMX450.Name = "ptMX450";
+            this.ptMX450.Size = new System.Drawing.Size(190, 145);
+            this.ptMX450.Style = MetroFramework.MetroColorStyle.Teal;
+            this.ptMX450.TabIndex = 7;
+            this.ptMX450.Text = "MX450";
+            this.ptMX450.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ptMX450.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ptMX450.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.ptMX450.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.ptMX450.UseSelectable = true;
+            this.ptMX450.UseStyleColors = true;
+            // 
+            // ptX2
+            // 
+            this.ptX2.ActiveControl = null;
+            this.ptX2.Enabled = false;
+            this.ptX2.Location = new System.Drawing.Point(413, 45);
+            this.ptX2.Name = "ptX2";
+            this.ptX2.Size = new System.Drawing.Size(190, 145);
+            this.ptX2.Style = MetroFramework.MetroColorStyle.Teal;
+            this.ptX2.TabIndex = 6;
+            this.ptX2.Text = "Intellivue X2";
+            this.ptX2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ptX2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ptX2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.ptX2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.ptX2.UseSelectable = true;
+            this.ptX2.UseStyleColors = true;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel9.Location = new System.Drawing.Point(20, 17);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(164, 25);
+            this.metroLabel9.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroLabel9.TabIndex = 5;
+            this.metroLabel9.Text = "Performance Test:";
+            this.metroLabel9.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroLabel9.UseCustomBackColor = true;
+            // 
+            // ptNIBP
+            // 
+            this.ptNIBP.ActiveControl = null;
+            this.ptNIBP.Location = new System.Drawing.Point(216, 45);
+            this.ptNIBP.Name = "ptNIBP";
+            this.ptNIBP.Size = new System.Drawing.Size(190, 145);
+            this.ptNIBP.Style = MetroFramework.MetroColorStyle.Teal;
+            this.ptNIBP.TabIndex = 3;
+            this.ptNIBP.Text = "NIBP Monitors";
+            this.ptNIBP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ptNIBP.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ptNIBP.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.ptNIBP.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.ptNIBP.UseSelectable = true;
+            this.ptNIBP.UseStyleColors = true;
+            // 
+            // ptECG
+            // 
+            this.ptECG.ActiveControl = null;
+            this.ptECG.Location = new System.Drawing.Point(20, 45);
+            this.ptECG.Name = "ptECG";
+            this.ptECG.Size = new System.Drawing.Size(190, 145);
+            this.ptECG.Style = MetroFramework.MetroColorStyle.Teal;
+            this.ptECG.TabIndex = 2;
+            this.ptECG.Text = "ECG Machine";
+            this.ptECG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ptECG.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ptECG.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.ptECG.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.ptECG.UseSelectable = true;
+            this.ptECG.UseStyleColors = true;
+            // 
             // estTab
             // 
             this.estTab.BackColor = System.Drawing.Color.Transparent;
@@ -500,6 +596,7 @@
             this.class1testBtn.UseSelectable = true;
             this.class1testBtn.UseStyleColors = true;
             this.class1testBtn.UseTileImage = true;
+            this.class1testBtn.Click += new System.EventHandler(this.class1testBtn_Click);
             // 
             // tabMenu
             // 
@@ -532,107 +629,12 @@
             this.newproductBtn.UseTileImage = true;
             this.newproductBtn.Click += new System.EventHandler(this.newproductBtn_Click);
             // 
-            // ptECG
-            // 
-            this.ptECG.ActiveControl = null;
-            this.ptECG.Location = new System.Drawing.Point(20, 45);
-            this.ptECG.Name = "ptECG";
-            this.ptECG.Size = new System.Drawing.Size(190, 145);
-            this.ptECG.Style = MetroFramework.MetroColorStyle.Teal;
-            this.ptECG.TabIndex = 2;
-            this.ptECG.Text = "ECG Machine";
-            this.ptECG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ptECG.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ptECG.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.ptECG.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.ptECG.UseSelectable = true;
-            this.ptECG.UseStyleColors = true;
-            // 
-            // ptNIBP
-            // 
-            this.ptNIBP.ActiveControl = null;
-            this.ptNIBP.Location = new System.Drawing.Point(216, 45);
-            this.ptNIBP.Name = "ptNIBP";
-            this.ptNIBP.Size = new System.Drawing.Size(190, 145);
-            this.ptNIBP.Style = MetroFramework.MetroColorStyle.Teal;
-            this.ptNIBP.TabIndex = 3;
-            this.ptNIBP.Text = "NIBP Monitors";
-            this.ptNIBP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ptNIBP.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ptNIBP.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.ptNIBP.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.ptNIBP.UseSelectable = true;
-            this.ptNIBP.UseStyleColors = true;
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel9.Location = new System.Drawing.Point(20, 17);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(164, 25);
-            this.metroLabel9.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel9.TabIndex = 5;
-            this.metroLabel9.Text = "Performance Test:";
-            this.metroLabel9.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroLabel9.UseCustomBackColor = true;
-            // 
-            // ptX2
-            // 
-            this.ptX2.ActiveControl = null;
-            this.ptX2.Enabled = false;
-            this.ptX2.Location = new System.Drawing.Point(413, 45);
-            this.ptX2.Name = "ptX2";
-            this.ptX2.Size = new System.Drawing.Size(190, 145);
-            this.ptX2.Style = MetroFramework.MetroColorStyle.Teal;
-            this.ptX2.TabIndex = 6;
-            this.ptX2.Text = "Intellivue X2";
-            this.ptX2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ptX2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ptX2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.ptX2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.ptX2.UseSelectable = true;
-            this.ptX2.UseStyleColors = true;
-            // 
-            // ptMX450
-            // 
-            this.ptMX450.ActiveControl = null;
-            this.ptMX450.Enabled = false;
-            this.ptMX450.Location = new System.Drawing.Point(610, 45);
-            this.ptMX450.Name = "ptMX450";
-            this.ptMX450.Size = new System.Drawing.Size(190, 145);
-            this.ptMX450.Style = MetroFramework.MetroColorStyle.Teal;
-            this.ptMX450.TabIndex = 7;
-            this.ptMX450.Text = "MX450";
-            this.ptMX450.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ptMX450.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ptMX450.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.ptMX450.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.ptMX450.UseSelectable = true;
-            this.ptMX450.UseStyleColors = true;
-            // 
-            // ptEModules
-            // 
-            this.ptEModules.ActiveControl = null;
-            this.ptEModules.Enabled = false;
-            this.ptEModules.Location = new System.Drawing.Point(806, 45);
-            this.ptEModules.Name = "ptEModules";
-            this.ptEModules.Size = new System.Drawing.Size(190, 145);
-            this.ptEModules.Style = MetroFramework.MetroColorStyle.Teal;
-            this.ptEModules.TabIndex = 8;
-            this.ptEModules.Text = "Extension Modules";
-            this.ptEModules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ptEModules.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ptEModules.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.ptEModules.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.ptEModules.UseSelectable = true;
-            // 
             // statusBar
             // 
             this.statusBar.Location = new System.Drawing.Point(717, 75);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(230, 23);
+            this.statusBar.Step = 30;
             this.statusBar.Style = MetroFramework.MetroColorStyle.Blue;
             this.statusBar.TabIndex = 5;
             this.statusBar.Theme = MetroFramework.MetroThemeStyle.Dark;

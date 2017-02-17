@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using System.IO.Ports;
 using System.IO;
+using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace NovaBiomedicalSoftware
 {
@@ -20,6 +22,9 @@ namespace NovaBiomedicalSoftware
         private delegate void SetTextDeleg(string text);
 
         public string COMPORTNUMBER;
+
+        
+
 
         public Form1()
         {
@@ -55,8 +60,7 @@ namespace NovaBiomedicalSoftware
 
                 }
             }
-
-
+            
             //serial setup
             mySerialPort.BaudRate = 115200;
             mySerialPort.Parity = Parity.None;
@@ -92,7 +96,6 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
-
 
         public void clearBtn_1_Click(object sender, EventArgs e)
         {
@@ -149,5 +152,58 @@ namespace NovaBiomedicalSoftware
             if (e.KeyCode == Keys.Enter)
                 location.Focus();
         }
+
+        private void class1testBtn_Click(object sender, EventArgs e)
+        {
+            Thread earthResistanceTest = new Thread(new ThreadStart(earthResistance));
+
+
+
+
+
+
+
+            earthResistanceTest.Start();     
+        }
+
+
+        public void earthResistance()
+        {
+            this.Invoke((MethodInvoker)delegate {
+                statusText.Text = "Earth Resist";
+                statusBar.Enabled = true;
+                statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+            });
+
+            //invoke
+            //test_status.Text = "Protective Earth Test...";
+            //send command
+            mySerialPort.WriteLine("REMOTE");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("STD=ASNZ");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("ERES=HIGH");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("RWIRE=2");
+            Thread.Sleep(1500);
+            mySerialPort.Close();
+            mySerialPort.Open();
+            mySerialPort.WriteLine("READ");
+            Thread.Sleep(1500);
+            //_earthResistance = mySerialPort.ReadExisting();
+            // Match _earthResistance_m = Regex.Match(_earthResistance, @"^-?\d*\.?\d*");
+            // _earthResistance_double = Double.Parse(_earthResistance_m.Value);
+            // debug_box.AppendText(_earthResistance_double.ToString());
+
+            mySerialPort.WriteLine("LOCAL");
+
+            this.Invoke((MethodInvoker)delegate {
+                statusBar.ProgressBarStyle = ProgressBarStyle.Blocks;
+
+                statusBar.Value = 0;
+            });
+        }
+
+
     }
 }
