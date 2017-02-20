@@ -60,8 +60,9 @@
             this.class1testBtn = new MetroFramework.Controls.MetroTile();
             this.tabMenu = new MetroFramework.Controls.MetroTabControl();
             this.newproductBtn = new MetroFramework.Controls.MetroTile();
-            this.statusBar = new MetroFramework.Controls.MetroProgressBar();
+            this.debug_box = new System.Windows.Forms.RichTextBox();
             this.statusText = new MetroFramework.Controls.MetroLabel();
+            this.statusBar = new MetroFramework.Controls.MetroProgressBar();
             this.firstPrompt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ptTab.SuspendLayout();
@@ -479,6 +480,7 @@
             this.estTab.BackColor = System.Drawing.Color.Transparent;
             this.estTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.background;
             this.estTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.estTab.Controls.Add(this.debug_box);
             this.estTab.Controls.Add(this.ecgClass2);
             this.estTab.Controls.Add(this.ecgClass1);
             this.estTab.Controls.Add(this.metroLabel8);
@@ -629,28 +631,36 @@
             this.newproductBtn.UseTileImage = true;
             this.newproductBtn.Click += new System.EventHandler(this.newproductBtn_Click);
             // 
-            // statusBar
+            // debug_box
             // 
-            this.statusBar.Location = new System.Drawing.Point(717, 75);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(230, 23);
-            this.statusBar.Step = 30;
-            this.statusBar.Style = MetroFramework.MetroColorStyle.Blue;
-            this.statusBar.TabIndex = 5;
-            this.statusBar.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.debug_box.Location = new System.Drawing.Point(890, 62);
+            this.debug_box.Name = "debug_box";
+            this.debug_box.Size = new System.Drawing.Size(129, 235);
+            this.debug_box.TabIndex = 8;
+            this.debug_box.Text = "";
             // 
             // statusText
             // 
             this.statusText.AccessibleName = "";
             this.statusText.AutoSize = true;
             this.statusText.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.statusText.Location = new System.Drawing.Point(713, 45);
+            this.statusText.Location = new System.Drawing.Point(664, 44);
             this.statusText.Name = "statusText";
             this.statusText.Size = new System.Drawing.Size(115, 25);
             this.statusText.Style = MetroFramework.MetroColorStyle.Blue;
             this.statusText.TabIndex = 7;
             this.statusText.Text = "Connecting....";
             this.statusText.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // statusBar
+            // 
+            this.statusBar.Location = new System.Drawing.Point(664, 75);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(283, 23);
+            this.statusBar.Step = 30;
+            this.statusBar.Style = MetroFramework.MetroColorStyle.Blue;
+            this.statusBar.TabIndex = 5;
+            this.statusBar.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // Form1
             // 
@@ -718,8 +728,9 @@
         private MetroFramework.Controls.MetroTile ptEModules;
         private MetroFramework.Controls.MetroTile ptMX450;
         private MetroFramework.Controls.MetroTile ptX2;
-        private MetroFramework.Controls.MetroProgressBar statusBar;
+        private System.Windows.Forms.RichTextBox debug_box;
         public MetroFramework.Controls.MetroLabel statusText;
+        private MetroFramework.Controls.MetroProgressBar statusBar;
     }
 }
 
