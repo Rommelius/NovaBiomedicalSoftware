@@ -393,7 +393,7 @@ namespace NovaBiomedicalSoftware
             mySerialPort.Close();
             mySerialPort.Open();
             mySerialPort.WriteLine("READ");
-            Task.WaitAll(Task.Delay(2500));
+            Task.WaitAll(Task.Delay(1000));
             _insulationResistance = mySerialPort.ReadExisting();
             if (string.Compare(_insulationResistance, "!21") == -1)
             {
