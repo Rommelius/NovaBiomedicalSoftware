@@ -1,3 +1,6 @@
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe.config
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.exe
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.pdb
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftwareV2\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe.config
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftwareV2\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.exe
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftwareV2\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.pdb
