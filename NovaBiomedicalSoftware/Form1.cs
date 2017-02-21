@@ -23,14 +23,13 @@ namespace NovaBiomedicalSoftware
         DateTime date = DateTime.Today;
         private delegate void SetTextDeleg(string text);
 
-        public string COMPORTNUMBER;
-        public string _currentTest, _testPDF, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
-    _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _electricalResult, _PTSResult, _currentCOMPort, set_sig;
-
+        public string COMPORTNUMBER, _currentTest, _testPDF, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
+        _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _electricalResult, _PTSResult, _currentCOMPort, set_sig;
 
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
          _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
 
+        public bool yesNoPerformanceTest;
 
         public Form1()
         {
@@ -40,7 +39,7 @@ namespace NovaBiomedicalSoftware
             tabMenu.Enabled = false;
             newproductBtn.Enabled = false;
             statusText.Text = "Please fill in the details";
-            statusBar.Visible = false;
+            statusBar.Hide();
 
             ActiveControl = assetNumber;
             assetNumber.Focus();
@@ -126,9 +125,7 @@ namespace NovaBiomedicalSoftware
                 tabMenu.SelectedTab = estTab;
                 tabMenu.Enabled = true;
                 newproductBtn.Enabled = true;
-                statusBar.Visible = true;
                 statusText.Text = "Hello " + userName.Text;
-
                 ConnectToSerial();
             }
         }
@@ -161,18 +158,17 @@ namespace NovaBiomedicalSoftware
 
         private void class1testBtn_Click(object sender, EventArgs e)
         {
-            statusBar.Enabled = true;
+            statusBar.Show();
             statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
-            statusBar.PerformStep();
+            statusBar.MarqueeAnimationSpeed = 30;
+            
+            Thread class1NTest = new Thread(class1NormalTest);
 
-            Thread doTestnow = new Thread(doTest);
-
-            doTestnow.Start();
-
+            class1NTest.Start();
         }
 
         
-        public void doTest()
+        public void class1NormalTest()
         {
             initialisedDevice();
             getVersionNumber();
@@ -182,46 +178,42 @@ namespace NovaBiomedicalSoftware
             earthLeakage();
             enclousureLeakage();
             testComplete();
-
-            //invoke all the prompts after        
         }
 
         public void testComplete()
         {
             this.Invoke((MethodInvoker)delegate
             {
+                statusBar.Hide();
+                
                 //show complete
                 statusText.Text = "Test Completed for: XXXXXXX";
-
-
+                
                 //show diaglog
                 DialogResult question1 = MessageBox.Show("Would you like to do Performance Test?",
                 "Question", MessageBoxButtons.YesNo);
-
-
+                
                 //show perfomance test form if accepted
                 //Performance_Test performance_test = new Performance_Test();
 
                 if (question1 == DialogResult.Yes)
                 {
-                    statusText.Text = "Pressed YES";
+                    statusText.Text = "Please select the equipment";
+                    tabMenu.SelectedTab = ptTab;
+                    yesNoPerformanceTest = true;
+
+                    mainsVoltage();
                     //DialogResult dr = performance_test.ShowDialog();
                     //if (dr == DialogResult.Cancel)
                     //{
                     //    //makePDF();
                     //}
-
-                    this.Invoke((MethodInvoker)delegate
-                    {
-                        statusBar.ProgressBarStyle = ProgressBarStyle.Blocks;
-
-                        statusBar.Value = 0;
-                        statusText.Text = "Test Completed - Class 1";
-                    });
                 }
                 else
                 {
-                    MessageBox.Show("Nova Biomedical - Fluke ESA620", "Test Completed for: XXXXXXXX");
+                    yesNoPerformanceTest = true;
+
+                    MessageBox.Show("Nova Biomedical - Fluke ESA620", "Test Completed for: XXXXXXXX without Performance Test");
                     //makePDF();
                 }
             });
