@@ -4,3 +4,20 @@ C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftwareV2\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe.config
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftwareV2\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.exe
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftwareV2\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.pdb
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe.config
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.exe
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.pdb
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe.config
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.exe
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.pdb
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.pdb
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\itextsharp.dll
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.Design.dll
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.dll
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.Fonts.dll
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\itextsharp.xml
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csprojResolveAssemblyReference.cache
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Form1.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Properties.Resources.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.GenerateResource.Cache

@@ -26,13 +26,15 @@ namespace NovaBiomedicalSoftware
         DateTime date = DateTime.Today;
         private delegate void SetTextDeleg(string text);
 
+
+
         public string COMPORTNUMBER, _currentTest, _testPDF, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
         _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _electricalResult, _PTSResult, _currentCOMPort, set_sig;
 
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
          _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
 
-        public bool yesNoPerformanceTest, _electricaltestResult, _PTStestResult;
+        public bool yesNoPerformanceTest, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
 
         public static string sean_sig = "sean.png", rommel_sig = "rommel.png", scott_sig = "scott.png", joe_sig = "joe.png", luke_sig = "luke.png",
         khoi_sig = "khoi.png";
@@ -167,7 +169,9 @@ namespace NovaBiomedicalSoftware
             statusBar.Show();
             statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
             statusBar.MarqueeAnimationSpeed = 30;
-            
+
+            class1ASNZtest = true;
+
             Thread class1NTest = new Thread(class1NormalTest);
 
             class1NTest.Start();
@@ -217,10 +221,11 @@ namespace NovaBiomedicalSoftware
                 }
                 else
                 {
-                    yesNoPerformanceTest = true;
+                    yesNoPerformanceTest = false;
+
+                    makePDF();
 
                     MessageBox.Show("Nova Biomedical - Fluke ESA620", "Test Completed for: XXXXXXXX without Performance Test");
-                    makePDF();
                 }
             });
         }
@@ -665,7 +670,7 @@ namespace NovaBiomedicalSoftware
 
         {
             //check the results first
-            if (_currentTest == "ASNZ Standard 3551 - Class 1")
+            if (class1ASNZtest == true)
             {
                 if (_earthResistance_double > 0.2 || _EL1_double > 500
                     || _EL2_double > 1000 || _EnL1_double > 100 || _EnL2_double > 500 || _EnL3_double > 500
@@ -678,7 +683,7 @@ namespace NovaBiomedicalSoftware
                     _electricaltestResult = true;
                 }
             }
-            if (_currentTest == "ASNZ Standard 3551 - Class 2")
+            if (class2ASNZtest == true)
             {
                 if (_EnL1_double > 100 || _EnL2_double > 500 || _EnL3_double > 500
                     || _EnL4_double > 100 || _EnL5_double > 500 || _EnL6_double > 500 || _insulationResistance == "FAILED")
@@ -690,7 +695,7 @@ namespace NovaBiomedicalSoftware
                     _electricaltestResult = true;
                 }
             }
-            if (_currentTest == "ASNZ Standard 3551 - Class 2 (ECG)")
+            if (ecgclass1ASNZtest == true)
             {
                 if (_EnL1_double > 100 || _EnL2_double > 500 || _EnL3_double > 500
                     || _EnL4_double > 100 || _EnL5_double > 500 || _EnL6_double > 500 || PLT1_double > 10
@@ -703,7 +708,7 @@ namespace NovaBiomedicalSoftware
                     _electricaltestResult = true;
                 }
             }
-            if (_currentTest == "ASNZ Standard 3551 - Class 1 (ECG)")
+            if (ecgclass2ASNZtest == true)
             {
                 if (_earthResistance_double > 0.2 || _EL1_double > 500
                     || _EL2_double > 1000 || _EnL1_double > 100 || _EnL2_double > 500 || _EnL3_double > 500
@@ -726,7 +731,7 @@ namespace NovaBiomedicalSoftware
 
             //making PDF
 
-            string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+            string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
 
             //setup background image
             iTextSharp.text.Image bgImage = iTextSharp.text.Image.GetInstance(appRootDir + "/Images/" + "bg.png");
@@ -935,19 +940,19 @@ namespace NovaBiomedicalSoftware
                     standard_title.Border = 0;
                     page_1_table_content1.AddCell(standard_title);
                     //Standard Version**
-                    if (_currentTest == "ASNZ Standard 3551 - Class 1")
+                    if (class1ASNZtest == true)
                     {
                         _testPDF = "AS NZS 3551 - Class 1";
                     }
-                    if (_currentTest == "ASNZ Standard 3551 - Class 2")
+                    if (class2ASNZtest == true)
                     {
                         _testPDF = "AS NZS 3551 - Class 2";
                     }
-                    if (_currentTest == "ASNZ Standard 3551 - Class 1 (ECG)")
+                    if (ecgclass1ASNZtest == true)
                     {
                         _testPDF = "AS NZS 3551 - Class 1 (ECG)";
                     }
-                    if (_currentTest == "ASNZ Standard 3551 - Class 2 (ECG)")
+                    if (ecgclass2ASNZtest == true)
                     {
                         _testPDF = "AS NZS 3551 - Class 2 (ECG)";
                     }
