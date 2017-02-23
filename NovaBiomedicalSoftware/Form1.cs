@@ -31,6 +31,7 @@ namespace NovaBiomedicalSoftware
         public string COMPORTNUMBER, _currentTest, _testPDF, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
         _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _electricalResult, _PTSResult, _currentCOMPort, set_sig;
 
+
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
          _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
 
@@ -177,7 +178,23 @@ namespace NovaBiomedicalSoftware
             class1NTest.Start();
         }
 
-        
+        private void bbraunPerfusor_Click(object sender, EventArgs e)
+        {
+            perfusorSpace perfusorSpaceTest = new perfusorSpace();
+
+            DialogResult perfusorSpaceTestDR = perfusorSpaceTest.ShowDialog();
+
+            if (perfusorSpaceTestDR == DialogResult.Cancel)
+            {
+                makePDF();
+            }
+        }
+
+
+
+
+
+
         public void class1NormalTest()
         {
             initialisedDevice();
