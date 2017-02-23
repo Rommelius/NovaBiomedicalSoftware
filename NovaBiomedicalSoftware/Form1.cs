@@ -215,35 +215,36 @@ namespace NovaBiomedicalSoftware
                 
                 //show complete
                 statusText.Text = "Test Completed for: XXXXXXX";
-                
-                //show diaglog
-                DialogResult question1 = MessageBox.Show("Would you like to do Performance Test?",
-                "Question", MessageBoxButtons.YesNo);
-                
-                //show perfomance test form if accepted
-                //Performance_Test performance_test = new Performance_Test();
 
-                if (question1 == DialogResult.Yes)
-                {
-                    statusText.Text = "Please select the equipment";
-                    tabMenu.SelectedTab = ptTab;
-                    yesNoPerformanceTest = true;
+                makePDF();
+                ////show diaglog
+                //DialogResult question1 = MessageBox.Show("Would you like to do Performance Test?",
+                //"Question", MessageBoxButtons.YesNo);
+                
+                ////show perfomance test form if accepted
+                ////Performance_Test performance_test = new Performance_Test();
+
+                //if (question1 == DialogResult.Yes)
+                //{
+                //    statusText.Text = "Please select the equipment";
+                //    tabMenu.SelectedTab = ptTab;
+                //    yesNoPerformanceTest = true;
 
                     
-                    //DialogResult dr = performance_test.ShowDialog();
-                    //if (dr == DialogResult.Cancel)
-                    //{
-                    //    //makePDF();
-                    //}
-                }
-                else
-                {
-                    yesNoPerformanceTest = false;
+                //    //DialogResult dr = performance_test.ShowDialog();
+                //    //if (dr == DialogResult.Cancel)
+                //    //{
+                //    //    //makePDF();
+                //    //}
+                //}
+                //else
+                //{
+                //    yesNoPerformanceTest = false;
 
-                    makePDF();
+                //    makePDF();
 
-                    MessageBox.Show("Nova Biomedical - Fluke ESA620", "Test Completed for: XXXXXXXX without Performance Test");
-                }
+                //    MessageBox.Show("Nova Biomedical - Fluke ESA620", "Test Completed for: XXXXXXXX without Performance Test");
+                //}
             });
         }
 
@@ -1448,7 +1449,7 @@ namespace NovaBiomedicalSoftware
 
                     //----------------------------------------Earth Leakage Current
 
-                    if (_currentTest == "ASNZ Standard 3551 - Class 1")
+                    if (class1ASNZtest == true)
                     {
                         //----------------------------------------Earth Leakage Current Normal Condition****
 
@@ -1567,7 +1568,7 @@ namespace NovaBiomedicalSoftware
                         doc.Add(table_content7);
                     }
 
-                    if (_currentTest == "ASNZ Standard 3551 - Class 1 (ECG)" || _currentTest == "ASNZ Standard 3551 - Class 2 (ECG)")
+                    if (ecgclass1ASNZtest == true || ecgclass2ASNZtest == true)
                     {
                         //----------------------------------------Patient Leakage Current Normal Condition****
                         PdfPTable PatientLeakage_heading = new PdfPTable(3);

@@ -29,25 +29,27 @@
         private void InitializeComponent()
         {
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
-            this.functionalCheck = new MetroFramework.Controls.MetroTabPage();
             this.visualCheck = new MetroFramework.Controls.MetroTabPage();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.detail1 = new MetroFramework.Controls.MetroLabel();
-            this.detail2 = new MetroFramework.Controls.MetroLabel();
-            this.detail3 = new MetroFramework.Controls.MetroLabel();
-            this.detail4 = new MetroFramework.Controls.MetroLabel();
-            this.detail5 = new MetroFramework.Controls.MetroLabel();
-            this.detail6 = new MetroFramework.Controls.MetroLabel();
-            this.detail7 = new MetroFramework.Controls.MetroLabel();
-            this.detail8 = new MetroFramework.Controls.MetroLabel();
-            this.option1 = new MetroFramework.Controls.MetroComboBox();
-            this.option2 = new MetroFramework.Controls.MetroComboBox();
-            this.option3 = new MetroFramework.Controls.MetroComboBox();
-            this.option4 = new MetroFramework.Controls.MetroComboBox();
-            this.option5 = new MetroFramework.Controls.MetroComboBox();
-            this.option6 = new MetroFramework.Controls.MetroComboBox();
-            this.option7 = new MetroFramework.Controls.MetroComboBox();
             this.option8 = new MetroFramework.Controls.MetroComboBox();
+            this.option7 = new MetroFramework.Controls.MetroComboBox();
+            this.option6 = new MetroFramework.Controls.MetroComboBox();
+            this.option5 = new MetroFramework.Controls.MetroComboBox();
+            this.option4 = new MetroFramework.Controls.MetroComboBox();
+            this.option3 = new MetroFramework.Controls.MetroComboBox();
+            this.option2 = new MetroFramework.Controls.MetroComboBox();
+            this.option1 = new MetroFramework.Controls.MetroComboBox();
+            this.detail8 = new MetroFramework.Controls.MetroLabel();
+            this.detail7 = new MetroFramework.Controls.MetroLabel();
+            this.detail6 = new MetroFramework.Controls.MetroLabel();
+            this.detail5 = new MetroFramework.Controls.MetroLabel();
+            this.detail4 = new MetroFramework.Controls.MetroLabel();
+            this.detail3 = new MetroFramework.Controls.MetroLabel();
+            this.detail2 = new MetroFramework.Controls.MetroLabel();
+            this.detail1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.functionalCheck = new MetroFramework.Controls.MetroTabPage();
+            this.checkBattery = new MetroFramework.Controls.MetroButton();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBox3 = new MetroFramework.Controls.MetroComboBox();
@@ -64,11 +66,9 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.checkBattery = new MetroFramework.Controls.MetroButton();
             this.safetyCheck.SuspendLayout();
-            this.functionalCheck.SuspendLayout();
             this.visualCheck.SuspendLayout();
+            this.functionalCheck.SuspendLayout();
             this.SuspendLayout();
             // 
             // safetyCheck
@@ -81,40 +81,6 @@
             this.safetyCheck.Size = new System.Drawing.Size(534, 580);
             this.safetyCheck.TabIndex = 0;
             this.safetyCheck.UseSelectable = true;
-            // 
-            // functionalCheck
-            // 
-            this.functionalCheck.AutoScroll = true;
-            this.functionalCheck.Controls.Add(this.checkBattery);
-            this.functionalCheck.Controls.Add(this.metroLabel10);
-            this.functionalCheck.Controls.Add(this.metroComboBox1);
-            this.functionalCheck.Controls.Add(this.metroComboBox2);
-            this.functionalCheck.Controls.Add(this.metroComboBox3);
-            this.functionalCheck.Controls.Add(this.metroComboBox4);
-            this.functionalCheck.Controls.Add(this.metroComboBox5);
-            this.functionalCheck.Controls.Add(this.metroComboBox6);
-            this.functionalCheck.Controls.Add(this.metroComboBox7);
-            this.functionalCheck.Controls.Add(this.metroComboBox8);
-            this.functionalCheck.Controls.Add(this.metroLabel2);
-            this.functionalCheck.Controls.Add(this.metroLabel3);
-            this.functionalCheck.Controls.Add(this.metroLabel4);
-            this.functionalCheck.Controls.Add(this.metroLabel5);
-            this.functionalCheck.Controls.Add(this.metroLabel6);
-            this.functionalCheck.Controls.Add(this.metroLabel7);
-            this.functionalCheck.Controls.Add(this.metroLabel8);
-            this.functionalCheck.Controls.Add(this.metroLabel9);
-            this.functionalCheck.HorizontalScrollbarBarColor = false;
-            this.functionalCheck.HorizontalScrollbarHighlightOnWheel = false;
-            this.functionalCheck.HorizontalScrollbarSize = 10;
-            this.functionalCheck.Location = new System.Drawing.Point(4, 38);
-            this.functionalCheck.Name = "functionalCheck";
-            this.functionalCheck.Size = new System.Drawing.Size(526, 538);
-            this.functionalCheck.TabIndex = 1;
-            this.functionalCheck.Text = "Functional Inspection";
-            this.functionalCheck.VerticalScrollbar = true;
-            this.functionalCheck.VerticalScrollbarBarColor = true;
-            this.functionalCheck.VerticalScrollbarHighlightOnWheel = false;
-            this.functionalCheck.VerticalScrollbarSize = 10;
             // 
             // visualCheck
             // 
@@ -150,178 +116,20 @@
             this.visualCheck.VerticalScrollbarHighlightOnWheel = false;
             this.visualCheck.VerticalScrollbarSize = 10;
             // 
-            // metroLabel1
+            // option8
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(-4, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(223, 25);
-            this.metroLabel1.TabIndex = 2;
-            this.metroLabel1.Text = "Please check the following:";
-            // 
-            // detail1
-            // 
-            this.detail1.AutoSize = true;
-            this.detail1.Location = new System.Drawing.Point(-4, 38);
-            this.detail1.Name = "detail1";
-            this.detail1.Size = new System.Drawing.Size(158, 19);
-            this.detail1.TabIndex = 3;
-            this.detail1.Text = "Syringe holder with blade";
-            // 
-            // detail2
-            // 
-            this.detail2.AutoSize = true;
-            this.detail2.Location = new System.Drawing.Point(-4, 69);
-            this.detail2.Name = "detail2";
-            this.detail2.Size = new System.Drawing.Size(108, 19);
-            this.detail2.TabIndex = 4;
-            this.detail2.Text = "Syringe fastening";
-            // 
-            // detail3
-            // 
-            this.detail3.AutoSize = true;
-            this.detail3.Location = new System.Drawing.Point(-4, 100);
-            this.detail3.Name = "detail3";
-            this.detail3.Size = new System.Drawing.Size(154, 19);
-            this.detail3.TabIndex = 5;
-            this.detail3.Text = "Membrane in drive head";
-            // 
-            // detail4
-            // 
-            this.detail4.AutoSize = true;
-            this.detail4.Location = new System.Drawing.Point(-4, 131);
-            this.detail4.Name = "detail4";
-            this.detail4.Size = new System.Drawing.Size(145, 19);
-            this.detail4.TabIndex = 6;
-            this.detail4.Text = "Axial clearance of drive";
-            // 
-            // detail5
-            // 
-            this.detail5.AutoSize = true;
-            this.detail5.Location = new System.Drawing.Point(-4, 162);
-            this.detail5.Name = "detail5";
-            this.detail5.Size = new System.Drawing.Size(84, 19);
-            this.detail5.TabIndex = 7;
-            this.detail5.Text = "Screw covers";
-            // 
-            // detail6
-            // 
-            this.detail6.AutoSize = true;
-            this.detail6.Location = new System.Drawing.Point(-4, 193);
-            this.detail6.Name = "detail6";
-            this.detail6.Size = new System.Drawing.Size(159, 19);
-            this.detail6.TabIndex = 8;
-            this.detail6.Text = "Connectors “P2” and “P3”";
-            // 
-            // detail7
-            // 
-            this.detail7.AutoSize = true;
-            this.detail7.Location = new System.Drawing.Point(-4, 224);
-            this.detail7.Name = "detail7";
-            this.detail7.Size = new System.Drawing.Size(175, 19);
-            this.detail7.TabIndex = 9;
-            this.detail7.Text = "Protection cap at drive head";
-            // 
-            // detail8
-            // 
-            this.detail8.AutoSize = true;
-            this.detail8.Location = new System.Drawing.Point(-4, 255);
-            this.detail8.Name = "detail8";
-            this.detail8.Size = new System.Drawing.Size(285, 19);
-            this.detail8.TabIndex = 10;
-            this.detail8.Text = "Check the unit and accessories for compatibility";
-            // 
-            // option1
-            // 
-            this.option1.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.option1.FormattingEnabled = true;
-            this.option1.ItemHeight = 19;
-            this.option1.Items.AddRange(new object[] {
+            this.option8.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.option8.FormattingEnabled = true;
+            this.option8.ItemHeight = 19;
+            this.option8.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.option1.Location = new System.Drawing.Point(402, 32);
-            this.option1.Name = "option1";
-            this.option1.Size = new System.Drawing.Size(121, 25);
-            this.option1.TabIndex = 11;
-            this.option1.UseSelectable = true;
-            // 
-            // option2
-            // 
-            this.option2.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.option2.FormattingEnabled = true;
-            this.option2.ItemHeight = 19;
-            this.option2.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.option2.Location = new System.Drawing.Point(402, 63);
-            this.option2.Name = "option2";
-            this.option2.Size = new System.Drawing.Size(121, 25);
-            this.option2.TabIndex = 12;
-            this.option2.UseSelectable = true;
-            // 
-            // option3
-            // 
-            this.option3.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.option3.FormattingEnabled = true;
-            this.option3.ItemHeight = 19;
-            this.option3.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.option3.Location = new System.Drawing.Point(402, 94);
-            this.option3.Name = "option3";
-            this.option3.Size = new System.Drawing.Size(121, 25);
-            this.option3.TabIndex = 13;
-            this.option3.UseSelectable = true;
-            // 
-            // option4
-            // 
-            this.option4.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.option4.FormattingEnabled = true;
-            this.option4.ItemHeight = 19;
-            this.option4.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.option4.Location = new System.Drawing.Point(402, 125);
-            this.option4.Name = "option4";
-            this.option4.Size = new System.Drawing.Size(121, 25);
-            this.option4.TabIndex = 14;
-            this.option4.UseSelectable = true;
-            // 
-            // option5
-            // 
-            this.option5.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.option5.FormattingEnabled = true;
-            this.option5.ItemHeight = 19;
-            this.option5.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.option5.Location = new System.Drawing.Point(402, 156);
-            this.option5.Name = "option5";
-            this.option5.Size = new System.Drawing.Size(121, 25);
-            this.option5.TabIndex = 15;
-            this.option5.UseSelectable = true;
-            // 
-            // option6
-            // 
-            this.option6.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.option6.FormattingEnabled = true;
-            this.option6.ItemHeight = 19;
-            this.option6.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.option6.Location = new System.Drawing.Point(402, 187);
-            this.option6.Name = "option6";
-            this.option6.Size = new System.Drawing.Size(121, 25);
-            this.option6.TabIndex = 16;
-            this.option6.UseSelectable = true;
+            this.option8.Location = new System.Drawing.Point(402, 249);
+            this.option8.Name = "option8";
+            this.option8.Size = new System.Drawing.Size(121, 25);
+            this.option8.TabIndex = 18;
+            this.option8.UseSelectable = true;
             // 
             // option7
             // 
@@ -338,20 +146,238 @@
             this.option7.TabIndex = 17;
             this.option7.UseSelectable = true;
             // 
-            // option8
+            // option6
             // 
-            this.option8.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.option8.FormattingEnabled = true;
-            this.option8.ItemHeight = 19;
-            this.option8.Items.AddRange(new object[] {
+            this.option6.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.option6.FormattingEnabled = true;
+            this.option6.ItemHeight = 19;
+            this.option6.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.option8.Location = new System.Drawing.Point(402, 249);
-            this.option8.Name = "option8";
-            this.option8.Size = new System.Drawing.Size(121, 25);
-            this.option8.TabIndex = 18;
-            this.option8.UseSelectable = true;
+            this.option6.Location = new System.Drawing.Point(402, 187);
+            this.option6.Name = "option6";
+            this.option6.Size = new System.Drawing.Size(121, 25);
+            this.option6.TabIndex = 16;
+            this.option6.UseSelectable = true;
+            // 
+            // option5
+            // 
+            this.option5.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.option5.FormattingEnabled = true;
+            this.option5.ItemHeight = 19;
+            this.option5.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.option5.Location = new System.Drawing.Point(402, 156);
+            this.option5.Name = "option5";
+            this.option5.Size = new System.Drawing.Size(121, 25);
+            this.option5.TabIndex = 15;
+            this.option5.UseSelectable = true;
+            // 
+            // option4
+            // 
+            this.option4.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.option4.FormattingEnabled = true;
+            this.option4.ItemHeight = 19;
+            this.option4.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.option4.Location = new System.Drawing.Point(402, 125);
+            this.option4.Name = "option4";
+            this.option4.Size = new System.Drawing.Size(121, 25);
+            this.option4.TabIndex = 14;
+            this.option4.UseSelectable = true;
+            // 
+            // option3
+            // 
+            this.option3.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.option3.FormattingEnabled = true;
+            this.option3.ItemHeight = 19;
+            this.option3.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.option3.Location = new System.Drawing.Point(402, 94);
+            this.option3.Name = "option3";
+            this.option3.Size = new System.Drawing.Size(121, 25);
+            this.option3.TabIndex = 13;
+            this.option3.UseSelectable = true;
+            // 
+            // option2
+            // 
+            this.option2.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.option2.FormattingEnabled = true;
+            this.option2.ItemHeight = 19;
+            this.option2.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.option2.Location = new System.Drawing.Point(402, 63);
+            this.option2.Name = "option2";
+            this.option2.Size = new System.Drawing.Size(121, 25);
+            this.option2.TabIndex = 12;
+            this.option2.UseSelectable = true;
+            // 
+            // option1
+            // 
+            this.option1.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.option1.FormattingEnabled = true;
+            this.option1.ItemHeight = 19;
+            this.option1.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.option1.Location = new System.Drawing.Point(402, 32);
+            this.option1.Name = "option1";
+            this.option1.Size = new System.Drawing.Size(121, 25);
+            this.option1.TabIndex = 11;
+            this.option1.UseSelectable = true;
+            // 
+            // detail8
+            // 
+            this.detail8.AutoSize = true;
+            this.detail8.Location = new System.Drawing.Point(-4, 255);
+            this.detail8.Name = "detail8";
+            this.detail8.Size = new System.Drawing.Size(285, 19);
+            this.detail8.TabIndex = 10;
+            this.detail8.Text = "Check the unit and accessories for compatibility";
+            // 
+            // detail7
+            // 
+            this.detail7.AutoSize = true;
+            this.detail7.Location = new System.Drawing.Point(-4, 224);
+            this.detail7.Name = "detail7";
+            this.detail7.Size = new System.Drawing.Size(175, 19);
+            this.detail7.TabIndex = 9;
+            this.detail7.Text = "Protection cap at drive head";
+            // 
+            // detail6
+            // 
+            this.detail6.AutoSize = true;
+            this.detail6.Location = new System.Drawing.Point(-4, 193);
+            this.detail6.Name = "detail6";
+            this.detail6.Size = new System.Drawing.Size(159, 19);
+            this.detail6.TabIndex = 8;
+            this.detail6.Text = "Connectors “P2” and “P3”";
+            // 
+            // detail5
+            // 
+            this.detail5.AutoSize = true;
+            this.detail5.Location = new System.Drawing.Point(-4, 162);
+            this.detail5.Name = "detail5";
+            this.detail5.Size = new System.Drawing.Size(84, 19);
+            this.detail5.TabIndex = 7;
+            this.detail5.Text = "Screw covers";
+            // 
+            // detail4
+            // 
+            this.detail4.AutoSize = true;
+            this.detail4.Location = new System.Drawing.Point(-4, 131);
+            this.detail4.Name = "detail4";
+            this.detail4.Size = new System.Drawing.Size(145, 19);
+            this.detail4.TabIndex = 6;
+            this.detail4.Text = "Axial clearance of drive";
+            // 
+            // detail3
+            // 
+            this.detail3.AutoSize = true;
+            this.detail3.Location = new System.Drawing.Point(-4, 100);
+            this.detail3.Name = "detail3";
+            this.detail3.Size = new System.Drawing.Size(154, 19);
+            this.detail3.TabIndex = 5;
+            this.detail3.Text = "Membrane in drive head";
+            // 
+            // detail2
+            // 
+            this.detail2.AutoSize = true;
+            this.detail2.Location = new System.Drawing.Point(-4, 69);
+            this.detail2.Name = "detail2";
+            this.detail2.Size = new System.Drawing.Size(108, 19);
+            this.detail2.TabIndex = 4;
+            this.detail2.Text = "Syringe fastening";
+            // 
+            // detail1
+            // 
+            this.detail1.AutoSize = true;
+            this.detail1.Location = new System.Drawing.Point(-4, 38);
+            this.detail1.Name = "detail1";
+            this.detail1.Size = new System.Drawing.Size(158, 19);
+            this.detail1.TabIndex = 3;
+            this.detail1.Text = "Syringe holder with blade";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.Location = new System.Drawing.Point(-4, 0);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(223, 25);
+            this.metroLabel1.TabIndex = 2;
+            this.metroLabel1.Text = "Please check the following:";
+            // 
+            // functionalCheck
+            // 
+            this.functionalCheck.AutoScroll = true;
+            this.functionalCheck.Controls.Add(this.checkBattery);
+            this.functionalCheck.Controls.Add(this.metroLabel10);
+            this.functionalCheck.Controls.Add(this.metroComboBox1);
+            this.functionalCheck.Controls.Add(this.metroComboBox2);
+            this.functionalCheck.Controls.Add(this.metroComboBox3);
+            this.functionalCheck.Controls.Add(this.metroComboBox4);
+            this.functionalCheck.Controls.Add(this.metroComboBox5);
+            this.functionalCheck.Controls.Add(this.metroComboBox6);
+            this.functionalCheck.Controls.Add(this.metroComboBox7);
+            this.functionalCheck.Controls.Add(this.metroComboBox8);
+            this.functionalCheck.Controls.Add(this.metroLabel2);
+            this.functionalCheck.Controls.Add(this.metroLabel3);
+            this.functionalCheck.Controls.Add(this.metroLabel4);
+            this.functionalCheck.Controls.Add(this.metroLabel5);
+            this.functionalCheck.Controls.Add(this.metroLabel6);
+            this.functionalCheck.Controls.Add(this.metroLabel7);
+            this.functionalCheck.Controls.Add(this.metroLabel8);
+            this.functionalCheck.Controls.Add(this.metroLabel9);
+            this.functionalCheck.HorizontalScrollbar = true;
+            this.functionalCheck.HorizontalScrollbarBarColor = false;
+            this.functionalCheck.HorizontalScrollbarHighlightOnWheel = false;
+            this.functionalCheck.HorizontalScrollbarSize = 10;
+            this.functionalCheck.Location = new System.Drawing.Point(4, 38);
+            this.functionalCheck.Name = "functionalCheck";
+            this.functionalCheck.Size = new System.Drawing.Size(526, 538);
+            this.functionalCheck.TabIndex = 1;
+            this.functionalCheck.Text = "Functional Inspection";
+            this.functionalCheck.VerticalScrollbar = true;
+            this.functionalCheck.VerticalScrollbarBarColor = true;
+            this.functionalCheck.VerticalScrollbarHighlightOnWheel = false;
+            this.functionalCheck.VerticalScrollbarSize = 10;
+            // 
+            // checkBattery
+            // 
+            this.checkBattery.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.checkBattery.Location = new System.Drawing.Point(219, 163);
+            this.checkBattery.Name = "checkBattery";
+            this.checkBattery.Size = new System.Drawing.Size(107, 25);
+            this.checkBattery.Style = MetroFramework.MetroColorStyle.Blue;
+            this.checkBattery.TabIndex = 36;
+            this.checkBattery.Text = "Battery Checker";
+            this.checkBattery.UseCustomBackColor = true;
+            this.checkBattery.UseSelectable = true;
+            this.checkBattery.UseStyleColors = true;
+            this.checkBattery.Click += new System.EventHandler(this.checkBattery_Click);
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel10.Location = new System.Drawing.Point(-4, 0);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(223, 25);
+            this.metroLabel10.TabIndex = 35;
+            this.metroLabel10.Text = "Please check the following:";
             // 
             // metroComboBox1
             // 
@@ -545,30 +571,6 @@
             this.metroLabel9.TabIndex = 19;
             this.metroLabel9.Text = "Locking with second unit";
             // 
-            // metroLabel10
-            // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel10.Location = new System.Drawing.Point(-4, 0);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(223, 25);
-            this.metroLabel10.TabIndex = 35;
-            this.metroLabel10.Text = "Please check the following:";
-            // 
-            // checkBattery
-            // 
-            this.checkBattery.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.checkBattery.Location = new System.Drawing.Point(219, 163);
-            this.checkBattery.Name = "checkBattery";
-            this.checkBattery.Size = new System.Drawing.Size(107, 25);
-            this.checkBattery.Style = MetroFramework.MetroColorStyle.Blue;
-            this.checkBattery.TabIndex = 36;
-            this.checkBattery.Text = "Battery Checker";
-            this.checkBattery.UseCustomBackColor = true;
-            this.checkBattery.UseSelectable = true;
-            this.checkBattery.UseStyleColors = true;
-            // 
             // perfusorSpace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,10 +580,10 @@
             this.Name = "perfusorSpace";
             this.Text = "Technical Safety Check - Perfusor Space";
             this.safetyCheck.ResumeLayout(false);
-            this.functionalCheck.ResumeLayout(false);
-            this.functionalCheck.PerformLayout();
             this.visualCheck.ResumeLayout(false);
             this.visualCheck.PerformLayout();
+            this.functionalCheck.ResumeLayout(false);
+            this.functionalCheck.PerformLayout();
             this.ResumeLayout(false);
 
         }

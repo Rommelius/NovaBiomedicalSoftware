@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using System.Globalization;
 
 namespace NovaBiomedicalSoftware
 {
     public partial class BatteryChecker : MetroForm
     {
 
-        public char letter;
+        
+        
+        public int digits, year;
+        public char letterchar;
+
 
         public BatteryChecker()
         {
@@ -25,10 +30,36 @@ namespace NovaBiomedicalSoftware
         private void checkBattery_btn_Click(object sender, EventArgs e)
         {
 
+            if (inputLetter.Text == "N")
+            {
+                year = 2013;
+            }
+
+            Int32.TryParse(inputDigits.Text, out digits);
+
+            resultsAge.Text = FirstDateOfWeekISO8601(year, digits).ToLongDateString();
 
 
 
 
+        }
+
+        public static DateTime FirstDateOfWeekISO8601(int year, int weekOfYear)
+        {
+            DateTime jan1 = new DateTime(year, 1, 1);
+            int daysOffset = DayOfWeek.Thursday - jan1.DayOfWeek;
+
+            DateTime firstThursday = jan1.AddDays(daysOffset);
+            var cal = CultureInfo.CurrentCulture.Calendar;
+            int firstWeek = cal.GetWeekOfYear(firstThursday, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+
+            var weekNum = weekOfYear;
+            if (firstWeek <= 1)
+            {
+                weekNum -= 1;
+            }
+            var result = firstThursday.AddDays(weekNum * 7);
+            return result.AddDays(-3);
         }
     }
 }

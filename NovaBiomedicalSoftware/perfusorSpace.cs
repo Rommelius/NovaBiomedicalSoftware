@@ -20,5 +20,11 @@ namespace NovaBiomedicalSoftware
 
 
         }
+
+        private void checkBattery_Click(object sender, EventArgs e)
+        {
+            BatteryChecker batteryCheck = new BatteryChecker();
+            batteryCheck.Show();
+        }
     }
 }
