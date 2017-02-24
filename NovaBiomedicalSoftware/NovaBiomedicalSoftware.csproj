@@ -154,7 +154,6 @@
     <None Include="Resources\background.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Killer Network Manager.lnk" />
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>

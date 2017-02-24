@@ -39,6 +39,7 @@ namespace NovaBiomedicalSoftware
 
         public static string sean_sig = "sean.png", rommel_sig = "rommel.png", scott_sig = "scott.png", joe_sig = "joe.png", luke_sig = "luke.png",
         khoi_sig = "khoi.png";
+        
 
         public Form1()
         {
@@ -135,7 +136,7 @@ namespace NovaBiomedicalSoftware
                 tabMenu.Enabled = true;
                 newproductBtn.Enabled = true;
                 statusText.Text = "Hello " + userName.Text;
-                ConnectToSerial();
+                //ConnectToSerial();
             }
         }
 
@@ -180,13 +181,18 @@ namespace NovaBiomedicalSoftware
 
         private void bbraunPerfusor_Click(object sender, EventArgs e)
         {
+            
             perfusorSpace perfusorSpaceTest = new perfusorSpace();
 
             DialogResult perfusorSpaceTestDR = perfusorSpaceTest.ShowDialog();
 
+
             if (perfusorSpaceTestDR == DialogResult.Cancel)
             {
-                makePDF();
+                if (perfusorSpaceTest.perfusorTest_Submit == true)
+                    MessageBox.Show("submitted - test complete - with data");
+                else
+                    MessageBox.Show("submitted but no data to show");
             }
         }
 
