@@ -25,3 +25,21 @@ D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftwa
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\perfusorSpaceTSC_log.ldf
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.perfusorSpace.resources
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.BatteryChecker.resources
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe.config
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.exe
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.pdb
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\perfusorSpaceTSC.mdf
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\perfusorSpaceTSC_log.ldf
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.pdb
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\itextsharp.dll
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.Design.dll
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.dll
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\itextsharp.xml
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csprojResolveAssemblyReference.cache
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.BatteryChecker.resources
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Form1.resources
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.perfusorSpace.resources
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Properties.Resources.resources
+C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.GenerateResource.Cache

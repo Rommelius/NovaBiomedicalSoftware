@@ -15,23 +15,14 @@ namespace NovaBiomedicalSoftware
     public partial class perfusorSpace : MetroForm
     {
 
-        public bool perfusorTest_Submit;
-       
+        public bool perfusorTest_Submit, visualComboBox, functionalComboBox;
+
 
         public perfusorSpace()
         {
             InitializeComponent();
             safetyCheck.SelectedTab = visualCheck;
 
-            int counter = 0;
-
-            foreach (MetroFramework.Controls.MetroTabControl.TabPageCollection c in this.Controls) //here is the minor change
-            {
-                if (c.GetType() == typeof(MetroFramework.Controls.MetroComboBox))
-                    counter++;
-            }
-
-            MessageBox.Show("number of combobox: " + counter.ToString());
         }
 
 
@@ -43,17 +34,18 @@ namespace NovaBiomedicalSoftware
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            //foreach (Control c in this.Controls)
-            //{
-            //    if (c is MetroComboBox)
-            //        counter++;
-            //}
-
+            //check if comboBox are answered
 
 
             perfusorTest_Submit = true;
 
-            //this.Close();
+
+            foreach (Control c in this.Controls)
+            {
+                if (c is MetroComboBox)
+                    MessageBox.Show("hi");
+
+            }
 
         }
 
@@ -73,5 +65,7 @@ namespace NovaBiomedicalSoftware
             perfusorTest_Submit = false;
             this.Close();
         }
+
+
     }
 }
