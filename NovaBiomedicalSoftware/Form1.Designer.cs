@@ -30,8 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.firstPrompt = new MetroFramework.Controls.MetroPanel();
+            this.btnAdduser = new MetroFramework.Controls.MetroButton();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.userName = new MetroFramework.Controls.MetroComboBox();
             this.location = new MetroFramework.Controls.MetroTextBox();
+            this.manufacturer = new MetroFramework.Controls.MetroTextBox();
             this.model = new MetroFramework.Controls.MetroTextBox();
             this.serialNumber = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -54,7 +57,35 @@
             this.ptNIBP = new MetroFramework.Controls.MetroTile();
             this.ptECG = new MetroFramework.Controls.MetroTile();
             this.estTab = new MetroFramework.Controls.MetroTabPage();
-            this.debug_box = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.metroLabel37 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel33 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel31 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel28 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel27 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel34 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel25 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.labelAnsurVersion = new MetroFramework.Controls.MetroLabel();
+            this.labelM1 = new MetroFramework.Controls.MetroLabel();
+            this.labelM2 = new MetroFramework.Controls.MetroLabel();
+            this.labelM3 = new MetroFramework.Controls.MetroLabel();
+            this.labelPE = new MetroFramework.Controls.MetroLabel();
+            this.labelEnL6 = new MetroFramework.Controls.MetroLabel();
+            this.labelEnL5 = new MetroFramework.Controls.MetroLabel();
+            this.labelEnL4 = new MetroFramework.Controls.MetroLabel();
+            this.labelEnL3 = new MetroFramework.Controls.MetroLabel();
+            this.labelEnL2 = new MetroFramework.Controls.MetroLabel();
+            this.labelEnL1 = new MetroFramework.Controls.MetroLabel();
+            this.labelEL2 = new MetroFramework.Controls.MetroLabel();
+            this.labelEL1 = new MetroFramework.Controls.MetroLabel();
+            this.labelIR = new MetroFramework.Controls.MetroLabel();
             this.ecgClass2 = new MetroFramework.Controls.MetroTile();
             this.ecgClass1 = new MetroFramework.Controls.MetroTile();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
@@ -69,14 +100,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ptTab.SuspendLayout();
             this.estTab.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tabMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // firstPrompt
             // 
             this.firstPrompt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.firstPrompt.Controls.Add(this.btnAdduser);
+            this.firstPrompt.Controls.Add(this.metroLabel10);
             this.firstPrompt.Controls.Add(this.userName);
             this.firstPrompt.Controls.Add(this.location);
+            this.firstPrompt.Controls.Add(this.manufacturer);
             this.firstPrompt.Controls.Add(this.model);
             this.firstPrompt.Controls.Add(this.serialNumber);
             this.firstPrompt.Controls.Add(this.metroLabel6);
@@ -91,7 +126,7 @@
             this.firstPrompt.HorizontalScrollbarBarColor = true;
             this.firstPrompt.HorizontalScrollbarHighlightOnWheel = false;
             this.firstPrompt.HorizontalScrollbarSize = 10;
-            this.firstPrompt.Location = new System.Drawing.Point(1083, 25);
+            this.firstPrompt.Location = new System.Drawing.Point(1083, 10);
             this.firstPrompt.Name = "firstPrompt";
             this.firstPrompt.Size = new System.Drawing.Size(681, 405);
             this.firstPrompt.Style = MetroFramework.MetroColorStyle.Blue;
@@ -101,23 +136,39 @@
             this.firstPrompt.VerticalScrollbarHighlightOnWheel = false;
             this.firstPrompt.VerticalScrollbarSize = 10;
             // 
+            // btnAdduser
+            // 
+            this.btnAdduser.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnAdduser.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnAdduser.Location = new System.Drawing.Point(499, 95);
+            this.btnAdduser.Name = "btnAdduser";
+            this.btnAdduser.Size = new System.Drawing.Size(29, 29);
+            this.btnAdduser.TabIndex = 97;
+            this.btnAdduser.Text = "+";
+            this.btnAdduser.UseSelectable = true;
+            this.btnAdduser.Click += new System.EventHandler(this.btnAdduser_Click);
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel10.Location = new System.Drawing.Point(144, 250);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(95, 19);
+            this.metroLabel10.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroLabel10.TabIndex = 98;
+            this.metroLabel10.Text = "Manufacturer:";
+            this.metroLabel10.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
             // userName
             // 
             this.userName.FormattingEnabled = true;
             this.userName.ItemHeight = 23;
-            this.userName.Items.AddRange(new object[] {
-            "Sean Welch",
-            "Joe Welch",
-            "Ken Welch",
-            "Luke Brogan",
-            "Rommel Lapuz",
-            "Khoi Duong",
-            "Scott Monk"});
             this.userName.Location = new System.Drawing.Point(295, 95);
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(198, 29);
             this.userName.Style = MetroFramework.MetroColorStyle.Blue;
-            this.userName.TabIndex = 14;
+            this.userName.TabIndex = 99;
             this.userName.Theme = MetroFramework.MetroThemeStyle.Light;
             this.userName.UseSelectable = true;
             // 
@@ -136,7 +187,7 @@
             this.location.CustomButton.UseSelectable = true;
             this.location.CustomButton.Visible = false;
             this.location.Lines = new string[0];
-            this.location.Location = new System.Drawing.Point(295, 239);
+            this.location.Location = new System.Drawing.Point(295, 275);
             this.location.MaxLength = 32767;
             this.location.Name = "location";
             this.location.PasswordChar = '\0';
@@ -146,11 +197,44 @@
             this.location.SelectionStart = 0;
             this.location.ShortcutsEnabled = true;
             this.location.Size = new System.Drawing.Size(198, 30);
-            this.location.TabIndex = 13;
+            this.location.TabIndex = 5;
             this.location.Theme = MetroFramework.MetroThemeStyle.Light;
             this.location.UseSelectable = true;
             this.location.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.location.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.location.KeyDown += new System.Windows.Forms.KeyEventHandler(this.location_KeyDown);
+            // 
+            // manufacturer
+            // 
+            // 
+            // 
+            // 
+            this.manufacturer.CustomButton.Image = null;
+            this.manufacturer.CustomButton.Location = new System.Drawing.Point(170, 2);
+            this.manufacturer.CustomButton.Name = "";
+            this.manufacturer.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.manufacturer.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.manufacturer.CustomButton.TabIndex = 1;
+            this.manufacturer.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.manufacturer.CustomButton.UseSelectable = true;
+            this.manufacturer.CustomButton.Visible = false;
+            this.manufacturer.Lines = new string[0];
+            this.manufacturer.Location = new System.Drawing.Point(295, 239);
+            this.manufacturer.MaxLength = 32767;
+            this.manufacturer.Name = "manufacturer";
+            this.manufacturer.PasswordChar = '\0';
+            this.manufacturer.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.manufacturer.SelectedText = "";
+            this.manufacturer.SelectionLength = 0;
+            this.manufacturer.SelectionStart = 0;
+            this.manufacturer.ShortcutsEnabled = true;
+            this.manufacturer.Size = new System.Drawing.Size(198, 30);
+            this.manufacturer.TabIndex = 4;
+            this.manufacturer.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.manufacturer.UseSelectable = true;
+            this.manufacturer.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.manufacturer.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.manufacturer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manufacturer_KeyDown);
             // 
             // model
             // 
@@ -177,7 +261,7 @@
             this.model.SelectionStart = 0;
             this.model.ShortcutsEnabled = true;
             this.model.Size = new System.Drawing.Size(198, 30);
-            this.model.TabIndex = 12;
+            this.model.TabIndex = 3;
             this.model.Theme = MetroFramework.MetroThemeStyle.Light;
             this.model.UseSelectable = true;
             this.model.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -209,7 +293,7 @@
             this.serialNumber.SelectionStart = 0;
             this.serialNumber.ShortcutsEnabled = true;
             this.serialNumber.Size = new System.Drawing.Size(198, 30);
-            this.serialNumber.TabIndex = 11;
+            this.serialNumber.TabIndex = 2;
             this.serialNumber.Theme = MetroFramework.MetroThemeStyle.Light;
             this.serialNumber.UseSelectable = true;
             this.serialNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -220,11 +304,11 @@
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel6.Location = new System.Drawing.Point(144, 241);
+            this.metroLabel6.Location = new System.Drawing.Point(144, 286);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(64, 19);
             this.metroLabel6.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel6.TabIndex = 10;
+            this.metroLabel6.TabIndex = 98;
             this.metroLabel6.Text = "Location:";
             this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
@@ -232,11 +316,11 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(144, 205);
+            this.metroLabel5.Location = new System.Drawing.Point(144, 214);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(51, 19);
             this.metroLabel5.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel5.TabIndex = 9;
+            this.metroLabel5.TabIndex = 98;
             this.metroLabel5.Text = "Model:";
             this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
@@ -244,11 +328,11 @@
             // 
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel4.Location = new System.Drawing.Point(144, 169);
+            this.metroLabel4.Location = new System.Drawing.Point(144, 178);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(98, 19);
             this.metroLabel4.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel4.TabIndex = 8;
+            this.metroLabel4.TabIndex = 98;
             this.metroLabel4.Text = "Serial Number:";
             this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
@@ -256,11 +340,11 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(143, 133);
+            this.metroLabel3.Location = new System.Drawing.Point(144, 142);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(99, 19);
             this.metroLabel3.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel3.TabIndex = 7;
+            this.metroLabel3.TabIndex = 98;
             this.metroLabel3.Text = "Asset Number:";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
@@ -268,11 +352,11 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(144, 97);
+            this.metroLabel2.Location = new System.Drawing.Point(144, 105);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(48, 19);
             this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel2.TabIndex = 6;
+            this.metroLabel2.TabIndex = 98;
             this.metroLabel2.Text = "Name:";
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
@@ -314,7 +398,7 @@
             this.assetNumber.SelectionStart = 0;
             this.assetNumber.ShortcutsEnabled = true;
             this.assetNumber.Size = new System.Drawing.Size(198, 30);
-            this.assetNumber.TabIndex = 4;
+            this.assetNumber.TabIndex = 1;
             this.assetNumber.Theme = MetroFramework.MetroThemeStyle.Light;
             this.assetNumber.UseSelectable = true;
             this.assetNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -326,7 +410,7 @@
             this.submitBtn.Location = new System.Drawing.Point(412, 330);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(141, 44);
-            this.submitBtn.TabIndex = 3;
+            this.submitBtn.TabIndex = 6;
             this.submitBtn.Text = "Submit";
             this.submitBtn.Theme = MetroFramework.MetroThemeStyle.Light;
             this.submitBtn.UseSelectable = true;
@@ -337,7 +421,7 @@
             this.clearBtn_1.Location = new System.Drawing.Point(141, 330);
             this.clearBtn_1.Name = "clearBtn_1";
             this.clearBtn_1.Size = new System.Drawing.Size(141, 44);
-            this.clearBtn_1.TabIndex = 2;
+            this.clearBtn_1.TabIndex = 7;
             this.clearBtn_1.Text = "Clear";
             this.clearBtn_1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.clearBtn_1.UseSelectable = true;
@@ -374,7 +458,7 @@
             this.ptTab.HorizontalScrollbarSize = 10;
             this.ptTab.Location = new System.Drawing.Point(4, 38);
             this.ptTab.Name = "ptTab";
-            this.ptTab.Size = new System.Drawing.Size(1045, 538);
+            this.ptTab.Size = new System.Drawing.Size(1045, 609);
             this.ptTab.TabIndex = 1;
             this.ptTab.Text = "Performance Test";
             this.ptTab.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -513,10 +597,9 @@
             // 
             // estTab
             // 
-            this.estTab.BackColor = System.Drawing.Color.Transparent;
-            this.estTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.background;
+            this.estTab.BackColor = System.Drawing.Color.Gray;
             this.estTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.estTab.Controls.Add(this.debug_box);
+            this.estTab.Controls.Add(this.panel1);
             this.estTab.Controls.Add(this.ecgClass2);
             this.estTab.Controls.Add(this.ecgClass1);
             this.estTab.Controls.Add(this.metroLabel8);
@@ -528,7 +611,7 @@
             this.estTab.HorizontalScrollbarSize = 10;
             this.estTab.Location = new System.Drawing.Point(4, 38);
             this.estTab.Name = "estTab";
-            this.estTab.Size = new System.Drawing.Size(1045, 538);
+            this.estTab.Size = new System.Drawing.Size(1045, 609);
             this.estTab.TabIndex = 0;
             this.estTab.Text = "Electrical Safety Test";
             this.estTab.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -537,13 +620,335 @@
             this.estTab.VerticalScrollbarHighlightOnWheel = false;
             this.estTab.VerticalScrollbarSize = 10;
             // 
-            // debug_box
+            // panel1
             // 
-            this.debug_box.Location = new System.Drawing.Point(890, 62);
-            this.debug_box.Name = "debug_box";
-            this.debug_box.Size = new System.Drawing.Size(129, 235);
-            this.debug_box.TabIndex = 8;
-            this.debug_box.Text = "";
+            this.panel1.Controls.Add(this.metroLabel37);
+            this.panel1.Controls.Add(this.metroLabel33);
+            this.panel1.Controls.Add(this.metroLabel31);
+            this.panel1.Controls.Add(this.metroLabel28);
+            this.panel1.Controls.Add(this.metroLabel27);
+            this.panel1.Controls.Add(this.metroLabel34);
+            this.panel1.Controls.Add(this.metroLabel25);
+            this.panel1.Controls.Add(this.metroLabel23);
+            this.panel1.Controls.Add(this.metroLabel21);
+            this.panel1.Controls.Add(this.metroLabel19);
+            this.panel1.Controls.Add(this.metroLabel17);
+            this.panel1.Controls.Add(this.metroLabel15);
+            this.panel1.Controls.Add(this.metroLabel12);
+            this.panel1.Controls.Add(this.metroLabel11);
+            this.panel1.Controls.Add(this.labelAnsurVersion);
+            this.panel1.Controls.Add(this.labelM1);
+            this.panel1.Controls.Add(this.labelM2);
+            this.panel1.Controls.Add(this.labelM3);
+            this.panel1.Controls.Add(this.labelPE);
+            this.panel1.Controls.Add(this.labelEnL6);
+            this.panel1.Controls.Add(this.labelEnL5);
+            this.panel1.Controls.Add(this.labelEnL4);
+            this.panel1.Controls.Add(this.labelEnL3);
+            this.panel1.Controls.Add(this.labelEnL2);
+            this.panel1.Controls.Add(this.labelEnL1);
+            this.panel1.Controls.Add(this.labelEL2);
+            this.panel1.Controls.Add(this.labelEL1);
+            this.panel1.Controls.Add(this.labelIR);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(708, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(337, 609);
+            this.panel1.TabIndex = 9;
+            // 
+            // metroLabel37
+            // 
+            this.metroLabel37.AutoSize = true;
+            this.metroLabel37.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel37.Location = new System.Drawing.Point(3, 539);
+            this.metroLabel37.Name = "metroLabel37";
+            this.metroLabel37.Size = new System.Drawing.Size(273, 38);
+            this.metroLabel37.TabIndex = 0;
+            this.metroLabel37.Text = "Enclosure Leakage Current (Open Earth,\r\nReversed):";
+            this.metroLabel37.UseCustomBackColor = true;
+            // 
+            // metroLabel33
+            // 
+            this.metroLabel33.AutoSize = true;
+            this.metroLabel33.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel33.Location = new System.Drawing.Point(0, 482);
+            this.metroLabel33.Name = "metroLabel33";
+            this.metroLabel33.Size = new System.Drawing.Size(289, 38);
+            this.metroLabel33.TabIndex = 0;
+            this.metroLabel33.Text = "Enclosure Leakage Current (Open Neutral,\r\nReversed):";
+            this.metroLabel33.UseCustomBackColor = true;
+            // 
+            // metroLabel31
+            // 
+            this.metroLabel31.AutoSize = true;
+            this.metroLabel31.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel31.Location = new System.Drawing.Point(3, 425);
+            this.metroLabel31.Name = "metroLabel31";
+            this.metroLabel31.Size = new System.Drawing.Size(319, 38);
+            this.metroLabel31.TabIndex = 0;
+            this.metroLabel31.Text = "Enclosure Leakage Current (Normal Condition,\r\nReversed):";
+            this.metroLabel31.UseCustomBackColor = true;
+            // 
+            // metroLabel28
+            // 
+            this.metroLabel28.AutoSize = true;
+            this.metroLabel28.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel28.Location = new System.Drawing.Point(3, 387);
+            this.metroLabel28.Name = "metroLabel28";
+            this.metroLabel28.Size = new System.Drawing.Size(278, 19);
+            this.metroLabel28.TabIndex = 0;
+            this.metroLabel28.Text = "Enclosure Leakage Current (Open Earth):";
+            this.metroLabel28.UseCustomBackColor = true;
+            // 
+            // metroLabel27
+            // 
+            this.metroLabel27.AutoSize = true;
+            this.metroLabel27.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel27.Location = new System.Drawing.Point(3, 349);
+            this.metroLabel27.Name = "metroLabel27";
+            this.metroLabel27.Size = new System.Drawing.Size(294, 19);
+            this.metroLabel27.TabIndex = 0;
+            this.metroLabel27.Text = "Enclosure Leakage Current (Open Neutral):";
+            this.metroLabel27.UseCustomBackColor = true;
+            // 
+            // metroLabel34
+            // 
+            this.metroLabel34.AutoSize = true;
+            this.metroLabel34.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel34.Location = new System.Drawing.Point(3, 305);
+            this.metroLabel34.Name = "metroLabel34";
+            this.metroLabel34.Size = new System.Drawing.Size(332, 19);
+            this.metroLabel34.TabIndex = 0;
+            this.metroLabel34.Text = "Enclousure Leakage Current (Normal Condition):";
+            this.metroLabel34.UseCustomBackColor = true;
+            // 
+            // metroLabel25
+            // 
+            this.metroLabel25.AutoSize = true;
+            this.metroLabel25.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel25.Location = new System.Drawing.Point(3, 267);
+            this.metroLabel25.Name = "metroLabel25";
+            this.metroLabel25.Size = new System.Drawing.Size(265, 19);
+            this.metroLabel25.TabIndex = 0;
+            this.metroLabel25.Text = "Earth Leakage Current (Open Neutral):";
+            this.metroLabel25.UseCustomBackColor = true;
+            // 
+            // metroLabel23
+            // 
+            this.metroLabel23.AutoSize = true;
+            this.metroLabel23.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel23.Location = new System.Drawing.Point(3, 230);
+            this.metroLabel23.Name = "metroLabel23";
+            this.metroLabel23.Size = new System.Drawing.Size(295, 19);
+            this.metroLabel23.TabIndex = 0;
+            this.metroLabel23.Text = "Earth Leakage Current (Normal Condition):";
+            this.metroLabel23.UseCustomBackColor = true;
+            // 
+            // metroLabel21
+            // 
+            this.metroLabel21.AutoSize = true;
+            this.metroLabel21.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel21.Location = new System.Drawing.Point(3, 192);
+            this.metroLabel21.Name = "metroLabel21";
+            this.metroLabel21.Size = new System.Drawing.Size(150, 19);
+            this.metroLabel21.TabIndex = 0;
+            this.metroLabel21.Text = "Insulation Resistance:";
+            this.metroLabel21.UseCustomBackColor = true;
+            // 
+            // metroLabel19
+            // 
+            this.metroLabel19.AutoSize = true;
+            this.metroLabel19.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel19.Location = new System.Drawing.Point(3, 154);
+            this.metroLabel19.Name = "metroLabel19";
+            this.metroLabel19.Size = new System.Drawing.Size(120, 19);
+            this.metroLabel19.TabIndex = 0;
+            this.metroLabel19.Text = "Protective Earth:";
+            this.metroLabel19.UseCustomBackColor = true;
+            // 
+            // metroLabel17
+            // 
+            this.metroLabel17.AutoSize = true;
+            this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel17.Location = new System.Drawing.Point(3, 116);
+            this.metroLabel17.Name = "metroLabel17";
+            this.metroLabel17.Size = new System.Drawing.Size(205, 19);
+            this.metroLabel17.TabIndex = 0;
+            this.metroLabel17.Text = "Mains Voltage – Live to Earth:";
+            this.metroLabel17.UseCustomBackColor = true;
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel15.Location = new System.Drawing.Point(3, 78);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(228, 19);
+            this.metroLabel15.TabIndex = 0;
+            this.metroLabel15.Text = "Mains Voltage – Neutral to Earth:";
+            this.metroLabel15.UseCustomBackColor = true;
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel12.Location = new System.Drawing.Point(3, 40);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(221, 19);
+            this.metroLabel12.TabIndex = 0;
+            this.metroLabel12.Text = "Mains Voltage – Live to Neutral:";
+            this.metroLabel12.UseCustomBackColor = true;
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel11.Location = new System.Drawing.Point(3, 2);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(104, 19);
+            this.metroLabel11.TabIndex = 0;
+            this.metroLabel11.Text = "Ansur Version:";
+            this.metroLabel11.UseCustomBackColor = true;
+            // 
+            // labelAnsurVersion
+            // 
+            this.labelAnsurVersion.AutoSize = true;
+            this.labelAnsurVersion.Location = new System.Drawing.Point(19, 21);
+            this.labelAnsurVersion.Name = "labelAnsurVersion";
+            this.labelAnsurVersion.Size = new System.Drawing.Size(17, 19);
+            this.labelAnsurVersion.TabIndex = 1;
+            this.labelAnsurVersion.Text = "  ";
+            this.labelAnsurVersion.UseCustomBackColor = true;
+            // 
+            // labelM1
+            // 
+            this.labelM1.AutoSize = true;
+            this.labelM1.Location = new System.Drawing.Point(19, 59);
+            this.labelM1.Name = "labelM1";
+            this.labelM1.Size = new System.Drawing.Size(13, 19);
+            this.labelM1.TabIndex = 1;
+            this.labelM1.Text = " ";
+            this.labelM1.UseCustomBackColor = true;
+            // 
+            // labelM2
+            // 
+            this.labelM2.AutoSize = true;
+            this.labelM2.Location = new System.Drawing.Point(19, 97);
+            this.labelM2.Name = "labelM2";
+            this.labelM2.Size = new System.Drawing.Size(13, 19);
+            this.labelM2.TabIndex = 1;
+            this.labelM2.Text = " ";
+            this.labelM2.UseCustomBackColor = true;
+            // 
+            // labelM3
+            // 
+            this.labelM3.AutoSize = true;
+            this.labelM3.Location = new System.Drawing.Point(19, 135);
+            this.labelM3.Name = "labelM3";
+            this.labelM3.Size = new System.Drawing.Size(13, 19);
+            this.labelM3.TabIndex = 1;
+            this.labelM3.Text = " ";
+            this.labelM3.UseCustomBackColor = true;
+            // 
+            // labelPE
+            // 
+            this.labelPE.AutoSize = true;
+            this.labelPE.Location = new System.Drawing.Point(19, 173);
+            this.labelPE.Name = "labelPE";
+            this.labelPE.Size = new System.Drawing.Size(13, 19);
+            this.labelPE.TabIndex = 1;
+            this.labelPE.Text = " ";
+            this.labelPE.UseCustomBackColor = true;
+            // 
+            // labelEnL6
+            // 
+            this.labelEnL6.AutoSize = true;
+            this.labelEnL6.Location = new System.Drawing.Point(19, 577);
+            this.labelEnL6.Name = "labelEnL6";
+            this.labelEnL6.Size = new System.Drawing.Size(13, 19);
+            this.labelEnL6.TabIndex = 1;
+            this.labelEnL6.Text = " ";
+            this.labelEnL6.UseCustomBackColor = true;
+            // 
+            // labelEnL5
+            // 
+            this.labelEnL5.AutoSize = true;
+            this.labelEnL5.Location = new System.Drawing.Point(19, 520);
+            this.labelEnL5.Name = "labelEnL5";
+            this.labelEnL5.Size = new System.Drawing.Size(13, 19);
+            this.labelEnL5.TabIndex = 1;
+            this.labelEnL5.Text = " ";
+            this.labelEnL5.UseCustomBackColor = true;
+            // 
+            // labelEnL4
+            // 
+            this.labelEnL4.AutoSize = true;
+            this.labelEnL4.Location = new System.Drawing.Point(19, 463);
+            this.labelEnL4.Name = "labelEnL4";
+            this.labelEnL4.Size = new System.Drawing.Size(13, 19);
+            this.labelEnL4.TabIndex = 1;
+            this.labelEnL4.Text = " ";
+            this.labelEnL4.UseCustomBackColor = true;
+            // 
+            // labelEnL3
+            // 
+            this.labelEnL3.AutoSize = true;
+            this.labelEnL3.Location = new System.Drawing.Point(19, 406);
+            this.labelEnL3.Name = "labelEnL3";
+            this.labelEnL3.Size = new System.Drawing.Size(13, 19);
+            this.labelEnL3.TabIndex = 1;
+            this.labelEnL3.Text = " ";
+            this.labelEnL3.UseCustomBackColor = true;
+            // 
+            // labelEnL2
+            // 
+            this.labelEnL2.AutoSize = true;
+            this.labelEnL2.Location = new System.Drawing.Point(19, 368);
+            this.labelEnL2.Name = "labelEnL2";
+            this.labelEnL2.Size = new System.Drawing.Size(13, 19);
+            this.labelEnL2.TabIndex = 1;
+            this.labelEnL2.Text = " ";
+            this.labelEnL2.UseCustomBackColor = true;
+            // 
+            // labelEnL1
+            // 
+            this.labelEnL1.AutoSize = true;
+            this.labelEnL1.Location = new System.Drawing.Point(19, 324);
+            this.labelEnL1.Name = "labelEnL1";
+            this.labelEnL1.Size = new System.Drawing.Size(13, 19);
+            this.labelEnL1.TabIndex = 1;
+            this.labelEnL1.Text = " ";
+            this.labelEnL1.UseCustomBackColor = true;
+            // 
+            // labelEL2
+            // 
+            this.labelEL2.AutoSize = true;
+            this.labelEL2.Location = new System.Drawing.Point(19, 286);
+            this.labelEL2.Name = "labelEL2";
+            this.labelEL2.Size = new System.Drawing.Size(13, 19);
+            this.labelEL2.TabIndex = 1;
+            this.labelEL2.Text = " ";
+            this.labelEL2.UseCustomBackColor = true;
+            // 
+            // labelEL1
+            // 
+            this.labelEL1.AutoSize = true;
+            this.labelEL1.Location = new System.Drawing.Point(19, 249);
+            this.labelEL1.Name = "labelEL1";
+            this.labelEL1.Size = new System.Drawing.Size(13, 19);
+            this.labelEL1.TabIndex = 1;
+            this.labelEL1.Text = " ";
+            this.labelEL1.UseCustomBackColor = true;
+            // 
+            // labelIR
+            // 
+            this.labelIR.AutoSize = true;
+            this.labelIR.Location = new System.Drawing.Point(19, 211);
+            this.labelIR.Name = "labelIR";
+            this.labelIR.Size = new System.Drawing.Size(13, 19);
+            this.labelIR.TabIndex = 1;
+            this.labelIR.Text = " ";
+            this.labelIR.UseCustomBackColor = true;
             // 
             // ecgClass2
             // 
@@ -624,6 +1029,7 @@
             this.class2testBtn.UseSelectable = true;
             this.class2testBtn.UseStyleColors = true;
             this.class2testBtn.UseTileImage = true;
+            this.class2testBtn.Click += new System.EventHandler(this.class2testBtn_Click);
             // 
             // class1testBtn
             // 
@@ -650,8 +1056,8 @@
             this.tabMenu.Controls.Add(this.ptTab);
             this.tabMenu.Location = new System.Drawing.Point(24, 113);
             this.tabMenu.Name = "tabMenu";
-            this.tabMenu.SelectedIndex = 1;
-            this.tabMenu.Size = new System.Drawing.Size(1053, 580);
+            this.tabMenu.SelectedIndex = 0;
+            this.tabMenu.Size = new System.Drawing.Size(1053, 651);
             this.tabMenu.Style = MetroFramework.MetroColorStyle.Blue;
             this.tabMenu.TabIndex = 2;
             this.tabMenu.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -707,7 +1113,7 @@
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
             this.BackImagePadding = new System.Windows.Forms.Padding(10, 10, 0, 0);
             this.BackLocation = MetroFramework.Forms.BackLocation.TopRight;
-            this.ClientSize = new System.Drawing.Size(1100, 710);
+            this.ClientSize = new System.Drawing.Size(1100, 773);
             this.Controls.Add(this.firstPrompt);
             this.Controls.Add(this.statusText);
             this.Controls.Add(this.statusBar);
@@ -726,6 +1132,8 @@
             this.ptTab.PerformLayout();
             this.estTab.ResumeLayout(false);
             this.estTab.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -764,11 +1172,42 @@
         private MetroFramework.Controls.MetroTile ptEModules;
         private MetroFramework.Controls.MetroTile ptMX450;
         private MetroFramework.Controls.MetroTile ptX2;
-        private System.Windows.Forms.RichTextBox debug_box;
         public MetroFramework.Controls.MetroLabel statusText;
         private MetroFramework.Controls.MetroProgressBar statusBar;
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile bbraunPerfusor;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroTextBox manufacturer;
+        private MetroFramework.Controls.MetroButton btnAdduser;
+        private System.Windows.Forms.Panel panel1;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroLabel labelEnL6;
+        private MetroFramework.Controls.MetroLabel labelEnL5;
+        private MetroFramework.Controls.MetroLabel labelEnL4;
+        private MetroFramework.Controls.MetroLabel labelEnL3;
+        private MetroFramework.Controls.MetroLabel labelEnL2;
+        private MetroFramework.Controls.MetroLabel labelEnL1;
+        private MetroFramework.Controls.MetroLabel labelEL2;
+        private MetroFramework.Controls.MetroLabel labelEL1;
+        private MetroFramework.Controls.MetroLabel labelIR;
+        private MetroFramework.Controls.MetroLabel labelPE;
+        private MetroFramework.Controls.MetroLabel labelM3;
+        private MetroFramework.Controls.MetroLabel labelM2;
+        private MetroFramework.Controls.MetroLabel labelM1;
+        private MetroFramework.Controls.MetroLabel labelAnsurVersion;
+        private MetroFramework.Controls.MetroLabel metroLabel37;
+        private MetroFramework.Controls.MetroLabel metroLabel33;
+        private MetroFramework.Controls.MetroLabel metroLabel31;
+        private MetroFramework.Controls.MetroLabel metroLabel28;
+        private MetroFramework.Controls.MetroLabel metroLabel27;
+        private MetroFramework.Controls.MetroLabel metroLabel34;
+        private MetroFramework.Controls.MetroLabel metroLabel25;
+        private MetroFramework.Controls.MetroLabel metroLabel23;
+        private MetroFramework.Controls.MetroLabel metroLabel21;
+        private MetroFramework.Controls.MetroLabel metroLabel19;
+        private MetroFramework.Controls.MetroLabel metroLabel17;
+        private MetroFramework.Controls.MetroLabel metroLabel15;
     }
 }
 

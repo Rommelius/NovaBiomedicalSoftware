@@ -29,7 +29,7 @@ namespace NovaBiomedicalSoftware
 
         private void checkBattery_btn_Click(object sender, EventArgs e)
         {
-
+            //continue working on the letters
             if (inputLetter.Text == "N")
             {
                 year = 2013;

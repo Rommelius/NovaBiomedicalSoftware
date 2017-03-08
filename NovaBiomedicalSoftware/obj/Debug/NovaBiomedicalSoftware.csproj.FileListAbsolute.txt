@@ -43,3 +43,5 @@ C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\ob
 C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.perfusorSpace.resources
 C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Properties.Resources.resources
 C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.GenerateResource.Cache
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.ResolveComReference.cache
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.AddUserForm.resources
