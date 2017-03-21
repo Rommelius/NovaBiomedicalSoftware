@@ -91,25 +91,53 @@
       <DependentUpon>BatteryChecker.cs</DependentUpon>
     </Compile>
     <Compile Include="COMFinder.cs" />
-    <Compile Include="ElectricalSafetyTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="perfusorSpace.cs">
+    <Compile Include="Performance Test\AccusonicAP170.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="perfusorSpace.Designer.cs">
+    <Compile Include="Performance Test\AccusonicAP170.Designer.cs">
+      <DependentUpon>AccusonicAP170.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\GenericECG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\GenericECG.Designer.cs">
+      <DependentUpon>GenericECG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\GenericSphygmomanometer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\GenericSphygmomanometer.Designer.cs">
+      <DependentUpon>GenericSphygmomanometer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\Genius2Thermometer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\Genius2Thermometer.Designer.cs">
+      <DependentUpon>Genius2Thermometer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\HeineNT300.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\HeineNT300.Designer.cs">
+      <DependentUpon>HeineNT300.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\perfusorSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\perfusorSpace.Designer.cs">
       <DependentUpon>perfusorSpace.cs</DependentUpon>
     </Compile>
-    <Compile Include="perfusorSpaceTSCDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>perfusorSpaceTSCDataSet.xsd</DependentUpon>
+    <Compile Include="Performance Test\PhilipsMRxDefib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsMRxDefib.Designer.cs">
+      <DependentUpon>PhilipsMRxDefib.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,8 +150,26 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="perfusorSpace.resx">
+    <EmbeddedResource Include="Performance Test\AccusonicAP170.resx">
+      <DependentUpon>AccusonicAP170.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\GenericECG.resx">
+      <DependentUpon>GenericECG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\GenericSphygmomanometer.resx">
+      <DependentUpon>GenericSphygmomanometer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\Genius2Thermometer.resx">
+      <DependentUpon>Genius2Thermometer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\HeineNT300.resx">
+      <DependentUpon>HeineNT300.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\perfusorSpace.resx">
       <DependentUpon>perfusorSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PhilipsMRxDefib.resx">
+      <DependentUpon>PhilipsMRxDefib.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,17 +183,6 @@
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
-    <None Include="perfusorSpaceTSCDataSet.xsc">
-      <DependentUpon>perfusorSpaceTSCDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="perfusorSpaceTSCDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>perfusorSpaceTSCDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="perfusorSpaceTSCDataSet.xss">
-      <DependentUpon>perfusorSpaceTSCDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,6 +197,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Report Templates\ASNZCLASS1-TEMPLATE.docx" />
+    <None Include="Report Templates\ASNZCLASS2-TEMPLATE.docx" />
     <None Include="Resources\background.png" />
   </ItemGroup>
   <ItemGroup>
@@ -180,27 +217,21 @@
     <None Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Employees\names.txt" />
     <Content Include="Images\bg.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\header.png" />
-    <Content Include="Images\khoi.png" />
+    <Content Include="Signatures\Joe Welch.png" />
+    <Content Include="Signatures\Khoi Duong.png" />
     <Content Include="Images\logo2.png" />
-    <Content Include="Images\rommel.png" />
-    <Content Include="Images\scott.png" />
-    <Content Include="Images\sean.png" />
-    <Content Include="perfusorSpaceTSC.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="perfusorSpaceTSC_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>perfusorSpaceTSC.mdf</DependentUpon>
-    </Content>
+    <Content Include="Signatures\Luke Brogan.png" />
+    <Content Include="Signatures\Rommel Lapuz.png" />
+    <Content Include="Signatures\Scott Monk.png" />
+    <Content Include="Signatures\Sean Welch.png" />
+    <None Include="Resources\reload.png" />
     <None Include="Resources\batteryChecker.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Employees\Report Templates\" />
-    <Folder Include="PDFs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>

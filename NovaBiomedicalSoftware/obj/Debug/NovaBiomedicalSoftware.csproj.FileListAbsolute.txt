@@ -45,3 +45,27 @@ C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\ob
 C:\Users\Rommel Lapuz\Documents\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.GenerateResource.Cache
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.ResolveComReference.cache
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.AddUserForm.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe.config
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.exe
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\NovaBiomedicalSoftware.pdb
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\itextsharp.dll
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.Design.dll
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.dll
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.Fonts.dll
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\itextsharp.xml
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csprojResolveAssemblyReference.cache
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.ResolveComReference.cache
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.AddUserForm.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.BatteryChecker.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Form1.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.perfusorSpace.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Properties.Resources.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.GenerateResource.Cache
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.exe
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.pdb
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.AccusonicAP170.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.GenericECG.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.GenericSphygmomanometer.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.Genius2Thermometer.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.HeineNT300.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.PhilipsMRxDefib.resources

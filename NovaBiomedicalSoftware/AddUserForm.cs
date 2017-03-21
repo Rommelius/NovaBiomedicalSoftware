@@ -25,10 +25,6 @@ namespace NovaBiomedicalSoftware
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            Form1 newForm1 = new Form1();
-            newForm1.Show();
-
-
             using (StreamWriter sw = File.AppendText(appRootDir + "/Employees/names.txt"))
             {
 
