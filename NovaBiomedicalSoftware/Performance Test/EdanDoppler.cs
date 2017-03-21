@@ -11,18 +11,9 @@ using MetroFramework.Forms;
 
 namespace NovaBiomedicalSoftware.Performance_Test
 {
-    public partial class Genius2Thermometer : MetroForm
+    public partial class EdanDoppler : MetroForm
     {
-        public Genius2Thermometer()
-        {
-            InitializeComponent();
-            itemsBox.ResetText();
-            commentBox.ResetText();
-            itemsBox.Visible = false;
-            safetyCheck.SelectedTab = performanceVerification;
-        }
-
-        public bool genius2Test_Submit;
+        public bool edanTest_Submit;
 
         public static string result1, result2;
 
@@ -94,13 +85,13 @@ namespace NovaBiomedicalSoftware.Performance_Test
             }
         }
 
-        private void close1_btn_Click(object sender, EventArgs e)
+        private void close3_btn_Click(object sender, EventArgs e)
         {
-            genius2Test_Submit = false;
+            edanTest_Submit = false;
             this.Close();
         }
 
-        private void nextBtn_Click(object sender, EventArgs e)
+        private void nextBtn_Click_1(object sender, EventArgs e)
         {
             safetyCheck.SelectedTab = commentsTab;
         }
@@ -124,15 +115,26 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 addItems();
                 items = itemsBox.Text;
 
-                genius2Test_Submit = true;
+                edanTest_Submit = true;
                 this.Hide();
             }
         }
 
-        private void close3_btn_Click(object sender, EventArgs e)
+        private void close1_btn_Click_1(object sender, EventArgs e)
         {
-            genius2Test_Submit = false;
+            edanTest_Submit = false;
             this.Close();
+        }
+
+
+
+        public EdanDoppler()
+        {
+            InitializeComponent();
+            itemsBox.ResetText();
+            commentBox.ResetText();
+            itemsBox.Visible = false;
+            safetyCheck.SelectedTab = performanceVerification;
         }
     }
 }

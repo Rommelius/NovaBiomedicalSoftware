@@ -23,7 +23,8 @@ namespace NovaBiomedicalSoftware
     {
         public bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, YesNoSaveDestination;
         public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
-        public bool PTpefusorSpaceCompleted, PTECGCompleted;
+
+        public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed;
 
         public bool PTtestIsDone;
 
@@ -46,7 +47,7 @@ namespace NovaBiomedicalSoftware
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
          _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
 
-        
+
         private void bothTile_Click(object sender, EventArgs e)
         {
 
@@ -76,16 +77,6 @@ namespace NovaBiomedicalSoftware
             PerformBothTest = false;
             tabMenu.SelectedTab = estTab;
             ConnectToSerial();
-
-        }
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-            ESTResults = "PASS";
-            _electricaltestResult = true;
-            class1ASNZtest = true;
-            PerformElectricalSafetyTest = true;
-
 
         }
 
@@ -215,23 +206,27 @@ namespace NovaBiomedicalSoftware
             {
                 if (YesNoSaveDestination != true)
                 {
-                    DialogResult drbox = MetroFramework.MetroMessageBox.Show(this,"Please select the folder to save your files");
-                    
-                    if (drbox == DialogResult.OK)
+                    while (YesNoSaveDestination != true)
                     {
-                        
-                        FolderBrowserDialog folderDlg = new FolderBrowserDialog();
-                        folderDlg.ShowNewFolderButton = true;
-                        // Show the FolderBrowserDialog.
+                        DialogResult drbox = MetroFramework.MetroMessageBox.Show(this, "Please select the folder to save your files");
 
-                        DialogResult result = folderDlg.ShowDialog();
-                        if (result == DialogResult.OK)
+                        if (drbox == DialogResult.OK)
                         {
-                            YesNoSaveDestination = true;
-                            saveDestination = folderDlg.SelectedPath;
-                            saveFolder.Text = "Folder Destination: " + folderDlg.SelectedPath;
+
+                            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+                            folderDlg.ShowNewFolderButton = true;
+                            // Show the FolderBrowserDialog.
+
+                            DialogResult result = folderDlg.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                YesNoSaveDestination = true;
+                                saveDestination = folderDlg.SelectedPath;
+                                saveFolder.Text = "Folder Destination: " + folderDlg.SelectedPath;
+                            }
                         }
                     }
+                   
                 
                 }
                 firstPrompt.Visible = false;
@@ -250,7 +245,20 @@ namespace NovaBiomedicalSoftware
             firstPrompt.Visible = true;
             firstPrompt.Location = new Point(13, 25);
             tabMenu.Enabled = false;
-            mySerialPort.Close();
+            if (PerformBothTest == true || PerformElectricalSafetyTest == true)
+            {
+                mySerialPort.Close();
+            }
+
+
+            //get rid of all booleans for performance test
+            PTpefusorSpaceCompleted = false;
+            PTECGCompleted = false;
+            PTNIBPGenericCompleted = false;
+            PTEdanDopplerCompleted = false;
+            PTSphygmomanometerCompleted = false;
+            PTGenius2Completed = false;
+
         }
 
         public void assetNumber_KeyDown(object sender, KeyEventArgs e)
@@ -313,10 +321,7 @@ namespace NovaBiomedicalSoftware
             earthResistance();
         }
 
-
-
-
-
+        
         // Class Test Buttons Click Events:
         private void class1testBtn_Click(object sender, EventArgs e)
         {
@@ -412,6 +417,132 @@ namespace NovaBiomedicalSoftware
 
             }
         }
+
+        private void ptNIBP_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                GenericNIBPMonitor dg = new GenericNIBPMonitor();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.nibpTest_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTNIBPGenericCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
+                        if (dialog2 == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void eddanDoppler_btn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                EdanDoppler dg = new EdanDoppler();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.edanTest_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTEdanDopplerCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
+                        if (dialog2 == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void sphygmomanometer_btn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                GenericSphygmomanometer dg = new GenericSphygmomanometer();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.sphygmomanometerTest_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTSphygmomanometerCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
+                        if (dialog2 == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+
+        private void genius2_btn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                Genius2Thermometer dg = new Genius2Thermometer();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.genius2Test_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTGenius2Completed = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
+                        if (dialog2 == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
         // Test Functions:
         public void class1NormalTest()
         {
@@ -1128,6 +1259,27 @@ namespace NovaBiomedicalSoftware
                 {
                     File.Copy(appRootDir + "/Report Templates/Generic ECG-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //generic nibp
+                if (PTNIBPGenericCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/NIBP Monitor-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //edan doppler
+                if (PTEdanDopplerCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Edan Doppler-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //sphygmomanometer
+                if (PTSphygmomanometerCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Generic Sphygmomanometer-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //genius2 thermometer
+                if (PTGenius2Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Genius 2 Thermometer-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+
             }
 
             object missing = System.Reflection.Missing.Value;
@@ -1233,7 +1385,93 @@ namespace NovaBiomedicalSoftware
                 this.FindAndReplace(wordApp, "<Comments>", GenericECG.comments);
                 #endregion
             }
-
+            //Generic NIBP
+            if (PTNIBPGenericCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", userName.Text);
+                this.FindAndReplace(wordApp, "<AssetNumber>", assetNumber.Text);
+                this.FindAndReplace(wordApp, "<SerialNumber>", serialNumber.Text);
+                this.FindAndReplace(wordApp, "<Location>", location.Text);
+                this.FindAndReplace(wordApp, "<Manufacturer>", manufacturer.Text);
+                this.FindAndReplace(wordApp, "<Model>", model.Text);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", GenericNIBPMonitor.items);
+                this.FindAndReplace(wordApp, "<result1>", GenericNIBPMonitor.result1);
+                this.FindAndReplace(wordApp, "<result2>", GenericNIBPMonitor.result2);
+                this.FindAndReplace(wordApp, "<result3>", GenericNIBPMonitor.result3);
+                this.FindAndReplace(wordApp, "<result4>", GenericNIBPMonitor.result4);
+                this.FindAndReplace(wordApp, "<result5>", GenericNIBPMonitor.result1);
+                this.FindAndReplace(wordApp, "<result6>", GenericNIBPMonitor.result2);
+                this.FindAndReplace(wordApp, "<result7>", GenericNIBPMonitor.result3);
+                this.FindAndReplace(wordApp, "<result8>", GenericNIBPMonitor.result4);
+                this.FindAndReplace(wordApp, "<Comments>", GenericNIBPMonitor.comments);
+                #endregion
+            }
+            //Edan Doppler
+            if (PTEdanDopplerCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", userName.Text);
+                this.FindAndReplace(wordApp, "<AssetNumber>", assetNumber.Text);
+                this.FindAndReplace(wordApp, "<SerialNumber>", serialNumber.Text);
+                this.FindAndReplace(wordApp, "<Location>", location.Text);
+                this.FindAndReplace(wordApp, "<Manufacturer>", manufacturer.Text);
+                this.FindAndReplace(wordApp, "<Model>", model.Text);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", EdanDoppler.items);
+                this.FindAndReplace(wordApp, "<result1>", EdanDoppler.result1);
+                this.FindAndReplace(wordApp, "<result2>", EdanDoppler.result2);
+                this.FindAndReplace(wordApp, "<Comments>", EdanDoppler.comments);
+                #endregion
+            }
+            //Generic Sphygmomanometer
+            if (PTSphygmomanometerCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", userName.Text);
+                this.FindAndReplace(wordApp, "<AssetNumber>", assetNumber.Text);
+                this.FindAndReplace(wordApp, "<SerialNumber>", serialNumber.Text);
+                this.FindAndReplace(wordApp, "<Location>", location.Text);
+                this.FindAndReplace(wordApp, "<Manufacturer>", manufacturer.Text);
+                this.FindAndReplace(wordApp, "<Model>", model.Text);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", GenericSphygmomanometer.items);
+                this.FindAndReplace(wordApp, "<result1>", GenericSphygmomanometer.result1);
+                this.FindAndReplace(wordApp, "<result2>", GenericSphygmomanometer.result2);
+                this.FindAndReplace(wordApp, "<result3>", GenericSphygmomanometer.result3);
+                this.FindAndReplace(wordApp, "<result4>", GenericSphygmomanometer.result4);
+                this.FindAndReplace(wordApp, "<result5>", GenericSphygmomanometer.result1);
+                this.FindAndReplace(wordApp, "<result6>", GenericSphygmomanometer.result2);
+                this.FindAndReplace(wordApp, "<result7>", GenericSphygmomanometer.result3);
+                this.FindAndReplace(wordApp, "<Comments>", GenericSphygmomanometer.comments);
+                #endregion
+            }
+            //Edan Doppler
+            if (PTGenius2Completed == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", userName.Text);
+                this.FindAndReplace(wordApp, "<AssetNumber>", assetNumber.Text);
+                this.FindAndReplace(wordApp, "<SerialNumber>", serialNumber.Text);
+                this.FindAndReplace(wordApp, "<Location>", location.Text);
+                this.FindAndReplace(wordApp, "<Manufacturer>", manufacturer.Text);
+                this.FindAndReplace(wordApp, "<Model>", model.Text);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", Genius2Thermometer.items);
+                this.FindAndReplace(wordApp, "<result1>", Genius2Thermometer.result1);
+                this.FindAndReplace(wordApp, "<result2>", Genius2Thermometer.result2);
+                this.FindAndReplace(wordApp, "<Comments>", Genius2Thermometer.comments);
+                #endregion
+            }
 
 
             //create PDF

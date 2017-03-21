@@ -18,6 +18,10 @@ namespace NovaBiomedicalSoftware.Performance_Test
 
         public static string result1, result2, result3, result4;
 
+        //comment box and item box
+        public static string comments, items;
+
+
         private void submitBtn_Click(object sender, EventArgs e)
         {
             //check if the combobox are answered
@@ -50,8 +54,19 @@ namespace NovaBiomedicalSoftware.Performance_Test
             safetyCheck.SelectedTab = commentsTab;
         }
 
-        //comment box and item box
-        public static string comments, items;
+        private void close3_btn_Click(object sender, EventArgs e)
+        {
+            ecgTest_Submit = false;
+            this.Close();
+        }
+
+        private void close1_btn_Click(object sender, EventArgs e)
+        {
+            ecgTest_Submit = false;
+            this.Close();
+        }
+
+
 
         public GenericECG()
         {

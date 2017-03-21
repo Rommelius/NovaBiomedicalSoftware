@@ -69,3 +69,5 @@ D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftwa
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.Genius2Thermometer.resources
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.HeineNT300.resources
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.PhilipsMRxDefib.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.GenericNIBPMonitor.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.EdanDoppler.resources

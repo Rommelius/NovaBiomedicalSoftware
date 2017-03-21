@@ -103,11 +103,23 @@
     <Compile Include="Performance Test\AccusonicAP170.Designer.cs">
       <DependentUpon>AccusonicAP170.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\EdanDoppler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\EdanDoppler.Designer.cs">
+      <DependentUpon>EdanDoppler.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\GenericECG.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Performance Test\GenericECG.Designer.cs">
       <DependentUpon>GenericECG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\GenericNIBPMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\GenericNIBPMonitor.Designer.cs">
+      <DependentUpon>GenericNIBPMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\GenericSphygmomanometer.cs">
       <SubType>Form</SubType>
@@ -153,8 +165,14 @@
     <EmbeddedResource Include="Performance Test\AccusonicAP170.resx">
       <DependentUpon>AccusonicAP170.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\EdanDoppler.resx">
+      <DependentUpon>EdanDoppler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\GenericECG.resx">
       <DependentUpon>GenericECG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\GenericNIBPMonitor.resx">
+      <DependentUpon>GenericNIBPMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\GenericSphygmomanometer.resx">
       <DependentUpon>GenericSphygmomanometer.cs</DependentUpon>
@@ -197,8 +215,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Report Templates\Accusonic AP170-TEMPLATE.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE.docx" />
     <None Include="Report Templates\ASNZCLASS2-TEMPLATE.docx" />
+    <None Include="Report Templates\BBraun Perfusor Space-TEMPLATE.docx" />
+    <None Include="Report Templates\Edan Doppler-TEMPLATE.docx" />
+    <None Include="Report Templates\Generic ECG-TEMPLATE.docx" />
+    <None Include="Report Templates\Generic Sphygmomanometer-TEMPLATE.docx" />
+    <None Include="Report Templates\Genius 2 Thermometer-TEMPLATE.docx" />
+    <None Include="Report Templates\Heine NT300-TEMPLATE.docx" />
+    <None Include="Report Templates\NIBP Monitor-TEMPLATE.docx" />
+    <None Include="Report Templates\Philips MRx Defibrillator-TEMPLATE.docx" />
+    <None Include="Report Templates\temp.docx" />
+    <None Include="Report Templates\temp2.docx" />
     <None Include="Resources\background.png" />
   </ItemGroup>
   <ItemGroup>
