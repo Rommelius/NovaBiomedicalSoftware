@@ -24,15 +24,19 @@ namespace NovaBiomedicalSoftware
         public bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, YesNoSaveDestination;
         public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
 
-        public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed;
+        public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
+            PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed;
 
         public bool PTtestIsDone;
+
+        
 
 
         // Split line on commas followed by zero or more spaces.
         List<string> listUserNames = new List<string>();
         public string[] fields;
-        public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+        public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        //public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
         public string saveDestination;
 
         static SerialPort mySerialPort;
@@ -42,11 +46,8 @@ namespace NovaBiomedicalSoftware
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
         _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig;
 
-
-
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
          _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
-
 
         private void bothTile_Click(object sender, EventArgs e)
         {
@@ -258,6 +259,17 @@ namespace NovaBiomedicalSoftware
             PTEdanDopplerCompleted = false;
             PTSphygmomanometerCompleted = false;
             PTGenius2Completed = false;
+            PTHeineNT300Completed = false;
+            PTPhilipsMRxCompleted = false;
+            PTAccusonicAP170Completed = false;
+
+            //clear the some entries
+            assetNumber.Text = "";
+            serialNumber.Text = "";
+            manufacturer.Text = "";
+            model.Text = "";
+
+            assetNumber.Focus();
 
         }
 
@@ -542,6 +554,102 @@ namespace NovaBiomedicalSoftware
 
             }
         }
+
+
+        private void heinent300_btn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                HeineNT300 dg = new HeineNT300();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.nt300Test_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTHeineNT300Completed = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
+                        if (dialog2 == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void philipsMRx_btn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                PhilipsMRxDefib dg = new PhilipsMRxDefib();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.philipsMrxTest_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTPhilipsMRxCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
+                        if (dialog2 == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+
+        private void accusonicAP170_btn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                AccusonicAP170 dg = new AccusonicAP170();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.AccusonicAP170Test_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTAccusonicAP170Completed = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
+                        if (dialog2 == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
 
         // Test Functions:
         public void class1NormalTest()
@@ -1279,6 +1387,22 @@ namespace NovaBiomedicalSoftware
                 {
                     File.Copy(appRootDir + "/Report Templates/Genius 2 Thermometer-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //genius2 thermometer
+                if (PTHeineNT300Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Heine NT300-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //philips mrx
+                if (PTPhilipsMRxCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Philips MRx Defibrillator-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //accusonic ap170
+                if (PTAccusonicAP170Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Accusonic AP170-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+
 
             }
 
@@ -1472,8 +1596,96 @@ namespace NovaBiomedicalSoftware
                 this.FindAndReplace(wordApp, "<Comments>", Genius2Thermometer.comments);
                 #endregion
             }
-
-
+            //Heine NT300
+            if (PTHeineNT300Completed == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", userName.Text);
+                this.FindAndReplace(wordApp, "<AssetNumber>", assetNumber.Text);
+                this.FindAndReplace(wordApp, "<SerialNumber>", serialNumber.Text);
+                this.FindAndReplace(wordApp, "<Location>", location.Text);
+                this.FindAndReplace(wordApp, "<Manufacturer>", manufacturer.Text);
+                this.FindAndReplace(wordApp, "<Model>", model.Text);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", HeineNT300.items);
+                this.FindAndReplace(wordApp, "<result1>", HeineNT300.result1);
+                this.FindAndReplace(wordApp, "<result2>", HeineNT300.result2);
+                this.FindAndReplace(wordApp, "<result3>", HeineNT300.result3);
+                this.FindAndReplace(wordApp, "<result4>", HeineNT300.result4);
+                this.FindAndReplace(wordApp, "<result5>", HeineNT300.result1);
+                this.FindAndReplace(wordApp, "<result6>", HeineNT300.result2);
+                this.FindAndReplace(wordApp, "<result7>", HeineNT300.result3);
+                this.FindAndReplace(wordApp, "<result8>", HeineNT300.result4);
+                this.FindAndReplace(wordApp, "<Comments>", HeineNT300.comments);
+                #endregion
+            }
+            //Philips MRx
+            if (PTPhilipsMRxCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", userName.Text);
+                this.FindAndReplace(wordApp, "<AssetNumber>", assetNumber.Text);
+                this.FindAndReplace(wordApp, "<SerialNumber>", serialNumber.Text);
+                this.FindAndReplace(wordApp, "<Location>", location.Text);
+                this.FindAndReplace(wordApp, "<Manufacturer>", manufacturer.Text);
+                this.FindAndReplace(wordApp, "<Model>", model.Text);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", PhilipsMRxDefib.items);
+                this.FindAndReplace(wordApp, "<result1>", PhilipsMRxDefib.result1);
+                this.FindAndReplace(wordApp, "<result2>", PhilipsMRxDefib.result2);
+                this.FindAndReplace(wordApp, "<result3>", PhilipsMRxDefib.result3);
+                this.FindAndReplace(wordApp, "<result4>", PhilipsMRxDefib.result4);
+                this.FindAndReplace(wordApp, "<result5>", PhilipsMRxDefib.result1);
+                this.FindAndReplace(wordApp, "<result6>", PhilipsMRxDefib.result2);
+                this.FindAndReplace(wordApp, "<result7>", PhilipsMRxDefib.result3);
+                this.FindAndReplace(wordApp, "<result8>", PhilipsMRxDefib.result4);
+                this.FindAndReplace(wordApp, "<result9>", PhilipsMRxDefib.result1);
+                this.FindAndReplace(wordApp, "<result10>", PhilipsMRxDefib.result2);
+                this.FindAndReplace(wordApp, "<result11>", PhilipsMRxDefib.result3);
+                this.FindAndReplace(wordApp, "<result12>", PhilipsMRxDefib.result4);
+                this.FindAndReplace(wordApp, "<result13>", PhilipsMRxDefib.result1);
+                this.FindAndReplace(wordApp, "<result14>", PhilipsMRxDefib.result2);
+                this.FindAndReplace(wordApp, "<result15>", PhilipsMRxDefib.result3);
+                this.FindAndReplace(wordApp, "<result16>", PhilipsMRxDefib.result4);
+                this.FindAndReplace(wordApp, "<result17>", PhilipsMRxDefib.result1);
+                this.FindAndReplace(wordApp, "<result18>", PhilipsMRxDefib.result2);
+                this.FindAndReplace(wordApp, "<result19>", PhilipsMRxDefib.result3);
+                this.FindAndReplace(wordApp, "<result20>", PhilipsMRxDefib.result4);
+                this.FindAndReplace(wordApp, "<result21>", PhilipsMRxDefib.result1);
+                this.FindAndReplace(wordApp, "<result22>", PhilipsMRxDefib.result2);
+                this.FindAndReplace(wordApp, "<result23>", PhilipsMRxDefib.result3);
+                this.FindAndReplace(wordApp, "<Comments>", PhilipsMRxDefib.comments);
+                #endregion
+            }
+            //Accusonic AP170
+            if (PTAccusonicAP170Completed == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", userName.Text);
+                this.FindAndReplace(wordApp, "<AssetNumber>", assetNumber.Text);
+                this.FindAndReplace(wordApp, "<SerialNumber>", serialNumber.Text);
+                this.FindAndReplace(wordApp, "<Location>", location.Text);
+                this.FindAndReplace(wordApp, "<Manufacturer>", manufacturer.Text);
+                this.FindAndReplace(wordApp, "<Model>", model.Text);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", AccusonicAP170.items);
+                this.FindAndReplace(wordApp, "<result1>", AccusonicAP170.result1);
+                this.FindAndReplace(wordApp, "<result2>", AccusonicAP170.result2);
+                this.FindAndReplace(wordApp, "<result3>", AccusonicAP170.result3);
+                this.FindAndReplace(wordApp, "<result4>", AccusonicAP170.result4);
+                this.FindAndReplace(wordApp, "<result5>", AccusonicAP170.result1);
+                this.FindAndReplace(wordApp, "<Comments>", AccusonicAP170.comments);
+                #endregion
+            }
+            
+            
+            
             //create PDF
             if (PerformPerformanceTest == true)
             {

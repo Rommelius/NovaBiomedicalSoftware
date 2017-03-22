@@ -49,7 +49,7 @@
             this.submitBtn = new MetroFramework.Controls.MetroButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ptTab = new MetroFramework.Controls.MetroTabPage();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.heinent300_btn = new MetroFramework.Controls.MetroTile();
             this.bbraunPerfusor = new MetroFramework.Controls.MetroTile();
             this.genius2_btn = new MetroFramework.Controls.MetroTile();
             this.sphygmomanometer_btn = new MetroFramework.Controls.MetroTile();
@@ -114,6 +114,8 @@
             this.statusBar = new MetroFramework.Controls.MetroProgressBar();
             this.saveFolderDestination = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFolder = new MetroFramework.Controls.MetroLabel();
+            this.philipsMRx_btn = new MetroFramework.Controls.MetroTile();
+            this.accusonicAP170_btn = new MetroFramework.Controls.MetroTile();
             this.firstPrompt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -147,7 +149,7 @@
             this.firstPrompt.HorizontalScrollbarBarColor = true;
             this.firstPrompt.HorizontalScrollbarHighlightOnWheel = false;
             this.firstPrompt.HorizontalScrollbarSize = 12;
-            this.firstPrompt.Location = new System.Drawing.Point(1439, 22);
+            this.firstPrompt.Location = new System.Drawing.Point(1440, 15);
             this.firstPrompt.Margin = new System.Windows.Forms.Padding(4);
             this.firstPrompt.Name = "firstPrompt";
             this.firstPrompt.Size = new System.Drawing.Size(1428, 910);
@@ -205,11 +207,11 @@
             // userName
             // 
             this.userName.FormattingEnabled = true;
-            this.userName.ItemHeight = 23;
+            this.userName.ItemHeight = 24;
             this.userName.Location = new System.Drawing.Point(679, 350);
             this.userName.Margin = new System.Windows.Forms.Padding(4);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(263, 29);
+            this.userName.Size = new System.Drawing.Size(263, 30);
             this.userName.Style = MetroFramework.MetroColorStyle.Blue;
             this.userName.TabIndex = 99;
             this.userName.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -530,7 +532,9 @@
             this.ptTab.BackColor = System.Drawing.Color.Transparent;
             this.ptTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.background;
             this.ptTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ptTab.Controls.Add(this.metroTile1);
+            this.ptTab.Controls.Add(this.accusonicAP170_btn);
+            this.ptTab.Controls.Add(this.philipsMRx_btn);
+            this.ptTab.Controls.Add(this.heinent300_btn);
             this.ptTab.Controls.Add(this.bbraunPerfusor);
             this.ptTab.Controls.Add(this.genius2_btn);
             this.ptTab.Controls.Add(this.sphygmomanometer_btn);
@@ -554,22 +558,22 @@
             this.ptTab.VerticalScrollbarHighlightOnWheel = false;
             this.ptTab.VerticalScrollbarSize = 13;
             // 
-            // metroTile1
+            // heinent300_btn
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Enabled = false;
-            this.metroTile1.Location = new System.Drawing.Point(288, 252);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(253, 178);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroTile1.TabIndex = 11;
-            this.metroTile1.Text = "B|Braun";
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.metroTile1.UseSelectable = true;
+            this.heinent300_btn.ActiveControl = null;
+            this.heinent300_btn.Location = new System.Drawing.Point(288, 252);
+            this.heinent300_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.heinent300_btn.Name = "heinent300_btn";
+            this.heinent300_btn.Size = new System.Drawing.Size(253, 178);
+            this.heinent300_btn.Style = MetroFramework.MetroColorStyle.Teal;
+            this.heinent300_btn.TabIndex = 11;
+            this.heinent300_btn.Text = "Heine NT300";
+            this.heinent300_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.heinent300_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.heinent300_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.heinent300_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.heinent300_btn.UseSelectable = true;
+            this.heinent300_btn.Click += new System.EventHandler(this.heinent300_btn_Click);
             // 
             // bbraunPerfusor
             // 
@@ -1525,6 +1529,40 @@
             this.saveFolder.Text = " ";
             this.saveFolder.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
+            // philipsMRx_btn
+            // 
+            this.philipsMRx_btn.ActiveControl = null;
+            this.philipsMRx_btn.Location = new System.Drawing.Point(551, 252);
+            this.philipsMRx_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.philipsMRx_btn.Name = "philipsMRx_btn";
+            this.philipsMRx_btn.Size = new System.Drawing.Size(253, 178);
+            this.philipsMRx_btn.Style = MetroFramework.MetroColorStyle.Teal;
+            this.philipsMRx_btn.TabIndex = 11;
+            this.philipsMRx_btn.Text = "Philips MRx Defib";
+            this.philipsMRx_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.philipsMRx_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.philipsMRx_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.philipsMRx_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.philipsMRx_btn.UseSelectable = true;
+            this.philipsMRx_btn.Click += new System.EventHandler(this.philipsMRx_btn_Click);
+            // 
+            // accusonicAP170_btn
+            // 
+            this.accusonicAP170_btn.ActiveControl = null;
+            this.accusonicAP170_btn.Location = new System.Drawing.Point(813, 252);
+            this.accusonicAP170_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.accusonicAP170_btn.Name = "accusonicAP170_btn";
+            this.accusonicAP170_btn.Size = new System.Drawing.Size(253, 178);
+            this.accusonicAP170_btn.Style = MetroFramework.MetroColorStyle.Teal;
+            this.accusonicAP170_btn.TabIndex = 11;
+            this.accusonicAP170_btn.Text = "Accusonic AP170";
+            this.accusonicAP170_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.accusonicAP170_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.accusonicAP170_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.accusonicAP170_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.accusonicAP170_btn.UseSelectable = true;
+            this.accusonicAP170_btn.Click += new System.EventHandler(this.accusonicAP170_btn_Click);
+            // 
             // Form1
             // 
             this.ApplyImageInvert = true;
@@ -1603,7 +1641,7 @@
         private MetroFramework.Controls.MetroTile eddanDoppler_btn;
         public MetroFramework.Controls.MetroLabel statusText;
         private MetroFramework.Controls.MetroProgressBar statusBar;
-        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile heinent300_btn;
         private MetroFramework.Controls.MetroTile bbraunPerfusor;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroTextBox manufacturer;
@@ -1655,6 +1693,8 @@
         private MetroFramework.Controls.MetroTile bothTile;
         private MetroFramework.Controls.MetroTile performanceTestTile;
         private MetroFramework.Controls.MetroTile electricalSafetyTile;
+        private MetroFramework.Controls.MetroTile philipsMRx_btn;
+        private MetroFramework.Controls.MetroTile accusonicAP170_btn;
     }
 }
 

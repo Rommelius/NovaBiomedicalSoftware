@@ -90,7 +90,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
             }
         }
 
-                private void close1_btn_Click(object sender, EventArgs e)
+        private void close1_btn_Click(object sender, EventArgs e)
         {
             nibpTest_Submit = false;
             this.Close();
