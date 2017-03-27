@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.firstPrompt = new MetroFramework.Controls.MetroPanel();
+            this.initialQAS_btn = new MetroFramework.Controls.MetroButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnAdduser = new MetroFramework.Controls.MetroButton();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
@@ -49,6 +50,7 @@
             this.submitBtn = new MetroFramework.Controls.MetroButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ptTab = new MetroFramework.Controls.MetroTabPage();
+            this.comweldoxygenFM = new MetroFramework.Controls.MetroTile();
             this.accusonicAP170_btn = new MetroFramework.Controls.MetroTile();
             this.philipsMRx_btn = new MetroFramework.Controls.MetroTile();
             this.heinent300_btn = new MetroFramework.Controls.MetroTile();
@@ -107,6 +109,7 @@
             this.class1testBtn = new MetroFramework.Controls.MetroTile();
             this.tabMenu = new MetroFramework.Controls.MetroTabControl();
             this.initialTab = new MetroFramework.Controls.MetroTabPage();
+            this.qas_btn = new MetroFramework.Controls.MetroTile();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.bothTile = new MetroFramework.Controls.MetroTile();
             this.performanceTestTile = new MetroFramework.Controls.MetroTile();
@@ -116,7 +119,6 @@
             this.statusBar = new MetroFramework.Controls.MetroProgressBar();
             this.saveFolderDestination = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFolder = new MetroFramework.Controls.MetroLabel();
-            this.comweldoxygenFM = new MetroFramework.Controls.MetroTile();
             this.firstPrompt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,6 +132,7 @@
             // firstPrompt
             // 
             this.firstPrompt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.firstPrompt.Controls.Add(this.initialQAS_btn);
             this.firstPrompt.Controls.Add(this.pictureBox2);
             this.firstPrompt.Controls.Add(this.btnAdduser);
             this.firstPrompt.Controls.Add(this.metroLabel10);
@@ -150,7 +153,7 @@
             this.firstPrompt.HorizontalScrollbarBarColor = true;
             this.firstPrompt.HorizontalScrollbarHighlightOnWheel = false;
             this.firstPrompt.HorizontalScrollbarSize = 10;
-            this.firstPrompt.Location = new System.Drawing.Point(1080, 12);
+            this.firstPrompt.Location = new System.Drawing.Point(1083, 21);
             this.firstPrompt.Name = "firstPrompt";
             this.firstPrompt.Size = new System.Drawing.Size(1071, 739);
             this.firstPrompt.Style = MetroFramework.MetroColorStyle.Blue;
@@ -160,6 +163,17 @@
             this.firstPrompt.VerticalScrollbarBarColor = true;
             this.firstPrompt.VerticalScrollbarHighlightOnWheel = false;
             this.firstPrompt.VerticalScrollbarSize = 10;
+            // 
+            // initialQAS_btn
+            // 
+            this.initialQAS_btn.Location = new System.Drawing.Point(355, 587);
+            this.initialQAS_btn.Name = "initialQAS_btn";
+            this.initialQAS_btn.Size = new System.Drawing.Size(412, 44);
+            this.initialQAS_btn.TabIndex = 101;
+            this.initialQAS_btn.Text = "Queensland Ambulance Service";
+            this.initialQAS_btn.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.initialQAS_btn.UseSelectable = true;
+            this.initialQAS_btn.Click += new System.EventHandler(this.initialQAS_btn_Click);
             // 
             // pictureBox2
             // 
@@ -204,10 +218,10 @@
             // userName
             // 
             this.userName.FormattingEnabled = true;
-            this.userName.ItemHeight = 24;
+            this.userName.ItemHeight = 23;
             this.userName.Location = new System.Drawing.Point(509, 284);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(198, 30);
+            this.userName.Size = new System.Drawing.Size(198, 29);
             this.userName.Style = MetroFramework.MetroColorStyle.Blue;
             this.userName.TabIndex = 99;
             this.userName.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -534,6 +548,22 @@
             this.ptTab.VerticalScrollbarBarColor = true;
             this.ptTab.VerticalScrollbarHighlightOnWheel = false;
             this.ptTab.VerticalScrollbarSize = 10;
+            // 
+            // comweldoxygenFM
+            // 
+            this.comweldoxygenFM.ActiveControl = null;
+            this.comweldoxygenFM.Location = new System.Drawing.Point(806, 205);
+            this.comweldoxygenFM.Name = "comweldoxygenFM";
+            this.comweldoxygenFM.Size = new System.Drawing.Size(190, 145);
+            this.comweldoxygenFM.Style = MetroFramework.MetroColorStyle.Teal;
+            this.comweldoxygenFM.TabIndex = 11;
+            this.comweldoxygenFM.Text = "Comweld Oxygen \r\nFlowmeter";
+            this.comweldoxygenFM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.comweldoxygenFM.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comweldoxygenFM.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.comweldoxygenFM.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.comweldoxygenFM.UseSelectable = true;
+            this.comweldoxygenFM.Click += new System.EventHandler(this.comweldoxygenFM_Click);
             // 
             // accusonicAP170_btn
             // 
@@ -1334,7 +1364,7 @@
             this.tabMenu.Controls.Add(this.ptTab);
             this.tabMenu.Location = new System.Drawing.Point(24, 113);
             this.tabMenu.Name = "tabMenu";
-            this.tabMenu.SelectedIndex = 2;
+            this.tabMenu.SelectedIndex = 0;
             this.tabMenu.Size = new System.Drawing.Size(1053, 651);
             this.tabMenu.Style = MetroFramework.MetroColorStyle.Blue;
             this.tabMenu.TabIndex = 2;
@@ -1345,6 +1375,7 @@
             // 
             this.initialTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.background;
             this.initialTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.initialTab.Controls.Add(this.qas_btn);
             this.initialTab.Controls.Add(this.metroLabel13);
             this.initialTab.Controls.Add(this.bothTile);
             this.initialTab.Controls.Add(this.performanceTestTile);
@@ -1361,13 +1392,32 @@
             this.initialTab.VerticalScrollbarHighlightOnWheel = false;
             this.initialTab.VerticalScrollbarSize = 10;
             // 
+            // qas_btn
+            // 
+            this.qas_btn.ActiveControl = null;
+            this.qas_btn.Location = new System.Drawing.Point(371, 356);
+            this.qas_btn.Name = "qas_btn";
+            this.qas_btn.Size = new System.Drawing.Size(282, 228);
+            this.qas_btn.Style = MetroFramework.MetroColorStyle.Blue;
+            this.qas_btn.TabIndex = 13;
+            this.qas_btn.Text = "\r\n\r\nQueensland Ambulance\r\nService";
+            this.qas_btn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.qas_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.qas_btn.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.ambulance__2_;
+            this.qas_btn.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.qas_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.qas_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.qas_btn.UseSelectable = true;
+            this.qas_btn.UseTileImage = true;
+            this.qas_btn.Click += new System.EventHandler(this.qas_btn_Click);
+            // 
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
             this.metroLabel13.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel13.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel13.Location = new System.Drawing.Point(401, 142);
+            this.metroLabel13.Location = new System.Drawing.Point(394, 14);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(232, 25);
             this.metroLabel13.Style = MetroFramework.MetroColorStyle.White;
@@ -1378,7 +1428,7 @@
             // bothTile
             // 
             this.bothTile.ActiveControl = null;
-            this.bothTile.Location = new System.Drawing.Point(715, 202);
+            this.bothTile.Location = new System.Drawing.Point(708, 74);
             this.bothTile.Name = "bothTile";
             this.bothTile.Size = new System.Drawing.Size(282, 228);
             this.bothTile.Style = MetroFramework.MetroColorStyle.Teal;
@@ -1393,7 +1443,7 @@
             // performanceTestTile
             // 
             this.performanceTestTile.ActiveControl = null;
-            this.performanceTestTile.Location = new System.Drawing.Point(378, 202);
+            this.performanceTestTile.Location = new System.Drawing.Point(371, 74);
             this.performanceTestTile.Name = "performanceTestTile";
             this.performanceTestTile.Size = new System.Drawing.Size(282, 228);
             this.performanceTestTile.TabIndex = 2;
@@ -1407,7 +1457,7 @@
             // electricalSafetyTile
             // 
             this.electricalSafetyTile.ActiveControl = null;
-            this.electricalSafetyTile.Location = new System.Drawing.Point(53, 202);
+            this.electricalSafetyTile.Location = new System.Drawing.Point(46, 74);
             this.electricalSafetyTile.Name = "electricalSafetyTile";
             this.electricalSafetyTile.Size = new System.Drawing.Size(282, 228);
             this.electricalSafetyTile.Style = MetroFramework.MetroColorStyle.Green;
@@ -1470,22 +1520,6 @@
             this.saveFolder.TabIndex = 8;
             this.saveFolder.Text = " ";
             this.saveFolder.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // comweldoxygenFM
-            // 
-            this.comweldoxygenFM.ActiveControl = null;
-            this.comweldoxygenFM.Location = new System.Drawing.Point(806, 205);
-            this.comweldoxygenFM.Name = "comweldoxygenFM";
-            this.comweldoxygenFM.Size = new System.Drawing.Size(190, 145);
-            this.comweldoxygenFM.Style = MetroFramework.MetroColorStyle.Teal;
-            this.comweldoxygenFM.TabIndex = 11;
-            this.comweldoxygenFM.Text = "Comwled Oxygen \r\nFlowmeter";
-            this.comweldoxygenFM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.comweldoxygenFM.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.comweldoxygenFM.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.comweldoxygenFM.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.comweldoxygenFM.UseSelectable = true;
-            this.comweldoxygenFM.Click += new System.EventHandler(this.comweldoxygenFM_Click);
             // 
             // Form1
             // 
@@ -1618,6 +1652,8 @@
         private MetroFramework.Controls.MetroTile philipsMRx_btn;
         private MetroFramework.Controls.MetroTile accusonicAP170_btn;
         private MetroFramework.Controls.MetroTile comweldoxygenFM;
+        private MetroFramework.Controls.MetroTile qas_btn;
+        private MetroFramework.Controls.MetroButton initialQAS_btn;
     }
 }
 

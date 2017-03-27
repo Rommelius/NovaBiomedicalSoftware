@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using Word = Microsoft.Office.Interop.Word;
 using System.Collections;
 using NovaBiomedicalSoftware.Performance_Test;
+using NovaBiomedicalSoftware.Queensland_Abulance_Service;
 
 namespace NovaBiomedicalSoftware
 {
@@ -32,15 +33,15 @@ namespace NovaBiomedicalSoftware
         public bool earthResistanceFailed, insulationResistanceFailed, earthLeakageFailed1, earthLeakageFailed2, touchCurrentFailed1, touchCurrentFailed2,
             touchCurrentFailed3, touchCurrentFailed4, touchCurrentFailed5, touchCurrentFailed6;
 
-        
+        public static string currentUser;
 
 
         // Split line on commas followed by zero or more spaces.
         List<string> listUserNames = new List<string>();
         public string[] fields;
-        //public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
-        public string saveDestination;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+        public static string saveDestination;
 
         static SerialPort mySerialPort;
         DateTime date = DateTime.Today;
@@ -48,8 +49,6 @@ namespace NovaBiomedicalSoftware
 
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
         _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig;
-
-
 
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
          _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
@@ -200,12 +199,66 @@ namespace NovaBiomedicalSoftware
             assetNumber.Focus();
         }
 
+        private void initialQAS_btn_Click(object sender, EventArgs e)
+        {
+            assetNumber.Text = "";
+            serialNumber.Text = "";
+            location.Text = "";
+            model.Text = "";
+            manufacturer.Text = "";
+
+            electricalSafetyTile.Enabled = false;
+            performanceTestTile.Enabled = false;
+            bothTile.Enabled = false;
+
+
+            if (userName.Text == "")     
+            {
+                MetroFramework.MetroMessageBox.Show(this, "", "Please select your name on the list", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (YesNoSaveDestination != true)
+                {
+                    while (YesNoSaveDestination != true)
+                    {
+                        DialogResult drbox = MetroFramework.MetroMessageBox.Show(this, "", "Please select the folder to save your files", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (drbox == DialogResult.OK)
+                        {
+
+                            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+                            folderDlg.ShowNewFolderButton = true;
+                            // Show the FolderBrowserDialog.
+
+                            DialogResult result = folderDlg.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                YesNoSaveDestination = true;
+                                saveDestination = folderDlg.SelectedPath;
+                                saveFolder.Text = "Folder Destination: " + folderDlg.SelectedPath;
+                            }
+                        }
+                    }
+
+
+                }
+                firstPrompt.Visible = false;
+                tabMenu.SelectedTab = initialTab;
+                tabMenu.Enabled = true;
+                newproductBtn.Enabled = true;
+                statusText.Text = "Hello " + userName.Text;
+
+            }
+        }
+
+
         public void submitBtn_Click(object sender, EventArgs e)
         {
             if (assetNumber.Text == "" || serialNumber.Text == "" || location.Text == ""
-                || model.Text == "" || userName.Text == "")
+                || model.Text == "" || userName.Text == "" || manufacturer.Text == "")
             {
-                MetroFramework.MetroMessageBox.Show(this,"Error","Please fill all the details required",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MetroFramework.MetroMessageBox.Show(this,"","Please fill all the details required",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             else
             {
@@ -737,6 +790,16 @@ namespace NovaBiomedicalSoftware
 
             }
         }
+
+        //QAS Test
+
+        private void qas_btn_Click(object sender, EventArgs e)
+        {
+            currentUser = userName.Text;
+            QASForm qas = new QASForm();
+            qas.Show();
+        }
+
 
         // Test Functions:
         public void class1NormalTest()

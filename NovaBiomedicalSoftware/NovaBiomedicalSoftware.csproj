@@ -66,6 +66,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -156,6 +157,12 @@
     <Compile Include="Performance Test\PhilipsMRxDefib.Designer.cs">
       <DependentUpon>PhilipsMRxDefib.cs</DependentUpon>
     </Compile>
+    <Compile Include="Queensland Abulance Service\ResidualCurrentDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\ResidualCurrentDevice.Designer.cs">
+      <DependentUpon>ResidualCurrentDevice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtectiveEarthOptions.cs">
@@ -163,6 +170,90 @@
     </Compile>
     <Compile Include="ProtectiveEarthOptions.Designer.cs">
       <DependentUpon>ProtectiveEarthOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\Aspirator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\Aspirator.Designer.cs">
+      <DependentUpon>Aspirator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\AutomaticExternalDefib.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\AutomaticExternalDefib.Designer.cs">
+      <DependentUpon>AutomaticExternalDefib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\DemandHead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\DemandHead.Designer.cs">
+      <DependentUpon>DemandHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\ElectricSuction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\ElectricSuction.Designer.cs">
+      <DependentUpon>ElectricSuction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\Flowmeter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\Flowmeter.Designer.cs">
+      <DependentUpon>Flowmeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\Outlet Point.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\Outlet Point.Designer.cs">
+      <DependentUpon>Outlet Point.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\OxygenReticulationAlarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\OxygenReticulationAlarm.Designer.cs">
+      <DependentUpon>OxygenReticulationAlarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\PulseOximeter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\PulseOximeter.Designer.cs">
+      <DependentUpon>PulseOximeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\QASForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\QASForm.Designer.cs">
+      <DependentUpon>QASForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\RecoilBagResuscitator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\RecoilBagResuscitator.Designer.cs">
+      <DependentUpon>RecoilBagResuscitator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\Regulator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\Regulator.Designer.cs">
+      <DependentUpon>Regulator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\SphygmoHandheld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\SphygmoHandheld.Designer.cs">
+      <DependentUpon>SphygmoHandheld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\SphygmoWall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\SphygmoWall.Designer.cs">
+      <DependentUpon>SphygmoWall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\TwinOVac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Abulance Service\TwinOVac.Designer.cs">
+      <DependentUpon>TwinOVac.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
@@ -203,6 +294,9 @@
     <EmbeddedResource Include="Performance Test\PhilipsMRxDefib.resx">
       <DependentUpon>PhilipsMRxDefib.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\ResidualCurrentDevice.resx">
+      <DependentUpon>ResidualCurrentDevice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -215,6 +309,48 @@
     </Compile>
     <EmbeddedResource Include="ProtectiveEarthOptions.resx">
       <DependentUpon>ProtectiveEarthOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\Aspirator.resx">
+      <DependentUpon>Aspirator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\AutomaticExternalDefib.resx">
+      <DependentUpon>AutomaticExternalDefib.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\DemandHead.resx">
+      <DependentUpon>DemandHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\ElectricSuction.resx">
+      <DependentUpon>ElectricSuction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\Flowmeter.resx">
+      <DependentUpon>Flowmeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\Outlet Point.resx">
+      <DependentUpon>Outlet Point.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\OxygenReticulationAlarm.resx">
+      <DependentUpon>OxygenReticulationAlarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\PulseOximeter.resx">
+      <DependentUpon>PulseOximeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\QASForm.resx">
+      <DependentUpon>QASForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\RecoilBagResuscitator.resx">
+      <DependentUpon>RecoilBagResuscitator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\Regulator.resx">
+      <DependentUpon>Regulator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\SphygmoHandheld.resx">
+      <DependentUpon>SphygmoHandheld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\SphygmoWall.resx">
+      <DependentUpon>SphygmoWall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Abulance Service\TwinOVac.resx">
+      <DependentUpon>TwinOVac.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
@@ -248,6 +384,21 @@
     <None Include="Report Templates\Heine NT300-TEMPLATE.docx" />
     <None Include="Report Templates\NIBP Monitor-TEMPLATE.docx" />
     <None Include="Report Templates\Philips MRx Defibrillator-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Template-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Aspirator-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Automatic External Defibrillator-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Demand Head-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Electric Suction-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Flowmeter-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Outlet Point-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Oxygen Reticulation Failure Alarm-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Pulse Oximeter-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Recoil Bag Resuscitator-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Regulator-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Residual Current Device-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Sphygmo Handheld-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Sphygmo Wall-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Twin-O-Vac Suction Device-TEMPLATE.docx" />
     <None Include="Report Templates\temp.docx" />
     <None Include="Report Templates\temp2.docx" />
     <None Include="Resources\background.png" />
@@ -273,6 +424,9 @@
     <Content Include="Images\bg.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\header.png" />
+    <None Include="Resources\ambulance.png" />
+    <None Include="Resources\ambulance %281%29.png" />
+    <None Include="Resources\ambulance %282%29.png" />
     <Content Include="Signatures\Joe Welch.png" />
     <Content Include="Signatures\Khoi Duong.png" />
     <Content Include="Images\logo2.png" />

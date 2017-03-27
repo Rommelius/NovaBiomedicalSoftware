@@ -25,6 +25,10 @@ namespace NovaBiomedicalSoftware.Performance_Test
         public ComweldOxygenFlowmeter()
         {
             InitializeComponent();
+            itemsBox.ResetText();
+            commentBox.ResetText();
+            itemsBox.Visible = false;
+            safetyCheck.SelectedTab = performanceVerification;
         }
 
         private void close1_btn_Click(object sender, EventArgs e)
