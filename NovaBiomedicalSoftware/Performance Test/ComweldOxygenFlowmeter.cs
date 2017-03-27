@@ -11,37 +11,37 @@ using MetroFramework.Forms;
 
 namespace NovaBiomedicalSoftware.Performance_Test
 {
-    public partial class AccusonicAP170 : MetroForm
+    public partial class ComweldOxygenFlowmeter : MetroForm
     {
-        public bool AccusonicAP170Test_Submit;
 
-        public static string result1, result2, result3, result4, result5;
+        public bool ComweldOxygenFlowmeterTest_Submit;
+
+        public static string result1, result2, result3, result4, result5, result6, result7, result8, result9;
+
         //comment box and item box
         public static string comments, items;
 
-        public AccusonicAP170()
+
+        public ComweldOxygenFlowmeter()
         {
             InitializeComponent();
-            itemsBox.ResetText();
-            commentBox.ResetText();
-            itemsBox.Visible = false;
-            safetyCheck.SelectedTab = performanceVerification;
         }
 
         private void close1_btn_Click(object sender, EventArgs e)
         {
-            AccusonicAP170Test_Submit = false;
+            ComweldOxygenFlowmeterTest_Submit = false;
             this.Close();
         }
 
         private void nextBtn_Click(object sender, EventArgs e)
         {
             safetyCheck.SelectedTab = commentsTab;
+
         }
 
         private void close3_btn_Click(object sender, EventArgs e)
         {
-            AccusonicAP170Test_Submit = false;
+            ComweldOxygenFlowmeterTest_Submit = false;
             this.Close();
         }
 
@@ -49,7 +49,8 @@ namespace NovaBiomedicalSoftware.Performance_Test
         {
             //check if the combobox are answered
             if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
-                result_4.SelectedItem == null || result_5.SelectedItem == null)
+                result_4.SelectedItem == null || result_5.SelectedItem == null || result_6.SelectedItem == null || result_7.SelectedItem == null
+                || result_8.SelectedItem == null || result_9.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -61,13 +62,18 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result3 = result_3.Text;
                 result4 = result_4.Text;
                 result5 = result_5.Text;
+                result6 = result_6.Text;
+                result7 = result_7.Text;
+                result8 = result_8.Text;
+                result9 = result_9.Text;
+
                 //comments box
                 comments = commentBox.Text;
 
                 addItems();
                 items = itemsBox.Text;
 
-                AccusonicAP170Test_Submit = true;
+                ComweldOxygenFlowmeterTest_Submit = true;
                 this.Hide();
             }
         }

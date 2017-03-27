@@ -49,6 +49,8 @@
             this.submitBtn = new MetroFramework.Controls.MetroButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ptTab = new MetroFramework.Controls.MetroTabPage();
+            this.accusonicAP170_btn = new MetroFramework.Controls.MetroTile();
+            this.philipsMRx_btn = new MetroFramework.Controls.MetroTile();
             this.heinent300_btn = new MetroFramework.Controls.MetroTile();
             this.bbraunPerfusor = new MetroFramework.Controls.MetroTile();
             this.genius2_btn = new MetroFramework.Controls.MetroTile();
@@ -114,8 +116,7 @@
             this.statusBar = new MetroFramework.Controls.MetroProgressBar();
             this.saveFolderDestination = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFolder = new MetroFramework.Controls.MetroLabel();
-            this.philipsMRx_btn = new MetroFramework.Controls.MetroTile();
-            this.accusonicAP170_btn = new MetroFramework.Controls.MetroTile();
+            this.comweldoxygenFM = new MetroFramework.Controls.MetroTile();
             this.firstPrompt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -148,28 +149,26 @@
             this.firstPrompt.Controls.Add(this.submitBtn);
             this.firstPrompt.HorizontalScrollbarBarColor = true;
             this.firstPrompt.HorizontalScrollbarHighlightOnWheel = false;
-            this.firstPrompt.HorizontalScrollbarSize = 12;
-            this.firstPrompt.Location = new System.Drawing.Point(1440, 15);
-            this.firstPrompt.Margin = new System.Windows.Forms.Padding(4);
+            this.firstPrompt.HorizontalScrollbarSize = 10;
+            this.firstPrompt.Location = new System.Drawing.Point(1080, 12);
             this.firstPrompt.Name = "firstPrompt";
-            this.firstPrompt.Size = new System.Drawing.Size(1428, 910);
+            this.firstPrompt.Size = new System.Drawing.Size(1071, 739);
             this.firstPrompt.Style = MetroFramework.MetroColorStyle.Blue;
             this.firstPrompt.TabIndex = 1;
             this.firstPrompt.Theme = MetroFramework.MetroThemeStyle.Light;
             this.firstPrompt.UseCustomBackColor = true;
             this.firstPrompt.VerticalScrollbarBarColor = true;
             this.firstPrompt.VerticalScrollbarHighlightOnWheel = false;
-            this.firstPrompt.VerticalScrollbarSize = 13;
+            this.firstPrompt.VerticalScrollbarSize = 10;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::NovaBiomedicalSoftware.Properties.Resources.logo1;
             this.pictureBox2.ImageLocation = "";
-            this.pictureBox2.Location = new System.Drawing.Point(487, 97);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(365, 79);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(433, 153);
+            this.pictureBox2.Size = new System.Drawing.Size(325, 124);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 100;
             this.pictureBox2.TabStop = false;
@@ -178,10 +177,9 @@
             // 
             this.btnAdduser.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.btnAdduser.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnAdduser.Location = new System.Drawing.Point(951, 350);
-            this.btnAdduser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdduser.Location = new System.Drawing.Point(713, 284);
             this.btnAdduser.Name = "btnAdduser";
-            this.btnAdduser.Size = new System.Drawing.Size(39, 36);
+            this.btnAdduser.Size = new System.Drawing.Size(29, 29);
             this.btnAdduser.TabIndex = 97;
             this.btnAdduser.Text = "+";
             this.btnAdduser.UseSelectable = true;
@@ -193,10 +191,9 @@
             this.metroLabel10.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel10.ForeColor = System.Drawing.Color.White;
-            this.metroLabel10.Location = new System.Drawing.Point(477, 540);
-            this.metroLabel10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel10.Location = new System.Drawing.Point(358, 439);
             this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(100, 20);
+            this.metroLabel10.Size = new System.Drawing.Size(95, 19);
             this.metroLabel10.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel10.TabIndex = 98;
             this.metroLabel10.Text = "Manufacturer:";
@@ -208,10 +205,9 @@
             // 
             this.userName.FormattingEnabled = true;
             this.userName.ItemHeight = 24;
-            this.userName.Location = new System.Drawing.Point(679, 350);
-            this.userName.Margin = new System.Windows.Forms.Padding(4);
+            this.userName.Location = new System.Drawing.Point(509, 284);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(263, 30);
+            this.userName.Size = new System.Drawing.Size(198, 30);
             this.userName.Style = MetroFramework.MetroColorStyle.Blue;
             this.userName.TabIndex = 99;
             this.userName.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -223,18 +219,16 @@
             // 
             // 
             this.location.CustomButton.Image = null;
-            this.location.CustomButton.Location = new System.Drawing.Point(228, 1);
-            this.location.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.location.CustomButton.Location = new System.Drawing.Point(170, 2);
             this.location.CustomButton.Name = "";
-            this.location.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.location.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.location.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.location.CustomButton.TabIndex = 1;
             this.location.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.location.CustomButton.UseSelectable = true;
             this.location.CustomButton.Visible = false;
             this.location.Lines = new string[0];
-            this.location.Location = new System.Drawing.Point(679, 571);
-            this.location.Margin = new System.Windows.Forms.Padding(4);
+            this.location.Location = new System.Drawing.Point(509, 464);
             this.location.MaxLength = 32767;
             this.location.Name = "location";
             this.location.PasswordChar = '\0';
@@ -243,7 +237,7 @@
             this.location.SelectionLength = 0;
             this.location.SelectionStart = 0;
             this.location.ShortcutsEnabled = true;
-            this.location.Size = new System.Drawing.Size(264, 37);
+            this.location.Size = new System.Drawing.Size(198, 30);
             this.location.TabIndex = 5;
             this.location.Theme = MetroFramework.MetroThemeStyle.Light;
             this.location.UseSelectable = true;
@@ -257,18 +251,16 @@
             // 
             // 
             this.manufacturer.CustomButton.Image = null;
-            this.manufacturer.CustomButton.Location = new System.Drawing.Point(228, 1);
-            this.manufacturer.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.manufacturer.CustomButton.Location = new System.Drawing.Point(170, 2);
             this.manufacturer.CustomButton.Name = "";
-            this.manufacturer.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.manufacturer.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.manufacturer.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.manufacturer.CustomButton.TabIndex = 1;
             this.manufacturer.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.manufacturer.CustomButton.UseSelectable = true;
             this.manufacturer.CustomButton.Visible = false;
             this.manufacturer.Lines = new string[0];
-            this.manufacturer.Location = new System.Drawing.Point(679, 527);
-            this.manufacturer.Margin = new System.Windows.Forms.Padding(4);
+            this.manufacturer.Location = new System.Drawing.Point(509, 428);
             this.manufacturer.MaxLength = 32767;
             this.manufacturer.Name = "manufacturer";
             this.manufacturer.PasswordChar = '\0';
@@ -277,7 +269,7 @@
             this.manufacturer.SelectionLength = 0;
             this.manufacturer.SelectionStart = 0;
             this.manufacturer.ShortcutsEnabled = true;
-            this.manufacturer.Size = new System.Drawing.Size(264, 37);
+            this.manufacturer.Size = new System.Drawing.Size(198, 30);
             this.manufacturer.TabIndex = 4;
             this.manufacturer.Theme = MetroFramework.MetroThemeStyle.Light;
             this.manufacturer.UseSelectable = true;
@@ -291,18 +283,16 @@
             // 
             // 
             this.model.CustomButton.Image = null;
-            this.model.CustomButton.Location = new System.Drawing.Point(228, 1);
-            this.model.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.model.CustomButton.Location = new System.Drawing.Point(170, 2);
             this.model.CustomButton.Name = "";
-            this.model.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.model.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.model.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.model.CustomButton.TabIndex = 1;
             this.model.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.model.CustomButton.UseSelectable = true;
             this.model.CustomButton.Visible = false;
             this.model.Lines = new string[0];
-            this.model.Location = new System.Drawing.Point(679, 482);
-            this.model.Margin = new System.Windows.Forms.Padding(4);
+            this.model.Location = new System.Drawing.Point(509, 392);
             this.model.MaxLength = 32767;
             this.model.Name = "model";
             this.model.PasswordChar = '\0';
@@ -311,7 +301,7 @@
             this.model.SelectionLength = 0;
             this.model.SelectionStart = 0;
             this.model.ShortcutsEnabled = true;
-            this.model.Size = new System.Drawing.Size(264, 37);
+            this.model.Size = new System.Drawing.Size(198, 30);
             this.model.TabIndex = 3;
             this.model.Theme = MetroFramework.MetroThemeStyle.Light;
             this.model.UseSelectable = true;
@@ -325,18 +315,16 @@
             // 
             // 
             this.serialNumber.CustomButton.Image = null;
-            this.serialNumber.CustomButton.Location = new System.Drawing.Point(228, 1);
-            this.serialNumber.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.serialNumber.CustomButton.Location = new System.Drawing.Point(170, 2);
             this.serialNumber.CustomButton.Name = "";
-            this.serialNumber.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.serialNumber.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.serialNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.serialNumber.CustomButton.TabIndex = 1;
             this.serialNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.serialNumber.CustomButton.UseSelectable = true;
             this.serialNumber.CustomButton.Visible = false;
             this.serialNumber.Lines = new string[0];
-            this.serialNumber.Location = new System.Drawing.Point(679, 438);
-            this.serialNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.serialNumber.Location = new System.Drawing.Point(509, 356);
             this.serialNumber.MaxLength = 32767;
             this.serialNumber.Name = "serialNumber";
             this.serialNumber.PasswordChar = '\0';
@@ -345,7 +333,7 @@
             this.serialNumber.SelectionLength = 0;
             this.serialNumber.SelectionStart = 0;
             this.serialNumber.ShortcutsEnabled = true;
-            this.serialNumber.Size = new System.Drawing.Size(264, 37);
+            this.serialNumber.Size = new System.Drawing.Size(198, 30);
             this.serialNumber.TabIndex = 2;
             this.serialNumber.Theme = MetroFramework.MetroThemeStyle.Light;
             this.serialNumber.UseSelectable = true;
@@ -359,10 +347,9 @@
             this.metroLabel6.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel6.ForeColor = System.Drawing.Color.White;
-            this.metroLabel6.Location = new System.Drawing.Point(477, 585);
-            this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel6.Location = new System.Drawing.Point(358, 475);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(69, 20);
+            this.metroLabel6.Size = new System.Drawing.Size(64, 19);
             this.metroLabel6.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel6.TabIndex = 98;
             this.metroLabel6.Text = "Location:";
@@ -376,10 +363,9 @@
             this.metroLabel5.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel5.ForeColor = System.Drawing.Color.White;
-            this.metroLabel5.Location = new System.Drawing.Point(477, 496);
-            this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel5.Location = new System.Drawing.Point(358, 403);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(55, 20);
+            this.metroLabel5.Size = new System.Drawing.Size(51, 19);
             this.metroLabel5.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel5.TabIndex = 98;
             this.metroLabel5.Text = "Model:";
@@ -393,10 +379,9 @@
             this.metroLabel4.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel4.ForeColor = System.Drawing.Color.White;
-            this.metroLabel4.Location = new System.Drawing.Point(477, 452);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel4.Location = new System.Drawing.Point(358, 367);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(107, 20);
+            this.metroLabel4.Size = new System.Drawing.Size(98, 19);
             this.metroLabel4.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel4.TabIndex = 98;
             this.metroLabel4.Text = "Serial Number:";
@@ -410,10 +395,9 @@
             this.metroLabel3.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel3.ForeColor = System.Drawing.Color.White;
-            this.metroLabel3.Location = new System.Drawing.Point(477, 407);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel3.Location = new System.Drawing.Point(358, 331);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(105, 20);
+            this.metroLabel3.Size = new System.Drawing.Size(99, 19);
             this.metroLabel3.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel3.TabIndex = 98;
             this.metroLabel3.Text = "Asset Number:";
@@ -427,10 +411,9 @@
             this.metroLabel2.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel2.ForeColor = System.Drawing.Color.White;
-            this.metroLabel2.Location = new System.Drawing.Point(477, 362);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel2.Location = new System.Drawing.Point(358, 294);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(52, 20);
+            this.metroLabel2.Size = new System.Drawing.Size(48, 19);
             this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel2.TabIndex = 98;
             this.metroLabel2.Text = "Name:";
@@ -445,10 +428,9 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.ForeColor = System.Drawing.Color.White;
-            this.metroLabel1.Location = new System.Drawing.Point(592, 290);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(444, 236);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(188, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(184, 25);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel1.TabIndex = 5;
             this.metroLabel1.Text = "Please Fill in Details:";
@@ -462,18 +444,16 @@
             // 
             // 
             this.assetNumber.CustomButton.Image = null;
-            this.assetNumber.CustomButton.Location = new System.Drawing.Point(228, 1);
-            this.assetNumber.CustomButton.Margin = new System.Windows.Forms.Padding(4);
+            this.assetNumber.CustomButton.Location = new System.Drawing.Point(170, 2);
             this.assetNumber.CustomButton.Name = "";
-            this.assetNumber.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.assetNumber.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.assetNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.assetNumber.CustomButton.TabIndex = 1;
             this.assetNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.assetNumber.CustomButton.UseSelectable = true;
             this.assetNumber.CustomButton.Visible = false;
             this.assetNumber.Lines = new string[0];
-            this.assetNumber.Location = new System.Drawing.Point(679, 394);
-            this.assetNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.assetNumber.Location = new System.Drawing.Point(509, 320);
             this.assetNumber.MaxLength = 32767;
             this.assetNumber.Name = "assetNumber";
             this.assetNumber.PasswordChar = '\0';
@@ -482,7 +462,7 @@
             this.assetNumber.SelectionLength = 0;
             this.assetNumber.SelectionStart = 0;
             this.assetNumber.ShortcutsEnabled = true;
-            this.assetNumber.Size = new System.Drawing.Size(264, 37);
+            this.assetNumber.Size = new System.Drawing.Size(198, 30);
             this.assetNumber.TabIndex = 1;
             this.assetNumber.Theme = MetroFramework.MetroThemeStyle.Light;
             this.assetNumber.UseSelectable = true;
@@ -492,10 +472,9 @@
             // 
             // clearBtn_1
             // 
-            this.clearBtn_1.Location = new System.Drawing.Point(473, 639);
-            this.clearBtn_1.Margin = new System.Windows.Forms.Padding(4);
+            this.clearBtn_1.Location = new System.Drawing.Point(355, 519);
             this.clearBtn_1.Name = "clearBtn_1";
-            this.clearBtn_1.Size = new System.Drawing.Size(188, 54);
+            this.clearBtn_1.Size = new System.Drawing.Size(141, 44);
             this.clearBtn_1.TabIndex = 7;
             this.clearBtn_1.Text = "Clear";
             this.clearBtn_1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -504,10 +483,9 @@
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(835, 639);
-            this.submitBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.submitBtn.Location = new System.Drawing.Point(626, 519);
             this.submitBtn.Name = "submitBtn";
-            this.submitBtn.Size = new System.Drawing.Size(188, 54);
+            this.submitBtn.Size = new System.Drawing.Size(141, 44);
             this.submitBtn.TabIndex = 6;
             this.submitBtn.Text = "Submit";
             this.submitBtn.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -519,10 +497,9 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::NovaBiomedicalSoftware.Properties.Resources.logo1;
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(31, 31);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(23, 25);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(327, 101);
+            this.pictureBox1.Size = new System.Drawing.Size(245, 82);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -532,6 +509,7 @@
             this.ptTab.BackColor = System.Drawing.Color.Transparent;
             this.ptTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.background;
             this.ptTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ptTab.Controls.Add(this.comweldoxygenFM);
             this.ptTab.Controls.Add(this.accusonicAP170_btn);
             this.ptTab.Controls.Add(this.philipsMRx_btn);
             this.ptTab.Controls.Add(this.heinent300_btn);
@@ -545,26 +523,56 @@
             this.ptTab.HorizontalScrollbar = true;
             this.ptTab.HorizontalScrollbarBarColor = true;
             this.ptTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.ptTab.HorizontalScrollbarSize = 12;
+            this.ptTab.HorizontalScrollbarSize = 10;
             this.ptTab.Location = new System.Drawing.Point(4, 38);
-            this.ptTab.Margin = new System.Windows.Forms.Padding(4);
             this.ptTab.Name = "ptTab";
-            this.ptTab.Size = new System.Drawing.Size(1396, 759);
+            this.ptTab.Size = new System.Drawing.Size(1045, 609);
             this.ptTab.TabIndex = 1;
             this.ptTab.Text = "Performance Test";
             this.ptTab.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ptTab.VerticalScrollbar = true;
             this.ptTab.VerticalScrollbarBarColor = true;
             this.ptTab.VerticalScrollbarHighlightOnWheel = false;
-            this.ptTab.VerticalScrollbarSize = 13;
+            this.ptTab.VerticalScrollbarSize = 10;
+            // 
+            // accusonicAP170_btn
+            // 
+            this.accusonicAP170_btn.ActiveControl = null;
+            this.accusonicAP170_btn.Location = new System.Drawing.Point(610, 205);
+            this.accusonicAP170_btn.Name = "accusonicAP170_btn";
+            this.accusonicAP170_btn.Size = new System.Drawing.Size(190, 145);
+            this.accusonicAP170_btn.Style = MetroFramework.MetroColorStyle.Teal;
+            this.accusonicAP170_btn.TabIndex = 11;
+            this.accusonicAP170_btn.Text = "Accusonic AP170";
+            this.accusonicAP170_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.accusonicAP170_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.accusonicAP170_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.accusonicAP170_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.accusonicAP170_btn.UseSelectable = true;
+            this.accusonicAP170_btn.Click += new System.EventHandler(this.accusonicAP170_btn_Click);
+            // 
+            // philipsMRx_btn
+            // 
+            this.philipsMRx_btn.ActiveControl = null;
+            this.philipsMRx_btn.Location = new System.Drawing.Point(413, 205);
+            this.philipsMRx_btn.Name = "philipsMRx_btn";
+            this.philipsMRx_btn.Size = new System.Drawing.Size(190, 145);
+            this.philipsMRx_btn.Style = MetroFramework.MetroColorStyle.Teal;
+            this.philipsMRx_btn.TabIndex = 11;
+            this.philipsMRx_btn.Text = "Philips MRx \r\nDefibrillator";
+            this.philipsMRx_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.philipsMRx_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.philipsMRx_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.philipsMRx_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.philipsMRx_btn.UseSelectable = true;
+            this.philipsMRx_btn.Click += new System.EventHandler(this.philipsMRx_btn_Click);
             // 
             // heinent300_btn
             // 
             this.heinent300_btn.ActiveControl = null;
-            this.heinent300_btn.Location = new System.Drawing.Point(288, 252);
-            this.heinent300_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.heinent300_btn.Location = new System.Drawing.Point(216, 205);
             this.heinent300_btn.Name = "heinent300_btn";
-            this.heinent300_btn.Size = new System.Drawing.Size(253, 178);
+            this.heinent300_btn.Size = new System.Drawing.Size(190, 145);
             this.heinent300_btn.Style = MetroFramework.MetroColorStyle.Teal;
             this.heinent300_btn.TabIndex = 11;
             this.heinent300_btn.Text = "Heine NT300";
@@ -578,10 +586,9 @@
             // bbraunPerfusor
             // 
             this.bbraunPerfusor.ActiveControl = null;
-            this.bbraunPerfusor.Location = new System.Drawing.Point(27, 252);
-            this.bbraunPerfusor.Margin = new System.Windows.Forms.Padding(4);
+            this.bbraunPerfusor.Location = new System.Drawing.Point(20, 205);
             this.bbraunPerfusor.Name = "bbraunPerfusor";
-            this.bbraunPerfusor.Size = new System.Drawing.Size(253, 178);
+            this.bbraunPerfusor.Size = new System.Drawing.Size(190, 145);
             this.bbraunPerfusor.Style = MetroFramework.MetroColorStyle.Teal;
             this.bbraunPerfusor.TabIndex = 10;
             this.bbraunPerfusor.Text = "B|Braun Perfusor \r\nSpace";
@@ -595,13 +602,12 @@
             // genius2_btn
             // 
             this.genius2_btn.ActiveControl = null;
-            this.genius2_btn.Location = new System.Drawing.Point(1075, 55);
-            this.genius2_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.genius2_btn.Location = new System.Drawing.Point(806, 45);
             this.genius2_btn.Name = "genius2_btn";
-            this.genius2_btn.Size = new System.Drawing.Size(253, 178);
+            this.genius2_btn.Size = new System.Drawing.Size(190, 145);
             this.genius2_btn.Style = MetroFramework.MetroColorStyle.Teal;
             this.genius2_btn.TabIndex = 8;
-            this.genius2_btn.Text = "Genius 2 Thermometer";
+            this.genius2_btn.Text = "Genius 2 \r\nThermometer";
             this.genius2_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.genius2_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.genius2_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -612,13 +618,12 @@
             // sphygmomanometer_btn
             // 
             this.sphygmomanometer_btn.ActiveControl = null;
-            this.sphygmomanometer_btn.Location = new System.Drawing.Point(813, 55);
-            this.sphygmomanometer_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.sphygmomanometer_btn.Location = new System.Drawing.Point(610, 45);
             this.sphygmomanometer_btn.Name = "sphygmomanometer_btn";
-            this.sphygmomanometer_btn.Size = new System.Drawing.Size(253, 178);
+            this.sphygmomanometer_btn.Size = new System.Drawing.Size(190, 145);
             this.sphygmomanometer_btn.Style = MetroFramework.MetroColorStyle.Teal;
             this.sphygmomanometer_btn.TabIndex = 7;
-            this.sphygmomanometer_btn.Text = "Sphygmomanometer";
+            this.sphygmomanometer_btn.Text = "Sphygmomano-\r\nmeter";
             this.sphygmomanometer_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.sphygmomanometer_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.sphygmomanometer_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -630,10 +635,9 @@
             // eddanDoppler_btn
             // 
             this.eddanDoppler_btn.ActiveControl = null;
-            this.eddanDoppler_btn.Location = new System.Drawing.Point(551, 55);
-            this.eddanDoppler_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.eddanDoppler_btn.Location = new System.Drawing.Point(413, 45);
             this.eddanDoppler_btn.Name = "eddanDoppler_btn";
-            this.eddanDoppler_btn.Size = new System.Drawing.Size(253, 178);
+            this.eddanDoppler_btn.Size = new System.Drawing.Size(190, 145);
             this.eddanDoppler_btn.Style = MetroFramework.MetroColorStyle.Teal;
             this.eddanDoppler_btn.TabIndex = 6;
             this.eddanDoppler_btn.Text = "Edan Doppler";
@@ -650,10 +654,9 @@
             this.metroLabel9.AutoSize = true;
             this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel9.Location = new System.Drawing.Point(27, 21);
-            this.metroLabel9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel9.Location = new System.Drawing.Point(20, 17);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(170, 25);
+            this.metroLabel9.Size = new System.Drawing.Size(164, 25);
             this.metroLabel9.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel9.TabIndex = 5;
             this.metroLabel9.Text = "Performance Test:";
@@ -663,10 +666,9 @@
             // ptNIBP
             // 
             this.ptNIBP.ActiveControl = null;
-            this.ptNIBP.Location = new System.Drawing.Point(288, 55);
-            this.ptNIBP.Margin = new System.Windows.Forms.Padding(4);
+            this.ptNIBP.Location = new System.Drawing.Point(216, 45);
             this.ptNIBP.Name = "ptNIBP";
-            this.ptNIBP.Size = new System.Drawing.Size(253, 178);
+            this.ptNIBP.Size = new System.Drawing.Size(190, 145);
             this.ptNIBP.Style = MetroFramework.MetroColorStyle.Teal;
             this.ptNIBP.TabIndex = 3;
             this.ptNIBP.Text = "NIBP Monitors";
@@ -681,10 +683,9 @@
             // ptECG
             // 
             this.ptECG.ActiveControl = null;
-            this.ptECG.Location = new System.Drawing.Point(27, 55);
-            this.ptECG.Margin = new System.Windows.Forms.Padding(4);
+            this.ptECG.Location = new System.Drawing.Point(20, 45);
             this.ptECG.Name = "ptECG";
-            this.ptECG.Size = new System.Drawing.Size(253, 178);
+            this.ptECG.Size = new System.Drawing.Size(190, 145);
             this.ptECG.Style = MetroFramework.MetroColorStyle.Teal;
             this.ptECG.TabIndex = 2;
             this.ptECG.Text = "ECG Machine";
@@ -710,18 +711,17 @@
             this.estTab.Controls.Add(this.class1testBtn);
             this.estTab.HorizontalScrollbarBarColor = true;
             this.estTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.estTab.HorizontalScrollbarSize = 12;
+            this.estTab.HorizontalScrollbarSize = 10;
             this.estTab.Location = new System.Drawing.Point(4, 38);
-            this.estTab.Margin = new System.Windows.Forms.Padding(4);
             this.estTab.Name = "estTab";
-            this.estTab.Size = new System.Drawing.Size(1396, 759);
+            this.estTab.Size = new System.Drawing.Size(1045, 609);
             this.estTab.TabIndex = 0;
             this.estTab.Text = "Electrical Safety Test";
             this.estTab.Theme = MetroFramework.MetroThemeStyle.Light;
             this.estTab.UseCustomBackColor = true;
             this.estTab.VerticalScrollbarBarColor = true;
             this.estTab.VerticalScrollbarHighlightOnWheel = false;
-            this.estTab.VerticalScrollbarSize = 13;
+            this.estTab.VerticalScrollbarSize = 10;
             // 
             // panel1
             // 
@@ -765,19 +765,17 @@
             this.panel1.Controls.Add(this.labelEL1);
             this.panel1.Controls.Add(this.labelIR);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(947, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(708, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(449, 759);
+            this.panel1.Size = new System.Drawing.Size(337, 609);
             this.panel1.TabIndex = 9;
             // 
             // buttonEnL6
             // 
             this.buttonEnL6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEnL6.Location = new System.Drawing.Point(9, 709);
-            this.buttonEnL6.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEnL6.Location = new System.Drawing.Point(7, 576);
             this.buttonEnL6.Name = "buttonEnL6";
-            this.buttonEnL6.Size = new System.Drawing.Size(72, 23);
+            this.buttonEnL6.Size = new System.Drawing.Size(54, 19);
             this.buttonEnL6.TabIndex = 2;
             this.buttonEnL6.Text = "Refresh";
             this.buttonEnL6.UseSelectable = true;
@@ -787,10 +785,9 @@
             // buttonEnL5
             // 
             this.buttonEnL5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEnL5.Location = new System.Drawing.Point(9, 639);
-            this.buttonEnL5.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEnL5.Location = new System.Drawing.Point(7, 519);
             this.buttonEnL5.Name = "buttonEnL5";
-            this.buttonEnL5.Size = new System.Drawing.Size(72, 23);
+            this.buttonEnL5.Size = new System.Drawing.Size(54, 19);
             this.buttonEnL5.TabIndex = 2;
             this.buttonEnL5.Text = "Refresh";
             this.buttonEnL5.UseSelectable = true;
@@ -800,101 +797,90 @@
             // buttonEnL4
             // 
             this.buttonEnL4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEnL4.Location = new System.Drawing.Point(9, 574);
-            this.buttonEnL4.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEnL4.Location = new System.Drawing.Point(7, 466);
             this.buttonEnL4.Name = "buttonEnL4";
-            this.buttonEnL4.Size = new System.Drawing.Size(72, 23);
+            this.buttonEnL4.Size = new System.Drawing.Size(54, 19);
             this.buttonEnL4.TabIndex = 2;
             this.buttonEnL4.Text = "Refresh";
             this.buttonEnL4.UseSelectable = true;
             this.buttonEnL4.Visible = false;
-            this.buttonEnL4.Click += new System.EventHandler(this.buttonPE_Click);
             // 
             // buttonEnL3
             // 
             this.buttonEnL3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEnL3.Location = new System.Drawing.Point(9, 498);
-            this.buttonEnL3.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEnL3.Location = new System.Drawing.Point(7, 405);
             this.buttonEnL3.Name = "buttonEnL3";
-            this.buttonEnL3.Size = new System.Drawing.Size(72, 23);
+            this.buttonEnL3.Size = new System.Drawing.Size(54, 19);
             this.buttonEnL3.TabIndex = 2;
             this.buttonEnL3.Text = "Refresh";
             this.buttonEnL3.UseSelectable = true;
             this.buttonEnL3.Visible = false;
-            this.buttonEnL3.Click += new System.EventHandler(this.buttonPE_Click);
             // 
             // buttonEnL2
             // 
             this.buttonEnL2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEnL2.Location = new System.Drawing.Point(9, 452);
-            this.buttonEnL2.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEnL2.Location = new System.Drawing.Point(7, 367);
             this.buttonEnL2.Name = "buttonEnL2";
-            this.buttonEnL2.Size = new System.Drawing.Size(72, 23);
+            this.buttonEnL2.Size = new System.Drawing.Size(54, 19);
             this.buttonEnL2.TabIndex = 2;
             this.buttonEnL2.Text = "Refresh";
             this.buttonEnL2.UseSelectable = true;
             this.buttonEnL2.Visible = false;
-            this.buttonEnL2.Click += new System.EventHandler(this.buttonPE_Click);
             // 
             // buttonEnL1
             // 
             this.buttonEnL1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEnL1.Location = new System.Drawing.Point(9, 398);
-            this.buttonEnL1.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEnL1.Location = new System.Drawing.Point(7, 323);
             this.buttonEnL1.Name = "buttonEnL1";
-            this.buttonEnL1.Size = new System.Drawing.Size(72, 23);
+            this.buttonEnL1.Size = new System.Drawing.Size(54, 19);
             this.buttonEnL1.TabIndex = 2;
             this.buttonEnL1.Text = "Refresh";
             this.buttonEnL1.UseSelectable = true;
             this.buttonEnL1.Visible = false;
-            this.buttonEnL1.Click += new System.EventHandler(this.buttonPE_Click);
+            this.buttonEnL1.Click += new System.EventHandler(this.buttonEnL1_Click);
             // 
             // buttonEL2
             // 
             this.buttonEL2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEL2.Location = new System.Drawing.Point(9, 351);
-            this.buttonEL2.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEL2.Location = new System.Drawing.Point(7, 285);
             this.buttonEL2.Name = "buttonEL2";
-            this.buttonEL2.Size = new System.Drawing.Size(72, 23);
+            this.buttonEL2.Size = new System.Drawing.Size(54, 19);
             this.buttonEL2.TabIndex = 2;
             this.buttonEL2.Text = "Refresh";
             this.buttonEL2.UseSelectable = true;
             this.buttonEL2.Visible = false;
-            this.buttonEL2.Click += new System.EventHandler(this.buttonPE_Click);
+            this.buttonEL2.Click += new System.EventHandler(this.buttonEL1_Click);
             // 
             // buttonEL1
             // 
             this.buttonEL1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonEL1.Location = new System.Drawing.Point(9, 305);
-            this.buttonEL1.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEL1.Location = new System.Drawing.Point(7, 248);
             this.buttonEL1.Name = "buttonEL1";
-            this.buttonEL1.Size = new System.Drawing.Size(72, 23);
+            this.buttonEL1.Size = new System.Drawing.Size(54, 19);
             this.buttonEL1.TabIndex = 2;
             this.buttonEL1.Text = "Refresh";
             this.buttonEL1.UseSelectable = true;
             this.buttonEL1.Visible = false;
-            this.buttonEL1.Click += new System.EventHandler(this.buttonPE_Click);
+            this.buttonEL1.Click += new System.EventHandler(this.buttonEL1_Click);
             // 
             // buttonIR
             // 
             this.buttonIR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonIR.Location = new System.Drawing.Point(9, 258);
-            this.buttonIR.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonIR.Location = new System.Drawing.Point(7, 210);
             this.buttonIR.Name = "buttonIR";
-            this.buttonIR.Size = new System.Drawing.Size(72, 23);
+            this.buttonIR.Size = new System.Drawing.Size(54, 19);
             this.buttonIR.TabIndex = 2;
             this.buttonIR.Text = "Refresh";
             this.buttonIR.UseSelectable = true;
             this.buttonIR.Visible = false;
-            this.buttonIR.Click += new System.EventHandler(this.buttonPE_Click);
+            this.buttonIR.Click += new System.EventHandler(this.buttonIR_Click);
             // 
             // buttonPE
             // 
             this.buttonPE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonPE.Location = new System.Drawing.Point(9, 213);
-            this.buttonPE.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPE.Location = new System.Drawing.Point(7, 173);
             this.buttonPE.Name = "buttonPE";
-            this.buttonPE.Size = new System.Drawing.Size(72, 23);
+            this.buttonPE.Size = new System.Drawing.Size(54, 19);
             this.buttonPE.TabIndex = 2;
             this.buttonPE.Text = "Refresh";
             this.buttonPE.UseSelectable = true;
@@ -905,10 +891,9 @@
             // 
             this.metroLabel37.AutoSize = true;
             this.metroLabel37.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel37.Location = new System.Drawing.Point(4, 663);
-            this.metroLabel37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel37.Location = new System.Drawing.Point(3, 539);
             this.metroLabel37.Name = "metroLabel37";
-            this.metroLabel37.Size = new System.Drawing.Size(269, 40);
+            this.metroLabel37.Size = new System.Drawing.Size(253, 38);
             this.metroLabel37.TabIndex = 0;
             this.metroLabel37.Text = "Enclosure Leakage Current (Open Earth,\r\nReversed):";
             this.metroLabel37.UseCustomBackColor = true;
@@ -917,10 +902,9 @@
             // 
             this.metroLabel33.AutoSize = true;
             this.metroLabel33.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel33.Location = new System.Drawing.Point(4, 593);
-            this.metroLabel33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel33.Location = new System.Drawing.Point(3, 482);
             this.metroLabel33.Name = "metroLabel33";
-            this.metroLabel33.Size = new System.Drawing.Size(284, 40);
+            this.metroLabel33.Size = new System.Drawing.Size(266, 38);
             this.metroLabel33.TabIndex = 0;
             this.metroLabel33.Text = "Enclosure Leakage Current (Open Neutral,\r\nReversed):";
             this.metroLabel33.UseCustomBackColor = true;
@@ -929,10 +913,9 @@
             // 
             this.metroLabel31.AutoSize = true;
             this.metroLabel31.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel31.Location = new System.Drawing.Point(4, 523);
-            this.metroLabel31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel31.Location = new System.Drawing.Point(3, 425);
             this.metroLabel31.Name = "metroLabel31";
-            this.metroLabel31.Size = new System.Drawing.Size(314, 40);
+            this.metroLabel31.Size = new System.Drawing.Size(292, 38);
             this.metroLabel31.TabIndex = 0;
             this.metroLabel31.Text = "Enclosure Leakage Current (Normal Condition,\r\nReversed):";
             this.metroLabel31.UseCustomBackColor = true;
@@ -941,10 +924,9 @@
             // 
             this.metroLabel28.AutoSize = true;
             this.metroLabel28.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel28.Location = new System.Drawing.Point(4, 476);
-            this.metroLabel28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel28.Location = new System.Drawing.Point(3, 387);
             this.metroLabel28.Name = "metroLabel28";
-            this.metroLabel28.Size = new System.Drawing.Size(274, 20);
+            this.metroLabel28.Size = new System.Drawing.Size(257, 19);
             this.metroLabel28.TabIndex = 0;
             this.metroLabel28.Text = "Enclosure Leakage Current (Open Earth):";
             this.metroLabel28.UseCustomBackColor = true;
@@ -953,10 +935,9 @@
             // 
             this.metroLabel27.AutoSize = true;
             this.metroLabel27.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel27.Location = new System.Drawing.Point(4, 430);
-            this.metroLabel27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel27.Location = new System.Drawing.Point(3, 349);
             this.metroLabel27.Name = "metroLabel27";
-            this.metroLabel27.Size = new System.Drawing.Size(289, 20);
+            this.metroLabel27.Size = new System.Drawing.Size(270, 19);
             this.metroLabel27.TabIndex = 0;
             this.metroLabel27.Text = "Enclosure Leakage Current (Open Neutral):";
             this.metroLabel27.UseCustomBackColor = true;
@@ -965,10 +946,9 @@
             // 
             this.metroLabel34.AutoSize = true;
             this.metroLabel34.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel34.Location = new System.Drawing.Point(4, 375);
-            this.metroLabel34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel34.Location = new System.Drawing.Point(3, 305);
             this.metroLabel34.Name = "metroLabel34";
-            this.metroLabel34.Size = new System.Drawing.Size(327, 20);
+            this.metroLabel34.Size = new System.Drawing.Size(304, 19);
             this.metroLabel34.TabIndex = 0;
             this.metroLabel34.Text = "Enclousure Leakage Current (Normal Condition):";
             this.metroLabel34.UseCustomBackColor = true;
@@ -977,10 +957,9 @@
             // 
             this.metroLabel25.AutoSize = true;
             this.metroLabel25.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel25.Location = new System.Drawing.Point(4, 329);
-            this.metroLabel25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel25.Location = new System.Drawing.Point(3, 267);
             this.metroLabel25.Name = "metroLabel25";
-            this.metroLabel25.Size = new System.Drawing.Size(260, 20);
+            this.metroLabel25.Size = new System.Drawing.Size(244, 19);
             this.metroLabel25.TabIndex = 0;
             this.metroLabel25.Text = "Earth Leakage Current (Open Neutral):";
             this.metroLabel25.UseCustomBackColor = true;
@@ -989,10 +968,9 @@
             // 
             this.metroLabel23.AutoSize = true;
             this.metroLabel23.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel23.Location = new System.Drawing.Point(4, 283);
-            this.metroLabel23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel23.Location = new System.Drawing.Point(3, 230);
             this.metroLabel23.Name = "metroLabel23";
-            this.metroLabel23.Size = new System.Drawing.Size(290, 20);
+            this.metroLabel23.Size = new System.Drawing.Size(270, 19);
             this.metroLabel23.TabIndex = 0;
             this.metroLabel23.Text = "Earth Leakage Current (Normal Condition):";
             this.metroLabel23.UseCustomBackColor = true;
@@ -1001,10 +979,9 @@
             // 
             this.metroLabel21.AutoSize = true;
             this.metroLabel21.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel21.Location = new System.Drawing.Point(4, 236);
-            this.metroLabel21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel21.Location = new System.Drawing.Point(3, 192);
             this.metroLabel21.Name = "metroLabel21";
-            this.metroLabel21.Size = new System.Drawing.Size(149, 20);
+            this.metroLabel21.Size = new System.Drawing.Size(139, 19);
             this.metroLabel21.TabIndex = 0;
             this.metroLabel21.Text = "Insulation Resistance:";
             this.metroLabel21.UseCustomBackColor = true;
@@ -1013,10 +990,9 @@
             // 
             this.metroLabel19.AutoSize = true;
             this.metroLabel19.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel19.Location = new System.Drawing.Point(4, 190);
-            this.metroLabel19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel19.Location = new System.Drawing.Point(3, 154);
             this.metroLabel19.Name = "metroLabel19";
-            this.metroLabel19.Size = new System.Drawing.Size(116, 20);
+            this.metroLabel19.Size = new System.Drawing.Size(109, 19);
             this.metroLabel19.TabIndex = 0;
             this.metroLabel19.Text = "Protective Earth:";
             this.metroLabel19.UseCustomBackColor = true;
@@ -1025,10 +1001,9 @@
             // 
             this.metroLabel17.AutoSize = true;
             this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel17.Location = new System.Drawing.Point(4, 143);
-            this.metroLabel17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel17.Location = new System.Drawing.Point(3, 116);
             this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(204, 20);
+            this.metroLabel17.Size = new System.Drawing.Size(191, 19);
             this.metroLabel17.TabIndex = 0;
             this.metroLabel17.Text = "Mains Voltage – Live to Earth:";
             this.metroLabel17.UseCustomBackColor = true;
@@ -1037,10 +1012,9 @@
             // 
             this.metroLabel15.AutoSize = true;
             this.metroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel15.Location = new System.Drawing.Point(4, 96);
-            this.metroLabel15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel15.Location = new System.Drawing.Point(3, 78);
             this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(227, 20);
+            this.metroLabel15.Size = new System.Drawing.Size(212, 19);
             this.metroLabel15.TabIndex = 0;
             this.metroLabel15.Text = "Mains Voltage – Neutral to Earth:";
             this.metroLabel15.UseCustomBackColor = true;
@@ -1049,10 +1023,9 @@
             // 
             this.metroLabel12.AutoSize = true;
             this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel12.Location = new System.Drawing.Point(4, 49);
-            this.metroLabel12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel12.Location = new System.Drawing.Point(3, 40);
             this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(219, 20);
+            this.metroLabel12.Size = new System.Drawing.Size(204, 19);
             this.metroLabel12.TabIndex = 0;
             this.metroLabel12.Text = "Mains Voltage – Live to Neutral:";
             this.metroLabel12.UseCustomBackColor = true;
@@ -1061,10 +1034,9 @@
             // 
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel11.Location = new System.Drawing.Point(4, 2);
-            this.metroLabel11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel11.Location = new System.Drawing.Point(3, 2);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(101, 20);
+            this.metroLabel11.Size = new System.Drawing.Size(97, 19);
             this.metroLabel11.TabIndex = 0;
             this.metroLabel11.Text = "Ansur Version:";
             this.metroLabel11.UseCustomBackColor = true;
@@ -1074,10 +1046,9 @@
             this.labelAnsurVersion.AutoSize = true;
             this.labelAnsurVersion.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelAnsurVersion.ForeColor = System.Drawing.Color.Green;
-            this.labelAnsurVersion.Location = new System.Drawing.Point(89, 25);
-            this.labelAnsurVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelAnsurVersion.Location = new System.Drawing.Point(67, 20);
             this.labelAnsurVersion.Name = "labelAnsurVersion";
-            this.labelAnsurVersion.Size = new System.Drawing.Size(13, 20);
+            this.labelAnsurVersion.Size = new System.Drawing.Size(13, 19);
             this.labelAnsurVersion.TabIndex = 1;
             this.labelAnsurVersion.Text = " ";
             this.labelAnsurVersion.UseCustomBackColor = true;
@@ -1088,10 +1059,9 @@
             this.labelM1.AutoSize = true;
             this.labelM1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelM1.ForeColor = System.Drawing.Color.Green;
-            this.labelM1.Location = new System.Drawing.Point(89, 71);
-            this.labelM1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelM1.Location = new System.Drawing.Point(67, 58);
             this.labelM1.Name = "labelM1";
-            this.labelM1.Size = new System.Drawing.Size(13, 20);
+            this.labelM1.Size = new System.Drawing.Size(13, 19);
             this.labelM1.TabIndex = 1;
             this.labelM1.Text = " ";
             this.labelM1.UseCustomBackColor = true;
@@ -1102,10 +1072,9 @@
             this.labelM2.AutoSize = true;
             this.labelM2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelM2.ForeColor = System.Drawing.Color.Green;
-            this.labelM2.Location = new System.Drawing.Point(89, 118);
-            this.labelM2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelM2.Location = new System.Drawing.Point(67, 96);
             this.labelM2.Name = "labelM2";
-            this.labelM2.Size = new System.Drawing.Size(13, 20);
+            this.labelM2.Size = new System.Drawing.Size(13, 19);
             this.labelM2.TabIndex = 1;
             this.labelM2.Text = " ";
             this.labelM2.UseCustomBackColor = true;
@@ -1116,10 +1085,9 @@
             this.labelM3.AutoSize = true;
             this.labelM3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelM3.ForeColor = System.Drawing.Color.Green;
-            this.labelM3.Location = new System.Drawing.Point(89, 165);
-            this.labelM3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelM3.Location = new System.Drawing.Point(67, 134);
             this.labelM3.Name = "labelM3";
-            this.labelM3.Size = new System.Drawing.Size(13, 20);
+            this.labelM3.Size = new System.Drawing.Size(13, 19);
             this.labelM3.TabIndex = 1;
             this.labelM3.Text = " ";
             this.labelM3.UseCustomBackColor = true;
@@ -1130,10 +1098,9 @@
             this.labelPE.AutoSize = true;
             this.labelPE.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelPE.ForeColor = System.Drawing.Color.Green;
-            this.labelPE.Location = new System.Drawing.Point(89, 212);
-            this.labelPE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPE.Location = new System.Drawing.Point(67, 172);
             this.labelPE.Name = "labelPE";
-            this.labelPE.Size = new System.Drawing.Size(13, 20);
+            this.labelPE.Size = new System.Drawing.Size(13, 19);
             this.labelPE.TabIndex = 1;
             this.labelPE.Text = " ";
             this.labelPE.UseCustomBackColor = true;
@@ -1144,10 +1111,9 @@
             this.labelEnL6.AutoSize = true;
             this.labelEnL6.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelEnL6.ForeColor = System.Drawing.Color.Green;
-            this.labelEnL6.Location = new System.Drawing.Point(89, 709);
-            this.labelEnL6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEnL6.Location = new System.Drawing.Point(67, 576);
             this.labelEnL6.Name = "labelEnL6";
-            this.labelEnL6.Size = new System.Drawing.Size(13, 20);
+            this.labelEnL6.Size = new System.Drawing.Size(13, 19);
             this.labelEnL6.TabIndex = 1;
             this.labelEnL6.Text = " ";
             this.labelEnL6.UseCustomBackColor = true;
@@ -1158,10 +1124,9 @@
             this.labelEnL5.AutoSize = true;
             this.labelEnL5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelEnL5.ForeColor = System.Drawing.Color.Green;
-            this.labelEnL5.Location = new System.Drawing.Point(89, 639);
-            this.labelEnL5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEnL5.Location = new System.Drawing.Point(67, 519);
             this.labelEnL5.Name = "labelEnL5";
-            this.labelEnL5.Size = new System.Drawing.Size(13, 20);
+            this.labelEnL5.Size = new System.Drawing.Size(13, 19);
             this.labelEnL5.TabIndex = 1;
             this.labelEnL5.Text = " ";
             this.labelEnL5.UseCustomBackColor = true;
@@ -1172,10 +1137,9 @@
             this.labelEnL4.AutoSize = true;
             this.labelEnL4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelEnL4.ForeColor = System.Drawing.Color.Green;
-            this.labelEnL4.Location = new System.Drawing.Point(89, 569);
-            this.labelEnL4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEnL4.Location = new System.Drawing.Point(67, 462);
             this.labelEnL4.Name = "labelEnL4";
-            this.labelEnL4.Size = new System.Drawing.Size(13, 20);
+            this.labelEnL4.Size = new System.Drawing.Size(13, 19);
             this.labelEnL4.TabIndex = 1;
             this.labelEnL4.Text = " ";
             this.labelEnL4.UseCustomBackColor = true;
@@ -1186,10 +1150,9 @@
             this.labelEnL3.AutoSize = true;
             this.labelEnL3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelEnL3.ForeColor = System.Drawing.Color.Green;
-            this.labelEnL3.Location = new System.Drawing.Point(89, 498);
-            this.labelEnL3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEnL3.Location = new System.Drawing.Point(67, 405);
             this.labelEnL3.Name = "labelEnL3";
-            this.labelEnL3.Size = new System.Drawing.Size(13, 20);
+            this.labelEnL3.Size = new System.Drawing.Size(13, 19);
             this.labelEnL3.TabIndex = 1;
             this.labelEnL3.Text = " ";
             this.labelEnL3.UseCustomBackColor = true;
@@ -1200,10 +1163,9 @@
             this.labelEnL2.AutoSize = true;
             this.labelEnL2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelEnL2.ForeColor = System.Drawing.Color.Green;
-            this.labelEnL2.Location = new System.Drawing.Point(89, 452);
-            this.labelEnL2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEnL2.Location = new System.Drawing.Point(67, 367);
             this.labelEnL2.Name = "labelEnL2";
-            this.labelEnL2.Size = new System.Drawing.Size(13, 20);
+            this.labelEnL2.Size = new System.Drawing.Size(13, 19);
             this.labelEnL2.TabIndex = 1;
             this.labelEnL2.Text = " ";
             this.labelEnL2.UseCustomBackColor = true;
@@ -1214,10 +1176,9 @@
             this.labelEnL1.AutoSize = true;
             this.labelEnL1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelEnL1.ForeColor = System.Drawing.Color.Green;
-            this.labelEnL1.Location = new System.Drawing.Point(89, 398);
-            this.labelEnL1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEnL1.Location = new System.Drawing.Point(67, 323);
             this.labelEnL1.Name = "labelEnL1";
-            this.labelEnL1.Size = new System.Drawing.Size(13, 20);
+            this.labelEnL1.Size = new System.Drawing.Size(13, 19);
             this.labelEnL1.TabIndex = 1;
             this.labelEnL1.Text = " ";
             this.labelEnL1.UseCustomBackColor = true;
@@ -1228,10 +1189,9 @@
             this.labelEL2.AutoSize = true;
             this.labelEL2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelEL2.ForeColor = System.Drawing.Color.Green;
-            this.labelEL2.Location = new System.Drawing.Point(89, 351);
-            this.labelEL2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEL2.Location = new System.Drawing.Point(67, 285);
             this.labelEL2.Name = "labelEL2";
-            this.labelEL2.Size = new System.Drawing.Size(13, 20);
+            this.labelEL2.Size = new System.Drawing.Size(13, 19);
             this.labelEL2.TabIndex = 1;
             this.labelEL2.Text = " ";
             this.labelEL2.UseCustomBackColor = true;
@@ -1242,10 +1202,9 @@
             this.labelEL1.AutoSize = true;
             this.labelEL1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelEL1.ForeColor = System.Drawing.Color.Green;
-            this.labelEL1.Location = new System.Drawing.Point(89, 305);
-            this.labelEL1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEL1.Location = new System.Drawing.Point(67, 248);
             this.labelEL1.Name = "labelEL1";
-            this.labelEL1.Size = new System.Drawing.Size(13, 20);
+            this.labelEL1.Size = new System.Drawing.Size(13, 19);
             this.labelEL1.TabIndex = 1;
             this.labelEL1.Text = " ";
             this.labelEL1.UseCustomBackColor = true;
@@ -1256,10 +1215,9 @@
             this.labelIR.AutoSize = true;
             this.labelIR.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.labelIR.ForeColor = System.Drawing.Color.Green;
-            this.labelIR.Location = new System.Drawing.Point(89, 258);
-            this.labelIR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelIR.Location = new System.Drawing.Point(67, 210);
             this.labelIR.Name = "labelIR";
-            this.labelIR.Size = new System.Drawing.Size(13, 20);
+            this.labelIR.Size = new System.Drawing.Size(13, 19);
             this.labelIR.TabIndex = 1;
             this.labelIR.Text = " ";
             this.labelIR.UseCustomBackColor = true;
@@ -1269,10 +1227,9 @@
             // 
             this.ecgClass2.ActiveControl = null;
             this.ecgClass2.Enabled = false;
-            this.ecgClass2.Location = new System.Drawing.Point(381, 330);
-            this.ecgClass2.Margin = new System.Windows.Forms.Padding(4);
+            this.ecgClass2.Location = new System.Drawing.Point(286, 268);
             this.ecgClass2.Name = "ecgClass2";
-            this.ecgClass2.Size = new System.Drawing.Size(348, 170);
+            this.ecgClass2.Size = new System.Drawing.Size(261, 138);
             this.ecgClass2.Style = MetroFramework.MetroColorStyle.Green;
             this.ecgClass2.TabIndex = 7;
             this.ecgClass2.Text = "ECG - 3551 Class 2";
@@ -1288,10 +1245,9 @@
             // 
             this.ecgClass1.ActiveControl = null;
             this.ecgClass1.Enabled = false;
-            this.ecgClass1.Location = new System.Drawing.Point(24, 330);
-            this.ecgClass1.Margin = new System.Windows.Forms.Padding(4);
+            this.ecgClass1.Location = new System.Drawing.Point(18, 268);
             this.ecgClass1.Name = "ecgClass1";
-            this.ecgClass1.Size = new System.Drawing.Size(348, 170);
+            this.ecgClass1.Size = new System.Drawing.Size(261, 138);
             this.ecgClass1.Style = MetroFramework.MetroColorStyle.Green;
             this.ecgClass1.TabIndex = 6;
             this.ecgClass1.Text = "ECG - 3551 Class 1";
@@ -1309,10 +1265,9 @@
             this.metroLabel8.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel8.Location = new System.Drawing.Point(24, 294);
-            this.metroLabel8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel8.Location = new System.Drawing.Point(18, 239);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(91, 25);
+            this.metroLabel8.Size = new System.Drawing.Size(89, 25);
             this.metroLabel8.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel8.TabIndex = 5;
             this.metroLabel8.Text = "ECG Test:";
@@ -1325,10 +1280,9 @@
             this.metroLabel7.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel7.Location = new System.Drawing.Point(24, 43);
-            this.metroLabel7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel7.Location = new System.Drawing.Point(18, 35);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(138, 25);
+            this.metroLabel7.Size = new System.Drawing.Size(133, 25);
             this.metroLabel7.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel7.TabIndex = 4;
             this.metroLabel7.Text = "Standard Test:";
@@ -1338,16 +1292,15 @@
             // class2testBtn
             // 
             this.class2testBtn.ActiveControl = null;
-            this.class2testBtn.Location = new System.Drawing.Point(380, 78);
-            this.class2testBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.class2testBtn.Location = new System.Drawing.Point(285, 63);
             this.class2testBtn.Name = "class2testBtn";
-            this.class2testBtn.Size = new System.Drawing.Size(348, 170);
+            this.class2testBtn.Size = new System.Drawing.Size(261, 138);
             this.class2testBtn.Style = MetroFramework.MetroColorStyle.Blue;
             this.class2testBtn.TabIndex = 3;
             this.class2testBtn.Text = "ASNZ Standard 3551 - Class 2";
             this.class2testBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.class2testBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.class2testBtn.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.power_cord2;
+            this.class2testBtn.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.powercord2;
             this.class2testBtn.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.class2testBtn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.class2testBtn.UseSelectable = true;
@@ -1358,16 +1311,15 @@
             // class1testBtn
             // 
             this.class1testBtn.ActiveControl = null;
-            this.class1testBtn.Location = new System.Drawing.Point(24, 78);
-            this.class1testBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.class1testBtn.Location = new System.Drawing.Point(18, 63);
             this.class1testBtn.Name = "class1testBtn";
-            this.class1testBtn.Size = new System.Drawing.Size(348, 170);
+            this.class1testBtn.Size = new System.Drawing.Size(261, 138);
             this.class1testBtn.Style = MetroFramework.MetroColorStyle.Blue;
             this.class1testBtn.TabIndex = 1;
             this.class1testBtn.Text = "ASNZ Standard 3551 - Class 1";
             this.class1testBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.class1testBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.class1testBtn.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.power_cord2;
+            this.class1testBtn.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.powercord2;
             this.class1testBtn.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.class1testBtn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.class1testBtn.UseSelectable = true;
@@ -1380,11 +1332,10 @@
             this.tabMenu.Controls.Add(this.initialTab);
             this.tabMenu.Controls.Add(this.estTab);
             this.tabMenu.Controls.Add(this.ptTab);
-            this.tabMenu.Location = new System.Drawing.Point(32, 139);
-            this.tabMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.tabMenu.Location = new System.Drawing.Point(24, 113);
             this.tabMenu.Name = "tabMenu";
             this.tabMenu.SelectedIndex = 2;
-            this.tabMenu.Size = new System.Drawing.Size(1404, 801);
+            this.tabMenu.Size = new System.Drawing.Size(1053, 651);
             this.tabMenu.Style = MetroFramework.MetroColorStyle.Blue;
             this.tabMenu.TabIndex = 2;
             this.tabMenu.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1400,16 +1351,15 @@
             this.initialTab.Controls.Add(this.electricalSafetyTile);
             this.initialTab.HorizontalScrollbarBarColor = true;
             this.initialTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.initialTab.HorizontalScrollbarSize = 12;
+            this.initialTab.HorizontalScrollbarSize = 10;
             this.initialTab.Location = new System.Drawing.Point(4, 38);
-            this.initialTab.Margin = new System.Windows.Forms.Padding(4);
             this.initialTab.Name = "initialTab";
-            this.initialTab.Size = new System.Drawing.Size(1396, 759);
+            this.initialTab.Size = new System.Drawing.Size(1045, 609);
             this.initialTab.TabIndex = 2;
             this.initialTab.Text = "Main Menu";
             this.initialTab.VerticalScrollbarBarColor = true;
             this.initialTab.VerticalScrollbarHighlightOnWheel = false;
-            this.initialTab.VerticalScrollbarSize = 13;
+            this.initialTab.VerticalScrollbarSize = 10;
             // 
             // metroLabel13
             // 
@@ -1417,10 +1367,9 @@
             this.metroLabel13.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel13.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel13.Location = new System.Drawing.Point(535, 175);
-            this.metroLabel13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel13.Location = new System.Drawing.Point(401, 142);
             this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(241, 25);
+            this.metroLabel13.Size = new System.Drawing.Size(232, 25);
             this.metroLabel13.Style = MetroFramework.MetroColorStyle.White;
             this.metroLabel13.TabIndex = 3;
             this.metroLabel13.Text = "Select from the following:";
@@ -1429,10 +1378,9 @@
             // bothTile
             // 
             this.bothTile.ActiveControl = null;
-            this.bothTile.Location = new System.Drawing.Point(953, 249);
-            this.bothTile.Margin = new System.Windows.Forms.Padding(4);
+            this.bothTile.Location = new System.Drawing.Point(715, 202);
             this.bothTile.Name = "bothTile";
-            this.bothTile.Size = new System.Drawing.Size(376, 281);
+            this.bothTile.Size = new System.Drawing.Size(282, 228);
             this.bothTile.Style = MetroFramework.MetroColorStyle.Teal;
             this.bothTile.TabIndex = 2;
             this.bothTile.Text = "Electrical Safety Test and\r\nPerformance Test";
@@ -1445,10 +1393,9 @@
             // performanceTestTile
             // 
             this.performanceTestTile.ActiveControl = null;
-            this.performanceTestTile.Location = new System.Drawing.Point(504, 249);
-            this.performanceTestTile.Margin = new System.Windows.Forms.Padding(4);
+            this.performanceTestTile.Location = new System.Drawing.Point(378, 202);
             this.performanceTestTile.Name = "performanceTestTile";
-            this.performanceTestTile.Size = new System.Drawing.Size(376, 281);
+            this.performanceTestTile.Size = new System.Drawing.Size(282, 228);
             this.performanceTestTile.TabIndex = 2;
             this.performanceTestTile.Text = "Performance Test";
             this.performanceTestTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1460,10 +1407,9 @@
             // electricalSafetyTile
             // 
             this.electricalSafetyTile.ActiveControl = null;
-            this.electricalSafetyTile.Location = new System.Drawing.Point(71, 249);
-            this.electricalSafetyTile.Margin = new System.Windows.Forms.Padding(4);
+            this.electricalSafetyTile.Location = new System.Drawing.Point(53, 202);
             this.electricalSafetyTile.Name = "electricalSafetyTile";
-            this.electricalSafetyTile.Size = new System.Drawing.Size(376, 281);
+            this.electricalSafetyTile.Size = new System.Drawing.Size(282, 228);
             this.electricalSafetyTile.Style = MetroFramework.MetroColorStyle.Green;
             this.electricalSafetyTile.TabIndex = 2;
             this.electricalSafetyTile.Text = "Electrical Safety Test";
@@ -1476,10 +1422,9 @@
             // newproductBtn
             // 
             this.newproductBtn.ActiveControl = null;
-            this.newproductBtn.Location = new System.Drawing.Point(1271, 31);
-            this.newproductBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.newproductBtn.Location = new System.Drawing.Point(953, 25);
             this.newproductBtn.Name = "newproductBtn";
-            this.newproductBtn.Size = new System.Drawing.Size(160, 148);
+            this.newproductBtn.Size = new System.Drawing.Size(120, 120);
             this.newproductBtn.Style = MetroFramework.MetroColorStyle.Teal;
             this.newproductBtn.TabIndex = 4;
             this.newproductBtn.Text = "Next Equipment";
@@ -1497,10 +1442,9 @@
             this.statusText.AccessibleName = "";
             this.statusText.AutoSize = true;
             this.statusText.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.statusText.Location = new System.Drawing.Point(32, 944);
-            this.statusText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.statusText.Location = new System.Drawing.Point(24, 767);
             this.statusText.Name = "statusText";
-            this.statusText.Size = new System.Drawing.Size(120, 25);
+            this.statusText.Size = new System.Drawing.Size(115, 25);
             this.statusText.Style = MetroFramework.MetroColorStyle.Blue;
             this.statusText.TabIndex = 7;
             this.statusText.Text = "Connecting....";
@@ -1508,10 +1452,9 @@
             // 
             // statusBar
             // 
-            this.statusBar.Location = new System.Drawing.Point(1053, 965);
-            this.statusBar.Margin = new System.Windows.Forms.Padding(4);
+            this.statusBar.Location = new System.Drawing.Point(790, 784);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(377, 28);
+            this.statusBar.Size = new System.Drawing.Size(283, 23);
             this.statusBar.Step = 30;
             this.statusBar.Style = MetroFramework.MetroColorStyle.Blue;
             this.statusBar.TabIndex = 5;
@@ -1521,58 +1464,39 @@
             // 
             this.saveFolder.AutoSize = true;
             this.saveFolder.BackColor = System.Drawing.Color.Transparent;
-            this.saveFolder.Location = new System.Drawing.Point(37, 980);
-            this.saveFolder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.saveFolder.Location = new System.Drawing.Point(28, 796);
             this.saveFolder.Name = "saveFolder";
-            this.saveFolder.Size = new System.Drawing.Size(13, 20);
+            this.saveFolder.Size = new System.Drawing.Size(13, 19);
             this.saveFolder.TabIndex = 8;
             this.saveFolder.Text = " ";
             this.saveFolder.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // philipsMRx_btn
+            // comweldoxygenFM
             // 
-            this.philipsMRx_btn.ActiveControl = null;
-            this.philipsMRx_btn.Location = new System.Drawing.Point(551, 252);
-            this.philipsMRx_btn.Margin = new System.Windows.Forms.Padding(4);
-            this.philipsMRx_btn.Name = "philipsMRx_btn";
-            this.philipsMRx_btn.Size = new System.Drawing.Size(253, 178);
-            this.philipsMRx_btn.Style = MetroFramework.MetroColorStyle.Teal;
-            this.philipsMRx_btn.TabIndex = 11;
-            this.philipsMRx_btn.Text = "Philips MRx Defib";
-            this.philipsMRx_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.philipsMRx_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.philipsMRx_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.philipsMRx_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.philipsMRx_btn.UseSelectable = true;
-            this.philipsMRx_btn.Click += new System.EventHandler(this.philipsMRx_btn_Click);
-            // 
-            // accusonicAP170_btn
-            // 
-            this.accusonicAP170_btn.ActiveControl = null;
-            this.accusonicAP170_btn.Location = new System.Drawing.Point(813, 252);
-            this.accusonicAP170_btn.Margin = new System.Windows.Forms.Padding(4);
-            this.accusonicAP170_btn.Name = "accusonicAP170_btn";
-            this.accusonicAP170_btn.Size = new System.Drawing.Size(253, 178);
-            this.accusonicAP170_btn.Style = MetroFramework.MetroColorStyle.Teal;
-            this.accusonicAP170_btn.TabIndex = 11;
-            this.accusonicAP170_btn.Text = "Accusonic AP170";
-            this.accusonicAP170_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.accusonicAP170_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.accusonicAP170_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.accusonicAP170_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.accusonicAP170_btn.UseSelectable = true;
-            this.accusonicAP170_btn.Click += new System.EventHandler(this.accusonicAP170_btn_Click);
+            this.comweldoxygenFM.ActiveControl = null;
+            this.comweldoxygenFM.Location = new System.Drawing.Point(806, 205);
+            this.comweldoxygenFM.Name = "comweldoxygenFM";
+            this.comweldoxygenFM.Size = new System.Drawing.Size(190, 145);
+            this.comweldoxygenFM.Style = MetroFramework.MetroColorStyle.Teal;
+            this.comweldoxygenFM.TabIndex = 11;
+            this.comweldoxygenFM.Text = "Comwled Oxygen \r\nFlowmeter";
+            this.comweldoxygenFM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.comweldoxygenFM.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.comweldoxygenFM.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.comweldoxygenFM.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.comweldoxygenFM.UseSelectable = true;
+            this.comweldoxygenFM.Click += new System.EventHandler(this.comweldoxygenFM_Click);
             // 
             // Form1
             // 
             this.ApplyImageInvert = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
             this.BackImagePadding = new System.Windows.Forms.Padding(10, 10, 0, 0);
             this.BackLocation = MetroFramework.Forms.BackLocation.TopRight;
-            this.ClientSize = new System.Drawing.Size(1467, 1013);
+            this.ClientSize = new System.Drawing.Size(1100, 823);
             this.Controls.Add(this.firstPrompt);
             this.Controls.Add(this.statusText);
             this.Controls.Add(this.statusBar);
@@ -1581,11 +1505,9 @@
             this.Controls.Add(this.tabMenu);
             this.Controls.Add(this.saveFolder);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Resizable = false;
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1695,6 +1617,7 @@
         private MetroFramework.Controls.MetroTile electricalSafetyTile;
         private MetroFramework.Controls.MetroTile philipsMRx_btn;
         private MetroFramework.Controls.MetroTile accusonicAP170_btn;
+        private MetroFramework.Controls.MetroTile comweldoxygenFM;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace NovaBiomedicalSoftware.Performance_Test
 {
-    partial class GenericSphygmomanometer
+    partial class ComweldOxygenFlowmeter
     {
         /// <summary>
         /// Required designer variable.
@@ -30,8 +30,6 @@
         {
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.close1_btn = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.nextBtn = new MetroFramework.Controls.MetroButton();
@@ -70,6 +68,10 @@
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.result_8 = new MetroFramework.Controls.MetroComboBox();
+            this.result_9 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
@@ -81,18 +83,18 @@
             this.safetyCheck.Controls.Add(this.commentsTab);
             this.safetyCheck.Location = new System.Drawing.Point(24, 63);
             this.safetyCheck.Name = "safetyCheck";
-            this.safetyCheck.SelectedIndex = 0;
+            this.safetyCheck.SelectedIndex = 1;
             this.safetyCheck.Size = new System.Drawing.Size(609, 580);
-            this.safetyCheck.TabIndex = 2;
+            this.safetyCheck.TabIndex = 3;
             this.safetyCheck.UseSelectable = true;
             // 
             // performanceVerification
             // 
-            this.performanceVerification.Controls.Add(this.metroLabel7);
-            this.performanceVerification.Controls.Add(this.metroLabel4);
+            this.performanceVerification.Controls.Add(this.result_9);
             this.performanceVerification.Controls.Add(this.close1_btn);
             this.performanceVerification.Controls.Add(this.metroLabel1);
             this.performanceVerification.Controls.Add(this.nextBtn);
+            this.performanceVerification.Controls.Add(this.result_8);
             this.performanceVerification.Controls.Add(this.result_7);
             this.performanceVerification.Controls.Add(this.result_6);
             this.performanceVerification.Controls.Add(this.result_5);
@@ -100,6 +102,8 @@
             this.performanceVerification.Controls.Add(this.result_3);
             this.performanceVerification.Controls.Add(this.result_2);
             this.performanceVerification.Controls.Add(this.result_1);
+            this.performanceVerification.Controls.Add(this.metroLabel7);
+            this.performanceVerification.Controls.Add(this.metroLabel4);
             this.performanceVerification.Controls.Add(this.metroLabel8);
             this.performanceVerification.Controls.Add(this.visual5);
             this.performanceVerification.Controls.Add(this.visual4);
@@ -121,29 +125,9 @@
             this.performanceVerification.VerticalScrollbarHighlightOnWheel = false;
             this.performanceVerification.VerticalScrollbarSize = 10;
             // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel7.Location = new System.Drawing.Point(-5, 256);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(74, 19);
-            this.metroLabel7.TabIndex = 38;
-            this.metroLabel7.Text = "Leak Test:";
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel4.Location = new System.Drawing.Point(-4, 131);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(107, 19);
-            this.metroLabel4.TabIndex = 38;
-            this.metroLabel4.Text = "Sphygmo Test:";
-            // 
             // close1_btn
             // 
-            this.close1_btn.Location = new System.Drawing.Point(0, 497);
+            this.close1_btn.Location = new System.Drawing.Point(3, 494);
             this.close1_btn.Name = "close1_btn";
             this.close1_btn.Size = new System.Drawing.Size(121, 41);
             this.close1_btn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -159,13 +143,13 @@
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.Location = new System.Drawing.Point(-4, 14);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(97, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(180, 19);
             this.metroLabel1.TabIndex = 36;
-            this.metroLabel1.Text = "Visual Check:";
+            this.metroLabel1.Text = "Performance Verification:";
             // 
             // nextBtn
             // 
-            this.nextBtn.Location = new System.Drawing.Point(484, 494);
+            this.nextBtn.Location = new System.Drawing.Point(477, 494);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(121, 41);
             this.nextBtn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -184,7 +168,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_7.Location = new System.Drawing.Point(478, 278);
+            this.result_7.Location = new System.Drawing.Point(477, 217);
             this.result_7.Name = "result_7";
             this.result_7.Size = new System.Drawing.Size(121, 25);
             this.result_7.TabIndex = 15;
@@ -199,7 +183,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_6.Location = new System.Drawing.Point(478, 217);
+            this.result_6.Location = new System.Drawing.Point(477, 186);
             this.result_6.Name = "result_6";
             this.result_6.Size = new System.Drawing.Size(121, 25);
             this.result_6.TabIndex = 15;
@@ -214,7 +198,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_5.Location = new System.Drawing.Point(478, 186);
+            this.result_5.Location = new System.Drawing.Point(477, 155);
             this.result_5.Name = "result_5";
             this.result_5.Size = new System.Drawing.Size(121, 25);
             this.result_5.TabIndex = 14;
@@ -229,7 +213,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_4.Location = new System.Drawing.Point(478, 155);
+            this.result_4.Location = new System.Drawing.Point(477, 124);
             this.result_4.Name = "result_4";
             this.result_4.Size = new System.Drawing.Size(121, 25);
             this.result_4.TabIndex = 13;
@@ -283,65 +267,65 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(-4, 284);
+            this.metroLabel8.Location = new System.Drawing.Point(-5, 223);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(301, 19);
+            this.metroLabel8.Size = new System.Drawing.Size(184, 19);
             this.metroLabel8.TabIndex = 7;
-            this.metroLabel8.Text = "Leak Test no Significant Drop in Press @200mmhg";
+            this.metroLabel8.Text = "O2 Nipple intact, No Damage";
             // 
             // visual5
             // 
             this.visual5.AutoSize = true;
-            this.visual5.Location = new System.Drawing.Point(-3, 223);
+            this.visual5.Location = new System.Drawing.Point(-4, 192);
             this.visual5.Name = "visual5";
-            this.visual5.Size = new System.Drawing.Size(262, 19);
+            this.visual5.Size = new System.Drawing.Size(96, 19);
             this.visual5.TabIndex = 7;
-            this.visual5.Text = "Sphygmo with zero press. Reads 200mmhg";
+            this.visual5.Text = "Accuracy ± 5%";
             // 
             // visual4
             // 
             this.visual4.AutoSize = true;
-            this.visual4.Location = new System.Drawing.Point(-3, 192);
+            this.visual4.Location = new System.Drawing.Point(-4, 161);
             this.visual4.Name = "visual4";
-            this.visual4.Size = new System.Drawing.Size(260, 19);
+            this.visual4.Size = new System.Drawing.Size(300, 19);
             this.visual4.TabIndex = 6;
-            this.visual4.Text = "Sphygmo with zero press. Reads 100mmhg";
+            this.visual4.Text = "No leaks, Occlude O2 Nipple, Flow Drops to Zero";
             // 
             // visual3
             // 
             this.visual3.AutoSize = true;
-            this.visual3.Location = new System.Drawing.Point(-3, 161);
+            this.visual3.Location = new System.Drawing.Point(-3, 130);
             this.visual3.Name = "visual3";
-            this.visual3.Size = new System.Drawing.Size(248, 19);
+            this.visual3.Size = new System.Drawing.Size(185, 19);
             this.visual3.TabIndex = 5;
-            this.visual3.Text = "Sphygmo with zero press. Reads 0mmhg";
+            this.visual3.Text = "Ball moving freely, not sticking";
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.Location = new System.Drawing.Point(-5, 99);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(165, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(112, 19);
             this.metroLabel6.TabIndex = 3;
-            this.metroLabel6.Text = "Check overpressure cut-off";
+            this.metroLabel6.Text = "Quantity Checked";
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.Location = new System.Drawing.Point(-5, 69);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(96, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(107, 19);
             this.metroLabel5.TabIndex = 3;
-            this.metroLabel5.Text = "Velcro integrity";
+            this.metroLabel5.Text = "Functional Check";
             // 
             // visual1
             // 
             this.visual1.AutoSize = true;
             this.visual1.Location = new System.Drawing.Point(-4, 38);
             this.visual1.Name = "visual1";
-            this.visual1.Size = new System.Drawing.Size(179, 19);
+            this.visual1.Size = new System.Drawing.Size(104, 19);
             this.visual1.TabIndex = 3;
-            this.visual1.Text = "No damage to cuff or tubing";
+            this.visual1.Text = "Visual inspection";
             // 
             // commentsTab
             // 
@@ -383,9 +367,9 @@
             // 
             // 
             this.itemsBox.CustomButton.Image = null;
-            this.itemsBox.CustomButton.Location = new System.Drawing.Point(7, 2);
+            this.itemsBox.CustomButton.Location = new System.Drawing.Point(9, 2);
             this.itemsBox.CustomButton.Name = "";
-            this.itemsBox.CustomButton.Size = new System.Drawing.Size(146, 158);
+            this.itemsBox.CustomButton.Size = new System.Drawing.Size(195, 195);
             this.itemsBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.itemsBox.CustomButton.TabIndex = 1;
             this.itemsBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -574,7 +558,7 @@
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(480, 494);
+            this.submitBtn.Location = new System.Drawing.Point(477, 494);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(121, 41);
             this.submitBtn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -586,7 +570,7 @@
             // 
             // close3_btn
             // 
-            this.close3_btn.Location = new System.Drawing.Point(0, 494);
+            this.close3_btn.Location = new System.Drawing.Point(3, 494);
             this.close3_btn.Name = "close3_btn";
             this.close3_btn.Size = new System.Drawing.Size(121, 41);
             this.close3_btn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -602,9 +586,9 @@
             // 
             // 
             this.commentBox.CustomButton.Image = null;
-            this.commentBox.CustomButton.Location = new System.Drawing.Point(287, 2);
+            this.commentBox.CustomButton.Location = new System.Drawing.Point(383, 2);
             this.commentBox.CustomButton.Name = "";
-            this.commentBox.CustomButton.Size = new System.Drawing.Size(161, 175);
+            this.commentBox.CustomButton.Size = new System.Drawing.Size(215, 215);
             this.commentBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.commentBox.CustomButton.TabIndex = 1;
             this.commentBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -637,14 +621,60 @@
             this.metroLabel3.TabIndex = 39;
             this.metroLabel3.Text = "Comments:";
             // 
-            // GenericSphygmomanometer
+            // result_8
+            // 
+            this.result_8.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.result_8.FormattingEnabled = true;
+            this.result_8.ItemHeight = 19;
+            this.result_8.Items.AddRange(new object[] {
+            "YES",
+            "N/A"});
+            this.result_8.Location = new System.Drawing.Point(477, 248);
+            this.result_8.Name = "result_8";
+            this.result_8.Size = new System.Drawing.Size(121, 25);
+            this.result_8.TabIndex = 15;
+            this.result_8.UseSelectable = true;
+            // 
+            // result_9
+            // 
+            this.result_9.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.result_9.FormattingEnabled = true;
+            this.result_9.ItemHeight = 19;
+            this.result_9.Items.AddRange(new object[] {
+            "YES",
+            "N/A"});
+            this.result_9.Location = new System.Drawing.Point(477, 279);
+            this.result_9.Name = "result_9";
+            this.result_9.Size = new System.Drawing.Size(121, 25);
+            this.result_9.TabIndex = 38;
+            this.result_9.UseSelectable = true;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(-5, 254);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(148, 19);
+            this.metroLabel4.TabIndex = 7;
+            this.metroLabel4.Text = "Replaced Outlet O Ring";
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(-5, 285);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(91, 19);
+            this.metroLabel7.TabIndex = 7;
+            this.metroLabel7.Text = "Replaced Seal";
+            // 
+            // ComweldOxygenFlowmeter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 666);
             this.Controls.Add(this.safetyCheck);
-            this.Name = "GenericSphygmomanometer";
-            this.Text = "Technical Safety Check - Generic Sphygmomanometer";
+            this.Name = "ComweldOxygenFlowmeter";
+            this.Text = "Technical Safety Check - Comweld Oxygen Flowmeter";
             this.safetyCheck.ResumeLayout(false);
             this.performanceVerification.ResumeLayout(false);
             this.performanceVerification.PerformLayout();
@@ -658,17 +688,22 @@
 
         public MetroFramework.Controls.MetroTabControl safetyCheck;
         private MetroFramework.Controls.MetroTabPage performanceVerification;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroButton close1_btn;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroButton nextBtn;
+        private MetroFramework.Controls.MetroComboBox result_7;
         private MetroFramework.Controls.MetroComboBox result_6;
         private MetroFramework.Controls.MetroComboBox result_5;
         private MetroFramework.Controls.MetroComboBox result_4;
+        private MetroFramework.Controls.MetroComboBox result_3;
+        private MetroFramework.Controls.MetroComboBox result_2;
         private MetroFramework.Controls.MetroComboBox result_1;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel visual5;
         private MetroFramework.Controls.MetroLabel visual4;
         private MetroFramework.Controls.MetroLabel visual3;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel visual1;
         private MetroFramework.Controls.MetroTabPage commentsTab;
         private MetroFramework.Controls.MetroTextBox itemsBox;
@@ -691,12 +726,9 @@
         private MetroFramework.Controls.MetroButton close3_btn;
         private MetroFramework.Controls.MetroTextBox commentBox;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroComboBox result_9;
+        private MetroFramework.Controls.MetroComboBox result_8;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroComboBox result_7;
-        private MetroFramework.Controls.MetroComboBox result_3;
-        private MetroFramework.Controls.MetroComboBox result_2;
-        private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }

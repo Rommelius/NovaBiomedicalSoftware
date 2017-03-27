@@ -88,7 +88,7 @@ namespace NovaBiomedicalSoftware
                 || functionalOption32.SelectedItem == null || functionalOption33.SelectedItem == null || functionalOption34.SelectedItem == null
                 || functionalOption35.SelectedItem == null || functionalOption36.SelectedItem == null)
             {
-                MessageBox.Show("You need to perform all test.");
+                MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

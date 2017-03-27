@@ -25,9 +25,12 @@ namespace NovaBiomedicalSoftware
         public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
 
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
-            PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed;
+            PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted;
 
         public bool PTtestIsDone;
+
+        public bool earthResistanceFailed, insulationResistanceFailed, earthLeakageFailed1, earthLeakageFailed2, touchCurrentFailed1, touchCurrentFailed2,
+            touchCurrentFailed3, touchCurrentFailed4, touchCurrentFailed5, touchCurrentFailed6;
 
         
 
@@ -35,8 +38,8 @@ namespace NovaBiomedicalSoftware
         // Split line on commas followed by zero or more spaces.
         List<string> listUserNames = new List<string>();
         public string[] fields;
-        public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        //public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+        //public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
         public string saveDestination;
 
         static SerialPort mySerialPort;
@@ -45,6 +48,8 @@ namespace NovaBiomedicalSoftware
 
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
         _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig;
+
+
 
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
          _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
@@ -139,8 +144,7 @@ namespace NovaBiomedicalSoftware
             {
                 statusText.Text = "Error - No Fluke ESA620";
 
-                DialogResult noflukeQuestion = MetroFramework.MetroMessageBox.Show(this,"Please connect the Fluke on your computer then press Retry",
-                "Error", MessageBoxButtons.RetryCancel);
+                DialogResult noflukeQuestion = MetroFramework.MetroMessageBox.Show(this,"","Please connect the Fluke on your computer then press Retry", MessageBoxButtons.RetryCancel,MessageBoxIcon.Error);
 
                 if (noflukeQuestion == DialogResult.Retry)
                 {
@@ -201,7 +205,7 @@ namespace NovaBiomedicalSoftware
             if (assetNumber.Text == "" || serialNumber.Text == "" || location.Text == ""
                 || model.Text == "" || userName.Text == "")
             {
-                MetroFramework.MetroMessageBox.Show(this, "Please fill all the details required");
+                MetroFramework.MetroMessageBox.Show(this,"Error","Please fill all the details required",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
@@ -209,7 +213,7 @@ namespace NovaBiomedicalSoftware
                 {
                     while (YesNoSaveDestination != true)
                     {
-                        DialogResult drbox = MetroFramework.MetroMessageBox.Show(this, "Please select the folder to save your files");
+                        DialogResult drbox = MetroFramework.MetroMessageBox.Show(this,"", "Please select the folder to save your files",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
                         if (drbox == DialogResult.OK)
                         {
@@ -262,6 +266,7 @@ namespace NovaBiomedicalSoftware
             PTHeineNT300Completed = false;
             PTPhilipsMRxCompleted = false;
             PTAccusonicAP170Completed = false;
+            PTComweldOxygenFMCompleted = false;
 
             //clear the some entries
             assetNumber.Text = "";
@@ -272,7 +277,8 @@ namespace NovaBiomedicalSoftware
             assetNumber.Focus();
 
         }
-
+        //Main Menu KeyDowns
+        #region mainMenu_keyDowns
         public void assetNumber_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -304,7 +310,7 @@ namespace NovaBiomedicalSoftware
                 if (assetNumber.Text == "" || serialNumber.Text == "" || location.Text == ""
                     || model.Text == "" || userName.Text == "")
                 {
-                    MetroFramework.MetroMessageBox.Show(this,"Please fill all the details required");
+                    MetroFramework.MetroMessageBox.Show(this, "", "Please fill all the details required", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -316,37 +322,78 @@ namespace NovaBiomedicalSoftware
                     ConnectToSerial();
                 }
             }
-                
+
         }
+        #endregion
+
 
         //Manual Test
-
+        #region Manual Test
         private void buttonPE_Click(object sender, EventArgs e)
         {
             Thread PE_test = new Thread(PETest);
 
             PE_test.Start();
         }
-
         private void PETest()
         {
             earthResistance();
         }
+        private void buttonIR_Click(object sender, EventArgs e)
+        {
+            Thread IR_test = new Thread(IRTest);
 
-        
+            IR_test.Start();
+        }
+        private void IRTest()
+        {
+            insulationResistance();
+        }
+        private void buttonEL1_Click(object sender, EventArgs e)
+        {
+            Thread earthLeakage_test = new Thread(ELTest);
+
+            earthLeakage_test.Start();
+        }
+        private void ELTest()
+        {
+            earthLeakage();
+        }
+        private void buttonEnL1_Click(object sender, EventArgs e)
+        {
+            Thread touchCurrent_test = new Thread(TCTest);
+
+            touchCurrent_test.Start();
+        }
+        private void TCTest()
+        {
+            touchCurrent();
+        }
+        #endregion
+
+
         // Class Test Buttons Click Events:
+        #region Class Test Buttons Click Events
         private void class1testBtn_Click(object sender, EventArgs e)
         {
-            statusBar.Show();
-            statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
-            statusBar.MarqueeAnimationSpeed = 30;
 
-            _kindofElectricalSafetyTest = "AS NZS 3551 – Class 1";
             class1ASNZtest = true;
 
-            Thread class1NTest = new Thread(class1NormalTest);
+            ProtectiveEarthOptions class1option = new ProtectiveEarthOptions();
 
-            class1NTest.Start();
+            DialogResult dialogResult = class1option.ShowDialog();
+            if (dialogResult == DialogResult.Cancel)
+            {
+                statusBar.Show();
+                statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+                statusBar.MarqueeAnimationSpeed = 30;
+
+                _kindofElectricalSafetyTest = "AS NZS 3551 – Class 1";
+                Thread class1NTest = new Thread(class1NormalTest);
+
+                class1NTest.Start();
+            }
+
 
 
         }
@@ -363,7 +410,8 @@ namespace NovaBiomedicalSoftware
             Thread class2NTest = new Thread(class2NormalTest);
 
             class2NTest.Start();
-        }
+        } 
+        #endregion
 
 
         // Performance Test Button Click Events:
@@ -384,13 +432,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this,"Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this,"Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                         if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled",MessageBoxButtons.OK,MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -416,12 +464,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
-                        if (dialog2 == DialogResult.Yes)
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -447,12 +496,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
-                        if (dialog2 == DialogResult.Yes)
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -478,12 +528,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
-                        if (dialog2 == DialogResult.Yes)
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -509,12 +560,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
-                        if (dialog2 == DialogResult.Yes)
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -541,12 +593,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
-                        if (dialog2 == DialogResult.Yes)
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -573,12 +626,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
-                        if (dialog2 == DialogResult.Yes)
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -604,12 +658,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
-                        if (dialog2 == DialogResult.Yes)
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -636,12 +691,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialog2 = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo);
-                        if (dialog2 == DialogResult.Yes)
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
-                            MetroFramework.MetroMessageBox.Show(this, "Performance Test Cancelled - No Report");
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -650,6 +706,37 @@ namespace NovaBiomedicalSoftware
             }
         }
 
+        private void comweldoxygenFM_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                ComweldOxygenFlowmeter dg = new ComweldOxygenFlowmeter();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.ComweldOxygenFlowmeterTest_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTComweldOxygenFMCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
 
         // Test Functions:
         public void class1NormalTest()
@@ -657,10 +744,10 @@ namespace NovaBiomedicalSoftware
             initialisedDevice();
             getVersionNumber();
             mainsVoltage();
-            earthResistance();
             insulationResistance();
-            enclousureLeakage();
+            earthResistance();
             earthLeakage();
+            touchCurrent();
             testComplete();
         }
 
@@ -670,7 +757,7 @@ namespace NovaBiomedicalSoftware
             getVersionNumber();
             mainsVoltage();
             insulationResistance();
-            enclousureLeakage();
+            touchCurrent();
             testComplete();
         }
 
@@ -683,28 +770,34 @@ namespace NovaBiomedicalSoftware
                 
 
                 statusBar.Hide();
-
-                //show complete
-                statusText.Text = "Test Completed";
-
-                if (PerformBothTest == true)
+                while (earthResistanceFailed == false && insulationResistanceFailed == false && earthLeakageFailed1 == false && earthLeakageFailed2 == false && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
+            touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6)
                 {
-                    statusText.Text = "Please select the equipment";
-                    tabMenu.SelectedTab = ptTab;
-                    yesNoPerformanceTest = true;
-                }
+                    //show complete
+                    statusText.Text = "Test Completed";
 
-                if (PerformPerformanceTest == true)
-                {
-                    yesNoPerformanceTest = true;
-                    createReport();
-                }
+                    if (PerformBothTest == true)
+                    {
+                        statusText.Text = "Please select the equipment";
+                        tabMenu.SelectedTab = ptTab;
+                        yesNoPerformanceTest = true;
+                    }
 
-                if (PerformElectricalSafetyTest == true)
-                {
-                    yesNoPerformanceTest = false;
-                    createReport();
+                    if (PerformPerformanceTest == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        createReport();
+                    }
+
+                    if (PerformElectricalSafetyTest == true)
+                    {
+                        yesNoPerformanceTest = false;
+                        createReport();
+                    }
+
+                    break;
                 }
+                
 
             });
         }
@@ -855,20 +948,43 @@ namespace NovaBiomedicalSoftware
 
             this.Invoke((MethodInvoker)delegate
             {
-
-                if (_earthResistance_double > 0.2)
+                if (ProtectiveEarthOptions.withApplianceInletOption == true)
                 {
-                    buttonPE.Visible = true;
-                    Thread.CurrentThread.Interrupt();
-                    labelPE.Text = _earthResistance_double.ToString() + " OHMS";
-                    labelPE.ForeColor = Color.Red;
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Earth Resistance Test Failed");
+                    if (_earthResistance_double > 0.1)
+                    {
+                        earthResistanceFailed = true;
+                        buttonPE.Visible = true;
+                        Thread.CurrentThread.Interrupt();
+                        labelPE.Text = _earthResistance_double.ToString() + " OHMS";
+                        labelPE.ForeColor = Color.Red;
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Earth Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        earthResistanceFailed = false;
+                        labelPE.Text = _earthResistance_double.ToString() + " OHMS";
+                        labelPE.ForeColor = Color.Green;
+                    }
                 }
-                else
+                else if (ProtectiveEarthOptions.detachablePowerSupplyOption == true || ProtectiveEarthOptions.nonDetachableSupplyOption == true)
                 {
-                    labelPE.Text = _earthResistance_double.ToString() + " OHMS";
-                    labelPE.ForeColor = Color.Green;
+                    if (_earthResistance_double > 0.2)
+                    {
+                        earthResistanceFailed = true;
+                        buttonPE.Visible = true;
+                        Thread.CurrentThread.Interrupt();
+                        labelPE.Text = _earthResistance_double.ToString() + " OHMS";
+                        labelPE.ForeColor = Color.Red;
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Earth Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        earthResistanceFailed = false;
+                        labelPE.Text = _earthResistance_double.ToString() + " OHMS";
+                        labelPE.ForeColor = Color.Green;
+                    }
                 }
+               
 
             });
 
@@ -898,6 +1014,7 @@ namespace NovaBiomedicalSoftware
             _insulationResistance = mySerialPort.ReadExisting();
             if (string.Compare(_insulationResistance, "!21") == -1)
             {
+                insulationResistanceFailed = false;
                 _insulationResistance = ">100 MOhms";
                 this.Invoke((MethodInvoker)delegate
                 {
@@ -906,11 +1023,12 @@ namespace NovaBiomedicalSoftware
             }
             else
             {
+                insulationResistanceFailed = true;
                 _insulationResistance = "FAILED";
                 this.Invoke((MethodInvoker)delegate
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Insulation Resistance Test Failed");
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Insulation Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelIR.ForeColor = Color.Red;
                     labelIR.Text = _insulationResistance;
                     buttonIR.Visible = true;
@@ -950,14 +1068,16 @@ namespace NovaBiomedicalSoftware
             {
                 if (_EL1_double > 500)
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Earth Leakage Current (Normal Condition) Test Failed");
+                    earthLeakageFailed1 = true;
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Earth Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEL1.Text = _EL1_double.ToString() + " uA";
                     labelEL1.ForeColor = Color.Red;
                     buttonEL1.Visible = true;
                 }
                 else
                 {
+                    earthLeakageFailed1 = false;
                     labelEL1.Text = _EL1_double.ToString() + " uA";
                 }
             });
@@ -988,20 +1108,25 @@ namespace NovaBiomedicalSoftware
             {
                 if (_EL2_double > 1000)
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Earth Leakage Current (Open Neutral) Test Failed");
+                    earthLeakageFailed2 = true;
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Earth Leakage Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEL2.Text = _EL2_double.ToString() + " uA";
                     labelEL2.ForeColor = Color.Red;
                     buttonEL2.Visible = true;
                 }
                 else
+                {
+                    earthLeakageFailed2 = false;
                     labelEL2.Text = _EL2_double.ToString() + " uA";
+
+                }
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
         }
 
-        public void enclousureLeakage()
+        public void touchCurrent()
         {
             this.Invoke((MethodInvoker)delegate
             {
@@ -1034,14 +1159,19 @@ namespace NovaBiomedicalSoftware
             {
                 if (_EnL1_double > 100)
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Normal Condition) Test Failed");
+                    touchCurrentFailed1 = true;
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL1.Text = _EnL1_double.ToString() + " uA";
                     labelEnL1.ForeColor = Color.Red;
                     buttonEnL1.Visible = true;
                 }
                 else
+                {
+                    touchCurrentFailed2 = false;
                     labelEnL1.Text = _EnL1_double.ToString() + " uA";
+
+                }
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1072,14 +1202,20 @@ namespace NovaBiomedicalSoftware
             {
                 if (_EnL2_double > 500)
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Open Neutral) Test Failed");
+                    touchCurrentFailed2 = true;
+
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL2.Text = _EnL2_double.ToString() + " uA";
                     labelEnL2.ForeColor = Color.Red;
                     buttonEnL2.Visible = true;
                 }
                 else
-                    labelEnL2.Text = _EnL2_double.ToString() + " uA";
+                {
+                    touchCurrentFailed2 = false;
+                labelEnL2.Text = _EnL2_double.ToString() + " uA";
+
+                }
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1110,14 +1246,20 @@ namespace NovaBiomedicalSoftware
             {
                 if (_EnL3_double > 500)
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Open Earth) Test Failed");
+                    touchCurrentFailed3 = true;
+
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Open Earth) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL3.Text = _EnL3_double.ToString() + " uA";
                     labelEnL3.ForeColor = Color.Red;
                     buttonEnL3.Visible = true;
                 }
                 else
+                {
                     labelEnL3.Text = _EnL3_double.ToString() + " uA";
+                    touchCurrentFailed3 = false;
+
+                }
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1148,14 +1290,20 @@ namespace NovaBiomedicalSoftware
             {
                 if (_EnL4_double > 100)
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Normal Condition, Reversed Mains) Test Failed");
+                    touchCurrentFailed4 = true;
+
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Normal Condition, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL4.Text = _EnL4_double.ToString() + " uA";
                     labelEnL4.ForeColor = Color.Red;
                     buttonEnL4.Visible = true;
                 }
                 else
+                {
+                    touchCurrentFailed4 = false;
                     labelEnL4.Text = _EnL4_double.ToString() + " uA";
+
+                }
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1186,14 +1334,20 @@ namespace NovaBiomedicalSoftware
             {
                 if (_EnL5_double > 500)
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Open Neutral, Reversed Mains) Test Failed");
+                    touchCurrentFailed5 = true;
+
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Open Neutral, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL5.Text = _EnL5_double.ToString() + " uA";
                     labelEnL5.ForeColor = Color.Red;
                     buttonEnL5.Visible = true;
                 }
                 else
+                {
                     labelEnL5.Text = _EnL5_double.ToString() + " uA";
+                    touchCurrentFailed5 = false;
+
+                }
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1224,14 +1378,20 @@ namespace NovaBiomedicalSoftware
             {
                 if (_EnL6_double > 500)
                 {
-                    Thread.CurrentThread.Abort();
-                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Open Earth, Reversed Mains) Test Failed");
+                    touchCurrentFailed6 = true;
+
+                    Thread.CurrentThread.Interrupt();
+                    MetroFramework.MetroMessageBox.Show(this,"Manually do the test to try again", "Enclousure Leakage Current (Open Earth, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL6.Text = _EnL6_double.ToString() + " uA";
                     labelEnL6.ForeColor = Color.Red;
                     buttonEnL6.Visible = true;
                 }
                 else
+                {
+                    touchCurrentFailed6 = false;
                     labelEnL6.Text = _EnL6_double.ToString() + " uA";
+
+                }
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1287,17 +1447,17 @@ namespace NovaBiomedicalSoftware
                 editElectricalSafetyTemplate(appRootDir + "/Report Templates/temp.docx");
                 editPerformanceTemplate(appRootDir + "/Report Templates/temp2.docx");
                 combineBothTemplate();
-                MetroFramework.MetroMessageBox.Show(this,"Report is done");
+                MetroFramework.MetroMessageBox.Show(this,"","Report is done",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             if (PerformPerformanceTest == true)
             {
                 editPerformanceTemplate(appRootDir + "/Report Templates/temp2.docx");
-                MetroFramework.MetroMessageBox.Show(this,"Report is done");
+                MetroFramework.MetroMessageBox.Show(this, "", "Report is done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if (PerformElectricalSafetyTest == true)
             {
                 editElectricalSafetyTemplate(appRootDir + "/Report Templates/temp.docx");
-                MetroFramework.MetroMessageBox.Show(this,"Report is done");
+                MetroFramework.MetroMessageBox.Show(this, "", "Report is done", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
 
@@ -1401,6 +1561,11 @@ namespace NovaBiomedicalSoftware
                 if (PTAccusonicAP170Completed == true)
                 {
                     File.Copy(appRootDir + "/Report Templates/Accusonic AP170-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //comweld oxygen flowmeter
+                if (PTComweldOxygenFMCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Comweld Oxygen Flowmeter-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
 
 
@@ -1571,9 +1736,9 @@ namespace NovaBiomedicalSoftware
                 this.FindAndReplace(wordApp, "<result2>", GenericSphygmomanometer.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericSphygmomanometer.result3);
                 this.FindAndReplace(wordApp, "<result4>", GenericSphygmomanometer.result4);
-                this.FindAndReplace(wordApp, "<result5>", GenericSphygmomanometer.result1);
-                this.FindAndReplace(wordApp, "<result6>", GenericSphygmomanometer.result2);
-                this.FindAndReplace(wordApp, "<result7>", GenericSphygmomanometer.result3);
+                this.FindAndReplace(wordApp, "<result5>", GenericSphygmomanometer.result5);
+                this.FindAndReplace(wordApp, "<result6>", GenericSphygmomanometer.result6);
+                this.FindAndReplace(wordApp, "<result7>", GenericSphygmomanometer.result7);
                 this.FindAndReplace(wordApp, "<Comments>", GenericSphygmomanometer.comments);
                 #endregion
             }
@@ -1614,10 +1779,10 @@ namespace NovaBiomedicalSoftware
                 this.FindAndReplace(wordApp, "<result2>", HeineNT300.result2);
                 this.FindAndReplace(wordApp, "<result3>", HeineNT300.result3);
                 this.FindAndReplace(wordApp, "<result4>", HeineNT300.result4);
-                this.FindAndReplace(wordApp, "<result5>", HeineNT300.result1);
-                this.FindAndReplace(wordApp, "<result6>", HeineNT300.result2);
-                this.FindAndReplace(wordApp, "<result7>", HeineNT300.result3);
-                this.FindAndReplace(wordApp, "<result8>", HeineNT300.result4);
+                this.FindAndReplace(wordApp, "<result5>", HeineNT300.result5);
+                this.FindAndReplace(wordApp, "<result6>", HeineNT300.result6);
+                this.FindAndReplace(wordApp, "<result7>", HeineNT300.result7);
+                this.FindAndReplace(wordApp, "<result8>", HeineNT300.result8);
                 this.FindAndReplace(wordApp, "<Comments>", HeineNT300.comments);
                 #endregion
             }
@@ -1639,25 +1804,25 @@ namespace NovaBiomedicalSoftware
                 this.FindAndReplace(wordApp, "<result2>", PhilipsMRxDefib.result2);
                 this.FindAndReplace(wordApp, "<result3>", PhilipsMRxDefib.result3);
                 this.FindAndReplace(wordApp, "<result4>", PhilipsMRxDefib.result4);
-                this.FindAndReplace(wordApp, "<result5>", PhilipsMRxDefib.result1);
-                this.FindAndReplace(wordApp, "<result6>", PhilipsMRxDefib.result2);
-                this.FindAndReplace(wordApp, "<result7>", PhilipsMRxDefib.result3);
-                this.FindAndReplace(wordApp, "<result8>", PhilipsMRxDefib.result4);
-                this.FindAndReplace(wordApp, "<result9>", PhilipsMRxDefib.result1);
-                this.FindAndReplace(wordApp, "<result10>", PhilipsMRxDefib.result2);
-                this.FindAndReplace(wordApp, "<result11>", PhilipsMRxDefib.result3);
-                this.FindAndReplace(wordApp, "<result12>", PhilipsMRxDefib.result4);
-                this.FindAndReplace(wordApp, "<result13>", PhilipsMRxDefib.result1);
-                this.FindAndReplace(wordApp, "<result14>", PhilipsMRxDefib.result2);
-                this.FindAndReplace(wordApp, "<result15>", PhilipsMRxDefib.result3);
-                this.FindAndReplace(wordApp, "<result16>", PhilipsMRxDefib.result4);
-                this.FindAndReplace(wordApp, "<result17>", PhilipsMRxDefib.result1);
-                this.FindAndReplace(wordApp, "<result18>", PhilipsMRxDefib.result2);
-                this.FindAndReplace(wordApp, "<result19>", PhilipsMRxDefib.result3);
-                this.FindAndReplace(wordApp, "<result20>", PhilipsMRxDefib.result4);
-                this.FindAndReplace(wordApp, "<result21>", PhilipsMRxDefib.result1);
-                this.FindAndReplace(wordApp, "<result22>", PhilipsMRxDefib.result2);
-                this.FindAndReplace(wordApp, "<result23>", PhilipsMRxDefib.result3);
+                this.FindAndReplace(wordApp, "<result5>", PhilipsMRxDefib.result5);
+                this.FindAndReplace(wordApp, "<result6>", PhilipsMRxDefib.result6);
+                this.FindAndReplace(wordApp, "<result7>", PhilipsMRxDefib.result7);
+                this.FindAndReplace(wordApp, "<result8>", PhilipsMRxDefib.result8);
+                this.FindAndReplace(wordApp, "<result9>", PhilipsMRxDefib.result9);
+                this.FindAndReplace(wordApp, "<result10>", PhilipsMRxDefib.result10);
+                this.FindAndReplace(wordApp, "<result11>", PhilipsMRxDefib.result11);
+                this.FindAndReplace(wordApp, "<result12>", PhilipsMRxDefib.result12);
+                this.FindAndReplace(wordApp, "<result13>", PhilipsMRxDefib.result13);
+                this.FindAndReplace(wordApp, "<result14>", PhilipsMRxDefib.result14);
+                this.FindAndReplace(wordApp, "<result15>", PhilipsMRxDefib.result15);
+                this.FindAndReplace(wordApp, "<result16>", PhilipsMRxDefib.result16);
+                this.FindAndReplace(wordApp, "<result17>", PhilipsMRxDefib.result17);
+                this.FindAndReplace(wordApp, "<result18>", PhilipsMRxDefib.result18);
+                this.FindAndReplace(wordApp, "<result19>", PhilipsMRxDefib.result19);
+                this.FindAndReplace(wordApp, "<result20>", PhilipsMRxDefib.result20);
+                this.FindAndReplace(wordApp, "<result21>", PhilipsMRxDefib.result21);
+                this.FindAndReplace(wordApp, "<result22>", PhilipsMRxDefib.result22);
+                this.FindAndReplace(wordApp, "<result23>", PhilipsMRxDefib.result23);
                 this.FindAndReplace(wordApp, "<Comments>", PhilipsMRxDefib.comments);
                 #endregion
             }
@@ -1679,13 +1844,37 @@ namespace NovaBiomedicalSoftware
                 this.FindAndReplace(wordApp, "<result2>", AccusonicAP170.result2);
                 this.FindAndReplace(wordApp, "<result3>", AccusonicAP170.result3);
                 this.FindAndReplace(wordApp, "<result4>", AccusonicAP170.result4);
-                this.FindAndReplace(wordApp, "<result5>", AccusonicAP170.result1);
+                this.FindAndReplace(wordApp, "<result5>", AccusonicAP170.result5);
                 this.FindAndReplace(wordApp, "<Comments>", AccusonicAP170.comments);
                 #endregion
             }
-            
-            
-            
+            //Comweld Oxygen Flowmeter
+            if (PTComweldOxygenFMCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", userName.Text);
+                this.FindAndReplace(wordApp, "<AssetNumber>", assetNumber.Text);
+                this.FindAndReplace(wordApp, "<SerialNumber>", serialNumber.Text);
+                this.FindAndReplace(wordApp, "<Location>", location.Text);
+                this.FindAndReplace(wordApp, "<Manufacturer>", manufacturer.Text);
+                this.FindAndReplace(wordApp, "<Model>", model.Text);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", ComweldOxygenFlowmeter.items);
+                this.FindAndReplace(wordApp, "<result1>", ComweldOxygenFlowmeter.result1);
+                this.FindAndReplace(wordApp, "<result2>", ComweldOxygenFlowmeter.result2);
+                this.FindAndReplace(wordApp, "<result3>", ComweldOxygenFlowmeter.result3);
+                this.FindAndReplace(wordApp, "<result4>", ComweldOxygenFlowmeter.result4);
+                this.FindAndReplace(wordApp, "<result5>", ComweldOxygenFlowmeter.result5);
+                this.FindAndReplace(wordApp, "<result6>", ComweldOxygenFlowmeter.result6);
+                this.FindAndReplace(wordApp, "<result7>", ComweldOxygenFlowmeter.result7);
+                this.FindAndReplace(wordApp, "<result8>", ComweldOxygenFlowmeter.result8);
+                this.FindAndReplace(wordApp, "<Comments>", ComweldOxygenFlowmeter.comments);
+                #endregion
+            }
+
+
             //create PDF
             if (PerformPerformanceTest == true)
             {
@@ -1712,7 +1901,16 @@ namespace NovaBiomedicalSoftware
                     {
                         File.Delete(appRootDir + "/Report Templates/temp.docx");
                     }
-                    File.Copy(appRootDir + "/Report Templates/ASNZCLASS1-TEMPLATE.docx", appRootDir + "/Report Templates/temp.docx");
+
+                    if (ProtectiveEarthOptions.nonDetachableSupplyOption == true || ProtectiveEarthOptions.detachablePowerSupplyOption == true)
+                    {
+                        File.Copy(appRootDir + "/Report Templates/ASNZCLASS1-TEMPLATE1.docx", appRootDir + "/Report Templates/temp.docx");
+                    }
+                    else if (ProtectiveEarthOptions.withApplianceInletOption == true)
+                    {
+                        File.Copy(appRootDir + "/Report Templates/ASNZCLASS1-TEMPLATE2.docx", appRootDir + "/Report Templates/temp.docx");
+                    }
+
                 }
                 if (class2ASNZtest == true)
                 {
@@ -1821,7 +2019,7 @@ namespace NovaBiomedicalSoftware
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this,"File does not exist.");
+                MetroFramework.MetroMessageBox.Show(this,"","File does not exist",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
 

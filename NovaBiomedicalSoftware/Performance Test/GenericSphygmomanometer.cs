@@ -119,7 +119,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
             if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
                 result_4.SelectedItem == null || result_5.SelectedItem == null || result_6.SelectedItem == null || result_7.SelectedItem == null)
             {
-                MessageBox.Show("You need to perform all test.");
+                MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

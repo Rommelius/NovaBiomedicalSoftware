@@ -133,9 +133,9 @@ namespace NovaBiomedicalSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap power_cord {
+        internal static System.Drawing.Bitmap powercord {
             get {
-                object obj = ResourceManager.GetObject("power-cord", resourceCulture);
+                object obj = ResourceManager.GetObject("powercord", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace NovaBiomedicalSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap power_cord1 {
+        internal static System.Drawing.Bitmap powercord1 {
             get {
-                object obj = ResourceManager.GetObject("power-cord1", resourceCulture);
+                object obj = ResourceManager.GetObject("powercord1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace NovaBiomedicalSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap power_cord2 {
+        internal static System.Drawing.Bitmap powercord2 {
             get {
-                object obj = ResourceManager.GetObject("power-cord2", resourceCulture);
+                object obj = ResourceManager.GetObject("powercord2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

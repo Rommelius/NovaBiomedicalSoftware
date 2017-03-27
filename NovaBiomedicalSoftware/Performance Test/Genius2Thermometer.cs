@@ -110,7 +110,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
             //check if the combobox are answered
             if (result_1.SelectedItem == null || result_2.SelectedItem == null)
             {
-                MessageBox.Show("You need to perform all test.");
+                MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
