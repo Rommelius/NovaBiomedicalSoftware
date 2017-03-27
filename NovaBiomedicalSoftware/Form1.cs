@@ -15,7 +15,7 @@ using System.Text.RegularExpressions;
 using Word = Microsoft.Office.Interop.Word;
 using System.Collections;
 using NovaBiomedicalSoftware.Performance_Test;
-using NovaBiomedicalSoftware.Queensland_Abulance_Service;
+using NovaBiomedicalSoftware.Queensland_Ambulance_Service;
 
 namespace NovaBiomedicalSoftware
 {
@@ -39,8 +39,8 @@ namespace NovaBiomedicalSoftware
         // Split line on commas followed by zero or more spaces.
         List<string> listUserNames = new List<string>();
         public string[] fields;
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
         public static string saveDestination;
 
         static SerialPort mySerialPort;
