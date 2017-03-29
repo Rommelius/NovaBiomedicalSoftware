@@ -28,12 +28,12 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
         {
             InitializeComponent();
 
-            if (File.Exists(Form1.appRootDir + "/Report Templates/QAS Templates/temp.docx"))
+            if (File.Exists(Main.appRootDir + "/Report Templates/QAS Templates/temp.docx"))
             {
-                File.Delete(Form1.appRootDir + "/Report Templates/QAS Templates/temp.docx");
+                File.Delete(Main.appRootDir + "/Report Templates/QAS Templates/temp.docx");
             }
 
-            File.Copy(Form1.appRootDir + "/Report Templates/QAS Template-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp.docx");
+            File.Copy(Main.appRootDir + "/Report Templates/QAS Template-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp.docx");
 
         }
         private void saveReportPDF()
@@ -48,7 +48,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             wordApp.Visible = false;
 
             //open temp1 docx - electrical safety
-            Word.Document wDoc1 = wordApp.Documents.Open(Form1.appRootDir + "/Report Templates/QAS Templates/temp.docx");
+            Word.Document wDoc1 = wordApp.Documents.Open(Main.appRootDir + "/Report Templates/QAS Templates/temp.docx");
 
             wDoc1.Activate();
 
@@ -58,7 +58,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             this.FindAndReplace(wordApp, "<Station>", stationTextbox.Text);
             this.FindAndReplace(wordApp, "<VehicleNumber>", vehicleTextBox.Text);
             this.FindAndReplace(wordApp, "<RegoNumber>", registrationTextBox.Text);
-            this.FindAndReplace(wordApp, "<Name>", Form1.currentUser);
+            this.FindAndReplace(wordApp, "<Name>", Main.currentUser);
 
             // for changing signatures
             int count = wDoc1.Bookmarks.Count;
@@ -66,11 +66,11 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             {
                 object oRange = wDoc1.Bookmarks[i].Range;
                 object saveWithDocument = true;
-                string pictureName = Form1.appRootDir + "/Signatures/" + Form1.currentUser+ ".png";
+                string pictureName = Main.appRootDir + "/Signatures/" + Main.currentUser+ ".png";
                 wDoc1.InlineShapes.AddPicture(pictureName, ref missing, ref saveWithDocument, ref oRange);
             }
             
-            wDoc1.ExportAsFixedFormat(Form1.saveDestination + "/" + stationTextbox.Text + "-" + vehicleTextBox.Text + "-" + registrationTextBox.Text + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
+            wDoc1.ExportAsFixedFormat(Main.saveDestination + "/" + stationTextbox.Text + "-" + vehicleTextBox.Text + "-" + registrationTextBox.Text + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
             
             GC.Collect();
             wDoc1.Close();
@@ -453,37 +453,37 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
         //create Outlet Point document
         private void editDocument()
         {
-            if (File.Exists(Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
+            if (File.Exists(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
             {
-                File.Delete(Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Delete(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             }
 
             if (PTOutletPointCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Outlet Point-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Outlet Point-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTOxygenReticulationCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Oxygen Reticulation Failure Alarm-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Oxygen Reticulation Failure Alarm-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTRegulatorCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Regulator-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Regulator-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if(PTFlowmeterCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Flowmeter-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Flowmeter-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTElectricSuctionCompleted==true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Electric Suction-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Electric Suction-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTRecoilBagCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Recoil Bag Resuscitator-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Recoil Bag Resuscitator-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTSphygmoHHeldCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Sphygmo Handheld-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Sphygmo Handheld-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTSphygmoWallCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Sphygmo Wall-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Sphygmo Wall-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTPulseOximeterCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Pulse Oximeter-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Pulse Oximeter-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTAspiratorCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Aspirator-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Aspirator-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTDemanHeadCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Demand Head-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Demand Head-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTTwinOVacCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Twin-O-Vac Suction Device-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Twin-O-Vac Suction Device-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTResidualCurrentDeviceCompleted == true)
-                File.Copy(Form1.appRootDir + "/Report Templates/QAS Templates/Residual Current Device-TEMPLATE.docx", Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Residual Current Device-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
 
 
             //Setup the Word.Application class.
@@ -494,14 +494,14 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             object missing = System.Reflection.Missing.Value;
             object what = Word.WdGoToItem.wdGoToLine;
             object which = Word.WdGoToDirection.wdGoToLast;
-            object saveAs = Form1.appRootDir + "/Report Templates/QAS Templates/temp.docx";
+            object saveAs = Main.appRootDir + "/Report Templates/QAS Templates/temp.docx";
             //Set Word to be not visible.
             wordApp.Visible = false;
 
             //open temp1 docx - electrical safety
-            Word.Document wDoc1 = wordApp.Documents.Open(Form1.appRootDir + "/Report Templates/QAS Templates/temp.docx");
+            Word.Document wDoc1 = wordApp.Documents.Open(Main.appRootDir + "/Report Templates/QAS Templates/temp.docx");
             //open temp2 docx - performance test
-            Word.Document wDoc2 = wordApp.Documents.Open(Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+            Word.Document wDoc2 = wordApp.Documents.Open(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
 
             wDoc2.Activate();
 
@@ -688,9 +688,9 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             wordApp.Quit();
 
             MetroFramework.MetroMessageBox.Show(this, "", "Added on the report", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (File.Exists(Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
+            if (File.Exists(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
             {
-                File.Delete(Form1.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Delete(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             }
 
 

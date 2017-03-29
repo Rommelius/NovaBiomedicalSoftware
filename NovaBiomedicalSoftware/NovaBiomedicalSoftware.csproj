@@ -52,6 +52,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -91,11 +95,29 @@
       <DependentUpon>BatteryChecker.cs</DependentUpon>
     </Compile>
     <Compile Include="COMFinder.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="EquipmentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="EquipmentDetails.Designer.cs">
+      <DependentUpon>EquipmentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogInPage.Designer.cs">
+      <DependentUpon>LogInPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\AccusonicAP170.cs">
       <SubType>Form</SubType>
@@ -261,8 +283,17 @@
     <EmbeddedResource Include="BatteryChecker.resx">
       <DependentUpon>BatteryChecker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="EquipmentDetails.resx">
+      <DependentUpon>EquipmentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogInPage.resx">
+      <DependentUpon>LogInPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\AccusonicAP170.resx">
       <DependentUpon>AccusonicAP170.cs</DependentUpon>
@@ -427,6 +458,11 @@
     <None Include="Resources\ambulance.png" />
     <None Include="Resources\ambulance %281%29.png" />
     <None Include="Resources\ambulance %282%29.png" />
+    <None Include="Resources\left-arrow.png" />
+    <None Include="Resources\left-arrow %281%29.png" />
+    <None Include="Resources\left-arrow %282%29.png" />
+    <None Include="Resources\bg.png" />
+    <None Include="Resources\bg1.png" />
     <Content Include="Signatures\Joe Welch.png" />
     <Content Include="Signatures\Ken Welch.png" />
     <Content Include="Signatures\Khoi Duong.png" />

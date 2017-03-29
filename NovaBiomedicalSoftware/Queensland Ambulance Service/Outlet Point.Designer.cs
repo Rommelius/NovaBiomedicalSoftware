@@ -51,6 +51,9 @@
             this.makeBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
             // 
             // result_4
@@ -155,16 +158,16 @@
             // 
             // 
             this.commentBox.CustomButton.Image = null;
-            this.commentBox.CustomButton.Location = new System.Drawing.Point(308, 2);
+            this.commentBox.CustomButton.Location = new System.Drawing.Point(386, 1);
             this.commentBox.CustomButton.Name = "";
-            this.commentBox.CustomButton.Size = new System.Drawing.Size(145, 145);
+            this.commentBox.CustomButton.Size = new System.Drawing.Size(69, 69);
             this.commentBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.commentBox.CustomButton.TabIndex = 1;
             this.commentBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.commentBox.CustomButton.UseSelectable = true;
             this.commentBox.CustomButton.Visible = false;
             this.commentBox.Lines = new string[0];
-            this.commentBox.Location = new System.Drawing.Point(24, 328);
+            this.commentBox.Location = new System.Drawing.Point(21, 322);
             this.commentBox.MaxLength = 32767;
             this.commentBox.Multiline = true;
             this.commentBox.Name = "commentBox";
@@ -174,7 +177,7 @@
             this.commentBox.SelectionLength = 0;
             this.commentBox.SelectionStart = 0;
             this.commentBox.ShortcutsEnabled = true;
-            this.commentBox.Size = new System.Drawing.Size(456, 150);
+            this.commentBox.Size = new System.Drawing.Size(456, 71);
             this.commentBox.TabIndex = 9;
             this.commentBox.UseSelectable = true;
             this.commentBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -184,11 +187,11 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(21, 306);
+            this.metroLabel3.Location = new System.Drawing.Point(21, 405);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(124, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(47, 19);
             this.metroLabel3.TabIndex = 41;
-            this.metroLabel3.Text = "Comments/Parts:";
+            this.metroLabel3.Text = "Parts:";
             // 
             // metroLabel1
             // 
@@ -390,11 +393,44 @@
             this.metroLabel10.TabIndex = 107;
             this.metroLabel10.Text = "Make:";
             // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel11.Location = new System.Drawing.Point(18, 300);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(84, 19);
+            this.metroLabel11.TabIndex = 109;
+            this.metroLabel11.Text = "Comments:";
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Location = new System.Drawing.Point(24, 428);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(338, 29);
+            this.metroComboBox1.TabIndex = 110;
+            this.metroComboBox1.UseSelectable = true;
+            // 
+            // metroComboBox2
+            // 
+            this.metroComboBox2.FormattingEnabled = true;
+            this.metroComboBox2.ItemHeight = 23;
+            this.metroComboBox2.Location = new System.Drawing.Point(24, 463);
+            this.metroComboBox2.Name = "metroComboBox2";
+            this.metroComboBox2.Size = new System.Drawing.Size(338, 29);
+            this.metroComboBox2.TabIndex = 110;
+            this.metroComboBox2.UseSelectable = true;
+            // 
             // Outlet_Point
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 651);
+            this.Controls.Add(this.metroComboBox2);
+            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.makeBox);
             this.Controls.Add(this.modelBox);
             this.Controls.Add(this.serialNumber);
@@ -451,5 +487,8 @@
         private MetroFramework.Controls.MetroTextBox makeBox;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox metroComboBox2;
     }
 }

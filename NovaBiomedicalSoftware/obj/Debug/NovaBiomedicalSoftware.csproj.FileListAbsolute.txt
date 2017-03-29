@@ -16,7 +16,6 @@ D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftwa
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.dll
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\MetroFramework.Fonts.dll
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csprojResolveAssemblyReference.cache
-D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Form1.resources
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Properties.Resources.resources
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.GenerateResource.Cache
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.perfusorSpace.resources
@@ -92,3 +91,7 @@ D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftwa
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Queensland_Ambulance_Service.SphygmoHandheld.resources
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Queensland_Ambulance_Service.SphygmoWall.resources
 D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Queensland_Ambulance_Service.TwinOVac.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Main.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.LogInPage.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.MainMenu.resources
+D:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.EquipmentDetails.resources
