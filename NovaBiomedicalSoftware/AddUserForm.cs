@@ -15,8 +15,6 @@ namespace NovaBiomedicalSoftware
 {
     public partial class AddUserForm : MetroForm
     {
-        public string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
-
 
         public AddUserForm()
         {
@@ -25,7 +23,7 @@ namespace NovaBiomedicalSoftware
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            using (StreamWriter sw = File.AppendText(appRootDir + "/Employees/names.txt"))
+            using (StreamWriter sw = File.AppendText(MainMenu.appRootDir + "/Employees/names.txt"))
             {
 
                 if (newUser.Text != null)

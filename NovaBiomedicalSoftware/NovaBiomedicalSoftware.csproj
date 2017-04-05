@@ -103,12 +103,6 @@
     <Compile Include="LogInPage.Designer.cs">
       <DependentUpon>LogInPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,12 +237,6 @@
     <Compile Include="Queensland Ambulance Service\PulseOximeter.Designer.cs">
       <DependentUpon>PulseOximeter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Queensland Ambulance Service\QASForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Queensland Ambulance Service\QASForm.Designer.cs">
-      <DependentUpon>QASForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Queensland Ambulance Service\RecoilBagResuscitator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,9 +278,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogInPage.resx">
       <DependentUpon>LogInPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
@@ -369,9 +354,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Queensland Ambulance Service\PulseOximeter.resx">
       <DependentUpon>PulseOximeter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Queensland Ambulance Service\QASForm.resx">
-      <DependentUpon>QASForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Queensland Ambulance Service\RecoilBagResuscitator.resx">
       <DependentUpon>RecoilBagResuscitator.cs</DependentUpon>

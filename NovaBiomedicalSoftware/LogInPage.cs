@@ -23,7 +23,6 @@ namespace NovaBiomedicalSoftware
         public static string currentUser;
 
         //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
         public static string saveDestination;
 
 
@@ -38,7 +37,7 @@ namespace NovaBiomedicalSoftware
         //Function to Load userNames
         public void loadUserName()
         {
-            using (StreamReader sr = new StreamReader(Main.appRootDir + "/Employees/names.txt"))
+            using (StreamReader sr = new StreamReader(MainMenu.appRootDir + "/Employees/names.txt"))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)

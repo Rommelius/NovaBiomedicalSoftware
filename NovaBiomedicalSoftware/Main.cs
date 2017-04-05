@@ -751,12 +751,12 @@ namespace NovaBiomedicalSoftware
 
         //QAS Test
 
-        private void qas_btn_Click(object sender, EventArgs e)
-        {
-            currentUser = userName.Text;
-            QASForm qas = new QASForm();
-            qas.Show();
-        }
+        //private void qas_btn_Click(object sender, EventArgs e)
+        //{
+        //    currentUser = userName.Text;
+        //    QASForm qas = new QASForm();
+        //    qas.Show();
+        //}
 
 
         // Test Functions:

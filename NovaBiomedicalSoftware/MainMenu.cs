@@ -16,11 +16,16 @@ using System.Text.RegularExpressions;
 using Word = Microsoft.Office.Interop.Word;
 using System.Collections;
 using NovaBiomedicalSoftware.Queensland_Ambulance_Service;
+using System.Diagnostics;
 
 namespace NovaBiomedicalSoftware
 {
     public partial class MainMenu : MetroForm
     {
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+
+
         public static List<string> _EquipmentCounter = new List<string>();
         public static List<string> _PartsCounter = new List<string>();
         
@@ -51,9 +56,8 @@ namespace NovaBiomedicalSoftware
         public bool earthResistanceFailed, insulationResistanceFailed, earthLeakageFailed1, earthLeakageFailed2, touchCurrentFailed1, touchCurrentFailed2,
             touchCurrentFailed3, touchCurrentFailed4, touchCurrentFailed5, touchCurrentFailed6;
         public static string currentUser;
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
-        public static string saveDestination = LogInPage.saveDestination;
+
+        public static string saveDestination;
 
         static SerialPort mySerialPort;
         DateTime date = DateTime.Today;
@@ -62,6 +66,7 @@ namespace NovaBiomedicalSoftware
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
       _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig;
 
+        
 
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
          _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
@@ -69,7 +74,7 @@ namespace NovaBiomedicalSoftware
         public MainMenu()
         {
             InitializeComponent();
-
+            saveDestination = LogInPage.saveDestination;
             topPanel.Visible = true;
             topPanel_right.Visible = false;
             _fileDestination.Text = LogInPage.saveDestination;
@@ -77,14 +82,6 @@ namespace NovaBiomedicalSoftware
 
             tabMenu.Appearance = TabAppearance.FlatButtons;
             tabMenu.ItemSize = new Size(1, 1);
-
-            if (File.Exists(appRootDir + "/Report Templates/QAS Templates/temp.docx"))
-            {
-                File.Delete(appRootDir + "/Report Templates/QAS Templates/temp.docx");
-            }
-
-            File.Copy(appRootDir + "/Report Templates/QAS Template-TEMPLATE.docx", appRootDir + "/Report Templates/QAS Templates/temp.docx");
-
 
 
         }
@@ -139,7 +136,40 @@ namespace NovaBiomedicalSoftware
             _programStatus.Visible = true;
             _programStatus.Text = "Queensland Ambulance Service";
             statusBar.Visible = false;
+
+
+            if (File.Exists(appRootDir + "/Report Templates/QAS Templates/temp.docx"))
+            {
+                File.Delete(appRootDir + "/Report Templates/QAS Templates/temp.docx");
+            }
+
+            if (File.Exists(appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
+            {
+                File.Delete(appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+            }
+
+            _EquipmentCounter.Clear();
+            _PartsCounter.Clear();
+            Aspirator.parts.Clear();
+            AutomaticExternalDefib.parts.Clear();
+            DemandHead.parts.Clear();
+            ElectricSuction.parts.Clear();
+            Flowmeter.parts.Clear();
+            Outlet_Point.parts.Clear();
+            OxygenReticulationAlarm.parts.Clear();
+            PulseOximeter.parts.Clear();
+            RecoilBagResuscitator.parts.Clear();
+            Regulator.parts.Clear();
+            RecoilBagResuscitator.parts.Clear();
+            SphygmoWall.parts.Clear();
+            SphygmoHandheld.parts.Clear();
+            TwinOVac.parts.Clear();
+
+            File.Copy(appRootDir + "/Report Templates/QAS Template-TEMPLATE.docx", appRootDir + "/Report Templates/QAS Templates/temp.docx");
+
             askForEquipmentDetails();
+
+
 
         }
 
@@ -257,6 +287,7 @@ namespace NovaBiomedicalSoftware
 
         private void navigateToMainMenu()
         {
+
             YesNoEquipmentDetails = false;
             espt_btn.Visible = true;
             est_btn.Visible = true;
@@ -1305,6 +1336,38 @@ namespace NovaBiomedicalSoftware
         }
         #endregion
 
+        //refresh buttons
+        private void buttonEL1_Click(object sender, EventArgs e)
+        {
+            Thread earthleakage = new Thread(earthLeakage);
+
+            earthleakage.Start();
+        }
+
+
+        private void buttonEnL1_Click(object sender, EventArgs e)
+        {
+            Thread touchcurrent = new Thread(touchCurrent);
+
+            touchcurrent.Start();
+        }
+
+        private void buttonIR_Click(object sender, EventArgs e)
+        {
+            Thread insulation = new Thread(insulationResistance);
+
+            insulation.Start();
+        }
+
+        private void buttonPE_Click(object sender, EventArgs e)
+        {
+            Thread earthresistance = new Thread(earthResistance);
+
+            earthresistance.Start();
+        }
+
+
+
         // Class Test Buttons Click Events:
         #region Class Test Buttons Click Events
         private void class1testBtn_Click(object sender, EventArgs e)
@@ -1338,6 +1401,18 @@ namespace NovaBiomedicalSoftware
 
         private void class2testBtn_Click(object sender, EventArgs e)
         {
+            topPanel_right.Visible = true;
+            _programStatus.Visible = true;
+
+            //hide earth tests
+            el1.Visible = false;
+            el1Panel.Visible = false;
+            el2.Visible = false;
+            el2Panel.Visible = false;
+            _PELabel.Visible = false;
+            PEPanel.Visible = false;
+
+
             statusBar.Show();
             statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
             statusBar.MarqueeAnimationSpeed = 30;
@@ -1383,31 +1458,62 @@ namespace NovaBiomedicalSoftware
                 statusBar.Hide();
                 //show complete
                 _programStatus.Text = "Test Completed";
-
-                while (earthResistanceFailed == false && insulationResistanceFailed == false && earthLeakageFailed1 == false && earthLeakageFailed2 == false && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
-            touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false)
+                if (class1ASNZtest==true)
                 {
-                    if (PerformBothTest == true)
+                    while (earthResistanceFailed == false && insulationResistanceFailed == false && earthLeakageFailed1 == false && earthLeakageFailed2 == false && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
+            touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false)
                     {
-                        _programStatus.Text = "Please select the equipment";
-                        valuesPanel.Visible = false;
-                        tabMenu.SelectedTab = _PerformanceTestTab;
-                        yesNoPerformanceTest = true;
-                    }
+                        if (PerformBothTest == true)
+                        {
+                            _programStatus.Text = "Please select the equipment";
+                            valuesPanel.Visible = false;
+                            tabMenu.SelectedTab = _PerformanceTestTab;
+                            yesNoPerformanceTest = true;
+                        }
 
-                    if (PerformPerformanceTest == true)
+                        if (PerformPerformanceTest == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            createReport();
+                        }
+
+                        if (PerformElectricalSafetyTest == true)
+                        {
+                            yesNoPerformanceTest = false;
+                            createReport();
+                        }
+
+                        break;
+                    }
+                
+                }
+                if (class2ASNZtest==true)
+                {
+                    while (insulationResistanceFailed == false  && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
+touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false)
                     {
-                        yesNoPerformanceTest = true;
-                        createReport();
-                    }
+                        if (PerformBothTest == true)
+                        {
+                            _programStatus.Text = "Please select the equipment";
+                            valuesPanel.Visible = false;
+                            tabMenu.SelectedTab = _PerformanceTestTab;
+                            yesNoPerformanceTest = true;
+                        }
 
-                    if (PerformElectricalSafetyTest == true)
-                    {
-                        yesNoPerformanceTest = false;
-                        createReport();
-                    }
+                        if (PerformPerformanceTest == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            createReport();
+                        }
 
-                    break;
+                        if (PerformElectricalSafetyTest == true)
+                        {
+                            yesNoPerformanceTest = false;
+                            createReport();
+                        }
+
+                        break;
+                    }
                 }
 
 
@@ -1980,6 +2086,7 @@ namespace NovaBiomedicalSoftware
                 wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.location + "- Electrical Safety Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
             }
 
+
             //Close the document - you have to do this.
             GC.Collect();
             wDoc.Close();
@@ -2389,39 +2496,39 @@ namespace NovaBiomedicalSoftware
         //QAS edit document
         private void QASeditDocument()
         {
-            if (File.Exists(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
+            if (File.Exists(MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
             {
-                File.Delete(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Delete(MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             }
 
             if (PTOutletPointCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Outlet Point-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Outlet Point-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTOxygenReticulationCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Oxygen Reticulation Failure Alarm-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Oxygen Reticulation Failure Alarm-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTRegulatorCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Regulator-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Regulator-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTFlowmeterCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Flowmeter-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Flowmeter-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTElectricSuctionCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Electric Suction-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Electric Suction-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTRecoilBagCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Recoil Bag Resuscitator-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Recoil Bag Resuscitator-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTSphygmoHHeldCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Sphygmo Handheld-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Sphygmo Handheld-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTSphygmoWallCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Sphygmo Wall-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Sphygmo Wall-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTPulseOximeterCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Pulse Oximeter-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Pulse Oximeter-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTAspiratorCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Aspirator-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Aspirator-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTDemanHeadCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Demand Head-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Demand Head-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTTwinOVacCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Twin-O-Vac Suction Device-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Twin-O-Vac Suction Device-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTResidualCurrentDeviceCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Residual Current Device-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Residual Current Device-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTAutomaticExternalDefibCompleted == true)
-                File.Copy(Main.appRootDir + "/Report Templates/QAS Templates/Automatic External Defibrillator-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Automatic External Defibrillator-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
 
 
             //Setup the Word.Application class.
@@ -2432,14 +2539,16 @@ namespace NovaBiomedicalSoftware
             object missing = System.Reflection.Missing.Value;
             object what = Word.WdGoToItem.wdGoToLine;
             object which = Word.WdGoToDirection.wdGoToLast;
-            object saveAs = Main.appRootDir + "/Report Templates/QAS Templates/temp.docx";
+            object saveAs = MainMenu.appRootDir + "/Report Templates/QAS Templates/temp.docx";
             //Set Word to be not visible.
             wordApp.Visible = false;
 
+
+
             //open temp1 docx - electrical safety
-            Word.Document wDoc1 = wordApp.Documents.Open(Main.appRootDir + "/Report Templates/QAS Templates/temp.docx");
+            Word.Document wDoc1 = wordApp.Documents.Open(MainMenu.appRootDir + "/Report Templates/QAS Templates/temp.docx");
             //open temp2 docx - performance test
-            Word.Document wDoc2 = wordApp.Documents.Open(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+            Word.Document wDoc2 = wordApp.Documents.Open(MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
 
             wDoc2.Activate();
 
@@ -2759,9 +2868,9 @@ namespace NovaBiomedicalSoftware
             wordApp.Quit();
 
             MetroFramework.MetroMessageBox.Show(this, "", "Added on the report", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (File.Exists(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
+            if (File.Exists(MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
             {
-                File.Delete(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+                File.Delete(MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             }
 
 
@@ -2786,6 +2895,7 @@ namespace NovaBiomedicalSoftware
         private void qasSubmit_btn_Click(object sender, EventArgs e)
         {
             QASsaveReportPDF();
+            Application.Exit();
         }
 
         private void QASsaveReportPDF()
@@ -2825,41 +2935,6 @@ namespace NovaBiomedicalSoftware
                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
 
 
-                object objWordRng = wDoc1.Bookmarks[3].Range;
-                Word.Paragraph para = wDoc1.Paragraphs.Add(objWordRng);
-                var lastItem = _EquipmentCounter.Last();
-                foreach (var lvi in _EquipmentCounter)
-                {
-                    // do something with each item
-                    if (lvi.Equals(lastItem))
-                    {
-                        para.Range.Text = lvi;
-                    }
-                    else
-                    {
-                        para.Range.Text = lvi + "\n";
-                    }
-
-                }
-
-                object objWordRng2 = wDoc1.Bookmarks[4].Range;
-                Word.Paragraph para2 = wDoc1.Paragraphs.Add(objWordRng2);
-                var lastItem2 = _PartsCounter.Last();
-                foreach (var lvi in _PartsCounter)
-                {
-                    // do something with each item
-                    if (lvi.Equals(lastItem2))
-                    {
-                        para2.Range.Text = lvi;
-                    }
-                    else
-                    {
-                        para2.Range.Text = lvi + "\n";
-                    }
-                }
-
-
-
                 // for changing signatures
                 object oRange = wDoc1.Bookmarks[2].Range;
                 object saveWithDocument = true;
@@ -2867,13 +2942,37 @@ namespace NovaBiomedicalSoftware
                 wDoc1.InlineShapes.AddPicture(pictureName, ref missing, ref saveWithDocument, ref oRange);
 
 
-                wDoc1.ExportAsFixedFormat(saveDestination + "/" + QASEquipmentDetails.station + "-" + QASEquipmentDetails.vehiclenumber + "-" + QASEquipmentDetails.registrationnumber + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
+                object objWordRng = wDoc1.Bookmarks[3].Range;
+                Word.Paragraph para = wDoc1.Paragraphs.Add(objWordRng);
+                var lastItem = _EquipmentCounter.Last();
+                foreach (var lvi in _EquipmentCounter)
+                {
+                    para.Range.Text = lvi + "\n";
 
+                }
+
+                object objWordRng2 = wDoc1.Bookmarks[4].Range;
+                Word.Paragraph para2 = wDoc1.Paragraphs.Add(objWordRng2);
+                var lastItem2 = _PartsCounter.Last();
+
+                Console.WriteLine(lastItem2);
+                foreach (string lvi in _PartsCounter)
+                {
+                    para2.Range.Text = lvi + "\n";
+
+                }
+
+
+
+
+                wDoc1.ExportAsFixedFormat(saveDestination + "/" + QASEquipmentDetails.station + "-" + QASEquipmentDetails.vehiclenumber + "-" + QASEquipmentDetails.registrationnumber + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
+                
                 GC.Collect();
                 wDoc1.Close();
                 wordApp.Quit();
-
                 MetroFramework.MetroMessageBox.Show(this, "", "Report is Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Process.Start(saveDestination + "/" + QASEquipmentDetails.station + "-" + QASEquipmentDetails.vehiclenumber + "-" + QASEquipmentDetails.registrationnumber + "- QAS Report.pdf");
+
             }
 
         }
@@ -2939,7 +3038,8 @@ namespace NovaBiomedicalSoftware
                 _PartsCounter.Add(item);
             }
 
-            _PartsCounter.Sort();
+            //_PartsCounter.Sort();
+            
 
 
 

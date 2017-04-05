@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtectiveEarthOptions));
             this.nonDetachableSupply = new MetroFramework.Controls.MetroTile();
             this.withApplianceInlet = new MetroFramework.Controls.MetroTile();
             this.detachablePowerSupply = new MetroFramework.Controls.MetroTile();
@@ -37,7 +38,7 @@
             // 
             this.nonDetachableSupply.ActiveControl = null;
             this.nonDetachableSupply.Location = new System.Drawing.Point(31, 78);
-            this.nonDetachableSupply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nonDetachableSupply.Margin = new System.Windows.Forms.Padding(4);
             this.nonDetachableSupply.Name = "nonDetachableSupply";
             this.nonDetachableSupply.Size = new System.Drawing.Size(653, 135);
             this.nonDetachableSupply.TabIndex = 0;
@@ -52,7 +53,7 @@
             // 
             this.withApplianceInlet.ActiveControl = null;
             this.withApplianceInlet.Location = new System.Drawing.Point(31, 220);
-            this.withApplianceInlet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.withApplianceInlet.Margin = new System.Windows.Forms.Padding(4);
             this.withApplianceInlet.Name = "withApplianceInlet";
             this.withApplianceInlet.Size = new System.Drawing.Size(653, 135);
             this.withApplianceInlet.TabIndex = 0;
@@ -69,7 +70,7 @@
             this.detachablePowerSupply.ActiveControl = null;
             this.detachablePowerSupply.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.detachablePowerSupply.Location = new System.Drawing.Point(31, 363);
-            this.detachablePowerSupply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.detachablePowerSupply.Margin = new System.Windows.Forms.Padding(4);
             this.detachablePowerSupply.Name = "detachablePowerSupply";
             this.detachablePowerSupply.Size = new System.Drawing.Size(653, 135);
             this.detachablePowerSupply.TabIndex = 0;
@@ -88,7 +89,8 @@
             this.Controls.Add(this.detachablePowerSupply);
             this.Controls.Add(this.withApplianceInlet);
             this.Controls.Add(this.nonDetachableSupply);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProtectiveEarthOptions";
