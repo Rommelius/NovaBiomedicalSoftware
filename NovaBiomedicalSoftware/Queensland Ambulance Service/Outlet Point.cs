@@ -18,6 +18,28 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
         public static string assetNumberText, modelBoxText, makeBoxText, serialNumberText;
         public static string result1, result2, result3, result4;
 
+        public static List<string> parts = new List<string>();
+
+        private void _addBtn_Click(object sender, EventArgs e)
+        {
+            if (_parts.Text != "")
+            {
+                parts.Add(_parts.Text);
+                _parts.Text = "";
+                MetroFramework.MetroMessageBox.Show(this, "", "Parts added to the list.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "", "Type the name of the part.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void close_btn_Click(object sender, EventArgs e)
         {
             outletPointTest_Submit = false;

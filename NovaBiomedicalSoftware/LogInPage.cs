@@ -18,20 +18,9 @@ namespace NovaBiomedicalSoftware
         List<string> listUserNames = new List<string>();
         public string[] fields;
 
-
-        public bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, YesNoSaveDestination;
-        public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
-
-        public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
-            PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted;
-
-        public bool PTtestIsDone;
-
-        public bool earthResistanceFailed, insulationResistanceFailed, earthLeakageFailed1, earthLeakageFailed2, touchCurrentFailed1, touchCurrentFailed2,
-            touchCurrentFailed3, touchCurrentFailed4, touchCurrentFailed5, touchCurrentFailed6;
+        public bool YesNoSaveDestination;
 
         public static string currentUser;
-
 
         //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
         public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
@@ -86,6 +75,7 @@ namespace NovaBiomedicalSoftware
             }
             else
             {
+                currentUser = userName.Text;
                 if (YesNoSaveDestination != true)
                 {
                     while (YesNoSaveDestination != true)

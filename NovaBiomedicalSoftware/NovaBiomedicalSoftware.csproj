@@ -52,10 +52,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -178,6 +174,12 @@
     </Compile>
     <Compile Include="Performance Test\PhilipsMRxDefib.Designer.cs">
       <DependentUpon>PhilipsMRxDefib.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QASEquipmentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QASEquipmentDetails.Designer.cs">
+      <DependentUpon>QASEquipmentDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Queensland Ambulance Service\ResidualCurrentDevice.cs">
       <SubType>Form</SubType>
@@ -325,6 +327,9 @@
     <EmbeddedResource Include="Performance Test\PhilipsMRxDefib.resx">
       <DependentUpon>PhilipsMRxDefib.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QASEquipmentDetails.resx">
+      <DependentUpon>QASEquipmentDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Queensland Ambulance Service\ResidualCurrentDevice.resx">
       <DependentUpon>ResidualCurrentDevice.cs</DependentUpon>
     </EmbeddedResource>
@@ -463,6 +468,11 @@
     <None Include="Resources\left-arrow %282%29.png" />
     <None Include="Resources\bg.png" />
     <None Include="Resources\bg1.png" />
+    <None Include="Resources\electricity.png" />
+    <None Include="Resources\electricity %281%29.png" />
+    <None Include="Resources\electricity %282%29.png" />
+    <None Include="Resources\notepad.png" />
+    <None Include="Resources\both.png" />
     <Content Include="Signatures\Joe Welch.png" />
     <Content Include="Signatures\Ken Welch.png" />
     <Content Include="Signatures\Khoi Duong.png" />

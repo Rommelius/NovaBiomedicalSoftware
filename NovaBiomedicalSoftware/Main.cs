@@ -431,10 +431,11 @@ namespace NovaBiomedicalSoftware
             Thread class2NTest = new Thread(class2NormalTest);
 
             class2NTest.Start();
-        } 
+        }
         #endregion
 
 
+        #region Performance Test Button Click Events:
         // Performance Test Button Click Events:
         private void bbraunPerfusor_Click(object sender, EventArgs e)
         {
@@ -453,13 +454,13 @@ namespace NovaBiomedicalSoftware
                     }
                     else
                     {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this,"Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (dialogResult == DialogResult.Yes)
                         {
                             yesNoPerformanceTest = false;
                             PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -467,7 +468,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
         private void ptECG_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -499,7 +499,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
         private void ptNIBP_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -531,7 +530,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
         private void eddanDoppler_btn_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -563,7 +561,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
         private void sphygmomanometer_btn_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -595,8 +592,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
-
         private void genius2_btn_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -628,8 +623,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
-
         private void heinent300_btn_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -661,7 +654,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
         private void philipsMRx_btn_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -693,8 +685,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
-
         private void accusonicAP170_btn_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -726,7 +716,6 @@ namespace NovaBiomedicalSoftware
 
             }
         }
-
         private void comweldoxygenFM_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -757,7 +746,8 @@ namespace NovaBiomedicalSoftware
                 }
 
             }
-        }
+        } 
+        #endregion
 
         //QAS Test
 
@@ -770,7 +760,7 @@ namespace NovaBiomedicalSoftware
 
 
         // Test Functions:
-        public void class1NormalTest()
+        private void class1NormalTest()
         {
             initialisedDevice();
             getVersionNumber();
@@ -782,7 +772,7 @@ namespace NovaBiomedicalSoftware
             testComplete();
         }
 
-        public void class2NormalTest()
+        private void class2NormalTest()
         {
             initialisedDevice();
             getVersionNumber();
@@ -793,7 +783,7 @@ namespace NovaBiomedicalSoftware
         }
 
         // Electrical Test Complete Function
-        public void testComplete()
+        private void testComplete()
         {
 
             this.Invoke((MethodInvoker)delegate
@@ -1495,7 +1485,6 @@ namespace NovaBiomedicalSoftware
 
         }
 
-
         private void combineBothTemplate()
         {
             //Setup the Word.Application class.
@@ -2066,8 +2055,6 @@ namespace NovaBiomedicalSoftware
             wDoc.Close();
             wordApp.Quit();
         }
-
-
         //Function to Edit
         private void FindAndReplace(Word.Application WordApp, object findText, object replaceWithText)
         {

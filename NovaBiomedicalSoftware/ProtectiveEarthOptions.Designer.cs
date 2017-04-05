@@ -36,9 +36,10 @@
             // nonDetachableSupply
             // 
             this.nonDetachableSupply.ActiveControl = null;
-            this.nonDetachableSupply.Location = new System.Drawing.Point(23, 63);
+            this.nonDetachableSupply.Location = new System.Drawing.Point(31, 78);
+            this.nonDetachableSupply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nonDetachableSupply.Name = "nonDetachableSupply";
-            this.nonDetachableSupply.Size = new System.Drawing.Size(490, 110);
+            this.nonDetachableSupply.Size = new System.Drawing.Size(653, 135);
             this.nonDetachableSupply.TabIndex = 0;
             this.nonDetachableSupply.Text = "Class 1 Equipment with a Non-Detachable Supply Cord";
             this.nonDetachableSupply.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -50,9 +51,10 @@
             // withApplianceInlet
             // 
             this.withApplianceInlet.ActiveControl = null;
-            this.withApplianceInlet.Location = new System.Drawing.Point(23, 179);
+            this.withApplianceInlet.Location = new System.Drawing.Point(31, 220);
+            this.withApplianceInlet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.withApplianceInlet.Name = "withApplianceInlet";
-            this.withApplianceInlet.Size = new System.Drawing.Size(490, 110);
+            this.withApplianceInlet.Size = new System.Drawing.Size(653, 135);
             this.withApplianceInlet.TabIndex = 0;
             this.withApplianceInlet.Text = "Class 1 Equipment with an Appliance Inlet";
             this.withApplianceInlet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -66,9 +68,10 @@
             // 
             this.detachablePowerSupply.ActiveControl = null;
             this.detachablePowerSupply.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.detachablePowerSupply.Location = new System.Drawing.Point(23, 295);
+            this.detachablePowerSupply.Location = new System.Drawing.Point(31, 363);
+            this.detachablePowerSupply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.detachablePowerSupply.Name = "detachablePowerSupply";
-            this.detachablePowerSupply.Size = new System.Drawing.Size(490, 110);
+            this.detachablePowerSupply.Size = new System.Drawing.Size(653, 135);
             this.detachablePowerSupply.TabIndex = 0;
             this.detachablePowerSupply.Text = "Detachable Power Supply Cord";
             this.detachablePowerSupply.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,17 +82,20 @@
             // 
             // ProtectiveEarthOptions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 435);
+            this.ClientSize = new System.Drawing.Size(715, 535);
             this.Controls.Add(this.detachablePowerSupply);
             this.Controls.Add(this.withApplianceInlet);
             this.Controls.Add(this.nonDetachableSupply);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProtectiveEarthOptions";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Resizable = false;
             this.Text = "Select from the following:";
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ResumeLayout(false);
 
         }

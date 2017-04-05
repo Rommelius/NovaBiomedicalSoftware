@@ -18,6 +18,22 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             InitializeComponent();
         }
 
+        public static List<string> parts = new List<string>();
+
+        private void _addBtn_Click(object sender, EventArgs e)
+        {
+            if (_parts.Text != "")
+            {
+                parts.Add(_parts.Text);
+                _parts.Text = "";
+                MetroFramework.MetroMessageBox.Show(this, "", "Parts added to the list.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "", "Type the name of the part.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
         public bool RecoilBagResuscitatorTest_Submit;
 
         public static string assetNumberText, modelBoxText, makeBoxText, serialNumberText;

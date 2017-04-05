@@ -25,6 +25,7 @@ namespace NovaBiomedicalSoftware
             nonDetachableSupplyOption = true;
             withApplianceInletOption = false;
             detachablePowerSupplyOption = false;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -33,6 +34,7 @@ namespace NovaBiomedicalSoftware
             nonDetachableSupplyOption = false;
             withApplianceInletOption = true;
             detachablePowerSupplyOption = false;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -41,6 +43,7 @@ namespace NovaBiomedicalSoftware
             nonDetachableSupplyOption = false;
             withApplianceInletOption = false;
             detachablePowerSupplyOption = true;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

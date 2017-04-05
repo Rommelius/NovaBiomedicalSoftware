@@ -18,7 +18,22 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             InitializeComponent();
         }
 
+        public static List<string> parts = new List<string>();
 
+        private void _addBtn_Click(object sender, EventArgs e)
+        {
+            if (_parts.Text != "")
+            {
+                parts.Add(_parts.Text);
+                _parts.Text = "";
+                MetroFramework.MetroMessageBox.Show(this, "", "Parts added to the list.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "", "Type the name of the part.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
 
         public bool AutomaticExternalDefibTest_Submit;
 
@@ -34,7 +49,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
         private void submitBtn_Click(object sender, EventArgs e)
         {
             //check if the combobox are answered
-            if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null)
+            if (result_1.SelectedItem == null || result_2.Text == null || result_3.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

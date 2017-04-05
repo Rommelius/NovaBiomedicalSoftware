@@ -36,7 +36,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             File.Copy(Main.appRootDir + "/Report Templates/QAS Template-TEMPLATE.docx", Main.appRootDir + "/Report Templates/QAS Templates/temp.docx");
 
         }
-        private void saveReportPDF()
+        private void QASsaveReportPDF()
         {
             //Setup the Word.Application class.
             Word.Application wordApp =
@@ -82,36 +82,34 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
         }
 
-
+        #region QAS Buttons
         private void outletPoint_btn_Click(object sender, EventArgs e)
         {
-                Outlet_Point dg = new Outlet_Point();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+            Outlet_Point dg = new Outlet_Point();
+            DialogResult dialog1 = dg.ShowDialog();
+            if (dialog1 == DialogResult.Cancel)
+            {
+                if (dg.outletPointTest_Submit == true)
                 {
-                    if (dg.outletPointTest_Submit == true)
+                    //yesNoPerformanceTest = true;
+                    QASTestisDone = true;
+                    PTOutletPointCompleted = true;
+                    QASeditDocument();
+                }
+                else
+                {
+                    DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        //yesNoPerformanceTest = true;
-                        QASTestisDone = true;
-                        PTOutletPointCompleted = true;
-                        editDocument();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            //yesNoPerformanceTest = false;
-                            QASTestisDone = false;
+                        //yesNoPerformanceTest = false;
+                        QASTestisDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "This will not be generated in the report", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MetroFramework.MetroMessageBox.Show(this, "This will not be generated in the report", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
 
-            }   
+            }
         }
-
-
         private void oxygenReticulation_btn_Click(object sender, EventArgs e)
         {
             OxygenReticulationAlarm dg = new OxygenReticulationAlarm();
@@ -123,7 +121,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTOxygenReticulationCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -139,8 +137,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
-
         private void regulator_btn_Click(object sender, EventArgs e)
         {
             Regulator dg = new Regulator();
@@ -152,7 +148,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTRegulatorCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -168,7 +164,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void flowmeter_btn_Click(object sender, EventArgs e)
         {
             Flowmeter dg = new Flowmeter();
@@ -180,7 +175,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTFlowmeterCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -196,7 +191,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void residualCurrent_btn_Click(object sender, EventArgs e)
         {
             ResidualCurrentDevice dg = new ResidualCurrentDevice();
@@ -208,7 +202,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTResidualCurrentDeviceCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -224,7 +218,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void twinovac_btn_Click(object sender, EventArgs e)
         {
             TwinOVac dg = new TwinOVac();
@@ -236,7 +229,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTTwinOVacCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -252,7 +245,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void demanHead_btn_Click(object sender, EventArgs e)
         {
             DemandHead dg = new DemandHead();
@@ -264,7 +256,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTDemanHeadCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -280,7 +272,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void aspirator_btn_Click(object sender, EventArgs e)
         {
             Aspirator dg = new Aspirator();
@@ -292,7 +283,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTAspiratorCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -308,7 +299,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void pulseOximeter_btn_Click(object sender, EventArgs e)
         {
             PulseOximeter dg = new PulseOximeter();
@@ -320,7 +310,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTPulseOximeterCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -336,7 +326,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void sphygmo2_btn_Click(object sender, EventArgs e)
         {
             SphygmoWall dg = new SphygmoWall();
@@ -348,7 +337,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTSphygmoWallCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -364,7 +353,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void sphygmo1_btn_Click(object sender, EventArgs e)
         {
             SphygmoHandheld dg = new SphygmoHandheld();
@@ -376,7 +364,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTSphygmoHHeldCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -392,7 +380,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void recoilBag_btn_Click(object sender, EventArgs e)
         {
             RecoilBagResuscitator dg = new RecoilBagResuscitator();
@@ -404,7 +391,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTRecoilBagCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -420,7 +407,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
-
         private void electricSuction_btn_Click(object sender, EventArgs e)
         {
             ElectricSuction dg = new ElectricSuction();
@@ -432,7 +418,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
                     //yesNoPerformanceTest = true;
                     QASTestisDone = true;
                     PTElectricSuctionCompleted = true;
-                    editDocument();
+                    QASeditDocument();
                 }
                 else
                 {
@@ -448,10 +434,10 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
             }
         }
+        #endregion
 
-
-        //create Outlet Point document
-        private void editDocument()
+        //QAS edit document
+        private void QASeditDocument()
         {
             if (File.Exists(Main.appRootDir + "/Report Templates/QAS Templates/temp2.docx"))
             {
@@ -744,7 +730,7 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 
         private void submit_btn_Click(object sender, EventArgs e)
         {
-            saveReportPDF();
+            QASsaveReportPDF();
         }
 
     }

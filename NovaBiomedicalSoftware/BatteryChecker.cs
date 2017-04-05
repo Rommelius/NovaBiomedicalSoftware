@@ -34,6 +34,10 @@ namespace NovaBiomedicalSoftware
             {
                 year = 2013;
             }
+            if (inputLetter.Text == "K")
+            {
+                year = 2010;
+            }
 
             Int32.TryParse(inputDigits.Text, out digits);
 
