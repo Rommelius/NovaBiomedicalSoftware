@@ -45,13 +45,15 @@
             this.est_btn = new MetroFramework.Controls.MetroTile();
             this.pt_btn = new MetroFramework.Controls.MetroTile();
             this._ElectricalSafetyTestTab = new MetroFramework.Controls.MetroTabPage();
+            this.ecgSimulation_btn = new MetroFramework.Controls.MetroTile();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.ecgClass2 = new MetroFramework.Controls.MetroTile();
-            this.ecgClass1 = new MetroFramework.Controls.MetroTile();
+            this.APClass2 = new MetroFramework.Controls.MetroTile();
+            this.APClass1 = new MetroFramework.Controls.MetroTile();
             this.class2testBtn = new MetroFramework.Controls.MetroTile();
             this.class1testBtn = new MetroFramework.Controls.MetroTile();
             this._estBackButton = new MetroFramework.Controls.MetroTile();
             this._PerformanceTestTab = new MetroFramework.Controls.MetroTabPage();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.comweldoxygenFM = new MetroFramework.Controls.MetroTile();
             this.accusonicAP170_btn = new MetroFramework.Controls.MetroTile();
@@ -83,6 +85,22 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this._qasBackButton = new MetroFramework.Controls.MetroTile();
             this.valuesPanel = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.buttonMCC = new MetroFramework.Controls.MetroButton();
+            this.MCClabel1 = new MetroFramework.Controls.MetroLabel();
+            this.MCC = new MetroFramework.Controls.MetroLabel();
+            this.PLCpanel3 = new MetroFramework.Controls.MetroPanel();
+            this.buttonPLC3 = new MetroFramework.Controls.MetroButton();
+            this.PLClabel3 = new MetroFramework.Controls.MetroLabel();
+            this.PLC3 = new MetroFramework.Controls.MetroLabel();
+            this.PLCpanel2 = new MetroFramework.Controls.MetroPanel();
+            this.buttonPLC2 = new MetroFramework.Controls.MetroButton();
+            this.PLClabel2 = new MetroFramework.Controls.MetroLabel();
+            this.PLC2 = new MetroFramework.Controls.MetroLabel();
+            this.PLCpanel1 = new MetroFramework.Controls.MetroPanel();
+            this.buttonPLC1 = new MetroFramework.Controls.MetroButton();
+            this.PLClabel1 = new MetroFramework.Controls.MetroLabel();
+            this.PLC1 = new MetroFramework.Controls.MetroLabel();
             this.el2Panel = new MetroFramework.Controls.MetroPanel();
             this.buttonEL2 = new MetroFramework.Controls.MetroButton();
             this.labelEL2 = new MetroFramework.Controls.MetroLabel();
@@ -141,6 +159,10 @@
             this._PerformanceTestTab.SuspendLayout();
             this._QASTab.SuspendLayout();
             this.valuesPanel.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
+            this.PLCpanel3.SuspendLayout();
+            this.PLCpanel2.SuspendLayout();
+            this.PLCpanel1.SuspendLayout();
             this.el2Panel.SuspendLayout();
             this.el1Panel.SuspendLayout();
             this.tc6Panel.SuspendLayout();
@@ -378,7 +400,7 @@
             this.est_btn.Text = "Electrical Safety Test";
             this.est_btn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.est_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.est_btn.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.powercord2;
+            this.est_btn.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.powercord;
             this.est_btn.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.est_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.est_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
@@ -411,9 +433,10 @@
             this._ElectricalSafetyTestTab.BackColor = System.Drawing.Color.Transparent;
             this._ElectricalSafetyTestTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.bg1;
             this._ElectricalSafetyTestTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._ElectricalSafetyTestTab.Controls.Add(this.ecgSimulation_btn);
             this._ElectricalSafetyTestTab.Controls.Add(this.metroLabel3);
-            this._ElectricalSafetyTestTab.Controls.Add(this.ecgClass2);
-            this._ElectricalSafetyTestTab.Controls.Add(this.ecgClass1);
+            this._ElectricalSafetyTestTab.Controls.Add(this.APClass2);
+            this._ElectricalSafetyTestTab.Controls.Add(this.APClass1);
             this._ElectricalSafetyTestTab.Controls.Add(this.class2testBtn);
             this._ElectricalSafetyTestTab.Controls.Add(this.class1testBtn);
             this._ElectricalSafetyTestTab.Controls.Add(this._estBackButton);
@@ -433,6 +456,26 @@
             this._ElectricalSafetyTestTab.VerticalScrollbarHighlightOnWheel = false;
             this._ElectricalSafetyTestTab.VerticalScrollbarSize = 13;
             // 
+            // ecgSimulation_btn
+            // 
+            this.ecgSimulation_btn.ActiveControl = null;
+            this.ecgSimulation_btn.Enabled = false;
+            this.ecgSimulation_btn.Location = new System.Drawing.Point(84, 392);
+            this.ecgSimulation_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.ecgSimulation_btn.Name = "ecgSimulation_btn";
+            this.ecgSimulation_btn.Size = new System.Drawing.Size(348, 170);
+            this.ecgSimulation_btn.Style = MetroFramework.MetroColorStyle.Green;
+            this.ecgSimulation_btn.TabIndex = 50;
+            this.ecgSimulation_btn.Text = "ECG Simulation";
+            this.ecgSimulation_btn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ecgSimulation_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ecgSimulation_btn.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.icon;
+            this.ecgSimulation_btn.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ecgSimulation_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.ecgSimulation_btn.UseSelectable = true;
+            this.ecgSimulation_btn.UseTileImage = true;
+            this.ecgSimulation_btn.Click += new System.EventHandler(this.ecgSimulation_Click);
+            // 
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
@@ -440,49 +483,51 @@
             this.metroLabel3.Location = new System.Drawing.Point(61, 0);
             this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(173, 25);
+            this.metroLabel3.Size = new System.Drawing.Size(176, 25);
             this.metroLabel3.TabIndex = 49;
             this.metroLabel3.Text = "Electrical Safety Test:";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroLabel3.UseCustomBackColor = true;
             // 
-            // ecgClass2
+            // APClass2
             // 
-            this.ecgClass2.ActiveControl = null;
-            this.ecgClass2.Enabled = false;
-            this.ecgClass2.Location = new System.Drawing.Point(440, 213);
-            this.ecgClass2.Margin = new System.Windows.Forms.Padding(4);
-            this.ecgClass2.Name = "ecgClass2";
-            this.ecgClass2.Size = new System.Drawing.Size(348, 170);
-            this.ecgClass2.Style = MetroFramework.MetroColorStyle.Green;
-            this.ecgClass2.TabIndex = 48;
-            this.ecgClass2.Text = "ECG - 3551 Class 2";
-            this.ecgClass2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ecgClass2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ecgClass2.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.icon;
-            this.ecgClass2.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ecgClass2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.ecgClass2.UseSelectable = true;
-            this.ecgClass2.UseTileImage = true;
+            this.APClass2.ActiveControl = null;
+            this.APClass2.Enabled = false;
+            this.APClass2.Location = new System.Drawing.Point(440, 213);
+            this.APClass2.Margin = new System.Windows.Forms.Padding(4);
+            this.APClass2.Name = "APClass2";
+            this.APClass2.Size = new System.Drawing.Size(348, 170);
+            this.APClass2.Style = MetroFramework.MetroColorStyle.Green;
+            this.APClass2.TabIndex = 48;
+            this.APClass2.Text = "ASNZ Standard 3551 - Class 2\r\nwith Applied Parts";
+            this.APClass2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.APClass2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.APClass2.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.powercord2;
+            this.APClass2.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.APClass2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.APClass2.UseSelectable = true;
+            this.APClass2.UseTileImage = true;
+            this.APClass2.Click += new System.EventHandler(this.APClass2_Click);
             // 
-            // ecgClass1
+            // APClass1
             // 
-            this.ecgClass1.ActiveControl = null;
-            this.ecgClass1.Enabled = false;
-            this.ecgClass1.Location = new System.Drawing.Point(84, 213);
-            this.ecgClass1.Margin = new System.Windows.Forms.Padding(4);
-            this.ecgClass1.Name = "ecgClass1";
-            this.ecgClass1.Size = new System.Drawing.Size(348, 170);
-            this.ecgClass1.Style = MetroFramework.MetroColorStyle.Green;
-            this.ecgClass1.TabIndex = 47;
-            this.ecgClass1.Text = "ECG - 3551 Class 1";
-            this.ecgClass1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ecgClass1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ecgClass1.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.icon;
-            this.ecgClass1.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ecgClass1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.ecgClass1.UseSelectable = true;
-            this.ecgClass1.UseTileImage = true;
+            this.APClass1.ActiveControl = null;
+            this.APClass1.Enabled = false;
+            this.APClass1.Location = new System.Drawing.Point(84, 213);
+            this.APClass1.Margin = new System.Windows.Forms.Padding(4);
+            this.APClass1.Name = "APClass1";
+            this.APClass1.Size = new System.Drawing.Size(348, 170);
+            this.APClass1.Style = MetroFramework.MetroColorStyle.Green;
+            this.APClass1.TabIndex = 47;
+            this.APClass1.Text = "ASNZ Standard 3551 - Class 1 \r\nwith Applied Parts";
+            this.APClass1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.APClass1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.APClass1.TileImage = global::NovaBiomedicalSoftware.Properties.Resources.powercord2;
+            this.APClass1.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.APClass1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.APClass1.UseSelectable = true;
+            this.APClass1.UseTileImage = true;
+            this.APClass1.Click += new System.EventHandler(this.APClass1_Click);
             // 
             // class2testBtn
             // 
@@ -547,6 +592,7 @@
             this._PerformanceTestTab.AutoScroll = true;
             this._PerformanceTestTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.bg1;
             this._PerformanceTestTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._PerformanceTestTab.Controls.Add(this.metroTile1);
             this._PerformanceTestTab.Controls.Add(this.metroLabel2);
             this._PerformanceTestTab.Controls.Add(this.comweldoxygenFM);
             this._PerformanceTestTab.Controls.Add(this.accusonicAP170_btn);
@@ -575,6 +621,23 @@
             this._PerformanceTestTab.VerticalScrollbarHighlightOnWheel = false;
             this._PerformanceTestTab.VerticalScrollbarSize = 13;
             // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Location = new System.Drawing.Point(607, 407);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(4);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(253, 178);
+            this.metroTile1.Style = MetroFramework.MetroColorStyle.Teal;
+            this.metroTile1.TabIndex = 48;
+            this.metroTile1.Text = "VARP VUE";
+            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
+            // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
@@ -583,7 +646,7 @@
             this.metroLabel2.Location = new System.Drawing.Point(61, 0);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(152, 25);
+            this.metroLabel2.Size = new System.Drawing.Size(155, 25);
             this.metroLabel2.TabIndex = 47;
             this.metroLabel2.Text = "Performance Test:";
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -632,7 +695,7 @@
             this.philipsMRx_btn.Size = new System.Drawing.Size(253, 178);
             this.philipsMRx_btn.Style = MetroFramework.MetroColorStyle.Teal;
             this.philipsMRx_btn.TabIndex = 45;
-            this.philipsMRx_btn.Text = "Philips MRx \r\nDefibrillator";
+            this.philipsMRx_btn.Text = "Generic Defibrillator";
             this.philipsMRx_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.philipsMRx_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.philipsMRx_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -1093,7 +1156,7 @@
             this.metroLabel5.Location = new System.Drawing.Point(61, 61);
             this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(86, 25);
+            this.metroLabel5.Size = new System.Drawing.Size(89, 25);
             this.metroLabel5.TabIndex = 48;
             this.metroLabel5.Text = "QAS Test:";
             this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1120,6 +1183,14 @@
             // valuesPanel
             // 
             this.valuesPanel.AutoScroll = true;
+            this.valuesPanel.Controls.Add(this.metroPanel1);
+            this.valuesPanel.Controls.Add(this.MCC);
+            this.valuesPanel.Controls.Add(this.PLCpanel3);
+            this.valuesPanel.Controls.Add(this.PLC3);
+            this.valuesPanel.Controls.Add(this.PLCpanel2);
+            this.valuesPanel.Controls.Add(this.PLC2);
+            this.valuesPanel.Controls.Add(this.PLCpanel1);
+            this.valuesPanel.Controls.Add(this.PLC1);
             this.valuesPanel.Controls.Add(this.el2Panel);
             this.valuesPanel.Controls.Add(this.el2);
             this.valuesPanel.Controls.Add(this.el1Panel);
@@ -1164,6 +1235,253 @@
             this.valuesPanel.VerticalScrollbarSize = 10;
             this.valuesPanel.Visible = false;
             // 
+            // metroPanel1
+            // 
+            this.metroPanel1.Controls.Add(this.buttonMCC);
+            this.metroPanel1.Controls.Add(this.MCClabel1);
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(0, 760);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(367, 20);
+            this.metroPanel1.TabIndex = 138;
+            this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // buttonMCC
+            // 
+            this.buttonMCC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonMCC.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonMCC.Location = new System.Drawing.Point(295, 0);
+            this.buttonMCC.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonMCC.Name = "buttonMCC";
+            this.buttonMCC.Size = new System.Drawing.Size(72, 20);
+            this.buttonMCC.TabIndex = 124;
+            this.buttonMCC.Text = "Refresh";
+            this.buttonMCC.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.buttonMCC.UseSelectable = true;
+            this.buttonMCC.Visible = false;
+            // 
+            // MCClabel1
+            // 
+            this.MCClabel1.AutoSize = true;
+            this.MCClabel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MCClabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.MCClabel1.ForeColor = System.Drawing.Color.Green;
+            this.MCClabel1.Location = new System.Drawing.Point(0, 0);
+            this.MCClabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.MCClabel1.Name = "MCClabel1";
+            this.MCClabel1.Size = new System.Drawing.Size(13, 20);
+            this.MCClabel1.TabIndex = 123;
+            this.MCClabel1.Text = " ";
+            this.MCClabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MCClabel1.UseCustomBackColor = true;
+            this.MCClabel1.UseCustomForeColor = true;
+            // 
+            // MCC
+            // 
+            this.MCC.AutoSize = true;
+            this.MCC.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MCC.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.MCC.Location = new System.Drawing.Point(0, 740);
+            this.MCC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.MCC.Name = "MCC";
+            this.MCC.Size = new System.Drawing.Size(155, 20);
+            this.MCC.TabIndex = 137;
+            this.MCC.Text = "Mains Contact Current";
+            this.MCC.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MCC.UseCustomBackColor = true;
+            // 
+            // PLCpanel3
+            // 
+            this.PLCpanel3.Controls.Add(this.buttonPLC3);
+            this.PLCpanel3.Controls.Add(this.PLClabel3);
+            this.PLCpanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PLCpanel3.HorizontalScrollbarBarColor = true;
+            this.PLCpanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.PLCpanel3.HorizontalScrollbarSize = 10;
+            this.PLCpanel3.Location = new System.Drawing.Point(0, 720);
+            this.PLCpanel3.Name = "PLCpanel3";
+            this.PLCpanel3.Size = new System.Drawing.Size(367, 20);
+            this.PLCpanel3.TabIndex = 136;
+            this.PLCpanel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLCpanel3.VerticalScrollbarBarColor = true;
+            this.PLCpanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.PLCpanel3.VerticalScrollbarSize = 10;
+            // 
+            // buttonPLC3
+            // 
+            this.buttonPLC3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonPLC3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonPLC3.Location = new System.Drawing.Point(295, 0);
+            this.buttonPLC3.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPLC3.Name = "buttonPLC3";
+            this.buttonPLC3.Size = new System.Drawing.Size(72, 20);
+            this.buttonPLC3.TabIndex = 124;
+            this.buttonPLC3.Text = "Refresh";
+            this.buttonPLC3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.buttonPLC3.UseSelectable = true;
+            this.buttonPLC3.Visible = false;
+            this.buttonPLC3.Click += new System.EventHandler(this.buttonPLC1_Click);
+            // 
+            // PLClabel3
+            // 
+            this.PLClabel3.AutoSize = true;
+            this.PLClabel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PLClabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.PLClabel3.ForeColor = System.Drawing.Color.Green;
+            this.PLClabel3.Location = new System.Drawing.Point(0, 0);
+            this.PLClabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PLClabel3.Name = "PLClabel3";
+            this.PLClabel3.Size = new System.Drawing.Size(13, 20);
+            this.PLClabel3.TabIndex = 123;
+            this.PLClabel3.Text = " ";
+            this.PLClabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLClabel3.UseCustomBackColor = true;
+            this.PLClabel3.UseCustomForeColor = true;
+            // 
+            // PLC3
+            // 
+            this.PLC3.AutoSize = true;
+            this.PLC3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PLC3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.PLC3.Location = new System.Drawing.Point(0, 700);
+            this.PLC3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PLC3.Name = "PLC3";
+            this.PLC3.Size = new System.Drawing.Size(257, 20);
+            this.PLC3.TabIndex = 135;
+            this.PLC3.Text = "Patient Leakage Current (Open Earth):";
+            this.PLC3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLC3.UseCustomBackColor = true;
+            // 
+            // PLCpanel2
+            // 
+            this.PLCpanel2.Controls.Add(this.buttonPLC2);
+            this.PLCpanel2.Controls.Add(this.PLClabel2);
+            this.PLCpanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PLCpanel2.HorizontalScrollbarBarColor = true;
+            this.PLCpanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.PLCpanel2.HorizontalScrollbarSize = 10;
+            this.PLCpanel2.Location = new System.Drawing.Point(0, 680);
+            this.PLCpanel2.Name = "PLCpanel2";
+            this.PLCpanel2.Size = new System.Drawing.Size(367, 20);
+            this.PLCpanel2.TabIndex = 134;
+            this.PLCpanel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLCpanel2.VerticalScrollbarBarColor = true;
+            this.PLCpanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.PLCpanel2.VerticalScrollbarSize = 10;
+            // 
+            // buttonPLC2
+            // 
+            this.buttonPLC2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonPLC2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonPLC2.Location = new System.Drawing.Point(295, 0);
+            this.buttonPLC2.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPLC2.Name = "buttonPLC2";
+            this.buttonPLC2.Size = new System.Drawing.Size(72, 20);
+            this.buttonPLC2.TabIndex = 124;
+            this.buttonPLC2.Text = "Refresh";
+            this.buttonPLC2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.buttonPLC2.UseSelectable = true;
+            this.buttonPLC2.Visible = false;
+            this.buttonPLC2.Click += new System.EventHandler(this.buttonPLC1_Click);
+            // 
+            // PLClabel2
+            // 
+            this.PLClabel2.AutoSize = true;
+            this.PLClabel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PLClabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.PLClabel2.ForeColor = System.Drawing.Color.Green;
+            this.PLClabel2.Location = new System.Drawing.Point(0, 0);
+            this.PLClabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PLClabel2.Name = "PLClabel2";
+            this.PLClabel2.Size = new System.Drawing.Size(13, 20);
+            this.PLClabel2.TabIndex = 123;
+            this.PLClabel2.Text = " ";
+            this.PLClabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLClabel2.UseCustomBackColor = true;
+            this.PLClabel2.UseCustomForeColor = true;
+            // 
+            // PLC2
+            // 
+            this.PLC2.AutoSize = true;
+            this.PLC2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PLC2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.PLC2.Location = new System.Drawing.Point(0, 660);
+            this.PLC2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PLC2.Name = "PLC2";
+            this.PLC2.Size = new System.Drawing.Size(272, 20);
+            this.PLC2.TabIndex = 133;
+            this.PLC2.Text = "Patient Leakage Current (Open Neutral):";
+            this.PLC2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLC2.UseCustomBackColor = true;
+            // 
+            // PLCpanel1
+            // 
+            this.PLCpanel1.Controls.Add(this.buttonPLC1);
+            this.PLCpanel1.Controls.Add(this.PLClabel1);
+            this.PLCpanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PLCpanel1.HorizontalScrollbarBarColor = true;
+            this.PLCpanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.PLCpanel1.HorizontalScrollbarSize = 10;
+            this.PLCpanel1.Location = new System.Drawing.Point(0, 640);
+            this.PLCpanel1.Name = "PLCpanel1";
+            this.PLCpanel1.Size = new System.Drawing.Size(367, 20);
+            this.PLCpanel1.TabIndex = 132;
+            this.PLCpanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLCpanel1.VerticalScrollbarBarColor = true;
+            this.PLCpanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.PLCpanel1.VerticalScrollbarSize = 10;
+            // 
+            // buttonPLC1
+            // 
+            this.buttonPLC1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonPLC1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonPLC1.Location = new System.Drawing.Point(295, 0);
+            this.buttonPLC1.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPLC1.Name = "buttonPLC1";
+            this.buttonPLC1.Size = new System.Drawing.Size(72, 20);
+            this.buttonPLC1.TabIndex = 124;
+            this.buttonPLC1.Text = "Refresh";
+            this.buttonPLC1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.buttonPLC1.UseSelectable = true;
+            this.buttonPLC1.Visible = false;
+            this.buttonPLC1.Click += new System.EventHandler(this.buttonPLC1_Click);
+            // 
+            // PLClabel1
+            // 
+            this.PLClabel1.AutoSize = true;
+            this.PLClabel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PLClabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.PLClabel1.ForeColor = System.Drawing.Color.Green;
+            this.PLClabel1.Location = new System.Drawing.Point(0, 0);
+            this.PLClabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PLClabel1.Name = "PLClabel1";
+            this.PLClabel1.Size = new System.Drawing.Size(13, 20);
+            this.PLClabel1.TabIndex = 123;
+            this.PLClabel1.Text = " ";
+            this.PLClabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLClabel1.UseCustomBackColor = true;
+            this.PLClabel1.UseCustomForeColor = true;
+            // 
+            // PLC1
+            // 
+            this.PLC1.AutoSize = true;
+            this.PLC1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PLC1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.PLC1.Location = new System.Drawing.Point(0, 620);
+            this.PLC1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PLC1.Name = "PLC1";
+            this.PLC1.Size = new System.Drawing.Size(302, 20);
+            this.PLC1.TabIndex = 131;
+            this.PLC1.Text = "Patient Leakage Current (Normal Condition):";
+            this.PLC1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.PLC1.UseCustomBackColor = true;
+            // 
             // el2Panel
             // 
             this.el2Panel.Controls.Add(this.buttonEL2);
@@ -1174,7 +1492,7 @@
             this.el2Panel.HorizontalScrollbarSize = 10;
             this.el2Panel.Location = new System.Drawing.Point(0, 600);
             this.el2Panel.Name = "el2Panel";
-            this.el2Panel.Size = new System.Drawing.Size(388, 20);
+            this.el2Panel.Size = new System.Drawing.Size(367, 20);
             this.el2Panel.TabIndex = 130;
             this.el2Panel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.el2Panel.VerticalScrollbarBarColor = true;
@@ -1185,7 +1503,7 @@
             // 
             this.buttonEL2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEL2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEL2.Location = new System.Drawing.Point(316, 0);
+            this.buttonEL2.Location = new System.Drawing.Point(295, 0);
             this.buttonEL2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEL2.Name = "buttonEL2";
             this.buttonEL2.Size = new System.Drawing.Size(72, 20);
@@ -1236,7 +1554,7 @@
             this.el1Panel.HorizontalScrollbarSize = 10;
             this.el1Panel.Location = new System.Drawing.Point(0, 560);
             this.el1Panel.Name = "el1Panel";
-            this.el1Panel.Size = new System.Drawing.Size(388, 20);
+            this.el1Panel.Size = new System.Drawing.Size(367, 20);
             this.el1Panel.TabIndex = 129;
             this.el1Panel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.el1Panel.VerticalScrollbarBarColor = true;
@@ -1247,7 +1565,7 @@
             // 
             this.buttonEL1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEL1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEL1.Location = new System.Drawing.Point(316, 0);
+            this.buttonEL1.Location = new System.Drawing.Point(295, 0);
             this.buttonEL1.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEL1.Name = "buttonEL1";
             this.buttonEL1.Size = new System.Drawing.Size(72, 20);
@@ -1298,7 +1616,7 @@
             this.tc6Panel.HorizontalScrollbarSize = 10;
             this.tc6Panel.Location = new System.Drawing.Point(0, 520);
             this.tc6Panel.Name = "tc6Panel";
-            this.tc6Panel.Size = new System.Drawing.Size(388, 20);
+            this.tc6Panel.Size = new System.Drawing.Size(367, 20);
             this.tc6Panel.TabIndex = 128;
             this.tc6Panel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tc6Panel.VerticalScrollbarBarColor = true;
@@ -1309,7 +1627,7 @@
             // 
             this.buttonEnL6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEnL6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEnL6.Location = new System.Drawing.Point(316, 0);
+            this.buttonEnL6.Location = new System.Drawing.Point(295, 0);
             this.buttonEnL6.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEnL6.Name = "buttonEnL6";
             this.buttonEnL6.Size = new System.Drawing.Size(72, 20);
@@ -1344,7 +1662,7 @@
             this.tc6.Location = new System.Drawing.Point(0, 480);
             this.tc6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tc6.Name = "tc6";
-            this.tc6.Size = new System.Drawing.Size(186, 40);
+            this.tc6.Size = new System.Drawing.Size(187, 40);
             this.tc6.TabIndex = 101;
             this.tc6.Text = "Touch Current (Open Earth,\r\nReversed):";
             this.tc6.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1360,7 +1678,7 @@
             this.tc5Panel.HorizontalScrollbarSize = 10;
             this.tc5Panel.Location = new System.Drawing.Point(0, 460);
             this.tc5Panel.Name = "tc5Panel";
-            this.tc5Panel.Size = new System.Drawing.Size(388, 20);
+            this.tc5Panel.Size = new System.Drawing.Size(367, 20);
             this.tc5Panel.TabIndex = 127;
             this.tc5Panel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tc5Panel.VerticalScrollbarBarColor = true;
@@ -1371,7 +1689,7 @@
             // 
             this.buttonEnL5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEnL5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEnL5.Location = new System.Drawing.Point(316, 0);
+            this.buttonEnL5.Location = new System.Drawing.Point(295, 0);
             this.buttonEnL5.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEnL5.Name = "buttonEnL5";
             this.buttonEnL5.Size = new System.Drawing.Size(72, 20);
@@ -1406,7 +1724,7 @@
             this.tc5.Location = new System.Drawing.Point(0, 420);
             this.tc5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tc5.Name = "tc5";
-            this.tc5.Size = new System.Drawing.Size(201, 40);
+            this.tc5.Size = new System.Drawing.Size(202, 40);
             this.tc5.TabIndex = 102;
             this.tc5.Text = "Touch Current (Open Neutral,\r\nReversed):";
             this.tc5.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1422,7 +1740,7 @@
             this.tc4Panel.HorizontalScrollbarSize = 10;
             this.tc4Panel.Location = new System.Drawing.Point(0, 400);
             this.tc4Panel.Name = "tc4Panel";
-            this.tc4Panel.Size = new System.Drawing.Size(388, 20);
+            this.tc4Panel.Size = new System.Drawing.Size(367, 20);
             this.tc4Panel.TabIndex = 126;
             this.tc4Panel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tc4Panel.VerticalScrollbarBarColor = true;
@@ -1433,7 +1751,7 @@
             // 
             this.buttonEnL4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEnL4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEnL4.Location = new System.Drawing.Point(316, 0);
+            this.buttonEnL4.Location = new System.Drawing.Point(295, 0);
             this.buttonEnL4.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEnL4.Name = "buttonEnL4";
             this.buttonEnL4.Size = new System.Drawing.Size(72, 20);
@@ -1468,7 +1786,7 @@
             this.tc4.Location = new System.Drawing.Point(0, 360);
             this.tc4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tc4.Name = "tc4";
-            this.tc4.Size = new System.Drawing.Size(231, 40);
+            this.tc4.Size = new System.Drawing.Size(232, 40);
             this.tc4.TabIndex = 100;
             this.tc4.Text = "Touch Current (Normal Condition,\r\nReversed):";
             this.tc4.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1484,7 +1802,7 @@
             this.tc3Panel.HorizontalScrollbarSize = 10;
             this.tc3Panel.Location = new System.Drawing.Point(0, 340);
             this.tc3Panel.Name = "tc3Panel";
-            this.tc3Panel.Size = new System.Drawing.Size(388, 20);
+            this.tc3Panel.Size = new System.Drawing.Size(367, 20);
             this.tc3Panel.TabIndex = 125;
             this.tc3Panel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tc3Panel.VerticalScrollbarBarColor = true;
@@ -1495,7 +1813,7 @@
             // 
             this.buttonEnL3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEnL3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEnL3.Location = new System.Drawing.Point(316, 0);
+            this.buttonEnL3.Location = new System.Drawing.Point(295, 0);
             this.buttonEnL3.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEnL3.Name = "buttonEnL3";
             this.buttonEnL3.Size = new System.Drawing.Size(72, 20);
@@ -1530,7 +1848,7 @@
             this.tc3.Location = new System.Drawing.Point(0, 320);
             this.tc3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tc3.Name = "tc3";
-            this.tc3.Size = new System.Drawing.Size(191, 20);
+            this.tc3.Size = new System.Drawing.Size(192, 20);
             this.tc3.TabIndex = 99;
             this.tc3.Text = "Touch Current (Open Earth):";
             this.tc3.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1546,7 +1864,7 @@
             this.tc2Panel.HorizontalScrollbarSize = 10;
             this.tc2Panel.Location = new System.Drawing.Point(0, 300);
             this.tc2Panel.Name = "tc2Panel";
-            this.tc2Panel.Size = new System.Drawing.Size(388, 20);
+            this.tc2Panel.Size = new System.Drawing.Size(367, 20);
             this.tc2Panel.TabIndex = 124;
             this.tc2Panel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tc2Panel.VerticalScrollbarBarColor = true;
@@ -1557,7 +1875,7 @@
             // 
             this.buttonEnL2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEnL2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEnL2.Location = new System.Drawing.Point(316, 0);
+            this.buttonEnL2.Location = new System.Drawing.Point(295, 0);
             this.buttonEnL2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEnL2.Name = "buttonEnL2";
             this.buttonEnL2.Size = new System.Drawing.Size(72, 20);
@@ -1592,7 +1910,7 @@
             this.tc2.Location = new System.Drawing.Point(0, 280);
             this.tc2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tc2.Name = "tc2";
-            this.tc2.Size = new System.Drawing.Size(206, 20);
+            this.tc2.Size = new System.Drawing.Size(207, 20);
             this.tc2.TabIndex = 98;
             this.tc2.Text = "Touch Current (Open Neutral):";
             this.tc2.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1608,7 +1926,7 @@
             this.tc1Panel.HorizontalScrollbarSize = 10;
             this.tc1Panel.Location = new System.Drawing.Point(0, 260);
             this.tc1Panel.Name = "tc1Panel";
-            this.tc1Panel.Size = new System.Drawing.Size(388, 20);
+            this.tc1Panel.Size = new System.Drawing.Size(367, 20);
             this.tc1Panel.TabIndex = 123;
             this.tc1Panel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tc1Panel.VerticalScrollbarBarColor = true;
@@ -1619,7 +1937,7 @@
             // 
             this.buttonEnL1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonEnL1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonEnL1.Location = new System.Drawing.Point(316, 0);
+            this.buttonEnL1.Location = new System.Drawing.Point(295, 0);
             this.buttonEnL1.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEnL1.Name = "buttonEnL1";
             this.buttonEnL1.Size = new System.Drawing.Size(72, 20);
@@ -1654,7 +1972,7 @@
             this.tc1.Location = new System.Drawing.Point(0, 240);
             this.tc1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tc1.Name = "tc1";
-            this.tc1.Size = new System.Drawing.Size(236, 20);
+            this.tc1.Size = new System.Drawing.Size(237, 20);
             this.tc1.TabIndex = 97;
             this.tc1.Text = "Touch Current (Normal Condition):";
             this.tc1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1670,7 +1988,7 @@
             this.IRPanel.HorizontalScrollbarSize = 10;
             this.IRPanel.Location = new System.Drawing.Point(0, 220);
             this.IRPanel.Name = "IRPanel";
-            this.IRPanel.Size = new System.Drawing.Size(388, 20);
+            this.IRPanel.Size = new System.Drawing.Size(367, 20);
             this.IRPanel.TabIndex = 122;
             this.IRPanel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.IRPanel.VerticalScrollbarBarColor = true;
@@ -1681,7 +1999,7 @@
             // 
             this.buttonIR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonIR.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonIR.Location = new System.Drawing.Point(316, 0);
+            this.buttonIR.Location = new System.Drawing.Point(295, 0);
             this.buttonIR.Margin = new System.Windows.Forms.Padding(4);
             this.buttonIR.Name = "buttonIR";
             this.buttonIR.Size = new System.Drawing.Size(72, 20);
@@ -1732,7 +2050,7 @@
             this.PEPanel.HorizontalScrollbarSize = 10;
             this.PEPanel.Location = new System.Drawing.Point(0, 180);
             this.PEPanel.Name = "PEPanel";
-            this.PEPanel.Size = new System.Drawing.Size(388, 20);
+            this.PEPanel.Size = new System.Drawing.Size(367, 20);
             this.PEPanel.TabIndex = 121;
             this.PEPanel.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.PEPanel.VerticalScrollbarBarColor = true;
@@ -1743,7 +2061,7 @@
             // 
             this.buttonPE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonPE.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonPE.Location = new System.Drawing.Point(316, 0);
+            this.buttonPE.Location = new System.Drawing.Point(295, 0);
             this.buttonPE.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPE.Name = "buttonPE";
             this.buttonPE.Size = new System.Drawing.Size(72, 20);
@@ -1808,7 +2126,7 @@
             this.metroLabel12.Location = new System.Drawing.Point(0, 120);
             this.metroLabel12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(219, 20);
+            this.metroLabel12.Size = new System.Drawing.Size(220, 20);
             this.metroLabel12.TabIndex = 42;
             this.metroLabel12.Text = "Mains Voltage – Live to Neutral:";
             this.metroLabel12.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1838,7 +2156,7 @@
             this.metroLabel15.Location = new System.Drawing.Point(0, 80);
             this.metroLabel15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(227, 20);
+            this.metroLabel15.Size = new System.Drawing.Size(228, 20);
             this.metroLabel15.TabIndex = 43;
             this.metroLabel15.Text = "Mains Voltage – Neutral to Earth:";
             this.metroLabel15.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1868,7 +2186,7 @@
             this.metroLabel17.Location = new System.Drawing.Point(0, 40);
             this.metroLabel17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(204, 20);
+            this.metroLabel17.Size = new System.Drawing.Size(205, 20);
             this.metroLabel17.TabIndex = 44;
             this.metroLabel17.Text = "Mains Voltage – Live to Earth:";
             this.metroLabel17.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1898,7 +2216,7 @@
             this.metroLabel11.Location = new System.Drawing.Point(0, 0);
             this.metroLabel11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(101, 20);
+            this.metroLabel11.Size = new System.Drawing.Size(102, 20);
             this.metroLabel11.TabIndex = 51;
             this.metroLabel11.Text = "Ansur Version:";
             this.metroLabel11.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1953,6 +2271,14 @@
             this._QASTab.PerformLayout();
             this.valuesPanel.ResumeLayout(false);
             this.valuesPanel.PerformLayout();
+            this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
+            this.PLCpanel3.ResumeLayout(false);
+            this.PLCpanel3.PerformLayout();
+            this.PLCpanel2.ResumeLayout(false);
+            this.PLCpanel2.PerformLayout();
+            this.PLCpanel1.ResumeLayout(false);
+            this.PLCpanel1.PerformLayout();
             this.el2Panel.ResumeLayout(false);
             this.el2Panel.PerformLayout();
             this.el1Panel.ResumeLayout(false);
@@ -2008,8 +2334,8 @@
         private MetroFramework.Controls.MetroTile pt_btn;
         private MetroFramework.Controls.MetroTabPage _ElectricalSafetyTestTab;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroTile ecgClass2;
-        private MetroFramework.Controls.MetroTile ecgClass1;
+        private MetroFramework.Controls.MetroTile APClass2;
+        private MetroFramework.Controls.MetroTile APClass1;
         private MetroFramework.Controls.MetroTile class2testBtn;
         private MetroFramework.Controls.MetroTile class1testBtn;
         private MetroFramework.Controls.MetroTile _estBackButton;
@@ -2082,5 +2408,23 @@
         private MetroFramework.Controls.MetroPanel tc3Panel;
         private MetroFramework.Controls.MetroButton buttonEnL3;
         private MetroFramework.Controls.MetroLabel labelEnL3;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroButton buttonMCC;
+        private MetroFramework.Controls.MetroLabel MCClabel1;
+        private MetroFramework.Controls.MetroLabel MCC;
+        private MetroFramework.Controls.MetroPanel PLCpanel3;
+        private MetroFramework.Controls.MetroButton buttonPLC3;
+        private MetroFramework.Controls.MetroLabel PLClabel3;
+        private MetroFramework.Controls.MetroLabel PLC3;
+        private MetroFramework.Controls.MetroPanel PLCpanel2;
+        private MetroFramework.Controls.MetroButton buttonPLC2;
+        private MetroFramework.Controls.MetroLabel PLClabel2;
+        private MetroFramework.Controls.MetroLabel PLC2;
+        private MetroFramework.Controls.MetroPanel PLCpanel1;
+        private MetroFramework.Controls.MetroButton buttonPLC1;
+        private MetroFramework.Controls.MetroLabel PLClabel1;
+        private MetroFramework.Controls.MetroLabel PLC1;
+        private MetroFramework.Controls.MetroTile ecgSimulation_btn;
+        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }

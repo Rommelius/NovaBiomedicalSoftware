@@ -62,10 +62,10 @@
             // 
             // 
             this.makeBox.CustomButton.Image = null;
-            this.makeBox.CustomButton.Location = new System.Drawing.Point(231, 2);
-            this.makeBox.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.makeBox.CustomButton.Location = new System.Drawing.Point(173, 2);
+            this.makeBox.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.makeBox.CustomButton.Name = "";
-            this.makeBox.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.makeBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.makeBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.makeBox.CustomButton.TabIndex = 1;
             this.makeBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -73,7 +73,7 @@
             this.makeBox.CustomButton.Visible = false;
             this.makeBox.Lines = new string[0];
             this.makeBox.Location = new System.Drawing.Point(440, 142);
-            this.makeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.makeBox.Margin = new System.Windows.Forms.Padding(4);
             this.makeBox.MaxLength = 32767;
             this.makeBox.Name = "makeBox";
             this.makeBox.PasswordChar = '\0';
@@ -95,10 +95,10 @@
             // 
             // 
             this.modelBox.CustomButton.Image = null;
-            this.modelBox.CustomButton.Location = new System.Drawing.Point(231, 2);
-            this.modelBox.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modelBox.CustomButton.Location = new System.Drawing.Point(173, 2);
+            this.modelBox.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.modelBox.CustomButton.Name = "";
-            this.modelBox.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.modelBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.modelBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.modelBox.CustomButton.TabIndex = 1;
             this.modelBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -106,7 +106,7 @@
             this.modelBox.CustomButton.Visible = false;
             this.modelBox.Lines = new string[0];
             this.modelBox.Location = new System.Drawing.Point(440, 106);
-            this.modelBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modelBox.Margin = new System.Windows.Forms.Padding(4);
             this.modelBox.MaxLength = 32767;
             this.modelBox.Name = "modelBox";
             this.modelBox.PasswordChar = '\0';
@@ -128,10 +128,10 @@
             // 
             // 
             this.serialNumber.CustomButton.Image = null;
-            this.serialNumber.CustomButton.Location = new System.Drawing.Point(231, 2);
-            this.serialNumber.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.serialNumber.CustomButton.Location = new System.Drawing.Point(173, 2);
+            this.serialNumber.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.serialNumber.CustomButton.Name = "";
-            this.serialNumber.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.serialNumber.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.serialNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.serialNumber.CustomButton.TabIndex = 1;
             this.serialNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -139,7 +139,7 @@
             this.serialNumber.CustomButton.Visible = false;
             this.serialNumber.Lines = new string[0];
             this.serialNumber.Location = new System.Drawing.Point(167, 142);
-            this.serialNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.serialNumber.Margin = new System.Windows.Forms.Padding(4);
             this.serialNumber.MaxLength = 32767;
             this.serialNumber.Name = "serialNumber";
             this.serialNumber.PasswordChar = '\0';
@@ -161,10 +161,10 @@
             // 
             // 
             this.assetNumber.CustomButton.Image = null;
-            this.assetNumber.CustomButton.Location = new System.Drawing.Point(231, 2);
-            this.assetNumber.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.assetNumber.CustomButton.Location = new System.Drawing.Point(173, 2);
+            this.assetNumber.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.assetNumber.CustomButton.Name = "";
-            this.assetNumber.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.assetNumber.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.assetNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.assetNumber.CustomButton.TabIndex = 1;
             this.assetNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -172,7 +172,7 @@
             this.assetNumber.CustomButton.Visible = false;
             this.assetNumber.Lines = new string[0];
             this.assetNumber.Location = new System.Drawing.Point(167, 106);
-            this.assetNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.assetNumber.Margin = new System.Windows.Forms.Padding(4);
             this.assetNumber.MaxLength = 32767;
             this.assetNumber.Name = "assetNumber";
             this.assetNumber.PasswordChar = '\0';
@@ -206,7 +206,7 @@
             this.metroLabel8.Location = new System.Drawing.Point(31, 146);
             this.metroLabel8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(102, 20);
+            this.metroLabel8.Size = new System.Drawing.Size(101, 20);
             this.metroLabel8.TabIndex = 126;
             this.metroLabel8.Text = "Serial Number:";
             this.metroLabel8.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -239,7 +239,7 @@
             this.metroLabel2.Location = new System.Drawing.Point(31, 111);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(102, 20);
+            this.metroLabel2.Size = new System.Drawing.Size(101, 20);
             this.metroLabel2.TabIndex = 123;
             this.metroLabel2.Text = "Asset Number:";
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -247,7 +247,7 @@
             // submitBtn
             // 
             this.submitBtn.Location = new System.Drawing.Point(477, 718);
-            this.submitBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitBtn.Margin = new System.Windows.Forms.Padding(4);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(161, 50);
             this.submitBtn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -261,7 +261,7 @@
             // close_btn
             // 
             this.close_btn.Location = new System.Drawing.Point(27, 718);
-            this.close_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.close_btn.Margin = new System.Windows.Forms.Padding(4);
             this.close_btn.Name = "close_btn";
             this.close_btn.Size = new System.Drawing.Size(161, 50);
             this.close_btn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -279,7 +279,7 @@
             this.metroLabel1.Location = new System.Drawing.Point(27, 186);
             this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(187, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(188, 20);
             this.metroLabel1.TabIndex = 120;
             this.metroLabel1.Text = "Performance Verification:";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -294,7 +294,7 @@
             "Fail",
             "N/A"});
             this.result_4.Location = new System.Drawing.Point(477, 326);
-            this.result_4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_4.Margin = new System.Windows.Forms.Padding(4);
             this.result_4.Name = "result_4";
             this.result_4.Size = new System.Drawing.Size(160, 27);
             this.result_4.TabIndex = 8;
@@ -311,7 +311,7 @@
             "Fail",
             "N/A"});
             this.result_3.Location = new System.Drawing.Point(477, 288);
-            this.result_3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_3.Margin = new System.Windows.Forms.Padding(4);
             this.result_3.Name = "result_3";
             this.result_3.Size = new System.Drawing.Size(160, 27);
             this.result_3.TabIndex = 7;
@@ -328,7 +328,7 @@
             "Fail",
             "N/A"});
             this.result_2.Location = new System.Drawing.Point(477, 251);
-            this.result_2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_2.Margin = new System.Windows.Forms.Padding(4);
             this.result_2.Name = "result_2";
             this.result_2.Size = new System.Drawing.Size(160, 27);
             this.result_2.TabIndex = 6;
@@ -341,7 +341,7 @@
             this.metroLabel4.Location = new System.Drawing.Point(31, 334);
             this.metroLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(122, 20);
+            this.metroLabel4.Size = new System.Drawing.Size(124, 20);
             this.metroLabel4.TabIndex = 110;
             this.metroLabel4.Text = "Overall Test Result";
             this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -374,9 +374,9 @@
             this.visual1.Location = new System.Drawing.Point(27, 220);
             this.visual1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.visual1.Name = "visual1";
-            this.visual1.Size = new System.Drawing.Size(360, 20);
+            this.visual1.Size = new System.Drawing.Size(129, 20);
             this.visual1.TabIndex = 113;
-            this.visual1.Text = "Pressure Test Static 400 KpA +/- 10% (MIN:390 MAX:410)";
+            this.visual1.Text = "Pressure Test Static";
             this.visual1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // result_1
@@ -385,10 +385,10 @@
             // 
             // 
             this.result_1.CustomButton.Image = null;
-            this.result_1.CustomButton.Location = new System.Drawing.Point(180, 2);
-            this.result_1.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_1.CustomButton.Location = new System.Drawing.Point(135, 2);
+            this.result_1.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.result_1.CustomButton.Name = "";
-            this.result_1.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.result_1.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.result_1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.result_1.CustomButton.TabIndex = 1;
             this.result_1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -397,7 +397,7 @@
             this.result_1.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.result_1.Lines = new string[0];
             this.result_1.Location = new System.Drawing.Point(477, 215);
-            this.result_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_1.Margin = new System.Windows.Forms.Padding(4);
             this.result_1.MaxLength = 32767;
             this.result_1.Name = "result_1";
             this.result_1.PasswordChar = '\0';
@@ -548,7 +548,7 @@
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.visual1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Regulator";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Technical Safety Check - Regulator";

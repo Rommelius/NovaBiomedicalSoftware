@@ -17,60 +17,79 @@ using Word = Microsoft.Office.Interop.Word;
 using System.Collections;
 using NovaBiomedicalSoftware.Queensland_Ambulance_Service;
 using System.Diagnostics;
+using Microsoft.Office.Tools.Word;
+using Microsoft.CSharp;
+using Microsoft.Office.Core;
 
 namespace NovaBiomedicalSoftware
 {
     public partial class MainMenu : MetroForm
     {
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
-
-
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
         public static List<string> _EquipmentCounter = new List<string>();
         public static List<string> _PartsCounter = new List<string>();
-        
-
         public bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, PerformQAS, YesNoSaveDestination, YesNoEquipmentDetails;
         public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
             PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted;
-
         public bool QASTestisDone;
-
+        public bool typeCF, typeBF, typeB;
         public bool PTOutletPointCompleted, PTOxygenReticulationCompleted, PTRegulatorCompleted,
             PTFlowmeterCompleted, PTElectricSuctionCompleted, PTRecoilBagCompleted, PTSphygmoHHeldCompleted,
             PTSphygmoWallCompleted, PTPulseOximeterCompleted, PTAspiratorCompleted, PTDemanHeadCompleted,
             PTTwinOVacCompleted, PTResidualCurrentDeviceCompleted, PTAutomaticExternalDefibCompleted;
-
         public int counter_outletPoint, counter_oxygenReticulation, counter_regulator, counter_flowmeter, counter_electricSuction,
             counter_recoilBag, counter_shygmoHHeld, counter_sphygmoWall, counter_pulseOximeter, counter_aspirator, counter_demandHead,
             counter_twinOVac, counter_residualCurrentDevice, counter_automaticExternalDefib;
+        public bool PTtestIsDone;
+        public bool earthResistanceFailed, insulationResistanceFailed, earthLeakageFailed1, earthLeakageFailed2, touchCurrentFailed1, touchCurrentFailed2,
+            touchCurrentFailed3, touchCurrentFailed4, touchCurrentFailed5, touchCurrentFailed6, patientLeakageCurrentFailed1, patientLeakageCurrentFailed2, patientLeakageCurrentFailed3,
+            mainsContactCurrentFailed;
+        public static string currentUser, saveDestination;
+        public static SerialPort mySerialPort;
+        DateTime date = DateTime.Today;
+        public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
+            _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
 
+          private void metroTile1_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                ComweldOxygenFlowmeter dg = new ComweldOxygenFlowmeter();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.ComweldOxygenFlowmeterTest_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTComweldOxygenFMCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
 
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
+            _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double, _PLC1_double, _PLC2_double, _PLC3_double, _MMC_double;
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
-        public bool PTtestIsDone;
-        public bool earthResistanceFailed, insulationResistanceFailed, earthLeakageFailed1, earthLeakageFailed2, touchCurrentFailed1, touchCurrentFailed2,
-            touchCurrentFailed3, touchCurrentFailed4, touchCurrentFailed5, touchCurrentFailed6;
-        public static string currentUser;
-
-        public static string saveDestination;
-
-        static SerialPort mySerialPort;
-        DateTime date = DateTime.Today;
-
-
-        public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
-      _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig;
-
-        
-
-        public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
-         _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double;
-
         public MainMenu()
         {
             InitializeComponent();
@@ -82,17 +101,15 @@ namespace NovaBiomedicalSoftware
 
             tabMenu.Appearance = TabAppearance.FlatButtons;
             tabMenu.ItemSize = new Size(1, 1);
-
-
         }
-
         private void _qasBackButton_Click(object sender, EventArgs e)
         {
             navigateToMainMenu();
         }
-
         private void _ptBackButton_Click(object sender, EventArgs e)
         {
+            PTtestIsDone = false;
+            PerformPerformanceTest = false;
             //get rid of all booleans for performance test
             PTpefusorSpaceCompleted = false;
             PTECGCompleted = false;
@@ -107,13 +124,10 @@ namespace NovaBiomedicalSoftware
 
             navigateToMainMenu();
         }
-
-
         private void _estBackButton_Click(object sender, EventArgs e)
         {
             navigateToMainMenu();
         }
-
         private void qas_btn_Click(object sender, EventArgs e)
         {
             tabMenu.Visible = true;
@@ -172,7 +186,6 @@ namespace NovaBiomedicalSoftware
 
 
         }
-
         private void espt_btn_Click(object sender, EventArgs e)
         {
             valuesPanel.Visible = true;
@@ -243,7 +256,6 @@ namespace NovaBiomedicalSoftware
 
             askForEquipmentDetails();
         }
-
         private void askForEquipmentDetails()
         {
 
@@ -278,16 +290,20 @@ namespace NovaBiomedicalSoftware
                     if (PerformElectricalSafetyTest == true || PerformBothTest == true)
                     {
                         ConnectToSerial();
+                        _ElectricalSafetyTestTab.Focus();
                     }
-                    _ElectricalSafetyTestTab.Focus();
+
+                    if (PerformPerformanceTest == true)
+                    {
+                        _PerformanceTestTab.Focus();
+                    }
+                    
                 }
             }
 
         }
-
         private void navigateToMainMenu()
         {
-
             YesNoEquipmentDetails = false;
             espt_btn.Visible = true;
             est_btn.Visible = true;
@@ -306,7 +322,7 @@ namespace NovaBiomedicalSoftware
 
         }
         //connect to SerialCOM
-        public void ConnectToSerial()
+        private void ConnectToSerial()
         {
             mySerialPort = new SerialPort();
 
@@ -357,7 +373,6 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
-
         private void createReport() {
 
             if (class1ASNZtest == true)
@@ -406,6 +421,7 @@ namespace NovaBiomedicalSoftware
             {
                 editPerformanceTemplate(appRootDir + "/Report Templates/temp2.docx");
                 MetroFramework.MetroMessageBox.Show(this, "", "Report is done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
             }
             if (PerformElectricalSafetyTest == true)
             {
@@ -416,7 +432,6 @@ namespace NovaBiomedicalSoftware
 
 
         }
-
         #region Performance Test Button Click Events:
         // Performance Test Button Click Events:
         private void bbraunPerfusor_Click(object sender, EventArgs e)
@@ -452,34 +467,38 @@ namespace NovaBiomedicalSoftware
         }
         private void ptECG_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true)
             {
-                GenericECG ecg = new GenericECG();
-                DialogResult dialog1 = ecg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (ecg.ecgTest_Submit == true)
+                    GenericECG ecg = new GenericECG();
+                    DialogResult dialog1 = ecg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTECGCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (ecg.ecgTest_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTECGCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
-                }
 
+                }
             }
+            
         }
         private void ptNIBP_Click(object sender, EventArgs e)
         {
@@ -640,7 +659,7 @@ namespace NovaBiomedicalSoftware
         {
             while (PTtestIsDone == false)
             {
-                PhilipsMRxDefib dg = new PhilipsMRxDefib();
+                GenericDefibrillator dg = new GenericDefibrillator();
                 DialogResult dialog1 = dg.ShowDialog();
                 if (dialog1 == DialogResult.Cancel)
                 {
@@ -730,11 +749,286 @@ namespace NovaBiomedicalSoftware
             }
         }
         #endregion
-
-
         // Serial Communication for the FLUKE ESA620 with real-time checker
         #region CommunicationToFluke
-        public void initialisedDevice()
+        private void patientLeakageCurrent()
+        {
+            //normal condition
+            mySerialPort.WriteLine("REMOTE");
+            Thread.Sleep(1000);
+            mySerialPort.WriteLine("STD=ASNZ");
+            Thread.Sleep(1000);
+            mySerialPort.WriteLine("PAT");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("POL=OFF");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("POL=N");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("EARTH=C");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("NEUT=C");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MODE=ACDC");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("AP=RA,LL,LA,RL,V1,V2,V3,V4,V5,V6//OPEN");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MDUAL=OFF");
+            Thread.Sleep(1500);
+            mySerialPort.Close();
+            mySerialPort.Open();
+            mySerialPort.WriteLine("READ");
+            Thread.Sleep(1500);
+            _PLC1 = mySerialPort.ReadExisting();
+            Match _plc1_m = Regex.Match(_PLC1, @"^-?\d*\.?\d*");
+            _PLC1_double= Double.Parse(_plc1_m.Value);
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (typeCF == true)
+                {
+                    if (_PLC1_double > 10)
+                    {
+                        patientLeakageCurrentFailed1 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        PLClabel1.Text = _PLC1_double.ToString() + " uA";
+                        PLClabel1.ForeColor = Color.Red;
+                        buttonPLC1.Visible = true;
+                    }
+                    else
+                    {
+                        patientLeakageCurrentFailed1 = false;
+                        PLClabel1.Text = _PLC1_double.ToString() + " uA";
+                    }
+                }
+                if (typeBF == true || typeB == true)
+                {
+                    if (_PLC1_double > 100)
+                    {
+                        patientLeakageCurrentFailed1 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        PLClabel1.Text = _PLC1_double.ToString() + " uA";
+                        PLClabel1.ForeColor = Color.Red;
+                        buttonPLC1.Visible = true;
+                    }
+                    else
+                    {
+                        patientLeakageCurrentFailed1 = false;
+                        PLClabel1.Text = _PLC1_double.ToString() + " uA";
+                    }
+                }
+                
+            });
+            mySerialPort.WriteLine("LOCAL");
+            Thread.Sleep(1000);
+
+
+            //neutral
+            mySerialPort.WriteLine("REMOTE");
+            Thread.Sleep(1000);
+            mySerialPort.WriteLine("STD=ASNZ");
+            Thread.Sleep(1000);
+            mySerialPort.WriteLine("PAT");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("POL=OFF");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("POL=N");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("EARTH=C");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("NEUT=O");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MODE=ACDC");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("AP=RA,LL,LA,RL,V1,V2,V3,V4,V5,V6//OPEN");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MDUAL=OFF");
+            Thread.Sleep(1500);
+            mySerialPort.Close();
+            mySerialPort.Open();
+            mySerialPort.WriteLine("READ");
+            Thread.Sleep(1500);
+            _PLC2 = mySerialPort.ReadExisting();
+            Match _plc2_m = Regex.Match(_PLC2, @"^-?\d*\.?\d*");
+            _PLC2_double = Double.Parse(_plc2_m.Value);
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (typeCF == true)
+                {
+                    if (_PLC2_double > 10)
+                    {
+                        patientLeakageCurrentFailed2 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        PLClabel2.Text = _PLC2_double.ToString() + " uA";
+                        PLClabel2.ForeColor = Color.Red;
+                        buttonPLC2.Visible = true;
+                    }
+                    else
+                    {
+                        patientLeakageCurrentFailed2 = false;
+                        PLClabel2.Text = _PLC2_double.ToString() + " uA";
+                    }
+                }
+                if (typeBF == true || typeB == true)
+                {
+                    if (_PLC2_double > 100)
+                    {
+                        patientLeakageCurrentFailed2 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        PLClabel2.Text = _PLC2_double.ToString() + " uA";
+                        PLClabel2.ForeColor = Color.Red;
+                        buttonPLC2.Visible = true;
+                    }
+                    else
+                    {
+                        patientLeakageCurrentFailed2 = false;
+                        PLClabel2.Text = _PLC2_double.ToString() + " uA";
+                    }
+                }
+
+            });
+            mySerialPort.WriteLine("LOCAL");
+            Thread.Sleep(1000);
+
+            //protective earthing
+            mySerialPort.WriteLine("REMOTE");
+            Thread.Sleep(1000);
+            mySerialPort.WriteLine("STD=ASNZ");
+            Thread.Sleep(1000);
+            mySerialPort.WriteLine("PAT");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("POL=OFF");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("POL=N");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("EARTH=C");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("NEUT=O");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MODE=ACDC");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("AP=RA,LL,LA,RL,V1,V2,V3,V4,V5,V6//OPEN");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MDUAL=OFF");
+            Thread.Sleep(1500);
+            mySerialPort.Close();
+            mySerialPort.Open();
+            mySerialPort.WriteLine("READ");
+            Thread.Sleep(1500);
+            _PLC3 = mySerialPort.ReadExisting();
+            Match _plc3_m = Regex.Match(_PLC3, @"^-?\d*\.?\d*");
+            _PLC3_double = Double.Parse(_plc3_m.Value);
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (typeCF == true)
+                {
+                    if (_PLC3_double > 10)
+                    {
+                        patientLeakageCurrentFailed3 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        PLClabel3.Text = _PLC3_double.ToString() + " uA";
+                        PLClabel3.ForeColor = Color.Red;
+                        buttonPLC3.Visible = true;
+                    }
+                    else
+                    {
+                        patientLeakageCurrentFailed3 = false;
+                        PLClabel3.Text = _PLC3_double.ToString() + " uA";
+                    }
+                }
+                if (typeBF == true || typeB == true)
+                {
+                    if (_PLC3_double > 100)
+                    {
+                        patientLeakageCurrentFailed3 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        PLClabel3.Text = _PLC3_double.ToString() + " uA";
+                        PLClabel3.ForeColor = Color.Red;
+                        buttonPLC3.Visible = true;
+                    }
+                    else
+                    {
+                        patientLeakageCurrentFailed3 = false;
+                        PLClabel3.Text = _PLC3_double.ToString() + " uA";
+                    }
+                }
+
+            });
+            mySerialPort.WriteLine("LOCAL");
+            Thread.Sleep(1000);
+        }
+        //private void mainsContactCurrent()
+        //{
+        //    //normal condition
+        //    mySerialPort.WriteLine("REMOTE");
+        //    Thread.Sleep(1000);
+        //    mySerialPort.WriteLine("STD=ASNZ");
+        //    Thread.Sleep(1000);
+        //    mySerialPort.WriteLine("MAP");
+        //    Thread.Sleep(1500);
+        //    mySerialPort.WriteLine("MAP=LOW");
+        //    Thread.Sleep(1500);
+        //    mySerialPort.WriteLine("MAP=NORM");
+        //    Thread.Sleep(1500);
+        //    mySerialPort.WriteLine("EARTH=C");
+        //    Thread.Sleep(1500);
+        //    mySerialPort.WriteLine("AP=RA,LL,LA,RL,V1,V2,V3,V4,V5,V6//OPEN");
+        //    Thread.Sleep(1500);
+        //    mySerialPort.WriteLine("MDUAL=OFF");
+        //    Thread.Sleep(1500);
+        //    mySerialPort.Close();
+        //    mySerialPort.Open();
+        //    mySerialPort.WriteLine("READ");
+        //    Thread.Sleep(1500);
+        //    _MMC = mySerialPort.ReadExisting();
+        //    Match _MMC_m = Regex.Match(_MMC, @"^-?\d*\.?\d*");
+        //    _MMC_double = Double.Parse(_MMC_m.Value);
+        //    this.Invoke((MethodInvoker)delegate
+        //    {
+        //        if (typeCF == true)
+        //        {
+        //            if (_MMC_double > 50)
+        //            {
+        //                patientLeakageCurrentFailed1 = true;
+        //                Thread.CurrentThread.Interrupt();
+        //                MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                PLClabel1.Text = _MMC_double.ToString() + " uA";
+        //                PLClabel1.ForeColor = Color.Red;
+        //                buttonPLC1.Visible = true;
+        //            }
+        //            else
+        //            {
+        //                 = false;
+        //                PLClabel1.Text = _MMC_double.ToString() + " uA";
+        //            }
+        //        }
+        //        if (typeBF == true || typeB == true)
+        //        {
+        //            if (_PLC1_double > 100)
+        //            {
+        //                patientLeakageCurrentFailed1 = true;
+        //                Thread.CurrentThread.Interrupt();
+        //                MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                PLClabel1.Text = _PLC1_double.ToString() + " uA";
+        //                PLClabel1.ForeColor = Color.Red;
+        //                buttonPLC1.Visible = true;
+        //            }
+        //            else
+        //            {
+        //                patientLeakageCurrentFailed1 = false;
+        //                PLClabel1.Text = _PLC1_double.ToString() + " uA";
+        //            }
+        //        }
+
+        //    });
+        //    mySerialPort.WriteLine("LOCAL");
+        //    Thread.Sleep(1000);
+        //}
+        private void initialisedDevice()
         {
             this.Invoke((MethodInvoker)delegate
             {
@@ -747,8 +1041,7 @@ namespace NovaBiomedicalSoftware
 
             Thread.Sleep(1000);
         }
-
-        public void getVersionNumber()
+        private void getVersionNumber()
         {
             //send command
             mySerialPort.WriteLine("REMOTE");
@@ -767,8 +1060,7 @@ namespace NovaBiomedicalSoftware
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
         }
-
-        public void mainsVoltage()
+        private void mainsVoltage()
         {
 
             this.Invoke((MethodInvoker)delegate
@@ -850,8 +1142,7 @@ namespace NovaBiomedicalSoftware
             });
 
         }
-
-        public void earthResistance()
+        private void earthResistance()
         {
             this.Invoke((MethodInvoker)delegate
             {
@@ -924,8 +1215,7 @@ namespace NovaBiomedicalSoftware
             Thread.Sleep(1000);
 
         }
-
-        public void insulationResistance()
+        private void insulationResistance()
         {
             this.Invoke((MethodInvoker)delegate
             {
@@ -970,8 +1260,7 @@ namespace NovaBiomedicalSoftware
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
         }
-
-        public void earthLeakage()
+        private void earthLeakage()
         {
             this.Invoke((MethodInvoker)delegate
             {
@@ -1058,8 +1347,7 @@ namespace NovaBiomedicalSoftware
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
         }
-
-        public void touchCurrent()
+        private void touchCurrent()
         {
             this.Invoke((MethodInvoker)delegate
             {
@@ -1335,39 +1623,39 @@ namespace NovaBiomedicalSoftware
 
         }
         #endregion
-
         //refresh buttons
+        #region refresh buttons
         private void buttonEL1_Click(object sender, EventArgs e)
         {
             Thread earthleakage = new Thread(earthLeakage);
 
             earthleakage.Start();
         }
-
-
         private void buttonEnL1_Click(object sender, EventArgs e)
         {
             Thread touchcurrent = new Thread(touchCurrent);
 
             touchcurrent.Start();
         }
-
         private void buttonIR_Click(object sender, EventArgs e)
         {
             Thread insulation = new Thread(insulationResistance);
 
             insulation.Start();
         }
-
         private void buttonPE_Click(object sender, EventArgs e)
         {
             Thread earthresistance = new Thread(earthResistance);
 
             earthresistance.Start();
         }
+        private void buttonPLC1_Click(object sender, EventArgs e)
+        {
+            Thread patientleakage = new Thread(patientLeakageCurrent);
 
-
-
+            patientleakage.Start();
+        }
+        #endregion
         // Class Test Buttons Click Events:
         #region Class Test Buttons Click Events
         private void class1testBtn_Click(object sender, EventArgs e)
@@ -1375,6 +1663,12 @@ namespace NovaBiomedicalSoftware
             topPanel_right.Visible = true;
             _programStatus.Visible = true;
             class1ASNZtest = true;
+            PLClabel1.Visible = false;
+            PLClabel2.Visible = false;
+            PLClabel3.Visible = false;
+            PLCpanel1.Visible = false;
+            PLCpanel2.Visible = false;
+            PLCpanel3.Visible = false;
 
             ProtectiveEarthOptions class1option = new ProtectiveEarthOptions();
 
@@ -1398,7 +1692,6 @@ namespace NovaBiomedicalSoftware
 
 
         }
-
         private void class2testBtn_Click(object sender, EventArgs e)
         {
             topPanel_right.Visible = true;
@@ -1411,7 +1704,12 @@ namespace NovaBiomedicalSoftware
             el2Panel.Visible = false;
             _PELabel.Visible = false;
             PEPanel.Visible = false;
-
+            PLClabel1.Visible = false;
+            PLClabel2.Visible = false;
+            PLClabel3.Visible = false;
+            PLCpanel1.Visible = false;
+            PLCpanel2.Visible = false;
+            PLCpanel3.Visible = false;
 
             statusBar.Show();
             statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
@@ -1424,8 +1722,53 @@ namespace NovaBiomedicalSoftware
 
             class2NTest.Start();
         }
-        #endregion
+        private void APClass2_Click(object sender, EventArgs e)
+        {
+            PatientLeakageCurrentType plctype = new PatientLeakageCurrentType();
 
+            DialogResult dialogResult = plctype.ShowDialog();
+            if (dialogResult == DialogResult.Cancel)
+            {
+                //navigateToMainMenu();
+            }
+            else if (dialogResult == DialogResult.OK)
+            {
+                statusBar.Show();
+                statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+                statusBar.MarqueeAnimationSpeed = 30;
+
+                _kindofElectricalSafetyTest = "AS NZS 3551 – Class 2 with Applied Parts";
+                Thread patientleakage = new Thread(class2withAppliedParts);
+
+                patientleakage.Start();
+            }
+        }
+        private void APClass1_Click(object sender, EventArgs e)
+        {
+            PatientLeakageCurrentType plctype = new PatientLeakageCurrentType();
+
+            DialogResult dialogResult = plctype.ShowDialog();
+            if (dialogResult == DialogResult.Cancel)
+            {
+                //navigateToMainMenu();
+            }
+            else if (dialogResult == DialogResult.OK)
+            {
+                statusBar.Show();
+                statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+                statusBar.MarqueeAnimationSpeed = 30;
+
+                _kindofElectricalSafetyTest = "AS NZS 3551 – Class 1 with Applied Parts";
+                Thread patientleakage = new Thread(class1withAppliedParts);
+
+                patientleakage.Start();
+            }
+        }
+        private void ecgSimulation_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
         // Test Functions:
         private void class1NormalTest()
         {
@@ -1438,7 +1781,6 @@ namespace NovaBiomedicalSoftware
             earthLeakage();
             testComplete();
         }
-
         private void class2NormalTest()
         {
             initialisedDevice();
@@ -1448,11 +1790,38 @@ namespace NovaBiomedicalSoftware
             touchCurrent();
             testComplete();
         }
+        private void class1withAppliedParts()
+        {
+            initialisedDevice();
+            getVersionNumber();
+            mainsVoltage();
+            earthResistance();
+            insulationResistance();
+            touchCurrent();
+            earthLeakage();
+            patientLeakageCurrent();
+            testComplete();
+        }
+        private void class2withAppliedParts()
+        {
+            initialisedDevice();
+            getVersionNumber();
+            mainsVoltage();
+            earthResistance();
+            insulationResistance();
+            touchCurrent();
+            earthLeakage();
+            patientLeakageCurrent();
+            testComplete();
+        }
+        private void ecgSimulation()
+        {
+
+        }
 
         // Electrical Test Complete Function
         private void testComplete()
         {
-
             this.Invoke((MethodInvoker)delegate
             {
                 statusBar.Hide();
@@ -1519,8 +1888,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
             });
         }
-
-
         private void combineBothTemplate()
         {
             //Setup the Word.Application class.
@@ -1557,7 +1924,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             wDoc2.Close();
             wordApp.Quit();
         }
-
         private void editPerformanceTemplate(object fileName)
         {
             //Setup the Word.Application class.
@@ -1855,31 +2221,31 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", PhilipsMRxDefib.items);
-                this.FindAndReplace(wordApp, "<result1>", PhilipsMRxDefib.result1);
-                this.FindAndReplace(wordApp, "<result2>", PhilipsMRxDefib.result2);
-                this.FindAndReplace(wordApp, "<result3>", PhilipsMRxDefib.result3);
-                this.FindAndReplace(wordApp, "<result4>", PhilipsMRxDefib.result4);
-                this.FindAndReplace(wordApp, "<result5>", PhilipsMRxDefib.result5);
-                this.FindAndReplace(wordApp, "<result6>", PhilipsMRxDefib.result6);
-                this.FindAndReplace(wordApp, "<result7>", PhilipsMRxDefib.result7);
-                this.FindAndReplace(wordApp, "<result8>", PhilipsMRxDefib.result8);
-                this.FindAndReplace(wordApp, "<result9>", PhilipsMRxDefib.result9);
-                this.FindAndReplace(wordApp, "<result10>", PhilipsMRxDefib.result10);
-                this.FindAndReplace(wordApp, "<result11>", PhilipsMRxDefib.result11);
-                this.FindAndReplace(wordApp, "<result12>", PhilipsMRxDefib.result12);
-                this.FindAndReplace(wordApp, "<result13>", PhilipsMRxDefib.result13);
-                this.FindAndReplace(wordApp, "<result14>", PhilipsMRxDefib.result14);
-                this.FindAndReplace(wordApp, "<result15>", PhilipsMRxDefib.result15);
-                this.FindAndReplace(wordApp, "<result16>", PhilipsMRxDefib.result16);
-                this.FindAndReplace(wordApp, "<result17>", PhilipsMRxDefib.result17);
-                this.FindAndReplace(wordApp, "<result18>", PhilipsMRxDefib.result18);
-                this.FindAndReplace(wordApp, "<result19>", PhilipsMRxDefib.result19);
-                this.FindAndReplace(wordApp, "<result20>", PhilipsMRxDefib.result20);
-                this.FindAndReplace(wordApp, "<result21>", PhilipsMRxDefib.result21);
-                this.FindAndReplace(wordApp, "<result22>", PhilipsMRxDefib.result22);
-                this.FindAndReplace(wordApp, "<result23>", PhilipsMRxDefib.result23);
-                this.FindAndReplace(wordApp, "<Comments>", PhilipsMRxDefib.comments);
+                this.FindAndReplace(wordApp, "<Items>", GenericDefibrillator.items);
+                this.FindAndReplace(wordApp, "<result1>", GenericDefibrillator.result1);
+                this.FindAndReplace(wordApp, "<result2>", GenericDefibrillator.result2);
+                this.FindAndReplace(wordApp, "<result3>", GenericDefibrillator.result3);
+                this.FindAndReplace(wordApp, "<result4>", GenericDefibrillator.result4);
+                this.FindAndReplace(wordApp, "<result5>", GenericDefibrillator.result5);
+                this.FindAndReplace(wordApp, "<result6>", GenericDefibrillator.result6);
+                this.FindAndReplace(wordApp, "<result7>", GenericDefibrillator.result7);
+                this.FindAndReplace(wordApp, "<result8>", GenericDefibrillator.result8);
+                this.FindAndReplace(wordApp, "<result9>", GenericDefibrillator.result9);
+                this.FindAndReplace(wordApp, "<result10>", GenericDefibrillator.result10);
+                this.FindAndReplace(wordApp, "<result11>", GenericDefibrillator.result11);
+                this.FindAndReplace(wordApp, "<result12>", GenericDefibrillator.result12);
+                this.FindAndReplace(wordApp, "<result13>", GenericDefibrillator.result13);
+                this.FindAndReplace(wordApp, "<result14>", GenericDefibrillator.result14);
+                this.FindAndReplace(wordApp, "<result15>", GenericDefibrillator.result15);
+                this.FindAndReplace(wordApp, "<result16>", GenericDefibrillator.result16);
+                this.FindAndReplace(wordApp, "<result17>", GenericDefibrillator.result17);
+                this.FindAndReplace(wordApp, "<result18>", GenericDefibrillator.result18);
+                this.FindAndReplace(wordApp, "<result19>", GenericDefibrillator.result19);
+                this.FindAndReplace(wordApp, "<result20>", GenericDefibrillator.result20);
+                this.FindAndReplace(wordApp, "<result21>", GenericDefibrillator.result21);
+                this.FindAndReplace(wordApp, "<result22>", GenericDefibrillator.result22);
+                this.FindAndReplace(wordApp, "<result23>", GenericDefibrillator.result23);
+                this.FindAndReplace(wordApp, "<Comments>", GenericDefibrillator.comments);
                 #endregion
             }
             //Accusonic AP170
@@ -1941,8 +2307,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             GC.Collect();
             wDoc.Close();
             wordApp.Quit();
-        }
 
+        }
         private void editElectricalSafetyTemplate(object fileName)
         {
             //Setup the Word.Application class.
@@ -2091,8 +2457,10 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             GC.Collect();
             wDoc.Close();
             wordApp.Quit();
-        }
 
+       
+
+        }
         #region QAS Buttons
         private void outletPoint_btn_Click(object sender, EventArgs e)
         {
@@ -2492,7 +2860,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
         }
         #endregion
-
         //QAS edit document
         private void QASeditDocument()
         {
@@ -2574,6 +2941,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in Outlet_Point.parts)
                 {
                     para.Range.Text = item+"\n";
+                    _PartsCounter.Add(item);
+
                 }
 
             }
@@ -2596,6 +2965,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in AutomaticExternalDefib.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
 
             }
@@ -2619,6 +2990,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in OxygenReticulationAlarm.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTRegulatorCompleted == true)
@@ -2633,14 +3006,21 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result4>", Regulator.result4);
                 this.FindAndReplace(wordApp, "<Comments>", Regulator.comments);
 
-                object paraRange = wDoc2.Bookmarks[1].Range;
-                Word.Paragraph para = wDoc2.Paragraphs.Add(paraRange);
-                //para.Range.Font.Name = "Courier New";
+                wDoc2.Bookmarks["listofitems"].Select();
 
                 foreach (string item in Regulator.parts)
                 {
-                    para.Range.Text = item + "\n";
+                    wordApp.Selection.TypeText(item + "\n");
+                    _PartsCounter.Add(item);
                 }
+
+                //Word.Paragraph para = wDoc2.Paragraphs.Add();
+                ////para.Range.Font.Name = "Courier New";
+
+                //foreach (string item in Regulator.parts)
+                //{
+                //    para.Range.Text = item + "\n";
+                //}
             }
             if (PTFlowmeterCompleted == true)
             {
@@ -2660,6 +3040,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in Flowmeter.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTElectricSuctionCompleted == true)
@@ -2680,6 +3062,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in ElectricSuction.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTRecoilBagCompleted == true)
@@ -2701,6 +3085,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in RecoilBagResuscitator.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTSphygmoHHeldCompleted == true)
@@ -2723,6 +3109,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in SphygmoHandheld.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTSphygmoWallCompleted == true)
@@ -2745,6 +3133,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in SphygmoWall.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTPulseOximeterCompleted == true)
@@ -2764,6 +3154,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in PulseOximeter.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTAspiratorCompleted == true)
@@ -2783,6 +3175,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in Aspirator.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTDemanHeadCompleted == true)
@@ -2802,6 +3196,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in DemandHead.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTTwinOVacCompleted == true)
@@ -2824,6 +3220,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in TwinOVac.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
             if (PTResidualCurrentDeviceCompleted == true)
@@ -2844,9 +3242,12 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 foreach (string item in ResidualCurrentDevice.parts)
                 {
                     para.Range.Text = item + "\n";
+                    _PartsCounter.Add(item);
+
                 }
             }
 
+            
             Word.Range docRange = wDoc2.Content;
 
             docRange.Select();
@@ -2874,7 +3275,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
 
 
-
+            PTAspiratorCompleted = false;
             PTOutletPointCompleted = false;
             PTOxygenReticulationCompleted = false;
             PTRegulatorCompleted = false;
@@ -2884,20 +3285,33 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             PTSphygmoHHeldCompleted = false;
             PTSphygmoWallCompleted = false;
             PTPulseOximeterCompleted = false;
-            PTAspiratorCompleted = false;
             PTDemanHeadCompleted = false;
             PTTwinOVacCompleted = false;
             PTResidualCurrentDeviceCompleted = false;
+            PTAutomaticExternalDefibCompleted = false;
+
+            Aspirator.parts.Clear();
+            AutomaticExternalDefib.parts.Clear();
+            DemandHead.parts.Clear();
+            ElectricSuction.parts.Clear();
+            Flowmeter.parts.Clear();
+            Outlet_Point.parts.Clear();
+            OxygenReticulationAlarm.parts.Clear();
+            PulseOximeter.parts.Clear();
+            RecoilBagResuscitator.parts.Clear();
+            Regulator.parts.Clear();
+            ResidualCurrentDevice.parts.Clear();
+            SphygmoHandheld.parts.Clear();
+            TwinOVac.parts.Clear();
+
 
 
         }
-
         private void qasSubmit_btn_Click(object sender, EventArgs e)
         {
             QASsaveReportPDF();
             Application.Exit();
         }
-
         private void QASsaveReportPDF()
 
         {
@@ -2936,34 +3350,33 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
 
                 // for changing signatures
-                object oRange = wDoc1.Bookmarks[2].Range;
+                wDoc1.Bookmarks["image"].Select();
                 object saveWithDocument = true;
                 string pictureName = appRootDir + "/Signatures/" + LogInPage.currentUser + ".png";
-                wDoc1.InlineShapes.AddPicture(pictureName, ref missing, ref saveWithDocument, ref oRange);
+                wordApp.Selection.InlineShapes.AddPicture(pictureName, ref missing, ref saveWithDocument, missing);
 
-
-                object objWordRng = wDoc1.Bookmarks[3].Range;
-                Word.Paragraph para = wDoc1.Paragraphs.Add(objWordRng);
-                var lastItem = _EquipmentCounter.Last();
+                //for equipment list
+                wDoc1.Bookmarks["equipments"].Select();
                 foreach (var lvi in _EquipmentCounter)
                 {
-                    para.Range.Text = lvi + "\n";
-
+                    wordApp.Selection.TypeText(lvi + "\n");
                 }
 
-                object objWordRng2 = wDoc1.Bookmarks[4].Range;
-                Word.Paragraph para2 = wDoc1.Paragraphs.Add(objWordRng2);
-                var lastItem2 = _PartsCounter.Last();
-
-                Console.WriteLine(lastItem2);
-                foreach (string lvi in _PartsCounter)
+                //for parts list
+                wDoc1.Bookmarks["parts"].Select();
+                var q = from x in _PartsCounter
+                        group x by x into g
+                        let count = g.Count()
+                        orderby count descending
+                        select new { Value = g.Key, Count = count };
+                foreach (var x in q)
                 {
-                    para2.Range.Text = lvi + "\n";
-
+                    wordApp.Selection.TypeText(x.Count + "x - " + x.Value + "\n");
                 }
-
-
-
+                //foreach (string lvi in _PartsCounter)
+                //{
+                //    wordApp.Selection.TypeText(lvi + "\n");
+                //}
 
                 wDoc1.ExportAsFixedFormat(saveDestination + "/" + QASEquipmentDetails.station + "-" + QASEquipmentDetails.vehiclenumber + "-" + QASEquipmentDetails.registrationnumber + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
                 
@@ -2976,72 +3389,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
 
         }
-
         private void AddEquipmentList()
         {
-            foreach (string item in Outlet_Point.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in Aspirator.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in AutomaticExternalDefib.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in DemandHead.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in ElectricSuction.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in Flowmeter.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in OxygenReticulationAlarm.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in PulseOximeter.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in RecoilBagResuscitator.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in Regulator.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in ResidualCurrentDevice.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-
-            foreach (string item in SphygmoHandheld.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-            foreach (string item in SphygmoWall.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-
-            foreach (string item in TwinOVac.parts)
-            {
-                _PartsCounter.Add(item);
-            }
-
-            //_PartsCounter.Sort();
-            
-
-
 
             if (counter_outletPoint != 0)
                 _EquipmentCounter.Add("Outlet Point: " + counter_outletPoint.ToString());
@@ -3072,7 +3421,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             if (counter_automaticExternalDefib != 0)
                 _EquipmentCounter.Add("Twin-O-Vac Suction Device: " + counter_twinOVac.ToString());
         }
-
         //Function to Edit
         private void FindAndReplace(Word.Application WordApp, object findText, object replaceWithText)
         {
@@ -3101,6 +3449,5 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 ref matchDiacritics, ref matchAlefHamza,
                 ref matchControl);
         }
-
     }
 }
