@@ -53,7 +53,8 @@
             this.class1testBtn = new MetroFramework.Controls.MetroTile();
             this._estBackButton = new MetroFramework.Controls.MetroTile();
             this._PerformanceTestTab = new MetroFramework.Controls.MetroTabPage();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.scales = new MetroFramework.Controls.MetroTile();
+            this.varpVue = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.comweldoxygenFM = new MetroFramework.Controls.MetroTile();
             this.accusonicAP170_btn = new MetroFramework.Controls.MetroTile();
@@ -150,6 +151,7 @@
             this.labelAnsurVersion = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.multiflowRegulator_btn = new MetroFramework.Controls.MetroTile();
             this.topPanel.SuspendLayout();
             this.topPanel_right.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -302,7 +304,7 @@
             this.tabMenu.Location = new System.Drawing.Point(0, 0);
             this.tabMenu.Margin = new System.Windows.Forms.Padding(0);
             this.tabMenu.Name = "tabMenu";
-            this.tabMenu.SelectedIndex = 0;
+            this.tabMenu.SelectedIndex = 3;
             this.tabMenu.Size = new System.Drawing.Size(918, 677);
             this.tabMenu.Style = MetroFramework.MetroColorStyle.Silver;
             this.tabMenu.TabIndex = 52;
@@ -592,7 +594,8 @@
             this._PerformanceTestTab.AutoScroll = true;
             this._PerformanceTestTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.bg1;
             this._PerformanceTestTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._PerformanceTestTab.Controls.Add(this.metroTile1);
+            this._PerformanceTestTab.Controls.Add(this.scales);
+            this._PerformanceTestTab.Controls.Add(this.varpVue);
             this._PerformanceTestTab.Controls.Add(this.metroLabel2);
             this._PerformanceTestTab.Controls.Add(this.comweldoxygenFM);
             this._PerformanceTestTab.Controls.Add(this.accusonicAP170_btn);
@@ -621,22 +624,39 @@
             this._PerformanceTestTab.VerticalScrollbarHighlightOnWheel = false;
             this._PerformanceTestTab.VerticalScrollbarSize = 13;
             // 
-            // metroTile1
+            // scales
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(607, 407);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(4);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(253, 178);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Teal;
-            this.metroTile1.TabIndex = 48;
-            this.metroTile1.Text = "VARP VUE";
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.metroTile1.UseSelectable = true;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
+            this.scales.ActiveControl = null;
+            this.scales.Location = new System.Drawing.Point(868, 407);
+            this.scales.Margin = new System.Windows.Forms.Padding(4);
+            this.scales.Name = "scales";
+            this.scales.Size = new System.Drawing.Size(253, 178);
+            this.scales.Style = MetroFramework.MetroColorStyle.Teal;
+            this.scales.TabIndex = 49;
+            this.scales.Text = "Scales";
+            this.scales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.scales.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.scales.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.scales.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.scales.UseSelectable = true;
+            this.scales.Click += new System.EventHandler(this.scales_Click);
+            // 
+            // varpVue
+            // 
+            this.varpVue.ActiveControl = null;
+            this.varpVue.Location = new System.Drawing.Point(607, 407);
+            this.varpVue.Margin = new System.Windows.Forms.Padding(4);
+            this.varpVue.Name = "varpVue";
+            this.varpVue.Size = new System.Drawing.Size(253, 178);
+            this.varpVue.Style = MetroFramework.MetroColorStyle.Teal;
+            this.varpVue.TabIndex = 48;
+            this.varpVue.Text = "VARP VUE";
+            this.varpVue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.varpVue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.varpVue.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.varpVue.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.varpVue.UseSelectable = true;
+            this.varpVue.Click += new System.EventHandler(this.varp_Vue_Click);
             // 
             // metroLabel2
             // 
@@ -849,6 +869,7 @@
             this._QASTab.AutoScroll = true;
             this._QASTab.BackgroundImage = global::NovaBiomedicalSoftware.Properties.Resources.bg1;
             this._QASTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._QASTab.Controls.Add(this.multiflowRegulator_btn);
             this._QASTab.Controls.Add(this.aedefibrillator_btn);
             this._QASTab.Controls.Add(this.qasSubmit_btn);
             this._QASTab.Controls.Add(this.residualCurrent_btn);
@@ -1007,7 +1028,7 @@
             // sphygmo2_btn
             // 
             this.sphygmo2_btn.ActiveControl = null;
-            this.sphygmo2_btn.Location = new System.Drawing.Point(868, 282);
+            this.sphygmo2_btn.Location = new System.Drawing.Point(607, 655);
             this.sphygmo2_btn.Margin = new System.Windows.Forms.Padding(4);
             this.sphygmo2_btn.Name = "sphygmo2_btn";
             this.sphygmo2_btn.Size = new System.Drawing.Size(253, 178);
@@ -1079,7 +1100,7 @@
             // flowmeter_btn
             // 
             this.flowmeter_btn.ActiveControl = null;
-            this.flowmeter_btn.Location = new System.Drawing.Point(867, 96);
+            this.flowmeter_btn.Location = new System.Drawing.Point(868, 282);
             this.flowmeter_btn.Margin = new System.Windows.Forms.Padding(4);
             this.flowmeter_btn.Name = "flowmeter_btn";
             this.flowmeter_btn.Size = new System.Drawing.Size(253, 178);
@@ -2234,6 +2255,24 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // multiflowRegulator_btn
+            // 
+            this.multiflowRegulator_btn.ActiveControl = null;
+            this.multiflowRegulator_btn.Location = new System.Drawing.Point(868, 96);
+            this.multiflowRegulator_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.multiflowRegulator_btn.Name = "multiflowRegulator_btn";
+            this.multiflowRegulator_btn.Size = new System.Drawing.Size(253, 178);
+            this.multiflowRegulator_btn.Style = MetroFramework.MetroColorStyle.Teal;
+            this.multiflowRegulator_btn.TabIndex = 65;
+            this.multiflowRegulator_btn.Text = "MultiFlow - Regulator";
+            this.multiflowRegulator_btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.multiflowRegulator_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.multiflowRegulator_btn.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.multiflowRegulator_btn.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.multiflowRegulator_btn.UseSelectable = true;
+            this.multiflowRegulator_btn.UseStyleColors = true;
+            this.multiflowRegulator_btn.Click += new System.EventHandler(this.multiflowRegulator_btn_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2425,6 +2464,8 @@
         private MetroFramework.Controls.MetroLabel PLClabel1;
         private MetroFramework.Controls.MetroLabel PLC1;
         private MetroFramework.Controls.MetroTile ecgSimulation_btn;
-        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile varpVue;
+        private MetroFramework.Controls.MetroTile scales;
+        private MetroFramework.Controls.MetroTile multiflowRegulator_btn;
     }
 }

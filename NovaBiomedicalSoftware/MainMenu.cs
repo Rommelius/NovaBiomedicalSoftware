@@ -25,21 +25,44 @@ namespace NovaBiomedicalSoftware
 {
     public partial class MainMenu : MetroForm
     {
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+
+        //Location of Project
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+
+        //List for QAS
+        #region List for QAS
         public static List<string> _EquipmentCounter = new List<string>();
         public static List<string> _PartsCounter = new List<string>();
+        public static List<string> AspiratorsAssets = new List<string>();
+        public static List<string> AutomaticEDAssets = new List<string>();
+        public static List<string> DemandHeadAssets = new List<string>();
+        public static List<string> ElectricSuctionAssets = new List<string>();
+        public static List<string> FlowmeterAssets = new List<string>();
+        public static List<string> OutletPointAssets = new List<string>();
+        public static List<string> OxygenReticulationAssets = new List<string>();
+        public static List<string> PulseOximeterAssets = new List<string>();
+        public static List<string> RecoilBagResuscitatorAssets = new List<string>();
+        public static List<string> RegulatorAssets = new List<string>();
+        public static List<string> RCDAssets = new List<string>();
+        public static List<string> Spygmo1Assets = new List<string>();
+        public static List<string> Spygmo2Assets = new List<string>();
+        public static List<string> TwinOVacAssets = new List<string>();
+        public static List<string> MultiFlowRegulatorAssets = new List<string>();
+        #endregion
+        //Global Variables
+        #region Global Variables
         public bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, PerformQAS, YesNoSaveDestination, YesNoEquipmentDetails;
         public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
-            PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted;
+            PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted, PTScalesCompleted, PTVarpVueCompleted;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
-        public bool PTOutletPointCompleted, PTOxygenReticulationCompleted, PTRegulatorCompleted,
+        public bool PTMultiFlowRegulatorCompleted, PTOutletPointCompleted, PTOxygenReticulationCompleted, PTRegulatorCompleted,
             PTFlowmeterCompleted, PTElectricSuctionCompleted, PTRecoilBagCompleted, PTSphygmoHHeldCompleted,
             PTSphygmoWallCompleted, PTPulseOximeterCompleted, PTAspiratorCompleted, PTDemanHeadCompleted,
             PTTwinOVacCompleted, PTResidualCurrentDeviceCompleted, PTAutomaticExternalDefibCompleted;
-        public int counter_outletPoint, counter_oxygenReticulation, counter_regulator, counter_flowmeter, counter_electricSuction,
+        public int counter_multiflowregulator, counter_outletPoint, counter_oxygenReticulation, counter_regulator, counter_flowmeter, counter_electricSuction,
             counter_recoilBag, counter_shygmoHHeld, counter_sphygmoWall, counter_pulseOximeter, counter_aspirator, counter_demandHead,
             counter_twinOVac, counter_residualCurrentDevice, counter_automaticExternalDefib;
         public bool PTtestIsDone;
@@ -51,41 +74,11 @@ namespace NovaBiomedicalSoftware
         DateTime date = DateTime.Today;
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
             _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
-
-          private void metroTile1_Click(object sender, EventArgs e)
-        {
-            while (PTtestIsDone == false)
-            {
-                ComweldOxygenFlowmeter dg = new ComweldOxygenFlowmeter();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
-                {
-                    if (dg.ComweldOxygenFlowmeterTest_Submit == true)
-                    {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTComweldOxygenFMCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
-
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        }
-                    }
-                }
-
-            }
-        }
-
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
             _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double, _PLC1_double, _PLC2_double, _PLC3_double, _MMC_double;
+
+        #endregion
+
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -121,6 +114,8 @@ namespace NovaBiomedicalSoftware
             PTPhilipsMRxCompleted = false;
             PTAccusonicAP170Completed = false;
             PTComweldOxygenFMCompleted = false;
+            PTVarpVueCompleted = false;
+            PTScalesCompleted = false;
 
             navigateToMainMenu();
         }
@@ -421,13 +416,11 @@ namespace NovaBiomedicalSoftware
             {
                 editPerformanceTemplate(appRootDir + "/Report Templates/temp2.docx");
                 MetroFramework.MetroMessageBox.Show(this, "", "Report is done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            
             }
             if (PerformElectricalSafetyTest == true)
             {
                 editElectricalSafetyTemplate(appRootDir + "/Report Templates/temp.docx");
                 MetroFramework.MetroMessageBox.Show(this, "", "Report is done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
 
 
@@ -446,6 +439,7 @@ namespace NovaBiomedicalSoftware
                     {
                         yesNoPerformanceTest = true;
                         PTtestIsDone = true;
+
                         PTpefusorSpaceCompleted = true;
                         createReport();
                     }
@@ -730,6 +724,68 @@ namespace NovaBiomedicalSoftware
                         yesNoPerformanceTest = true;
                         PTtestIsDone = true;
                         PTComweldOxygenFMCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+        private void scales_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                Scales dg = new Scales();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.Scales_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTScalesCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+        private void varp_Vue_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                VarpVue dg = new VarpVue();
+                DialogResult dialog1 = dg.ShowDialog();
+                if (dialog1 == DialogResult.Cancel)
+                {
+                    if (dg.VarpVueTest_Submit == true)
+                    {
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+                        PTVarpVueCompleted = true;
                         createReport();
                     }
                     else
@@ -1989,7 +2045,16 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/Comweld Oxygen Flowmeter-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
-
+                //varp vue
+                if (PTVarpVueCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/VAPR VUE Generator-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Scales
+                if (PTScalesCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Scales-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
 
             }
 
@@ -2292,7 +2357,57 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result6>", ComweldOxygenFlowmeter.result6);
                 this.FindAndReplace(wordApp, "<result7>", ComweldOxygenFlowmeter.result7);
                 this.FindAndReplace(wordApp, "<result8>", ComweldOxygenFlowmeter.result8);
+                this.FindAndReplace(wordApp, "<result9>", ComweldOxygenFlowmeter.result9);
                 this.FindAndReplace(wordApp, "<Comments>", ComweldOxygenFlowmeter.comments);
+                #endregion
+            }
+            //Varp Vue
+            if (PTVarpVueCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", VarpVue.items);
+                this.FindAndReplace(wordApp, "<result1>", VarpVue.result1);
+                this.FindAndReplace(wordApp, "<result2>", VarpVue.result2);
+                this.FindAndReplace(wordApp, "<result3>", VarpVue.result3);
+                this.FindAndReplace(wordApp, "<result4>", VarpVue.result4);
+                this.FindAndReplace(wordApp, "<result5>", VarpVue.result5);
+                this.FindAndReplace(wordApp, "<result6>", VarpVue.result6);
+                this.FindAndReplace(wordApp, "<result7>", VarpVue.result7);
+                this.FindAndReplace(wordApp, "<result8>", VarpVue.result8);
+                this.FindAndReplace(wordApp, "<result9>", VarpVue.result9);
+                this.FindAndReplace(wordApp, "<Comments>", VarpVue.comments);
+                #endregion
+            }
+            //Scales
+            if (PTScalesCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", Scales.items);
+                this.FindAndReplace(wordApp, "<result1>", Scales.result1);
+                this.FindAndReplace(wordApp, "<result2>", Scales.result2);
+                this.FindAndReplace(wordApp, "<result3>", Scales.result3);
+                this.FindAndReplace(wordApp, "<result4>", Scales.result4);
+                this.FindAndReplace(wordApp, "<result5>", Scales.result5);
+                this.FindAndReplace(wordApp, "<result6>", Scales.result6);
+                this.FindAndReplace(wordApp, "<result7>", Scales.result7);
+                this.FindAndReplace(wordApp, "<result8>", Scales.result8);
+                this.FindAndReplace(wordApp, "<Comments>", Scales.comments);
                 #endregion
             }
 
@@ -2462,6 +2577,37 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
         }
         #region QAS Buttons
+
+        private void multiflowRegulator_btn_Click(object sender, EventArgs e)
+        {
+            MultiflowRegulator dg = new MultiflowRegulator();
+            DialogResult dialog1 = dg.ShowDialog();
+            if (dialog1 == DialogResult.Cancel)
+            {
+                if (dg.multiflowregulatorTest_Submit == true)
+                {
+                    //yesNoPerformanceTest = true;
+                    counter_multiflowregulator++;
+
+                    QASTestisDone = true;
+                    PTMultiFlowRegulatorCompleted = true;
+
+                    QASeditDocument();
+                }
+                else
+                {
+                    DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //yesNoPerformanceTest = false;
+                        QASTestisDone = false;
+
+                        MetroFramework.MetroMessageBox.Show(this, "This will not be generated in the report", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+        }
         private void outletPoint_btn_Click(object sender, EventArgs e)
         {
             Outlet_Point dg = new Outlet_Point();
@@ -2896,6 +3042,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Residual Current Device-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             if (PTAutomaticExternalDefibCompleted == true)
                 File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Automatic External Defibrillator-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
+            if (PTMultiFlowRegulatorCompleted == true)
+                File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Multi-Flow Regulator-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
 
 
             //Setup the Word.Application class.
@@ -2924,6 +3072,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             //Outlet Point
             if (PTOutletPointCompleted == true)
             {
+                OutletPointAssets.Add(Outlet_Point.assetNumberText);
+
                 this.FindAndReplace(wordApp, "<AssetNumber>", Outlet_Point.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", Outlet_Point.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", Outlet_Point.makeBoxText);
@@ -2949,6 +3099,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             //AED
             if (PTAutomaticExternalDefibCompleted == true)
             {
+                AutomaticEDAssets.Add(AutomaticExternalDefib.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", AutomaticExternalDefib.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", AutomaticExternalDefib.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", AutomaticExternalDefib.makeBoxText);
@@ -2973,6 +3124,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
             if (PTOxygenReticulationCompleted == true)
             {
+                OxygenReticulationAssets.Add(OxygenReticulationAlarm.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", OxygenReticulationAlarm.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", OxygenReticulationAlarm.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", OxygenReticulationAlarm.makeBoxText);
@@ -2996,6 +3148,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTRegulatorCompleted == true)
             {
+                RegulatorAssets.Add(Regulator.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", Regulator.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", Regulator.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", Regulator.makeBoxText);
@@ -3013,17 +3166,31 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                     wordApp.Selection.TypeText(item + "\n");
                     _PartsCounter.Add(item);
                 }
+            }
+            if (PTMultiFlowRegulatorCompleted == true)
+            {
+                MultiFlowRegulatorAssets.Add(MultiflowRegulator.assetNumberText);
+                this.FindAndReplace(wordApp, "<AssetNumber>", MultiflowRegulator.assetNumberText);
+                this.FindAndReplace(wordApp, "<SerialNumber>", MultiflowRegulator.serialNumberText);
+                this.FindAndReplace(wordApp, "<Make>", MultiflowRegulator.makeBoxText);
+                this.FindAndReplace(wordApp, "<Model>", MultiflowRegulator.modelBoxText);
+                this.FindAndReplace(wordApp, "<result1>", MultiflowRegulator.result1);
+                this.FindAndReplace(wordApp, "<result2>", MultiflowRegulator.result2);
+                this.FindAndReplace(wordApp, "<result3>", MultiflowRegulator.result3);
+                this.FindAndReplace(wordApp, "<result4>", MultiflowRegulator.result4);
+                this.FindAndReplace(wordApp, "<Comments>", MultiflowRegulator.comments);
 
-                //Word.Paragraph para = wDoc2.Paragraphs.Add();
-                ////para.Range.Font.Name = "Courier New";
+                wDoc2.Bookmarks["listofitems"].Select();
 
-                //foreach (string item in Regulator.parts)
-                //{
-                //    para.Range.Text = item + "\n";
-                //}
+                foreach (string item in MultiflowRegulator.parts)
+                {
+                    wordApp.Selection.TypeText(item + "\n");
+                    _PartsCounter.Add(item);
+                }
             }
             if (PTFlowmeterCompleted == true)
             {
+                FlowmeterAssets.Add(Flowmeter.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", Flowmeter.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", Flowmeter.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", Flowmeter.makeBoxText);
@@ -3046,6 +3213,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTElectricSuctionCompleted == true)
             {
+                ElectricSuctionAssets.Add(ElectricSuction.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", ElectricSuction.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", ElectricSuction.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", ElectricSuction.makeBoxText);
@@ -3068,6 +3236,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTRecoilBagCompleted == true)
             {
+                RecoilBagResuscitatorAssets.Add(RecoilBagResuscitator.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", RecoilBagResuscitator.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", RecoilBagResuscitator.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", RecoilBagResuscitator.makeBoxText);
@@ -3091,6 +3260,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTSphygmoHHeldCompleted == true)
             {
+                Spygmo1Assets.Add(SphygmoHandheld.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", SphygmoHandheld.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", SphygmoHandheld.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", SphygmoHandheld.makeBoxText);
@@ -3115,6 +3285,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTSphygmoWallCompleted == true)
             {
+                Spygmo2Assets.Add(SphygmoWall.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", SphygmoWall.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", SphygmoWall.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", SphygmoWall.makeBoxText);
@@ -3139,6 +3310,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTPulseOximeterCompleted == true)
             {
+                PulseOximeterAssets.Add(PulseOximeter.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", PulseOximeter.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", PulseOximeter.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", PulseOximeter.makeBoxText);
@@ -3160,6 +3332,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTAspiratorCompleted == true)
             {
+                AspiratorsAssets.Add(Aspirator.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", Aspirator.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", Aspirator.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", Aspirator.makeBoxText);
@@ -3181,6 +3354,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTDemanHeadCompleted == true)
             {
+                DemandHeadAssets.Add(DemandHead.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", DemandHead.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", DemandHead.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", DemandHead.makeBoxText);
@@ -3202,6 +3376,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTTwinOVacCompleted == true)
             {
+                TwinOVacAssets.Add(TwinOVac.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", TwinOVac.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", TwinOVac.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", TwinOVac.makeBoxText);
@@ -3226,6 +3401,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
             if (PTResidualCurrentDeviceCompleted == true)
             {
+                RCDAssets.Add(ResidualCurrentDevice.assetNumberText);
                 this.FindAndReplace(wordApp, "<AssetNumber>", ResidualCurrentDevice.assetNumberText);
                 this.FindAndReplace(wordApp, "<SerialNumber>", ResidualCurrentDevice.serialNumberText);
                 this.FindAndReplace(wordApp, "<Make>", ResidualCurrentDevice.makeBoxText);
@@ -3274,7 +3450,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 File.Delete(MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
             }
 
-
+            PTMultiFlowRegulatorCompleted = false;
             PTAspiratorCompleted = false;
             PTOutletPointCompleted = false;
             PTOxygenReticulationCompleted = false;
@@ -3303,9 +3479,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             ResidualCurrentDevice.parts.Clear();
             SphygmoHandheld.parts.Clear();
             TwinOVac.parts.Clear();
-
-
-
+            MultiflowRegulator.parts.Clear();
         }
         private void qasSubmit_btn_Click(object sender, EventArgs e)
         {
@@ -3373,18 +3547,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     wordApp.Selection.TypeText(x.Count + "x - " + x.Value + "\n");
                 }
-                //foreach (string lvi in _PartsCounter)
-                //{
-                //    wordApp.Selection.TypeText(lvi + "\n");
-                //}
 
-                wDoc1.ExportAsFixedFormat(saveDestination + "/" + QASEquipmentDetails.station + "-" + QASEquipmentDetails.vehiclenumber + "-" + QASEquipmentDetails.registrationnumber + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
+
+                wDoc1.ExportAsFixedFormat(saveDestination + "/Station " + QASEquipmentDetails.station + "-Vehicle Number " + QASEquipmentDetails.vehiclenumber  + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
                 
                 GC.Collect();
                 wDoc1.Close();
                 wordApp.Quit();
                 MetroFramework.MetroMessageBox.Show(this, "", "Report is Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Process.Start(saveDestination + "/" + QASEquipmentDetails.station + "-" + QASEquipmentDetails.vehiclenumber + "-" + QASEquipmentDetails.registrationnumber + "- QAS Report.pdf");
+                Process.Start(saveDestination + "/Station " + QASEquipmentDetails.station + "-Vehicle Number " + QASEquipmentDetails.vehiclenumber + "- QAS Report.pdf");
 
             }
 
@@ -3393,33 +3564,36 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
         {
 
             if (counter_outletPoint != 0)
-                _EquipmentCounter.Add("Outlet Point: " + counter_outletPoint.ToString());
+                _EquipmentCounter.Add(counter_outletPoint.ToString()+"x - Outlet Point: (" + string.Join(", ", OutletPointAssets)+ ")");
             if (counter_oxygenReticulation != 0)
-                _EquipmentCounter.Add("Oxygen Reticulation: " + counter_oxygenReticulation.ToString());
+                _EquipmentCounter.Add( counter_oxygenReticulation.ToString()+ "x - Oxygen Reticulation: ( " + string.Join(", ", OxygenReticulationAssets) + ")");
             if (counter_aspirator != 0)
-                _EquipmentCounter.Add("Aspirator: " + counter_aspirator.ToString());
+                _EquipmentCounter.Add(counter_aspirator.ToString()+ "x - Aspirator: (" + string.Join(", ", AspiratorsAssets) + ")");
             if (counter_demandHead != 0)
-                _EquipmentCounter.Add("Demand Head: " + counter_demandHead.ToString());
+                _EquipmentCounter.Add( counter_demandHead.ToString()+ "x - Demand Head: ("+ string.Join(", ", DemandHeadAssets) + ")");
             if (counter_electricSuction != 0)
-                _EquipmentCounter.Add("Electric Suction: " + counter_electricSuction.ToString());
+                _EquipmentCounter.Add( counter_electricSuction.ToString()+ "x - Electric Suction: (" + string.Join(", ", ElectricSuctionAssets) + ")");
             if (counter_flowmeter != 0)
-                _EquipmentCounter.Add("Flowmeter: " + counter_flowmeter.ToString());
+                _EquipmentCounter.Add( counter_flowmeter.ToString()+ "x - Flowmeter: (" + string.Join(", ", FlowmeterAssets) + ")");
             if (counter_pulseOximeter != 0)
-                _EquipmentCounter.Add("Pulse Oximeter: " + counter_pulseOximeter.ToString());
+                _EquipmentCounter.Add( counter_pulseOximeter.ToString()+ "x - Pulse Oximeter: (" + string.Join(", ", PulseOximeterAssets) + ")");
             if (counter_recoilBag != 0)
-                _EquipmentCounter.Add("Recoil Bag Resuscitator: " + counter_recoilBag.ToString());
+                _EquipmentCounter.Add( counter_recoilBag.ToString()+ "x - Recoil Bag Resuscitator: (" + string.Join(", ", RecoilBagResuscitatorAssets) + ")");
             if (counter_regulator != 0)
-                _EquipmentCounter.Add("Regulator: " + counter_regulator.ToString());
+                _EquipmentCounter.Add( counter_regulator.ToString()+ "x - Regulator: (" + string.Join(", ", RegulatorAssets) + ")");
             if (counter_residualCurrentDevice != 0)
-                _EquipmentCounter.Add("Residual Current Device: " + counter_residualCurrentDevice.ToString());
+                _EquipmentCounter.Add( counter_residualCurrentDevice.ToString()+ "x - Residual Current Device: " + string.Join(", ", RCDAssets) + ")");
             if (counter_shygmoHHeld != 0)
-                _EquipmentCounter.Add("Sphygmo Handheld: " + counter_shygmoHHeld.ToString());
+                _EquipmentCounter.Add(counter_shygmoHHeld.ToString()+ "x - Sphygmo Handheld: (" + string.Join(", ", Spygmo1Assets) + ")");
             if (counter_sphygmoWall != 0)
-                _EquipmentCounter.Add("Sphygmo Wall: " + counter_sphygmoWall.ToString());
+                _EquipmentCounter.Add( counter_sphygmoWall.ToString()+ "x - Sphygmo Wall: (" + string.Join(", ", Spygmo2Assets) + ")");
             if (counter_twinOVac != 0)
-                _EquipmentCounter.Add("Twin-O-Vac Suction Device: " + counter_twinOVac.ToString());
+                _EquipmentCounter.Add(counter_twinOVac.ToString()+ "x - Twin-O-Vac Suction Device: (" + string.Join(", ", TwinOVacAssets) + ")");
             if (counter_automaticExternalDefib != 0)
-                _EquipmentCounter.Add("Twin-O-Vac Suction Device: " + counter_twinOVac.ToString());
+                _EquipmentCounter.Add(counter_automaticExternalDefib.ToString()+ "x - Automatic External Defibrillator: (" + string.Join(", ", AutomaticEDAssets) + ")");
+            if (counter_multiflowregulator != 0)
+                _EquipmentCounter.Add(counter_multiflowregulator.ToString() + "x - Multi-Flow Regulator: (" + string.Join(", ", MultiFlowRegulatorAssets) + ")");
+
         }
         //Function to Edit
         private void FindAndReplace(Word.Application WordApp, object findText, object replaceWithText)

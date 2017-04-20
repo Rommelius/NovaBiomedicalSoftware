@@ -133,9 +133,10 @@ C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftwa
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Queensland_Ambulance_Service.TwinOVac.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.GenerateResource.Cache
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.QASEquipmentDetails.resources
-C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csprojResolveAssemblyReference.cache
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.PatientLeakageCurrentType.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.GenericDefibrillator.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.VarpVue.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\Microsoft.Office.Tools.Word.v4.0.Utilities.dll
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\bin\Debug\Microsoft.Office.Tools.Word.v4.0.Utilities.xml
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.Scales.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Queensland_Ambulance_Service.MultiflowRegulator.resources

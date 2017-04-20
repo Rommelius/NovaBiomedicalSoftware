@@ -251,7 +251,7 @@
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(161, 50);
             this.submitBtn.Style = MetroFramework.MetroColorStyle.Blue;
-            this.submitBtn.TabIndex = 10;
+            this.submitBtn.TabIndex = 13;
             this.submitBtn.Text = "Submit";
             this.submitBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.submitBtn.UseSelectable = true;
@@ -265,7 +265,7 @@
             this.close_btn.Name = "close_btn";
             this.close_btn.Size = new System.Drawing.Size(161, 50);
             this.close_btn.Style = MetroFramework.MetroColorStyle.Blue;
-            this.close_btn.TabIndex = 11;
+            this.close_btn.TabIndex = 14;
             this.close_btn.Text = "Cancel";
             this.close_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.close_btn.UseSelectable = true;
@@ -407,7 +407,7 @@
             this.result_1.SelectionStart = 0;
             this.result_1.ShortcutsEnabled = true;
             this.result_1.Size = new System.Drawing.Size(161, 28);
-            this.result_1.TabIndex = 128;
+            this.result_1.TabIndex = 5;
             this.result_1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_1.UseSelectable = true;
             this.result_1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -419,7 +419,7 @@
             this._addBtn.Name = "_addBtn";
             this._addBtn.Size = new System.Drawing.Size(164, 29);
             this._addBtn.Style = MetroFramework.MetroColorStyle.Blue;
-            this._addBtn.TabIndex = 244;
+            this._addBtn.TabIndex = 12;
             this._addBtn.Text = "Add";
             this._addBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this._addBtn.UseSelectable = true;
@@ -453,7 +453,7 @@
             this._parts.SelectionStart = 0;
             this._parts.ShortcutsEnabled = true;
             this._parts.Size = new System.Drawing.Size(437, 28);
-            this._parts.TabIndex = 243;
+            this._parts.TabIndex = 11;
             this._parts.Theme = MetroFramework.MetroThemeStyle.Dark;
             this._parts.UseSelectable = true;
             this._parts.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -499,7 +499,7 @@
             this.commentBox.SelectionStart = 0;
             this.commentBox.ShortcutsEnabled = true;
             this.commentBox.Size = new System.Drawing.Size(608, 87);
-            this.commentBox.TabIndex = 240;
+            this.commentBox.TabIndex = 9;
             this.commentBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.commentBox.UseSelectable = true;
             this.commentBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));

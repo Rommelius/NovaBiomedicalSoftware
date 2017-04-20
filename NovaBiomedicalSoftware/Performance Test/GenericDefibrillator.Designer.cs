@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
             this.nextBtn = new MetroFramework.Controls.MetroButton();
@@ -99,9 +100,11 @@
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // safetyCheck
@@ -1123,14 +1126,19 @@
             this.metroLabel3.TabIndex = 39;
             this.metroLabel3.Text = "Comments:";
             // 
-            // PhilipsMRxDefib
+            // metroStyleManager1
+            // 
+            this.metroStyleManager1.Owner = this;
+            this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // GenericDefibrillator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 820);
             this.Controls.Add(this.safetyCheck);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "PhilipsMRxDefib";
+            this.Name = "GenericDefibrillator";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Technical Safety Check - Generic Defibrillator";
             this.safetyCheck.ResumeLayout(false);
@@ -1138,6 +1146,7 @@
             this.performanceVerification.PerformLayout();
             this.commentsTab.ResumeLayout(false);
             this.commentsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1215,5 +1224,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel20;
         private MetroFramework.Controls.MetroLabel metroLabel18;
         private MetroFramework.Controls.MetroLabel metroLabel17;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager1;
     }
 }

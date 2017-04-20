@@ -185,6 +185,12 @@
     <Compile Include="Performance Test\GenericDefibrillator.Designer.cs">
       <DependentUpon>GenericDefibrillator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\Scales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\Scales.Designer.cs">
+      <DependentUpon>Scales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\VarpVue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,12 @@
     </Compile>
     <Compile Include="QASEquipmentDetails.Designer.cs">
       <DependentUpon>QASEquipmentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queensland Ambulance Service\MultiflowRegulator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queensland Ambulance Service\MultiflowRegulator.Designer.cs">
+      <DependentUpon>MultiflowRegulator.cs</DependentUpon>
     </Compile>
     <Compile Include="Queensland Ambulance Service\ResidualCurrentDevice.cs">
       <SubType>Form</SubType>
@@ -337,11 +349,17 @@
     <EmbeddedResource Include="Performance Test\GenericDefibrillator.resx">
       <DependentUpon>GenericDefibrillator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\Scales.resx">
+      <DependentUpon>Scales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\VarpVue.resx">
       <DependentUpon>VarpVue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QASEquipmentDetails.resx">
       <DependentUpon>QASEquipmentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queensland Ambulance Service\MultiflowRegulator.resx">
+      <DependentUpon>MultiflowRegulator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Queensland Ambulance Service\ResidualCurrentDevice.resx">
       <DependentUpon>ResidualCurrentDevice.cs</DependentUpon>
@@ -402,6 +420,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -436,6 +455,7 @@
     <None Include="Report Templates\QAS Templates\Demand Head-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Electric Suction-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Flowmeter-TEMPLATE.docx" />
+    <None Include="Report Templates\QAS Templates\Multi-Flow Regulator-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Outlet Point-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Oxygen Reticulation Failure Alarm-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Pulse Oximeter-TEMPLATE.docx" />
@@ -445,8 +465,10 @@
     <None Include="Report Templates\QAS Templates\Sphygmo Handheld-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Sphygmo Wall-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Twin-O-Vac Suction Device-TEMPLATE.docx" />
+    <None Include="Report Templates\Scales-TEMPLATE.docx" />
     <None Include="Report Templates\temp.docx" />
     <None Include="Report Templates\temp2.docx" />
+    <None Include="Report Templates\VAPR VUE Generator-TEMPLATE.docx" />
     <None Include="Resources\background.png" />
   </ItemGroup>
   <ItemGroup>

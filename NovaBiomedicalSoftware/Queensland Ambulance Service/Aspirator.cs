@@ -18,12 +18,11 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             InitializeComponent();
         }
         public static List<string> parts = new List<string>();
-
         private void _addBtn_Click(object sender, EventArgs e)
         {
             if (_parts.Text != "")
             {
-                parts.Add(_parts.Text);
+                parts.Add(_parts.Text.ToUpper());
                 _parts.Text = "";
                 MetroFramework.MetroMessageBox.Show(this, "", "Parts added to the list.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -55,20 +54,30 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             }
             else
             {
-                //visual
-                assetNumberText = assetNumber.Text;
-                serialNumberText = serialNumber.Text;
-                modelBoxText = modelBox.Text;
-                makeBoxText = makeBox.Text;
-                result1 = result_1.Text;
-                result2 = result_2.Text;
-                result3 = result_3.Text;
+                if (assetNumber.Text == "")
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "", "Fill in the asset number.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    //visual
+                    assetNumberText = assetNumber.Text;
+                    serialNumberText = serialNumber.Text;
+                    modelBoxText = modelBox.Text;
+                    makeBoxText = makeBox.Text;
+                    result1 = result_1.Text;
+                    result2 = result_2.Text;
+                    result3 = result_3.Text;
 
-                //comments box
-                comments = commentBox.Text;
 
-                AspiratorTest_Submit = true;
-                this.Hide();
+
+                    //comments box
+                    comments = commentBox.Text;
+
+                    AspiratorTest_Submit = true;
+                    this.Hide();
+                }
+                
             }
         }
 

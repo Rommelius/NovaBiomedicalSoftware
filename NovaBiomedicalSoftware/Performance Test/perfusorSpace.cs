@@ -43,6 +43,8 @@ namespace NovaBiomedicalSoftware
             itemsBox.ResetText();
             commentBox.ResetText();
             itemsBox.Visible = false;
+            this.StyleManager = metroStyleManager1;
+            metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
         }
 
 

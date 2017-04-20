@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
             this.close1_btn = new MetroFramework.Controls.MetroButton();
@@ -57,9 +58,11 @@
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // safetyCheck
@@ -171,7 +174,7 @@
             this.visual1.Location = new System.Drawing.Point(-5, 22);
             this.visual1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.visual1.Name = "visual1";
-            this.visual1.Size = new System.Drawing.Size(129, 20);
+            this.visual1.Size = new System.Drawing.Size(131, 20);
             this.visual1.TabIndex = 3;
             this.visual1.Text = "Temperature check";
             // 
@@ -250,7 +253,7 @@
             this.metroCheckBox14.Location = new System.Drawing.Point(340, 539);
             this.metroCheckBox14.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox14.Name = "metroCheckBox14";
-            this.metroCheckBox14.Size = new System.Drawing.Size(80, 20);
+            this.metroCheckBox14.Size = new System.Drawing.Size(81, 20);
             this.metroCheckBox14.TabIndex = 106;
             this.metroCheckBox14.Text = "Tester14";
             this.metroCheckBox14.UseSelectable = true;
@@ -262,7 +265,7 @@
             this.metroCheckBox13.Location = new System.Drawing.Point(340, 508);
             this.metroCheckBox13.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox13.Name = "metroCheckBox13";
-            this.metroCheckBox13.Size = new System.Drawing.Size(80, 20);
+            this.metroCheckBox13.Size = new System.Drawing.Size(81, 20);
             this.metroCheckBox13.TabIndex = 106;
             this.metroCheckBox13.Text = "Tester13";
             this.metroCheckBox13.UseSelectable = true;
@@ -274,7 +277,7 @@
             this.metroCheckBox12.Location = new System.Drawing.Point(340, 478);
             this.metroCheckBox12.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox12.Name = "metroCheckBox12";
-            this.metroCheckBox12.Size = new System.Drawing.Size(80, 20);
+            this.metroCheckBox12.Size = new System.Drawing.Size(81, 20);
             this.metroCheckBox12.TabIndex = 106;
             this.metroCheckBox12.Text = "Tester12";
             this.metroCheckBox12.UseSelectable = true;
@@ -286,7 +289,7 @@
             this.metroCheckBox11.Location = new System.Drawing.Point(340, 447);
             this.metroCheckBox11.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox11.Name = "metroCheckBox11";
-            this.metroCheckBox11.Size = new System.Drawing.Size(80, 20);
+            this.metroCheckBox11.Size = new System.Drawing.Size(81, 20);
             this.metroCheckBox11.TabIndex = 106;
             this.metroCheckBox11.Text = "Tester11";
             this.metroCheckBox11.UseSelectable = true;
@@ -298,7 +301,7 @@
             this.metroCheckBox10.Location = new System.Drawing.Point(340, 416);
             this.metroCheckBox10.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox10.Name = "metroCheckBox10";
-            this.metroCheckBox10.Size = new System.Drawing.Size(80, 20);
+            this.metroCheckBox10.Size = new System.Drawing.Size(81, 20);
             this.metroCheckBox10.TabIndex = 106;
             this.metroCheckBox10.Text = "Tester10";
             this.metroCheckBox10.UseSelectable = true;
@@ -310,7 +313,7 @@
             this.metroCheckBox9.Location = new System.Drawing.Point(340, 385);
             this.metroCheckBox9.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox9.Name = "metroCheckBox9";
-            this.metroCheckBox9.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox9.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox9.TabIndex = 106;
             this.metroCheckBox9.Text = "Tester9";
             this.metroCheckBox9.UseSelectable = true;
@@ -322,7 +325,7 @@
             this.metroCheckBox8.Location = new System.Drawing.Point(340, 354);
             this.metroCheckBox8.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox8.Name = "metroCheckBox8";
-            this.metroCheckBox8.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox8.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox8.TabIndex = 106;
             this.metroCheckBox8.Text = "Tester8";
             this.metroCheckBox8.UseSelectable = true;
@@ -334,7 +337,7 @@
             this.metroCheckBox7.Location = new System.Drawing.Point(69, 539);
             this.metroCheckBox7.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox7.Name = "metroCheckBox7";
-            this.metroCheckBox7.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox7.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox7.TabIndex = 106;
             this.metroCheckBox7.Text = "Tester7";
             this.metroCheckBox7.UseSelectable = true;
@@ -346,7 +349,7 @@
             this.metroCheckBox6.Location = new System.Drawing.Point(69, 508);
             this.metroCheckBox6.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox6.Name = "metroCheckBox6";
-            this.metroCheckBox6.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox6.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox6.TabIndex = 106;
             this.metroCheckBox6.Text = "Tester6";
             this.metroCheckBox6.UseSelectable = true;
@@ -358,7 +361,7 @@
             this.metroCheckBox5.Location = new System.Drawing.Point(69, 478);
             this.metroCheckBox5.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox5.Name = "metroCheckBox5";
-            this.metroCheckBox5.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox5.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox5.TabIndex = 106;
             this.metroCheckBox5.Text = "Tester5";
             this.metroCheckBox5.UseSelectable = true;
@@ -370,7 +373,7 @@
             this.metroCheckBox4.Location = new System.Drawing.Point(69, 447);
             this.metroCheckBox4.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox4.Name = "metroCheckBox4";
-            this.metroCheckBox4.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox4.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox4.TabIndex = 106;
             this.metroCheckBox4.Text = "Tester4";
             this.metroCheckBox4.UseSelectable = true;
@@ -382,7 +385,7 @@
             this.metroCheckBox3.Location = new System.Drawing.Point(69, 416);
             this.metroCheckBox3.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox3.Name = "metroCheckBox3";
-            this.metroCheckBox3.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox3.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox3.TabIndex = 106;
             this.metroCheckBox3.Text = "Tester3";
             this.metroCheckBox3.UseSelectable = true;
@@ -394,7 +397,7 @@
             this.metroCheckBox2.Location = new System.Drawing.Point(69, 385);
             this.metroCheckBox2.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox2.Name = "metroCheckBox2";
-            this.metroCheckBox2.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox2.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox2.TabIndex = 106;
             this.metroCheckBox2.Text = "Tester2";
             this.metroCheckBox2.UseSelectable = true;
@@ -406,7 +409,7 @@
             this.metroCheckBox1.Location = new System.Drawing.Point(69, 354);
             this.metroCheckBox1.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(72, 20);
+            this.metroCheckBox1.Size = new System.Drawing.Size(73, 20);
             this.metroCheckBox1.TabIndex = 106;
             this.metroCheckBox1.Text = "Tester1";
             this.metroCheckBox1.UseSelectable = true;
@@ -418,7 +421,7 @@
             this.metroLabel2.Location = new System.Drawing.Point(-5, 314);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(129, 20);
+            this.metroLabel2.Size = new System.Drawing.Size(130, 20);
             this.metroLabel2.TabIndex = 104;
             this.metroLabel2.Text = "Test Equipments:";
             // 
@@ -492,6 +495,10 @@
             this.metroLabel3.TabIndex = 39;
             this.metroLabel3.Text = "Comments:";
             // 
+            // metroStyleManager1
+            // 
+            this.metroStyleManager1.Owner = this;
+            // 
             // Genius2Thermometer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -507,6 +514,7 @@
             this.performanceVerification.PerformLayout();
             this.commentsTab.ResumeLayout(false);
             this.commentsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -542,5 +550,6 @@
         private MetroFramework.Controls.MetroButton close3_btn;
         private MetroFramework.Controls.MetroTextBox commentBox;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager1;
     }
 }

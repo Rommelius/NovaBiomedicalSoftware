@@ -20,6 +20,8 @@ namespace NovaBiomedicalSoftware.Performance_Test
             commentBox.ResetText();
             itemsBox.Visible = false;
             safetyCheck.SelectedTab = performanceVerification;
+            this.StyleManager = metroStyleManager1;
+            metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
         }
 
         public bool sphygmomanometerTest_Submit;

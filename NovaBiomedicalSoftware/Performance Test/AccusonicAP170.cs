@@ -26,6 +26,8 @@ namespace NovaBiomedicalSoftware.Performance_Test
             commentBox.ResetText();
             itemsBox.Visible = false;
             safetyCheck.SelectedTab = performanceVerification;
+            this.StyleManager = msmain;
+            msmain.Theme = MetroFramework.MetroThemeStyle.Dark;
         }
 
         private void close1_btn_Click(object sender, EventArgs e)

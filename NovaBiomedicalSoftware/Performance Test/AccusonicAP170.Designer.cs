@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
             this.nextBtn = new MetroFramework.Controls.MetroButton();
@@ -63,9 +64,11 @@
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.msmain = new MetroFramework.Components.MetroStyleManager(this.components);
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.msmain)).BeginInit();
             this.SuspendLayout();
             // 
             // safetyCheck
@@ -75,7 +78,7 @@
             this.safetyCheck.Location = new System.Drawing.Point(36, 78);
             this.safetyCheck.Margin = new System.Windows.Forms.Padding(4);
             this.safetyCheck.Name = "safetyCheck";
-            this.safetyCheck.SelectedIndex = 0;
+            this.safetyCheck.SelectedIndex = 1;
             this.safetyCheck.Size = new System.Drawing.Size(655, 714);
             this.safetyCheck.TabIndex = 5;
             this.safetyCheck.UseSelectable = true;
@@ -583,6 +586,11 @@
             this.metroLabel3.TabIndex = 39;
             this.metroLabel3.Text = "Comments:";
             // 
+            // msmain
+            // 
+            this.msmain.Owner = this;
+            this.msmain.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
             // AccusonicAP170
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -598,6 +606,7 @@
             this.performanceVerification.PerformLayout();
             this.commentsTab.ResumeLayout(false);
             this.commentsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.msmain)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -639,5 +648,6 @@
         private MetroFramework.Controls.MetroButton close3_btn;
         private MetroFramework.Controls.MetroTextBox commentBox;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Components.MetroStyleManager msmain;
     }
 }
