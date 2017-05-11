@@ -173,6 +173,12 @@
     <Compile Include="Performance Test\GenericSphygmomanometer.Designer.cs">
       <DependentUpon>GenericSphygmomanometer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\GenericVitalsMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\GenericVitalsMonitor.Designer.cs">
+      <DependentUpon>GenericVitalsMonitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\Genius2Thermometer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,12 @@
     </Compile>
     <Compile Include="Performance Test\GenericDefibrillator.Designer.cs">
       <DependentUpon>GenericDefibrillator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsMonitors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsMonitors.Designer.cs">
+      <DependentUpon>PhilipsMonitors.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\PulseOximeter2.cs">
       <SubType>Form</SubType>
@@ -385,6 +397,9 @@
     <EmbeddedResource Include="Performance Test\GenericSphygmomanometer.resx">
       <DependentUpon>GenericSphygmomanometer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\GenericVitalsMonitor.resx">
+      <DependentUpon>GenericVitalsMonitor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\Genius2Thermometer.resx">
       <DependentUpon>Genius2Thermometer.cs</DependentUpon>
     </EmbeddedResource>
@@ -399,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\GenericDefibrillator.resx">
       <DependentUpon>GenericDefibrillator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PhilipsMonitors.resx">
+      <DependentUpon>PhilipsMonitors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\PulseOximeter2.resx">
       <DependentUpon>PulseOximeter2.cs</DependentUpon>
@@ -514,6 +532,7 @@
     <None Include="Report Templates\Manifold-TEMPLATE.docx" />
     <None Include="Report Templates\NIBP Monitor-TEMPLATE.docx" />
     <None Include="Report Templates\Philips MRx Defibrillator-TEMPLATE.docx" />
+    <None Include="Report Templates\PhilipsPatientMonitor-TEMPLATE.docx" />
     <None Include="Report Templates\Pulse Oximeter-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Template-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Aspirator-TEMPLATE.docx" />
@@ -538,6 +557,7 @@
     <None Include="Report Templates\temp2.docx" />
     <None Include="Report Templates\VaccineFridge-TEMPLATE.docx" />
     <None Include="Report Templates\VAPR VUE Generator-TEMPLATE.docx" />
+    <None Include="Report Templates\VitalsMonitor-TEMPLATE.docx" />
     <None Include="Resources\background.png" />
   </ItemGroup>
   <ItemGroup>

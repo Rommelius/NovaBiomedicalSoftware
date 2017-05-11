@@ -56,7 +56,7 @@ namespace NovaBiomedicalSoftware
         public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
             PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted, PTScalesCompleted, PTVarpVueCompleted, PTPulseOximeter2Completed, PTSpirometerCompleted,
-            PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed;
+            PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed, PTPhilipsMonitorCompleted, PTVitalsMonitorCompleted;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
         public bool PTMultiFlowRegulatorCompleted, PTOutletPointCompleted, PTOxygenReticulationCompleted, PTRegulatorCompleted,
@@ -125,6 +125,9 @@ namespace NovaBiomedicalSoftware
             PTManifoldCompleted = false;
             PTAEDCompleted = false;
             PTRegulator2Completed = false;
+            PTPhilipsMonitorCompleted = false;
+            PTVitalsMonitorCompleted = false;
+
 
             navigateToMainMenu();
         }
@@ -984,7 +987,6 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
-
         private void regulatorBtn_PT_Click(object sender, EventArgs e)
         {
             if (PerformPerformanceTest == true || PerformBothTest == true)
@@ -1051,6 +1053,76 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
+
+        private void genericVitalsMonitor_btn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    GenericVitalsMonitor dg = new GenericVitalsMonitor();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.genericVitalsTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTVitalsMonitorCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void philipsMonitor_btn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    PhilipsMonitors dg = new PhilipsMonitors();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.philipsMonitorTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTPhilipsMonitorCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
         // Serial Communication for the FLUKE ESA620 with real-time checker
         #region CommunicationToFluke
@@ -2443,6 +2515,16 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/Regulator-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //Generic Vitals
+                if (PTVitalsMonitorCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/VitalsMonitor-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Philips Monitors
+                if (PTPhilipsMonitorCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/PhilipsPatientMonitor-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
 
             }
             object missing = System.Reflection.Missing.Value;
@@ -2944,6 +3026,68 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result4>", RegulatorPT.result4);
                 this.FindAndReplace(wordApp, "<result5>", RegulatorPT.result5);
                 this.FindAndReplace(wordApp, "<Comments>", RegulatorPT.comments);
+                #endregion
+            }
+            //Generic Vitals
+            if (PTVitalsMonitorCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", GenericVitalsMonitor.items);
+                this.FindAndReplace(wordApp, "<result1>", GenericVitalsMonitor.result1);
+                this.FindAndReplace(wordApp, "<result2>", GenericVitalsMonitor.result2);
+                this.FindAndReplace(wordApp, "<result3>", GenericVitalsMonitor.result3);
+                this.FindAndReplace(wordApp, "<result4>", GenericVitalsMonitor.result4);
+                this.FindAndReplace(wordApp, "<result5>", GenericVitalsMonitor.result5);
+                this.FindAndReplace(wordApp, "<result6>", GenericVitalsMonitor.result6);
+                this.FindAndReplace(wordApp, "<result7>", GenericVitalsMonitor.result7);
+                this.FindAndReplace(wordApp, "<result8>", GenericVitalsMonitor.result8);
+                this.FindAndReplace(wordApp, "<result9>", GenericVitalsMonitor.result9);
+                this.FindAndReplace(wordApp, "<result10>", GenericVitalsMonitor.result10);
+                this.FindAndReplace(wordApp, "<result11>", GenericVitalsMonitor.result11);
+                this.FindAndReplace(wordApp, "<result12>", GenericVitalsMonitor.result12);
+                this.FindAndReplace(wordApp, "<result13>", GenericVitalsMonitor.result13);
+                this.FindAndReplace(wordApp, "<result14>", GenericVitalsMonitor.result14);
+                this.FindAndReplace(wordApp, "<Comments>", GenericVitalsMonitor.comments);
+                #endregion
+            }
+            //Philips Monitors
+            if (PTPhilipsMonitorCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", PhilipsMonitors.items);
+                this.FindAndReplace(wordApp, "<result1>", PhilipsMonitors.result1);
+                this.FindAndReplace(wordApp, "<result2>", PhilipsMonitors.result2);
+                this.FindAndReplace(wordApp, "<result3>", PhilipsMonitors.result3);
+                this.FindAndReplace(wordApp, "<result4>", PhilipsMonitors.result4);
+                this.FindAndReplace(wordApp, "<result5>", PhilipsMonitors.result5);
+                this.FindAndReplace(wordApp, "<result6>", PhilipsMonitors.result6);
+                this.FindAndReplace(wordApp, "<result7>", PhilipsMonitors.result7);
+                this.FindAndReplace(wordApp, "<result8>", PhilipsMonitors.result8);
+                this.FindAndReplace(wordApp, "<result9>", PhilipsMonitors.result9);
+                this.FindAndReplace(wordApp, "<result10>", PhilipsMonitors.result10);
+                this.FindAndReplace(wordApp, "<result11>", PhilipsMonitors.result11);
+                this.FindAndReplace(wordApp, "<result12>", PhilipsMonitors.result12);
+                this.FindAndReplace(wordApp, "<result13>", PhilipsMonitors.result13);
+                this.FindAndReplace(wordApp, "<result14>", PhilipsMonitors.result14);
+                this.FindAndReplace(wordApp, "<Comments>", PhilipsMonitors.comments);
                 #endregion
             }
 
