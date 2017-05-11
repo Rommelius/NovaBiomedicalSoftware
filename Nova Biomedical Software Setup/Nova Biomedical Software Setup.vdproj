@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0017AEEC4C2348AA90BD20963EE54447"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_003C8AD92B1F4A83B34D49EFAA0C0614"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -27,31 +33,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_04049BFAAF2442D9BCDC9C2897728C40"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_063FC770C46D4D37918FA2C78DA53438"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_09E504D73AD64CB78EC0A33EBF62AA41"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0E6FF3C0226F467E96940DD8AEC125FC"
+        "MsmKey" = "8:_0E4E419C311D41A5B961BEC892BA64AE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_123A4123EAE74635AEEA5FD77C79ABF1"
+        "MsmKey" = "8:_170EEE6458744BD5B8B46EB6548E1359"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,13 +75,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_250557758C954C3EADB7D6EAC29F67ED"
+        "MsmKey" = "8:_25BC548B0AD843BAA0F6228115C6B0D6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_25BC548B0AD843BAA0F6228115C6B0D6"
+        "MsmKey" = "8:_26FF7E45170B44F48478E9D62117D3E8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -111,13 +105,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2877115F01C340E98F322EDCDC6442D0"
+        "MsmKey" = "8:_2B2EFA243EEE42C8AA94B88150CD4EA9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3069E00585944B77829826EDB9E1E3E8"
+        "MsmKey" = "8:_2B588A7665694B35922B4008BC13CE6C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -129,13 +123,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_35AD4044588646D7AAFA2AC5D261B525"
+        "MsmKey" = "8:_31AEA3F5D6324CBDA32E45448FB555FF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_38E231B6302B451EB46DDEB50BAEE52B"
+        "MsmKey" = "8:_3680246DD5AB4F51A3F0C6671A1CC9D1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_37C3CEB897B641D4A9FB967C72FF2D8C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -147,13 +147,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3F4503160AB84331BC0785E7ACC490B9"
+        "MsmKey" = "8:_3D42A1E20DCC402FA931EE01FF4E821D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3FC31F83FBB94EF8A80E59F2B71DAB31"
+        "MsmKey" = "8:_3F4503160AB84331BC0785E7ACC490B9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -177,6 +177,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4AE5A1D3447443BBB53019B853A81789"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4B9A401DB5864E6789768817B94B3C96"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4BEEE7724BB34D8F89236A60714CCFEC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4BF597205A814D578E143F6ADC6452D0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -189,43 +207,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_51065988E0BF4CBCBD5C35B77F7FB9B4"
+        "MsmKey" = "8:_5B7CF75284EA4D3AB2DF77A86B4F23E7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_520D6A59C8BE48738F4BA7EF5583CA7B"
+        "MsmKey" = "8:_6410216636F340E3BD473AFFE8F8F183"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_54DDBEE6BC8A4355B793A284B0B91CEF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_67A3513529D743689A662D39799EA81F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6A1D9EDD7AB9461BA68D1788B17CE9B2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6C677AF199A047B19B02957E08870C63"
+        "MsmKey" = "8:_6D4D0FBB42304F6FA7E08432E74F6222"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6F5FC11E96F644638BDD668E046F8E8D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7047850CE465469D8D5BA48F8334FF66"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -249,25 +255,49 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_79BA384579EA46B78F239B4BBA98D2A4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7D1D448765B441388E462903129FFF78"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7F56DB207E2744F29124228D58D2E4AC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_825215F6AC1747D18E095ECD588D3685"
+        "MsmKey" = "8:_80E883C3F553439EA93386DAEBB7B9AD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_828153E004BE45CC8AC8CF443D4C45AB"
+        "MsmKey" = "8:_81585351A01E4762890219349A1F1519"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_871D3D5D5BF2493AA8A7DE44438C1470"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_87405B41F01F440FB2A6D948A3779ADD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_89000627BA264E9D9E75103A887A2DE2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -285,13 +315,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_90328D841A2B4109BC7D6FFF02E9EAA1"
+        "MsmKey" = "8:_8F5A113614FB4B42B688FE7064773615"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_91ED49FD775649959E9B9DB5090BB14B"
+        "MsmKey" = "8:_90328D841A2B4109BC7D6FFF02E9EAA1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -303,25 +333,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9559C2C192384C8190E7D5272556EF05"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9590410FE8D240D79AC615EB16FA943E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9699A8E061C34A0EAA5F6EFDD5329AC1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9A8651228D3C469BA70B558B82C0F566"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A0C4F3E340BF4D02B5E0FA6D80308D1A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A400E7A2111B4BE7B33C3D8E2E84E9F2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A4FE38E760794AAB97A1FBA5FB5872EB"
+        "MsmKey" = "8:_A00DB0B0C9AF47F5BEF3EF17E0116565"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -339,6 +375,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A6146AF150584D02877A1EEAFA30ADC2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B171123FD3AC4C8E9483EC061DAEFBEF"
         "OwnerKey" = "8:_3F4503160AB84331BC0785E7ACC490B9"
         "MsmSig" = "8:_UNDEFINED"
@@ -351,19 +393,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B461A0FA756F4FE0892B12D76510540B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B57ABB527CFA413E81991375EEAC141C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B90217942B764C7AB1867565E0031C67"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B9A48A62F1634A2A8712AE558E6AB27C"
+        "MsmKey" = "8:_B8908EB8AAA2491A896E5E7B5384F23B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -375,19 +417,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BC4EE6FE827541CA9D7E46A9C0B255B4"
+        "MsmKey" = "8:_BE082F2261964F3CA842667F86110E3A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C42D3785725D42249A09C6BE89C9A5D7"
+        "MsmKey" = "8:_BE7658F4A3464B44B0251D9C8B494CBF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C7A8FA20BFF044419FEB44A8325574DB"
+        "MsmKey" = "8:_C33AA54572C54170A3133C1C5E943CFE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C93BCB314F7C46D7976CA4ED52EB9FA3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C9866446D5894716A65F69154EEA7697"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -411,6 +465,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D2F6376719984692876F9431E00D96B4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DABDB2ECDD854E40AB7013BDB1F2C758"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -423,19 +483,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E637C34C983E48489C3D31BF86067A49"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E64ABF492F905E3E4FA92F746878BACF"
         "OwnerKey" = "8:_23BFB21DFFF293CE373679E191034DF3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E749E9F24CEC489CBA5B7D4607CD1671"
+        "MsmKey" = "8:_E8DD2D45AEF346549F6A77A7CFF1ADDF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E8DD2D45AEF346549F6A77A7CFF1ADDF"
+        "MsmKey" = "8:_E919D2021DD34807927D387031A2374F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -459,31 +525,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F35DEFC8C2674360AAFD8CC9AC6D8021"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F42A0A2F3B0E4D109F51EF6D860C800D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F49D5BC4F5F544C1861EF9532F9ABCE3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FD98CE67250D46468692323CBFB56961"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FE0AC0C774AA4FC8BB3A2CC2991FB121"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FEF15C814FDF4C9D93249504C5AD6BE0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FF9416693C9D4642B95E17EC1B6AE081"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -648,6 +708,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0017AEEC4C2348AA90BD20963EE54447"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Generic ECG-TEMPLATE.docx"
+            "TargetName" = "8:Generic ECG-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_003C8AD92B1F4A83B34D49EFAA0C0614"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Resources\\both.png"
@@ -688,46 +768,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04049BFAAF2442D9BCDC9C2897728C40"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Generic Sphygmomanometer-TEMPLATE.docx"
-            "TargetName" = "8:Generic Sphygmomanometer-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_063FC770C46D4D37918FA2C78DA53438"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\ASNZCLASS2-TEMPLATE.docx"
-            "TargetName" = "8:ASNZCLASS2-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_09E504D73AD64CB78EC0A33EBF62AA41"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Images\\logo2.png"
@@ -748,10 +788,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E6FF3C0226F467E96940DD8AEC125FC"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E4E419C311D41A5B961BEC892BA64AE"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Template-TEMPLATE.docx"
-            "TargetName" = "8:QAS Template-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Mindray Beneview T5-TEMPLATE.docx"
+            "TargetName" = "8:Mindray Beneview T5-TEMPLATE.docx"
             "Tag" = "8:"
             "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
@@ -768,7 +808,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_123A4123EAE74635AEEA5FD77C79ABF1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_170EEE6458744BD5B8B46EB6548E1359"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Pulse Oximeter-TEMPLATE.docx"
             "TargetName" = "8:Pulse Oximeter-TEMPLATE.docx"
@@ -815,11 +855,6 @@
             "AssemblyAsmDisplayName" = "8:MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_1FA2FB0BD85620D49DC2C9DEE018E35F"
-                    {
-                    "Name" = "8:MetroFramework.Fonts.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:MetroFramework.Fonts.dll"
             "TargetName" = "8:"
@@ -870,12 +905,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_250557758C954C3EADB7D6EAC29F67ED"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_25BC548B0AD843BAA0F6228115C6B0D6"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Multi-Flow Regulator-TEMPLATE.docx"
-            "TargetName" = "8:Multi-Flow Regulator-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Signatures\\Rommel Lapuz.png"
+            "TargetName" = "8:Rommel Lapuz.png"
             "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Folder" = "8:_CC2F973EAF94419E91FCAE3E988FAEE6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -890,12 +925,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_25BC548B0AD843BAA0F6228115C6B0D6"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_26FF7E45170B44F48478E9D62117D3E8"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Signatures\\Rommel Lapuz.png"
-            "TargetName" = "8:Rommel Lapuz.png"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\temp.docx"
+            "TargetName" = "8:temp.docx"
             "Tag" = "8:"
-            "Folder" = "8:_CC2F973EAF94419E91FCAE3E988FAEE6"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -917,11 +952,6 @@
             "AssemblyAsmDisplayName" = "8:MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_27E3D0CBAA57E78A53A16AC5730BA80B"
-                    {
-                    "Name" = "8:MetroFramework.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:MetroFramework.dll"
             "TargetName" = "8:"
@@ -941,12 +971,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2877115F01C340E98F322EDCDC6442D0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2B2EFA243EEE42C8AA94B88150CD4EA9"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Genius 2 Thermometer-TEMPLATE.docx"
-            "TargetName" = "8:Genius 2 Thermometer-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Twin-O-Vac Suction Device-TEMPLATE.docx"
+            "TargetName" = "8:Twin-O-Vac Suction Device-TEMPLATE.docx"
             "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -961,12 +991,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3069E00585944B77829826EDB9E1E3E8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2B588A7665694B35922B4008BC13CE6C"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Outlet Point-TEMPLATE.docx"
-            "TargetName" = "8:Outlet Point-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\ASNZCLASS1-TEMPLATE1.docx"
+            "TargetName" = "8:ASNZCLASS1-TEMPLATE1.docx"
             "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1001,12 +1031,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35AD4044588646D7AAFA2AC5D261B525"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_31AEA3F5D6324CBDA32E45448FB555FF"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\BBraun Perfusor Space-TEMPLATE.docx"
-            "TargetName" = "8:BBraun Perfusor Space-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Sphygmo Wall-TEMPLATE.docx"
+            "TargetName" = "8:Sphygmo Wall-TEMPLATE.docx"
             "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1021,12 +1051,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_38E231B6302B451EB46DDEB50BAEE52B"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3680246DD5AB4F51A3F0C6671A1CC9D1"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Oxygen Reticulation Failure Alarm-TEMPLATE.docx"
-            "TargetName" = "8:Oxygen Reticulation Failure Alarm-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Sphygmo Handheld-TEMPLATE.docx"
+            "TargetName" = "8:Sphygmo Handheld-TEMPLATE.docx"
             "Tag" = "8:"
             "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_37C3CEB897B641D4A9FB967C72FF2D8C"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\temp.docx"
+            "TargetName" = "8:temp.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1072,12 +1122,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3FC31F83FBB94EF8A80E59F2B71DAB31"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3D42A1E20DCC402FA931EE01FF4E821D"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Scales-TEMPLATE.docx"
-            "TargetName" = "8:Scales-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Flowmeter-TEMPLATE.docx"
+            "TargetName" = "8:Flowmeter-TEMPLATE.docx"
             "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1152,6 +1202,66 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4AE5A1D3447443BBB53019B853A81789"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Automatic External Defibrillator-TEMPLATE.docx"
+            "TargetName" = "8:Automatic External Defibrillator-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4B9A401DB5864E6789768817B94B3C96"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Generic Sphygmomanometer-TEMPLATE.docx"
+            "TargetName" = "8:Generic Sphygmomanometer-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4BEEE7724BB34D8F89236A60714CCFEC"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Recoil Bag Resuscitator-TEMPLATE.docx"
+            "TargetName" = "8:Recoil Bag Resuscitator-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4BF597205A814D578E143F6ADC6452D0"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Images\\bg.png"
@@ -1192,30 +1302,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51065988E0BF4CBCBD5C35B77F7FB9B4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5B7CF75284EA4D3AB2DF77A86B4F23E7"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Aspirator-TEMPLATE.docx"
-            "TargetName" = "8:Aspirator-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_520D6A59C8BE48738F4BA7EF5583CA7B"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Comweld Oxygen Flowmeter-TEMPLATE.docx"
-            "TargetName" = "8:Comweld Oxygen Flowmeter-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\ASNZCLASS1-TEMPLATE2.docx"
+            "TargetName" = "8:ASNZCLASS1-TEMPLATE2.docx"
             "Tag" = "8:"
             "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
@@ -1232,10 +1322,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54DDBEE6BC8A4355B793A284B0B91CEF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6410216636F340E3BD473AFFE8F8F183"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Accusonic AP170-TEMPLATE.docx"
-            "TargetName" = "8:Accusonic AP170-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Manifold-TEMPLATE.docx"
+            "TargetName" = "8:Manifold-TEMPLATE.docx"
             "Tag" = "8:"
             "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
@@ -1252,52 +1342,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_67A3513529D743689A662D39799EA81F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6D4D0FBB42304F6FA7E08432E74F6222"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Automatic External Defibrillator-TEMPLATE.docx"
-            "TargetName" = "8:Automatic External Defibrillator-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A1D9EDD7AB9461BA68D1788B17CE9B2"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\ASNZCLASS1-TEMPLATE1.docx"
-            "TargetName" = "8:ASNZCLASS1-TEMPLATE1.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\AED-TEMPLATE.docx"
+            "TargetName" = "8:AED-TEMPLATE.docx"
             "Tag" = "8:"
             "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6C677AF199A047B19B02957E08870C63"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Sphygmo Wall-TEMPLATE.docx"
-            "TargetName" = "8:Sphygmo Wall-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1318,6 +1368,26 @@
             "TargetName" = "8:logo1.png"
             "Tag" = "8:"
             "Folder" = "8:_1BC66F65840845AAB0ED6C9E45C14DBF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7047850CE465469D8D5BA48F8334FF66"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Comweld Oxygen Flowmeter-TEMPLATE.docx"
+            "TargetName" = "8:Comweld Oxygen Flowmeter-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1392,6 +1462,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_79BA384579EA46B78F239B4BBA98D2A4"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Spirometer-TEMPLATE.docx"
+            "TargetName" = "8:Spirometer-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D1D448765B441388E462903129FFF78"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Residual Current Device-TEMPLATE.docx"
+            "TargetName" = "8:Residual Current Device-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F56DB207E2744F29124228D58D2E4AC"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Resources\\left-arrow (2).png"
@@ -1412,10 +1522,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_825215F6AC1747D18E095ECD588D3685"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_80E883C3F553439EA93386DAEBB7B9AD"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Regulator-TEMPLATE.docx"
-            "TargetName" = "8:Regulator-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Pulse Oximeter-TEMPLATE.docx"
+            "TargetName" = "8:Pulse Oximeter-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_81585351A01E4762890219349A1F1519"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Outlet Point-TEMPLATE.docx"
+            "TargetName" = "8:Outlet Point-TEMPLATE.docx"
             "Tag" = "8:"
             "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
             "Condition" = "8:"
@@ -1432,10 +1562,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_828153E004BE45CC8AC8CF443D4C45AB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_871D3D5D5BF2493AA8A7DE44438C1470"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Generic ECG-TEMPLATE.docx"
-            "TargetName" = "8:Generic ECG-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\ASNZCLASS2-TEMPLATE.docx"
+            "TargetName" = "8:ASNZCLASS2-TEMPLATE.docx"
             "Tag" = "8:"
             "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
@@ -1472,6 +1602,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89000627BA264E9D9E75103A887A2DE2"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Oxygen Reticulation Failure Alarm-TEMPLATE.docx"
+            "TargetName" = "8:Oxygen Reticulation Failure Alarm-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_899D5CE17014F1C6509894344CDD2398"
             {
             "AssemblyRegister" = "3:1"
@@ -1479,11 +1629,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_899D5CE17014F1C6509894344CDD2398"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -1534,6 +1679,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8F5A113614FB4B42B688FE7064773615"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Edan Doppler-TEMPLATE.docx"
+            "TargetName" = "8:Edan Doppler-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_90328D841A2B4109BC7D6FFF02E9EAA1"
             {
             "AssemblyRegister" = "3:1"
@@ -1551,26 +1716,6 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_05BBC96B336E45379C5DFE7E0D8ABF9F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_91ED49FD775649959E9B9DB5090BB14B"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Philips MRx Defibrillator-TEMPLATE.docx"
-            "TargetName" = "8:Philips MRx Defibrillator-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1605,6 +1750,66 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9559C2C192384C8190E7D5272556EF05"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Multi-Flow Regulator-TEMPLATE.docx"
+            "TargetName" = "8:Multi-Flow Regulator-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9590410FE8D240D79AC615EB16FA943E"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\BBraun Perfusor Space-TEMPLATE.docx"
+            "TargetName" = "8:BBraun Perfusor Space-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9699A8E061C34A0EAA5F6EFDD5329AC1"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Regulator-TEMPLATE.docx"
+            "TargetName" = "8:Regulator-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9A8651228D3C469BA70B558B82C0F566"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Resources\\reload.png"
@@ -1625,52 +1830,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A0C4F3E340BF4D02B5E0FA6D80308D1A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A00DB0B0C9AF47F5BEF3EF17E0116565"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Sphygmo Handheld-TEMPLATE.docx"
-            "TargetName" = "8:Sphygmo Handheld-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Accusonic AP170-TEMPLATE.docx"
+            "TargetName" = "8:Accusonic AP170-TEMPLATE.docx"
             "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A400E7A2111B4BE7B33C3D8E2E84E9F2"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Electric Suction-TEMPLATE.docx"
-            "TargetName" = "8:Electric Suction-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A4FE38E760794AAB97A1FBA5FB5872EB"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Demand Head-TEMPLATE.docx"
-            "TargetName" = "8:Demand Head-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1725,6 +1890,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A6146AF150584D02877A1EEAFA30ADC2"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Demand Head-TEMPLATE.docx"
+            "TargetName" = "8:Demand Head-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B171123FD3AC4C8E9483EC061DAEFBEF"
             {
             "AssemblyRegister" = "3:1"
@@ -1732,11 +1917,6 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Word.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B171123FD3AC4C8E9483EC061DAEFBEF"
-                    {
-                    "Name" = "8:Microsoft.Office.Tools.Word.v4.0.Utilities.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Word.v4.0.Utilities.dll"
             "TargetName" = "8:"
@@ -1776,6 +1956,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B461A0FA756F4FE0892B12D76510540B"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Heine NT300-TEMPLATE.docx"
+            "TargetName" = "8:Heine NT300-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B57ABB527CFA413E81991375EEAC141C"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Resources\\add.png"
@@ -1796,32 +1996,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B90217942B764C7AB1867565E0031C67"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B8908EB8AAA2491A896E5E7B5384F23B"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Heine NT300-TEMPLATE.docx"
-            "TargetName" = "8:Heine NT300-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Electric Suction-TEMPLATE.docx"
+            "TargetName" = "8:Electric Suction-TEMPLATE.docx"
             "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B9A48A62F1634A2A8712AE558E6AB27C"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\VAPR VUE Generator-TEMPLATE.docx"
-            "TargetName" = "8:VAPR VUE Generator-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1856,30 +2036,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC4EE6FE827541CA9D7E46A9C0B255B4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BE082F2261964F3CA842667F86110E3A"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Twin-O-Vac Suction Device-TEMPLATE.docx"
-            "TargetName" = "8:Twin-O-Vac Suction Device-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C42D3785725D42249A09C6BE89C9A5D7"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\NIBP Monitor-TEMPLATE.docx"
-            "TargetName" = "8:NIBP Monitor-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\temp2.docx"
+            "TargetName" = "8:temp2.docx"
             "Tag" = "8:"
             "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
@@ -1896,10 +2056,70 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C7A8FA20BFF044419FEB44A8325574DB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BE7658F4A3464B44B0251D9C8B494CBF"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\ASNZCLASS1-TEMPLATE2.docx"
-            "TargetName" = "8:ASNZCLASS1-TEMPLATE2.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Template-TEMPLATE.docx"
+            "TargetName" = "8:QAS Template-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C33AA54572C54170A3133C1C5E943CFE"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Regulator-TEMPLATE.docx"
+            "TargetName" = "8:Regulator-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C93BCB314F7C46D7976CA4ED52EB9FA3"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\VAPR VUE Generator-TEMPLATE.docx"
+            "TargetName" = "8:VAPR VUE Generator-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C9866446D5894716A65F69154EEA7697"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\NIBP Monitor-TEMPLATE.docx"
+            "TargetName" = "8:NIBP Monitor-TEMPLATE.docx"
             "Tag" = "8:"
             "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
@@ -1963,11 +2183,6 @@
             "AssemblyAsmDisplayName" = "8:MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_CD15ADB9A40B2384ABD6508F4F16F179"
-                    {
-                    "Name" = "8:MetroFramework.Design.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:MetroFramework.Design.dll"
             "TargetName" = "8:"
@@ -1985,6 +2200,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D2F6376719984692876F9431E00D96B4"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Scales-TEMPLATE.docx"
+            "TargetName" = "8:Scales-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DABDB2ECDD854E40AB7013BDB1F2C758"
@@ -2013,6 +2248,26 @@
             "TargetName" = "8:batteryChecker.png"
             "Tag" = "8:"
             "Folder" = "8:_1BC66F65840845AAB0ED6C9E45C14DBF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E637C34C983E48489C3D31BF86067A49"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Aspirator-TEMPLATE.docx"
+            "TargetName" = "8:Aspirator-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2058,12 +2313,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E749E9F24CEC489CBA5B7D4607CD1671"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E8DD2D45AEF346549F6A77A7CFF1ADDF"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Flowmeter-TEMPLATE.docx"
-            "TargetName" = "8:Flowmeter-TEMPLATE.docx"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Signatures\\Joe Welch.png"
+            "TargetName" = "8:Joe Welch.png"
             "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
+            "Folder" = "8:_CC2F973EAF94419E91FCAE3E988FAEE6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2078,12 +2333,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E8DD2D45AEF346549F6A77A7CFF1ADDF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E919D2021DD34807927D387031A2374F"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Signatures\\Joe Welch.png"
-            "TargetName" = "8:Joe Welch.png"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Philips MRx Defibrillator-TEMPLATE.docx"
+            "TargetName" = "8:Philips MRx Defibrillator-TEMPLATE.docx"
             "Tag" = "8:"
-            "Folder" = "8:_CC2F973EAF94419E91FCAE3E988FAEE6"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2158,6 +2413,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F35DEFC8C2674360AAFD8CC9AC6D8021"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Genius 2 Thermometer-TEMPLATE.docx"
+            "TargetName" = "8:Genius 2 Thermometer-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F42A0A2F3B0E4D109F51EF6D860C800D"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Resources\\ambulance (1).png"
@@ -2178,72 +2453,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F49D5BC4F5F544C1861EF9532F9ABCE3"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Residual Current Device-TEMPLATE.docx"
-            "TargetName" = "8:Residual Current Device-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FD98CE67250D46468692323CBFB56961"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Edan Doppler-TEMPLATE.docx"
-            "TargetName" = "8:Edan Doppler-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FE0AC0C774AA4FC8BB3A2CC2991FB121"
-            {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Recoil Bag Resuscitator-TEMPLATE.docx"
-            "TargetName" = "8:Recoil Bag Resuscitator-TEMPLATE.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_72E47FDA95AE4C36A90BD5DF96C1C896"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FEF15C814FDF4C9D93249504C5AD6BE0"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Resources\\background.png"
             "TargetName" = "8:background.png"
             "Tag" = "8:"
             "Folder" = "8:_1BC66F65840845AAB0ED6C9E45C14DBF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FF9416693C9D4642B95E17EC1B6AE081"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\VaccineFridge-TEMPLATE.docx"
+            "TargetName" = "8:VaccineFridge-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2941,7 +3176,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3F4503160AB84331BC0785E7ACC490B9"
             {
-            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\obj\\Debug\\NovaBiomedicalSoftware.exe"
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\obj\\Release\\NovaBiomedicalSoftware.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_05BBC96B336E45379C5DFE7E0D8ABF9F"

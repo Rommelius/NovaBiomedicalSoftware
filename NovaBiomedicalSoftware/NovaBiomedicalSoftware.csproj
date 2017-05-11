@@ -94,6 +94,12 @@
     <Compile Include="AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppliedPartsSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppliedPartsSelection.Designer.cs">
+      <DependentUpon>AppliedPartsSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="BatteryChecker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,12 @@
     </Compile>
     <Compile Include="Performance Test\AccusonicAP170.Designer.cs">
       <DependentUpon>AccusonicAP170.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\AED.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\AED.Designer.cs">
+      <DependentUpon>AED.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\ComweldOxygenFlowmeter.cs">
       <SubType>Form</SubType>
@@ -173,6 +185,12 @@
     <Compile Include="Performance Test\HeineNT300.Designer.cs">
       <DependentUpon>HeineNT300.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\Manifold.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\Manifold.Designer.cs">
+      <DependentUpon>Manifold.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\perfusorSpace.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,11 +203,35 @@
     <Compile Include="Performance Test\GenericDefibrillator.Designer.cs">
       <DependentUpon>GenericDefibrillator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\PulseOximeter2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PulseOximeter2.Designer.cs">
+      <DependentUpon>PulseOximeter2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\RegulatorPT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\RegulatorPT.Designer.cs">
+      <DependentUpon>RegulatorPT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\Scales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Performance Test\Scales.Designer.cs">
       <DependentUpon>Scales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\Spirometer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\Spirometer.Designer.cs">
+      <DependentUpon>Spirometer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\VaccineFridge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\VaccineFridge.Designer.cs">
+      <DependentUpon>VaccineFridge.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\VarpVue.cs">
       <SubType>Form</SubType>
@@ -304,6 +346,9 @@
     <EmbeddedResource Include="AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AppliedPartsSelection.resx">
+      <DependentUpon>AppliedPartsSelection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BatteryChecker.resx">
       <DependentUpon>BatteryChecker.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\AccusonicAP170.resx">
       <DependentUpon>AccusonicAP170.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\AED.resx">
+      <DependentUpon>AED.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\ComweldOxygenFlowmeter.resx">
       <DependentUpon>ComweldOxygenFlowmeter.cs</DependentUpon>
@@ -343,14 +391,29 @@
     <EmbeddedResource Include="Performance Test\HeineNT300.resx">
       <DependentUpon>HeineNT300.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\Manifold.resx">
+      <DependentUpon>Manifold.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\perfusorSpace.resx">
       <DependentUpon>perfusorSpace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\GenericDefibrillator.resx">
       <DependentUpon>GenericDefibrillator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PulseOximeter2.resx">
+      <DependentUpon>PulseOximeter2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\RegulatorPT.resx">
+      <DependentUpon>RegulatorPT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\Scales.resx">
       <DependentUpon>Scales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\Spirometer.resx">
+      <DependentUpon>Spirometer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\VaccineFridge.resx">
+      <DependentUpon>VaccineFridge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\VarpVue.resx">
       <DependentUpon>VarpVue.cs</DependentUpon>
@@ -437,6 +500,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Report Templates\Accusonic AP170-TEMPLATE.docx" />
+    <None Include="Report Templates\AED-TEMPLATE.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE1.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE2.docx" />
     <None Include="Report Templates\ASNZCLASS2-TEMPLATE.docx" />
@@ -447,8 +511,10 @@
     <None Include="Report Templates\Generic Sphygmomanometer-TEMPLATE.docx" />
     <None Include="Report Templates\Genius 2 Thermometer-TEMPLATE.docx" />
     <None Include="Report Templates\Heine NT300-TEMPLATE.docx" />
+    <None Include="Report Templates\Manifold-TEMPLATE.docx" />
     <None Include="Report Templates\NIBP Monitor-TEMPLATE.docx" />
     <None Include="Report Templates\Philips MRx Defibrillator-TEMPLATE.docx" />
+    <None Include="Report Templates\Pulse Oximeter-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Template-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Aspirator-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Automatic External Defibrillator-TEMPLATE.docx" />
@@ -465,9 +531,12 @@
     <None Include="Report Templates\QAS Templates\Sphygmo Handheld-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Sphygmo Wall-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Twin-O-Vac Suction Device-TEMPLATE.docx" />
+    <None Include="Report Templates\Regulator-TEMPLATE.docx" />
     <None Include="Report Templates\Scales-TEMPLATE.docx" />
+    <None Include="Report Templates\Spirometer-TEMPLATE.docx" />
     <None Include="Report Templates\temp.docx" />
     <None Include="Report Templates\temp2.docx" />
+    <None Include="Report Templates\VaccineFridge-TEMPLATE.docx" />
     <None Include="Report Templates\VAPR VUE Generator-TEMPLATE.docx" />
     <None Include="Resources\background.png" />
   </ItemGroup>

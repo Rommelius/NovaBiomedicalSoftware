@@ -17,7 +17,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
         public bool VarpVueTest_Submit;
 
         public static string result1, result2, result3, result4, result5, result6, result7, result8,
-            result9;
+            result9, value1, value2, value3, value4, value5, value6, value7, value8;
         //comment box and item box
         public static string comments, items;
         public VarpVue()
@@ -53,7 +53,9 @@ namespace NovaBiomedicalSoftware.Performance_Test
             if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
                 result_4.SelectedItem == null || result_5.SelectedItem == null || result_4.SelectedItem == null ||
                 result_5.SelectedItem == null || result_6.SelectedItem == null || result_7.SelectedItem == null ||
-                result_8.SelectedItem == null || result_9.SelectedItem == null)
+                result_8.SelectedItem == null || result_9.SelectedItem == null || metroTextBox1.Text == "" || metroTextBox2.Text == "" ||
+                metroTextBox3.Text == "" || metroTextBox4.Text == "" || metroTextBox5.Text == "" || metroTextBox6.Text == "" ||
+                metroTextBox7.Text == "" || metroTextBox8.Text == "")
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -69,6 +71,15 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result7 = result_7.Text;
                 result8 = result_8.Text;
                 result9 = result_9.Text;
+
+                value1 = metroTextBox1.Text;
+                value2 = metroTextBox2.Text;
+                value3 = metroTextBox3.Text;
+                value4 = metroTextBox4.Text;
+                value5 = metroTextBox5.Text;
+                value6 = metroTextBox6.Text;
+                value7 = metroTextBox7.Text;
+                value8 = metroTextBox8.Text;
                 //comments box
                 comments = commentBox.Text;
 

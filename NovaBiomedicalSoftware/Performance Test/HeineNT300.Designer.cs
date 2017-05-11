@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HeineNT300));
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
             this.nextBtn = new MetroFramework.Controls.MetroButton();
@@ -81,8 +82,8 @@
             // 
             this.safetyCheck.Controls.Add(this.performanceVerification);
             this.safetyCheck.Controls.Add(this.commentsTab);
-            this.safetyCheck.Location = new System.Drawing.Point(32, 78);
-            this.safetyCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.safetyCheck.Location = new System.Drawing.Point(31, 78);
+            this.safetyCheck.Margin = new System.Windows.Forms.Padding(4);
             this.safetyCheck.Name = "safetyCheck";
             this.safetyCheck.SelectedIndex = 0;
             this.safetyCheck.Size = new System.Drawing.Size(655, 714);
@@ -115,7 +116,7 @@
             this.performanceVerification.HorizontalScrollbarHighlightOnWheel = false;
             this.performanceVerification.HorizontalScrollbarSize = 12;
             this.performanceVerification.Location = new System.Drawing.Point(4, 38);
-            this.performanceVerification.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.performanceVerification.Margin = new System.Windows.Forms.Padding(4);
             this.performanceVerification.Name = "performanceVerification";
             this.performanceVerification.Size = new System.Drawing.Size(647, 672);
             this.performanceVerification.TabIndex = 0;
@@ -128,7 +129,7 @@
             // nextBtn
             // 
             this.nextBtn.Location = new System.Drawing.Point(479, 608);
-            this.nextBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nextBtn.Margin = new System.Windows.Forms.Padding(4);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(161, 50);
             this.nextBtn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -141,7 +142,7 @@
             // close1_btn
             // 
             this.close1_btn.Location = new System.Drawing.Point(0, 608);
-            this.close1_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.close1_btn.Margin = new System.Windows.Forms.Padding(4);
             this.close1_btn.Name = "close1_btn";
             this.close1_btn.Size = new System.Drawing.Size(161, 50);
             this.close1_btn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -161,7 +162,7 @@
             "Fail",
             "N/A"});
             this.result_8.Location = new System.Drawing.Point(479, 283);
-            this.result_8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_8.Margin = new System.Windows.Forms.Padding(4);
             this.result_8.Name = "result_8";
             this.result_8.Size = new System.Drawing.Size(160, 27);
             this.result_8.TabIndex = 11;
@@ -177,7 +178,7 @@
             "Fail",
             "N/A"});
             this.result_7.Location = new System.Drawing.Point(479, 245);
-            this.result_7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_7.Margin = new System.Windows.Forms.Padding(4);
             this.result_7.Name = "result_7";
             this.result_7.Size = new System.Drawing.Size(160, 27);
             this.result_7.TabIndex = 11;
@@ -193,7 +194,7 @@
             "Fail",
             "N/A"});
             this.result_6.Location = new System.Drawing.Point(479, 207);
-            this.result_6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_6.Margin = new System.Windows.Forms.Padding(4);
             this.result_6.Name = "result_6";
             this.result_6.Size = new System.Drawing.Size(160, 27);
             this.result_6.TabIndex = 11;
@@ -209,7 +210,7 @@
             "Fail",
             "N/A"});
             this.result_5.Location = new System.Drawing.Point(479, 169);
-            this.result_5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_5.Margin = new System.Windows.Forms.Padding(4);
             this.result_5.Name = "result_5";
             this.result_5.Size = new System.Drawing.Size(160, 27);
             this.result_5.TabIndex = 11;
@@ -225,7 +226,7 @@
             "Fail",
             "N/A"});
             this.result_4.Location = new System.Drawing.Point(479, 130);
-            this.result_4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_4.Margin = new System.Windows.Forms.Padding(4);
             this.result_4.Name = "result_4";
             this.result_4.Size = new System.Drawing.Size(160, 27);
             this.result_4.TabIndex = 11;
@@ -241,7 +242,7 @@
             "Fail",
             "N/A"});
             this.result_3.Location = new System.Drawing.Point(479, 92);
-            this.result_3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_3.Margin = new System.Windows.Forms.Padding(4);
             this.result_3.Name = "result_3";
             this.result_3.Size = new System.Drawing.Size(160, 27);
             this.result_3.TabIndex = 11;
@@ -257,7 +258,7 @@
             "Fail",
             "N/A"});
             this.result_2.Location = new System.Drawing.Point(479, 55);
-            this.result_2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_2.Margin = new System.Windows.Forms.Padding(4);
             this.result_2.Name = "result_2";
             this.result_2.Size = new System.Drawing.Size(160, 27);
             this.result_2.TabIndex = 11;
@@ -273,7 +274,7 @@
             "Fail",
             "N/A"});
             this.result_1.Location = new System.Drawing.Point(479, 17);
-            this.result_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.result_1.Margin = new System.Windows.Forms.Padding(4);
             this.result_1.Name = "result_1";
             this.result_1.Size = new System.Drawing.Size(160, 27);
             this.result_1.TabIndex = 11;
@@ -335,7 +336,7 @@
             this.metroLabel6.Location = new System.Drawing.Point(-3, 100);
             this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(145, 20);
+            this.metroLabel6.Size = new System.Drawing.Size(144, 20);
             this.metroLabel6.TabIndex = 3;
             this.metroLabel6.Text = "Power supply/charger";
             // 
@@ -355,7 +356,7 @@
             this.visual1.Location = new System.Drawing.Point(0, 25);
             this.visual1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.visual1.Name = "visual1";
-            this.visual1.Size = new System.Drawing.Size(52, 20);
+            this.visual1.Size = new System.Drawing.Size(53, 20);
             this.visual1.TabIndex = 3;
             this.visual1.Text = "Battery";
             // 
@@ -385,7 +386,7 @@
             this.commentsTab.HorizontalScrollbarHighlightOnWheel = false;
             this.commentsTab.HorizontalScrollbarSize = 12;
             this.commentsTab.Location = new System.Drawing.Point(4, 38);
-            this.commentsTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.commentsTab.Margin = new System.Windows.Forms.Padding(4);
             this.commentsTab.Name = "commentsTab";
             this.commentsTab.Size = new System.Drawing.Size(647, 672);
             this.commentsTab.TabIndex = 2;
@@ -400,10 +401,10 @@
             // 
             // 
             this.itemsBox.CustomButton.Image = null;
-            this.itemsBox.CustomButton.Location = new System.Drawing.Point(-49, 2);
-            this.itemsBox.CustomButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itemsBox.CustomButton.Location = new System.Drawing.Point(-37, 2);
+            this.itemsBox.CustomButton.Margin = new System.Windows.Forms.Padding(5);
             this.itemsBox.CustomButton.Name = "";
-            this.itemsBox.CustomButton.Size = new System.Drawing.Size(321, 297);
+            this.itemsBox.CustomButton.Size = new System.Drawing.Size(241, 241);
             this.itemsBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.itemsBox.CustomButton.TabIndex = 1;
             this.itemsBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -411,7 +412,7 @@
             this.itemsBox.CustomButton.Visible = false;
             this.itemsBox.Lines = new string[0];
             this.itemsBox.Location = new System.Drawing.Point(433, 354);
-            this.itemsBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.itemsBox.Margin = new System.Windows.Forms.Padding(4);
             this.itemsBox.MaxLength = 32767;
             this.itemsBox.Multiline = true;
             this.itemsBox.Name = "itemsBox";
@@ -432,9 +433,9 @@
             this.metroCheckBox14.AutoSize = true;
             this.metroCheckBox14.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox14.Location = new System.Drawing.Point(291, 543);
-            this.metroCheckBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox14.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox14.Name = "metroCheckBox14";
-            this.metroCheckBox14.Size = new System.Drawing.Size(81, 20);
+            this.metroCheckBox14.Size = new System.Drawing.Size(80, 20);
             this.metroCheckBox14.TabIndex = 106;
             this.metroCheckBox14.Text = "Tester14";
             this.metroCheckBox14.UseSelectable = true;
@@ -444,9 +445,9 @@
             this.metroCheckBox13.AutoSize = true;
             this.metroCheckBox13.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox13.Location = new System.Drawing.Point(291, 512);
-            this.metroCheckBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox13.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox13.Name = "metroCheckBox13";
-            this.metroCheckBox13.Size = new System.Drawing.Size(81, 20);
+            this.metroCheckBox13.Size = new System.Drawing.Size(80, 20);
             this.metroCheckBox13.TabIndex = 106;
             this.metroCheckBox13.Text = "Tester13";
             this.metroCheckBox13.UseSelectable = true;
@@ -456,9 +457,9 @@
             this.metroCheckBox12.AutoSize = true;
             this.metroCheckBox12.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox12.Location = new System.Drawing.Point(291, 481);
-            this.metroCheckBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox12.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox12.Name = "metroCheckBox12";
-            this.metroCheckBox12.Size = new System.Drawing.Size(81, 20);
+            this.metroCheckBox12.Size = new System.Drawing.Size(80, 20);
             this.metroCheckBox12.TabIndex = 106;
             this.metroCheckBox12.Text = "Tester12";
             this.metroCheckBox12.UseSelectable = true;
@@ -468,9 +469,9 @@
             this.metroCheckBox11.AutoSize = true;
             this.metroCheckBox11.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox11.Location = new System.Drawing.Point(291, 450);
-            this.metroCheckBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox11.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox11.Name = "metroCheckBox11";
-            this.metroCheckBox11.Size = new System.Drawing.Size(81, 20);
+            this.metroCheckBox11.Size = new System.Drawing.Size(80, 20);
             this.metroCheckBox11.TabIndex = 106;
             this.metroCheckBox11.Text = "Tester11";
             this.metroCheckBox11.UseSelectable = true;
@@ -480,9 +481,9 @@
             this.metroCheckBox10.AutoSize = true;
             this.metroCheckBox10.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox10.Location = new System.Drawing.Point(291, 420);
-            this.metroCheckBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox10.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox10.Name = "metroCheckBox10";
-            this.metroCheckBox10.Size = new System.Drawing.Size(81, 20);
+            this.metroCheckBox10.Size = new System.Drawing.Size(80, 20);
             this.metroCheckBox10.TabIndex = 106;
             this.metroCheckBox10.Text = "Tester10";
             this.metroCheckBox10.UseSelectable = true;
@@ -492,9 +493,9 @@
             this.metroCheckBox9.AutoSize = true;
             this.metroCheckBox9.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox9.Location = new System.Drawing.Point(291, 389);
-            this.metroCheckBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox9.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox9.Name = "metroCheckBox9";
-            this.metroCheckBox9.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox9.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox9.TabIndex = 106;
             this.metroCheckBox9.Text = "Tester9";
             this.metroCheckBox9.UseSelectable = true;
@@ -504,9 +505,9 @@
             this.metroCheckBox8.AutoSize = true;
             this.metroCheckBox8.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox8.Location = new System.Drawing.Point(291, 358);
-            this.metroCheckBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox8.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox8.Name = "metroCheckBox8";
-            this.metroCheckBox8.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox8.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox8.TabIndex = 106;
             this.metroCheckBox8.Text = "Tester8";
             this.metroCheckBox8.UseSelectable = true;
@@ -516,9 +517,9 @@
             this.metroCheckBox7.AutoSize = true;
             this.metroCheckBox7.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox7.Location = new System.Drawing.Point(20, 543);
-            this.metroCheckBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox7.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox7.Name = "metroCheckBox7";
-            this.metroCheckBox7.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox7.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox7.TabIndex = 106;
             this.metroCheckBox7.Text = "Tester7";
             this.metroCheckBox7.UseSelectable = true;
@@ -528,9 +529,9 @@
             this.metroCheckBox6.AutoSize = true;
             this.metroCheckBox6.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox6.Location = new System.Drawing.Point(20, 512);
-            this.metroCheckBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox6.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox6.Name = "metroCheckBox6";
-            this.metroCheckBox6.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox6.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox6.TabIndex = 106;
             this.metroCheckBox6.Text = "Tester6";
             this.metroCheckBox6.UseSelectable = true;
@@ -540,9 +541,9 @@
             this.metroCheckBox5.AutoSize = true;
             this.metroCheckBox5.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox5.Location = new System.Drawing.Point(20, 481);
-            this.metroCheckBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox5.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox5.Name = "metroCheckBox5";
-            this.metroCheckBox5.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox5.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox5.TabIndex = 106;
             this.metroCheckBox5.Text = "Tester5";
             this.metroCheckBox5.UseSelectable = true;
@@ -552,9 +553,9 @@
             this.metroCheckBox4.AutoSize = true;
             this.metroCheckBox4.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox4.Location = new System.Drawing.Point(20, 450);
-            this.metroCheckBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox4.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox4.Name = "metroCheckBox4";
-            this.metroCheckBox4.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox4.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox4.TabIndex = 106;
             this.metroCheckBox4.Text = "Tester4";
             this.metroCheckBox4.UseSelectable = true;
@@ -564,9 +565,9 @@
             this.metroCheckBox3.AutoSize = true;
             this.metroCheckBox3.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox3.Location = new System.Drawing.Point(20, 420);
-            this.metroCheckBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox3.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox3.Name = "metroCheckBox3";
-            this.metroCheckBox3.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox3.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox3.TabIndex = 106;
             this.metroCheckBox3.Text = "Tester3";
             this.metroCheckBox3.UseSelectable = true;
@@ -576,9 +577,9 @@
             this.metroCheckBox2.AutoSize = true;
             this.metroCheckBox2.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox2.Location = new System.Drawing.Point(20, 389);
-            this.metroCheckBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox2.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox2.Name = "metroCheckBox2";
-            this.metroCheckBox2.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox2.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox2.TabIndex = 106;
             this.metroCheckBox2.Text = "Tester2";
             this.metroCheckBox2.UseSelectable = true;
@@ -588,9 +589,9 @@
             this.metroCheckBox1.AutoSize = true;
             this.metroCheckBox1.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
             this.metroCheckBox1.Location = new System.Drawing.Point(20, 358);
-            this.metroCheckBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroCheckBox1.Margin = new System.Windows.Forms.Padding(4);
             this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(73, 20);
+            this.metroCheckBox1.Size = new System.Drawing.Size(72, 20);
             this.metroCheckBox1.TabIndex = 106;
             this.metroCheckBox1.Text = "Tester1";
             this.metroCheckBox1.UseSelectable = true;
@@ -602,14 +603,14 @@
             this.metroLabel2.Location = new System.Drawing.Point(-5, 314);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(130, 20);
+            this.metroLabel2.Size = new System.Drawing.Size(129, 20);
             this.metroLabel2.TabIndex = 104;
             this.metroLabel2.Text = "Test Equipments:";
             // 
             // submitBtn
             // 
             this.submitBtn.Location = new System.Drawing.Point(479, 608);
-            this.submitBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitBtn.Margin = new System.Windows.Forms.Padding(4);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(161, 50);
             this.submitBtn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -622,7 +623,7 @@
             // close3_btn
             // 
             this.close3_btn.Location = new System.Drawing.Point(0, 608);
-            this.close3_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.close3_btn.Margin = new System.Windows.Forms.Padding(4);
             this.close3_btn.Name = "close3_btn";
             this.close3_btn.Size = new System.Drawing.Size(161, 50);
             this.close3_btn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -638,10 +639,10 @@
             // 
             // 
             this.commentBox.CustomButton.Image = null;
-            this.commentBox.CustomButton.Location = new System.Drawing.Point(499, 1);
-            this.commentBox.CustomButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.commentBox.CustomButton.Location = new System.Drawing.Point(374, 1);
+            this.commentBox.CustomButton.Margin = new System.Windows.Forms.Padding(5);
             this.commentBox.CustomButton.Name = "";
-            this.commentBox.CustomButton.Size = new System.Drawing.Size(359, 331);
+            this.commentBox.CustomButton.Size = new System.Drawing.Size(269, 269);
             this.commentBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.commentBox.CustomButton.TabIndex = 1;
             this.commentBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -649,7 +650,7 @@
             this.commentBox.CustomButton.Visible = false;
             this.commentBox.Lines = new string[0];
             this.commentBox.Location = new System.Drawing.Point(0, 39);
-            this.commentBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.commentBox.Margin = new System.Windows.Forms.Padding(4);
             this.commentBox.MaxLength = 32767;
             this.commentBox.Multiline = true;
             this.commentBox.Name = "commentBox";
@@ -686,7 +687,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 820);
             this.Controls.Add(this.safetyCheck);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HeineNT300";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Technical Safety Check - Heine NT300";

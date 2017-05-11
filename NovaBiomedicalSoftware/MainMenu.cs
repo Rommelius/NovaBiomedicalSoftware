@@ -27,8 +27,8 @@ namespace NovaBiomedicalSoftware
     {
 
         //Location of Project
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
 
         //List for QAS
         #region List for QAS
@@ -55,7 +55,8 @@ namespace NovaBiomedicalSoftware
         public bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, PerformQAS, YesNoSaveDestination, YesNoEquipmentDetails;
         public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
-            PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted, PTScalesCompleted, PTVarpVueCompleted;
+            PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted, PTScalesCompleted, PTVarpVueCompleted, PTPulseOximeter2Completed, PTSpirometerCompleted,
+            PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
         public bool PTMultiFlowRegulatorCompleted, PTOutletPointCompleted, PTOxygenReticulationCompleted, PTRegulatorCompleted,
@@ -65,7 +66,7 @@ namespace NovaBiomedicalSoftware
         public int counter_multiflowregulator, counter_outletPoint, counter_oxygenReticulation, counter_regulator, counter_flowmeter, counter_electricSuction,
             counter_recoilBag, counter_shygmoHHeld, counter_sphygmoWall, counter_pulseOximeter, counter_aspirator, counter_demandHead,
             counter_twinOVac, counter_residualCurrentDevice, counter_automaticExternalDefib;
-        public bool PTtestIsDone;
+        public bool PTtestIsDone, class1AppliedParts, class2AppliedParts;
         public bool earthResistanceFailed, insulationResistanceFailed, earthLeakageFailed1, earthLeakageFailed2, touchCurrentFailed1, touchCurrentFailed2,
             touchCurrentFailed3, touchCurrentFailed4, touchCurrentFailed5, touchCurrentFailed6, patientLeakageCurrentFailed1, patientLeakageCurrentFailed2, patientLeakageCurrentFailed3,
             mainsContactCurrentFailed;
@@ -74,6 +75,8 @@ namespace NovaBiomedicalSoftware
         DateTime date = DateTime.Today;
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
             _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
+
+
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
             _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double, _PLC1_double, _PLC2_double, _PLC3_double, _MMC_double;
 
@@ -116,6 +119,12 @@ namespace NovaBiomedicalSoftware
             PTComweldOxygenFMCompleted = false;
             PTVarpVueCompleted = false;
             PTScalesCompleted = false;
+            PTPulseOximeter2Completed = false;
+            PTSpirometerCompleted = false;
+            PTVaccineFridgeCompleted = false;
+            PTManifoldCompleted = false;
+            PTAEDCompleted = false;
+            PTRegulator2Completed = false;
 
             navigateToMainMenu();
         }
@@ -226,6 +235,7 @@ namespace NovaBiomedicalSoftware
             topPanel.Visible = true;
             statusBar.Visible = false;
 
+
             askForEquipmentDetails();
 }
         private void pt_btn_Click(object sender, EventArgs e)
@@ -314,6 +324,17 @@ namespace NovaBiomedicalSoftware
             _QASTab.Enabled = false;
 
             topPanel_right.Visible = false;
+            try
+            {
+                if (mySerialPort.IsOpen == true)
+                {
+                    mySerialPort.Close();
+
+                }
+            }
+            catch (Exception)
+            {
+            }
 
         }
         //connect to SerialCOM
@@ -461,7 +482,7 @@ namespace NovaBiomedicalSoftware
         }
         private void ptECG_Click(object sender, EventArgs e)
         {
-            if (PerformPerformanceTest == true)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
                 while (PTtestIsDone == false)
                 {
@@ -496,312 +517,538 @@ namespace NovaBiomedicalSoftware
         }
         private void ptNIBP_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                GenericNIBPMonitor dg = new GenericNIBPMonitor();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.nibpTest_Submit == true)
+                    GenericNIBPMonitor dg = new GenericNIBPMonitor();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTNIBPGenericCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.nibpTest_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTNIBPGenericCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
-                }
 
+                }
             }
         }
         private void eddanDoppler_btn_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                EdanDoppler dg = new EdanDoppler();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.edanTest_Submit == true)
+                    EdanDoppler dg = new EdanDoppler();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTEdanDopplerCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.edanTest_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTEdanDopplerCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
-                }
 
+                }
             }
         }
         private void sphygmomanometer_btn_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                GenericSphygmomanometer dg = new GenericSphygmomanometer();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.sphygmomanometerTest_Submit == true)
+                    GenericSphygmomanometer dg = new GenericSphygmomanometer();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTSphygmomanometerCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.sphygmomanometerTest_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTSphygmomanometerCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
-                }
 
+                }
             }
         }
         private void genius2_btn_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                Genius2Thermometer dg = new Genius2Thermometer();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.genius2Test_Submit == true)
+                    Genius2Thermometer dg = new Genius2Thermometer();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTGenius2Completed = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.genius2Test_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTGenius2Completed = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
-                }
 
+                }
             }
         }
         private void heinent300_btn_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                HeineNT300 dg = new HeineNT300();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.nt300Test_Submit == true)
+                    HeineNT300 dg = new HeineNT300();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTHeineNT300Completed = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.nt300Test_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTHeineNT300Completed = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
-                }
 
+                }
             }
         }
         private void philipsMRx_btn_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                GenericDefibrillator dg = new GenericDefibrillator();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.philipsMrxTest_Submit == true)
+                    GenericDefibrillator dg = new GenericDefibrillator();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTPhilipsMRxCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.philipsMrxTest_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTPhilipsMRxCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
                 }
-
             }
         }
         private void accusonicAP170_btn_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                AccusonicAP170 dg = new AccusonicAP170();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.AccusonicAP170Test_Submit == true)
+                    AccusonicAP170 dg = new AccusonicAP170();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTAccusonicAP170Completed = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.AccusonicAP170Test_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTAccusonicAP170Completed = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
                 }
-
             }
         }
         private void comweldoxygenFM_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                ComweldOxygenFlowmeter dg = new ComweldOxygenFlowmeter();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.ComweldOxygenFlowmeterTest_Submit == true)
+                    ComweldOxygenFlowmeter dg = new ComweldOxygenFlowmeter();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTComweldOxygenFMCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.ComweldOxygenFlowmeterTest_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTComweldOxygenFMCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
                 }
-
             }
         }
         private void scales_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                Scales dg = new Scales();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.Scales_Submit == true)
+                    Scales dg = new Scales();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTScalesCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.Scales_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTScalesCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void varp_Vue_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    VarpVue dg = new VarpVue();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.VarpVueTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTVarpVueCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        private void vaccineFridge_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    VaccineFridge dg = new VaccineFridge();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.VaccineFridge_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTVaccineFridgeCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void spirometer_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    Spirometer dg = new Spirometer();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Spirometer_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTSpirometerCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void pulseOximeter_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    PulseOximeter2 dg = new PulseOximeter2();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.PulseOximeter_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTPulseOximeter2Completed = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
                 }
 
             }
         }
-        private void varp_Vue_Click(object sender, EventArgs e)
+        private void manifoldBtn_Click(object sender, EventArgs e)
         {
-            while (PTtestIsDone == false)
+            if (PerformPerformanceTest == true || PerformBothTest == true)
             {
-                VarpVue dg = new VarpVue();
-                DialogResult dialog1 = dg.ShowDialog();
-                if (dialog1 == DialogResult.Cancel)
+                while (PTtestIsDone == false)
                 {
-                    if (dg.VarpVueTest_Submit == true)
+                    Manifold dg = new Manifold();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
                     {
-                        yesNoPerformanceTest = true;
-                        PTtestIsDone = true;
-                        PTVarpVueCompleted = true;
-                        createReport();
-                    }
-                    else
-                    {
-                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dialogResult == DialogResult.Yes)
+                        if (dg.manifold_Submit == true)
                         {
-                            yesNoPerformanceTest = false;
-                            PTtestIsDone = false;
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTManifoldCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
-                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
                         }
                     }
                 }
+            }
+        }
 
+        private void regulatorBtn_PT_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    RegulatorPT dg = new RegulatorPT();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.RegulatorTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTRegulator2Completed = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void aedBtn_PT_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    AED dg = new AED();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.AEDTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTAEDCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
         #endregion
@@ -809,11 +1056,17 @@ namespace NovaBiomedicalSoftware
         #region CommunicationToFluke
         private void patientLeakageCurrent()
         {
+            this.Invoke((MethodInvoker)delegate
+            {
+                _programStatus.Text = "Patient Leakage Current (Normal Condition)...";
+                statusBar.Enabled = true;
+                statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+            });
             //normal condition
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("PAT");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("POL=OFF");
@@ -839,16 +1092,16 @@ namespace NovaBiomedicalSoftware
             _PLC1_double= Double.Parse(_plc1_m.Value);
             this.Invoke((MethodInvoker)delegate
             {
-                if (typeCF == true)
+                if (PatientLeakageCurrentType.typeCF == true)
                 {
                     if (_PLC1_double > 10)
                     {
                         patientLeakageCurrentFailed1 = true;
                         Thread.CurrentThread.Interrupt();
-                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         PLClabel1.Text = _PLC1_double.ToString() + " uA";
                         PLClabel1.ForeColor = Color.Red;
-                        buttonPLC1.Visible = true;
+                        //buttonPLC1.Visible = true;
                     }
                     else
                     {
@@ -856,16 +1109,16 @@ namespace NovaBiomedicalSoftware
                         PLClabel1.Text = _PLC1_double.ToString() + " uA";
                     }
                 }
-                if (typeBF == true || typeB == true)
+                if (PatientLeakageCurrentType.typeBF == true || PatientLeakageCurrentType.typeB == true)
                 {
                     if (_PLC1_double > 100)
                     {
                         patientLeakageCurrentFailed1 = true;
                         Thread.CurrentThread.Interrupt();
-                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         PLClabel1.Text = _PLC1_double.ToString() + " uA";
                         PLClabel1.ForeColor = Color.Red;
-                        buttonPLC1.Visible = true;
+                        //buttonPLC1.Visible = true;
                     }
                     else
                     {
@@ -876,14 +1129,19 @@ namespace NovaBiomedicalSoftware
                 
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
-
+            this.Invoke((MethodInvoker)delegate
+            {
+                _programStatus.Text = "Patient Leakage Current (Open Neutral)...";
+                statusBar.Enabled = true;
+                statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+            });
             //neutral
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("PAT");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("POL=OFF");
@@ -909,16 +1167,16 @@ namespace NovaBiomedicalSoftware
             _PLC2_double = Double.Parse(_plc2_m.Value);
             this.Invoke((MethodInvoker)delegate
             {
-                if (typeCF == true)
+                if (PatientLeakageCurrentType.typeCF == true)
                 {
                     if (_PLC2_double > 10)
                     {
                         patientLeakageCurrentFailed2 = true;
                         Thread.CurrentThread.Interrupt();
-                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Patient Leakage Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         PLClabel2.Text = _PLC2_double.ToString() + " uA";
                         PLClabel2.ForeColor = Color.Red;
-                        buttonPLC2.Visible = true;
+                        //buttonPLC2.Visible = true;
                     }
                     else
                     {
@@ -926,16 +1184,16 @@ namespace NovaBiomedicalSoftware
                         PLClabel2.Text = _PLC2_double.ToString() + " uA";
                     }
                 }
-                if (typeBF == true || typeB == true)
+                if (PatientLeakageCurrentType.typeBF == true || PatientLeakageCurrentType.typeB == true)
                 {
                     if (_PLC2_double > 100)
                     {
                         patientLeakageCurrentFailed2 = true;
                         Thread.CurrentThread.Interrupt();
-                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Patient Leakage Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         PLClabel2.Text = _PLC2_double.ToString() + " uA";
                         PLClabel2.ForeColor = Color.Red;
-                        buttonPLC2.Visible = true;
+                        //buttonPLC2.Visible = true;
                     }
                     else
                     {
@@ -946,13 +1204,21 @@ namespace NovaBiomedicalSoftware
 
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
+
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                _programStatus.Text = "Patient Leakage Current (Open Earth)...";
+                statusBar.Enabled = true;
+                statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+            });
 
             //protective earthing
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("PAT");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("POL=OFF");
@@ -978,16 +1244,16 @@ namespace NovaBiomedicalSoftware
             _PLC3_double = Double.Parse(_plc3_m.Value);
             this.Invoke((MethodInvoker)delegate
             {
-                if (typeCF == true)
+                if (PatientLeakageCurrentType.typeCF == true)
                 {
                     if (_PLC3_double > 10)
                     {
                         patientLeakageCurrentFailed3 = true;
                         Thread.CurrentThread.Interrupt();
-                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Patient Leakage Current (Open Earth) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         PLClabel3.Text = _PLC3_double.ToString() + " uA";
                         PLClabel3.ForeColor = Color.Red;
-                        buttonPLC3.Visible = true;
+                        //buttonPLC3.Visible = true;
                     }
                     else
                     {
@@ -995,16 +1261,16 @@ namespace NovaBiomedicalSoftware
                         PLClabel3.Text = _PLC3_double.ToString() + " uA";
                     }
                 }
-                if (typeBF == true || typeB == true)
+                if (PatientLeakageCurrentType.typeBF == true || PatientLeakageCurrentType.typeB == true)
                 {
                     if (_PLC3_double > 100)
                     {
                         patientLeakageCurrentFailed3 = true;
                         Thread.CurrentThread.Interrupt();
-                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Patient Leakage Current (Open Earth) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         PLClabel3.Text = _PLC3_double.ToString() + " uA";
                         PLClabel3.ForeColor = Color.Red;
-                        buttonPLC3.Visible = true;
+                        //buttonPLC3.Visible = true;
                     }
                     else
                     {
@@ -1015,7 +1281,7 @@ namespace NovaBiomedicalSoftware
 
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
         }
         //private void mainsContactCurrent()
         //{
@@ -1110,7 +1376,7 @@ namespace NovaBiomedicalSoftware
             this.Invoke((MethodInvoker)delegate
             {
 
-                labelAnsurVersion.Text = _versionNumber;
+                labelAnsurVersion.Text = _versionNumber.Trim();
 
             });
             mySerialPort.WriteLine("LOCAL");
@@ -1142,7 +1408,7 @@ namespace NovaBiomedicalSoftware
             this.Invoke((MethodInvoker)delegate
             {
                 labelM1.ForeColor = Color.Green;
-                labelM1.Text = _MV1;
+                labelM1.Text = _MV1.Trim();
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1163,7 +1429,7 @@ namespace NovaBiomedicalSoftware
             this.Invoke((MethodInvoker)delegate
             {
                 labelM2.ForeColor = Color.Green;
-                labelM2.Text = _MV2;
+                labelM2.Text = _MV2.Trim();
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1186,7 +1452,7 @@ namespace NovaBiomedicalSoftware
             this.Invoke((MethodInvoker)delegate
             {
                 labelM3.ForeColor = Color.Green;
-                labelM3.Text = _MV3;
+                labelM3.Text = _MV3.Trim();
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(1000);
@@ -1232,11 +1498,11 @@ namespace NovaBiomedicalSoftware
                     if (_earthResistance_double > 0.1)
                     {
                         earthResistanceFailed = true;
-                        buttonPE.Visible = true;
+                        //buttonPE.Visible = true;
                         Thread.CurrentThread.Interrupt();
                         labelPE.Text = _earthResistance_double.ToString() + " OHMS";
                         labelPE.ForeColor = Color.Red;
-                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Earth Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Earth Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -1250,11 +1516,11 @@ namespace NovaBiomedicalSoftware
                     if (_earthResistance_double > 0.2)
                     {
                         earthResistanceFailed = true;
-                        buttonPE.Visible = true;
+                        //buttonPE.Visible = true;
                         Thread.CurrentThread.Interrupt();
                         labelPE.Text = _earthResistance_double.ToString() + " OHMS";
                         labelPE.ForeColor = Color.Red;
-                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Earth Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroFramework.MetroMessageBox.Show(this, "", "Earth Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -1289,7 +1555,7 @@ namespace NovaBiomedicalSoftware
             mySerialPort.Close();
             mySerialPort.Open();
             mySerialPort.WriteLine("READ");
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
             _insulationResistance = mySerialPort.ReadExisting();
             if (string.Compare(_insulationResistance, "!21") == -1)
             {
@@ -1307,10 +1573,10 @@ namespace NovaBiomedicalSoftware
                 this.Invoke((MethodInvoker)delegate
                 {
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Insulation Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Insulation Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelIR.ForeColor = Color.Red;
                     labelIR.Text = _insulationResistance;
-                    buttonIR.Visible = true;
+                    //buttonIR.Visible = true;
                 });
             }
             mySerialPort.WriteLine("LOCAL");
@@ -1348,10 +1614,10 @@ namespace NovaBiomedicalSoftware
                 {
                     earthLeakageFailed1 = true;
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Earth Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Earth Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEL1.Text = _EL1_double.ToString() + " uA";
                     labelEL1.ForeColor = Color.Red;
-                    buttonEL1.Visible = true;
+                    //buttonEL1.Visible = true;
                 }
                 else
                 {
@@ -1360,7 +1626,7 @@ namespace NovaBiomedicalSoftware
                 }
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
             //send command
             mySerialPort.WriteLine("REMOTE");
@@ -1388,10 +1654,10 @@ namespace NovaBiomedicalSoftware
                 {
                     earthLeakageFailed2 = true;
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Earth Leakage Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Earth Leakage Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEL2.Text = _EL2_double.ToString() + " uA";
                     labelEL2.ForeColor = Color.Red;
-                    buttonEL2.Visible = true;
+                    //buttonEL2.Visible = true;
                 }
                 else
                 {
@@ -1401,7 +1667,7 @@ namespace NovaBiomedicalSoftware
                 }
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
         }
         private void touchCurrent()
         {
@@ -1412,9 +1678,9 @@ namespace NovaBiomedicalSoftware
 
             //send command
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("ENCL");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("EARTH=C");
@@ -1438,10 +1704,10 @@ namespace NovaBiomedicalSoftware
                 {
                     touchCurrentFailed1 = true;
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Touch Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Touch Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL1.Text = _EnL1_double.ToString() + " uA";
                     labelEnL1.ForeColor = Color.Red;
-                    buttonEnL1.Visible = true;
+                    //buttonEnL1.Visible = true;
                 }
                 else
                 {
@@ -1451,13 +1717,13 @@ namespace NovaBiomedicalSoftware
                 }
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
             //send command
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("ENCL");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("EARTH=C");
@@ -1482,10 +1748,10 @@ namespace NovaBiomedicalSoftware
                     touchCurrentFailed2 = true;
 
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Touch Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Touch Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL2.Text = _EnL2_double.ToString() + " uA";
                     labelEnL2.ForeColor = Color.Red;
-                    buttonEnL2.Visible = true;
+                    //buttonEnL2.Visible = true;
                 }
                 else
                 {
@@ -1495,13 +1761,13 @@ namespace NovaBiomedicalSoftware
                 }
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
             //send command
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("ENCL");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("EARTH=O");
@@ -1526,10 +1792,10 @@ namespace NovaBiomedicalSoftware
                     touchCurrentFailed3 = true;
 
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Touch Current (Open Earth) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Touch Current (Open Earth) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL3.Text = _EnL3_double.ToString() + " uA";
                     labelEnL3.ForeColor = Color.Red;
-                    buttonEnL3.Visible = true;
+                    //buttonEnL3.Visible = true;
                 }
                 else
                 {
@@ -1539,13 +1805,13 @@ namespace NovaBiomedicalSoftware
                 }
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
             //send command
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("ENCL");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("EARTH=C");
@@ -1570,10 +1836,10 @@ namespace NovaBiomedicalSoftware
                     touchCurrentFailed4 = true;
 
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Touch Current (Normal Condition, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Touch Current (Normal Condition, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL4.Text = _EnL4_double.ToString() + " uA";
                     labelEnL4.ForeColor = Color.Red;
-                    buttonEnL4.Visible = true;
+                    //buttonEnL4.Visible = true;
                 }
                 else
                 {
@@ -1583,13 +1849,13 @@ namespace NovaBiomedicalSoftware
                 }
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
             //send command
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("ENCL");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("EARTH=C");
@@ -1614,10 +1880,10 @@ namespace NovaBiomedicalSoftware
                     touchCurrentFailed5 = true;
 
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Touch Current (Open Neutral, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Touch Current (Open Neutral, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL5.Text = _EnL5_double.ToString() + " uA";
                     labelEnL5.ForeColor = Color.Red;
-                    buttonEnL5.Visible = true;
+                    //buttonEnL5.Visible = true;
                 }
                 else
                 {
@@ -1627,13 +1893,13 @@ namespace NovaBiomedicalSoftware
                 }
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
             //send command
             mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             mySerialPort.WriteLine("ENCL");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("EARTH=O");
@@ -1658,10 +1924,10 @@ namespace NovaBiomedicalSoftware
                     touchCurrentFailed6 = true;
 
                     Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Touch Current (Open Earth, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "", "Touch Current (Open Earth, Reversed Mains) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     labelEnL6.Text = _EnL6_double.ToString() + " uA";
                     labelEnL6.ForeColor = Color.Red;
-                    buttonEnL6.Visible = true;
+                    //buttonEnL6.Visible = true;
                 }
                 else
                 {
@@ -1671,7 +1937,7 @@ namespace NovaBiomedicalSoftware
                 }
             });
             mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
 
 
@@ -1683,28 +1949,50 @@ namespace NovaBiomedicalSoftware
         #region refresh buttons
         private void buttonEL1_Click(object sender, EventArgs e)
         {
-            Thread earthleakage = new Thread(earthLeakage);
+            Thread earthleakage = new Thread(refreshEL);
 
             earthleakage.Start();
         }
+        private void refreshEL()
+        {
+            earthLeakage();
+            testComplete();
+        }
         private void buttonEnL1_Click(object sender, EventArgs e)
         {
-            Thread touchcurrent = new Thread(touchCurrent);
+            Thread touchcurrent = new Thread(refreshTouchCurrent);
 
             touchcurrent.Start();
         }
+        private void refreshTouchCurrent()
+        {
+            touchCurrent();
+            testComplete();
+        }
         private void buttonIR_Click(object sender, EventArgs e)
         {
-            Thread insulation = new Thread(insulationResistance);
+            Thread insulation = new Thread(refreshIR);
 
             insulation.Start();
         }
+        private void refreshIR()
+        {
+            insulationResistance();
+            testComplete();
+        }
         private void buttonPE_Click(object sender, EventArgs e)
         {
-            Thread earthresistance = new Thread(earthResistance);
+            Thread earthresistance = new Thread(refreshPE);
 
             earthresistance.Start();
         }
+        private void refreshPE()
+        {
+            earthResistance();
+            testComplete();
+        }
+
+
         private void buttonPLC1_Click(object sender, EventArgs e)
         {
             Thread patientleakage = new Thread(patientLeakageCurrent);
@@ -1716,15 +2004,19 @@ namespace NovaBiomedicalSoftware
         #region Class Test Buttons Click Events
         private void class1testBtn_Click(object sender, EventArgs e)
         {
+
             topPanel_right.Visible = true;
             _programStatus.Visible = true;
             class1ASNZtest = true;
-            PLClabel1.Visible = false;
-            PLClabel2.Visible = false;
-            PLClabel3.Visible = false;
+            PLC1.Visible = false;
+            PLC2.Visible = false;
+            PLC3.Visible = false;
             PLCpanel1.Visible = false;
             PLCpanel2.Visible = false;
             PLCpanel3.Visible = false;
+            MCC.Visible = false;
+            MCCpanel.Visible = false;
+
 
             ProtectiveEarthOptions class1option = new ProtectiveEarthOptions();
 
@@ -1760,12 +2052,14 @@ namespace NovaBiomedicalSoftware
             el2Panel.Visible = false;
             _PELabel.Visible = false;
             PEPanel.Visible = false;
-            PLClabel1.Visible = false;
-            PLClabel2.Visible = false;
-            PLClabel3.Visible = false;
+            PLC1.Visible = false;
+            PLC2.Visible = false;
+            PLC3.Visible = false;
             PLCpanel1.Visible = false;
             PLCpanel2.Visible = false;
             PLCpanel3.Visible = false;
+            MCC.Visible = false;
+            MCCpanel.Visible = false;
 
             statusBar.Show();
             statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
@@ -1780,6 +2074,7 @@ namespace NovaBiomedicalSoftware
         }
         private void APClass2_Click(object sender, EventArgs e)
         {
+            class2AppliedParts = true;
             PatientLeakageCurrentType plctype = new PatientLeakageCurrentType();
 
             DialogResult dialogResult = plctype.ShowDialog();
@@ -1801,24 +2096,53 @@ namespace NovaBiomedicalSoftware
         }
         private void APClass1_Click(object sender, EventArgs e)
         {
-            PatientLeakageCurrentType plctype = new PatientLeakageCurrentType();
+            topPanel_right.Visible = true;
+            _programStatus.Visible = true;
+            class1ASNZtest = true;
+            PLC1.Visible = true;
+            PLC2.Visible = true;
+            PLC3.Visible = true;
+            PLCpanel1.Visible = true;
+            PLCpanel2.Visible = true;
+            PLCpanel3.Visible = true;
+            MCC.Visible = true;
+            MCCpanel.Visible = true;
+            labelPE.Visible = true;
 
-            DialogResult dialogResult = plctype.ShowDialog();
-            if (dialogResult == DialogResult.Cancel)
+
+            class1AppliedParts = true;
+
+            ProtectiveEarthOptions class1option = new ProtectiveEarthOptions();
+
+            DialogResult dialogResult1 = class1option.ShowDialog();
+            if (dialogResult1 == DialogResult.Cancel)
             {
                 //navigateToMainMenu();
             }
-            else if (dialogResult == DialogResult.OK)
+            else if (dialogResult1 == DialogResult.OK)
             {
-                statusBar.Show();
-                statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
-                statusBar.MarqueeAnimationSpeed = 30;
+                PatientLeakageCurrentType plctype = new PatientLeakageCurrentType();
 
-                _kindofElectricalSafetyTest = "AS NZS 3551 – Class 1 with Applied Parts";
-                Thread patientleakage = new Thread(class1withAppliedParts);
+                DialogResult dialogResult2 = plctype.ShowDialog();
+                if (dialogResult2 == DialogResult.Cancel)
+                {
+                    //navigateToMainMenu();
+                }
+                else if (dialogResult2 == DialogResult.OK)
+                {
+                    statusBar.Show();
+                    statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+                    statusBar.MarqueeAnimationSpeed = 30;
 
-                patientleakage.Start();
+                    _kindofElectricalSafetyTest = "AS NZS 3551 – Class 1 with Applied Parts";
+                    Thread patientleakage = new Thread(class1withAppliedParts);
+
+                    patientleakage.Start();
+                }
             }
+
+
+
         }
         private void ecgSimulation_Click(object sender, EventArgs e)
         {
@@ -1885,6 +2209,24 @@ namespace NovaBiomedicalSoftware
                 _programStatus.Text = "Test Completed";
                 if (class1ASNZtest==true)
                 {
+                    buttonPE.Visible = true;
+                    buttonIR.Visible = true;
+                    buttonEL1.Visible = true;
+                    buttonEL2.Visible = true;
+                    buttonEnL1.Visible = true;
+                    buttonEnL2.Visible = true;
+                    buttonEnL3.Visible = true;
+                    buttonEnL4.Visible = true;
+                    buttonEnL5.Visible = true;
+                    buttonEnL6.Visible = true;
+                    if (class1AppliedParts == true)
+                    {
+                        buttonPLC1.Visible = true;
+                        buttonPLC2.Visible = true;
+                        buttonPLC3.Visible = true;
+                        buttonMCC.Visible = true;
+                    }
+
                     while (earthResistanceFailed == false && insulationResistanceFailed == false && earthLeakageFailed1 == false && earthLeakageFailed2 == false && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
             touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false)
                     {
@@ -1914,6 +2256,22 @@ namespace NovaBiomedicalSoftware
                 }
                 if (class2ASNZtest==true)
                 {
+
+                    buttonIR.Visible = true;
+                    buttonEnL1.Visible = true;
+                    buttonEnL2.Visible = true;
+                    buttonEnL3.Visible = true;
+                    buttonEnL4.Visible = true;
+                    buttonEnL5.Visible = true;
+                    buttonEnL6.Visible = true;
+                    if (class2AppliedParts == true)
+                    {
+                        buttonPLC1.Visible = true;
+                        buttonPLC2.Visible = true;
+                        buttonPLC3.Visible = true;
+                        buttonMCC.Visible = true;
+                    }
+
                     while (insulationResistanceFailed == false  && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
 touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false)
                     {
@@ -2055,13 +2413,41 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/Scales-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //vaccine Fridge
+                if (PTVaccineFridgeCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/VaccineFridge-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Spirometer
+                if (PTSpirometerCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Spirometer-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //PulseOximeter
+                if (PTPulseOximeter2Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Pulse Oximeter-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Manifold
+                if (PTManifoldCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Manifold-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //AED
+                if (PTAEDCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/AED-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Regulator PT
+                if (PTRegulator2Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Regulator-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
 
             }
-
             object missing = System.Reflection.Missing.Value;
 
 
-            // Check to see that file exists
             //Open the word document
             Word.Document wDoc = wordApp.Documents.Open(appRootDir + "/Report Templates/temp2.docx");
 
@@ -2273,7 +2659,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Comments>", HeineNT300.comments);
                 #endregion
             }
-            //Philips MRx
+            //Generic Defib
             if (PTPhilipsMRxCompleted == true)
             {
                 #region Find and Replace
@@ -2382,6 +2768,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result6>", VarpVue.result6);
                 this.FindAndReplace(wordApp, "<result7>", VarpVue.result7);
                 this.FindAndReplace(wordApp, "<result8>", VarpVue.result8);
+                this.FindAndReplace(wordApp, "<value1>", VarpVue.value1);
+                this.FindAndReplace(wordApp, "<value2>", VarpVue.value2);
+                this.FindAndReplace(wordApp, "<value3>", VarpVue.value3);
+                this.FindAndReplace(wordApp, "<value4>", VarpVue.value4);
+                this.FindAndReplace(wordApp, "<value5>", VarpVue.value5);
+                this.FindAndReplace(wordApp, "<value6>", VarpVue.value6);
+                this.FindAndReplace(wordApp, "<value7>", VarpVue.value7);
+                this.FindAndReplace(wordApp, "<value8>", VarpVue.value8);
                 this.FindAndReplace(wordApp, "<result9>", VarpVue.result9);
                 this.FindAndReplace(wordApp, "<Comments>", VarpVue.comments);
                 #endregion
@@ -2410,7 +2804,148 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Comments>", Scales.comments);
                 #endregion
             }
-
+            //Vaccine Fridge
+            if (PTVaccineFridgeCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", VaccineFridge.items);
+                this.FindAndReplace(wordApp, "<result1>", VaccineFridge.result1);
+                this.FindAndReplace(wordApp, "<result2>", VaccineFridge.result2);
+                this.FindAndReplace(wordApp, "<result3>", VaccineFridge.result3);
+                this.FindAndReplace(wordApp, "<result4>", VaccineFridge.result4);
+                this.FindAndReplace(wordApp, "<Comments>", VaccineFridge.comments);
+                #endregion
+            }
+            //Spirometer
+            if (PTSpirometerCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", Spirometer.items);
+                this.FindAndReplace(wordApp, "<result1>", Spirometer.result1);
+                this.FindAndReplace(wordApp, "<result2>", Spirometer.result2);
+                this.FindAndReplace(wordApp, "<result3>", Spirometer.result3);
+                this.FindAndReplace(wordApp, "<result4>", Spirometer.result4);
+                this.FindAndReplace(wordApp, "<result5>", Spirometer.result5);
+                this.FindAndReplace(wordApp, "<Comments>", Spirometer.comments);
+                #endregion
+            }
+            //Pulse Oximeter
+            if (PTPulseOximeter2Completed == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", PulseOximeter2.items);
+                this.FindAndReplace(wordApp, "<result1>", PulseOximeter2.result1);
+                this.FindAndReplace(wordApp, "<result2>", PulseOximeter2.result2);
+                this.FindAndReplace(wordApp, "<result3>", PulseOximeter2.result3);
+                this.FindAndReplace(wordApp, "<result4>", PulseOximeter2.result4);
+                this.FindAndReplace(wordApp, "<result5>", PulseOximeter2.result5);
+                this.FindAndReplace(wordApp, "<result6>", PulseOximeter2.result6);
+                this.FindAndReplace(wordApp, "<result7>", PulseOximeter2.result7);
+                this.FindAndReplace(wordApp, "<result8>", PulseOximeter2.result8);
+                this.FindAndReplace(wordApp, "<Comments>", PulseOximeter2.comments);
+                #endregion
+            }
+            //Manifold
+            if (PTManifoldCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", Manifold.items);
+                this.FindAndReplace(wordApp, "<result1>", Manifold.result1);
+                this.FindAndReplace(wordApp, "<result2>", Manifold.result2);
+                this.FindAndReplace(wordApp, "<result3>", Manifold.result3);
+                this.FindAndReplace(wordApp, "<result4>", Manifold.result4);
+                this.FindAndReplace(wordApp, "<result5>", Manifold.result5);
+                this.FindAndReplace(wordApp, "<result6>", Manifold.result6);
+                this.FindAndReplace(wordApp, "<result7>", Manifold.result7);
+                this.FindAndReplace(wordApp, "<result8>", Manifold.result8);
+                this.FindAndReplace(wordApp, "<result9>", Manifold.result9);
+                this.FindAndReplace(wordApp, "<result10>", Manifold.result10);
+                this.FindAndReplace(wordApp, "<result11>", Manifold.result11);
+                this.FindAndReplace(wordApp, "<result12>", Manifold.result12);
+                this.FindAndReplace(wordApp, "<result13>", Manifold.result13);
+                this.FindAndReplace(wordApp, "<result14>", Manifold.result14);
+                this.FindAndReplace(wordApp, "<result15>", Manifold.result15);
+                this.FindAndReplace(wordApp, "<result16>", Manifold.result16);
+                this.FindAndReplace(wordApp, "<typeofManifold>", Manifold.typeofmanifold);
+                this.FindAndReplace(wordApp, "<Comments>", Manifold.comments);
+                #endregion
+            }
+            //AED
+            if (PTAEDCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", AED.items);
+                this.FindAndReplace(wordApp, "<result1>", AED.result1);
+                this.FindAndReplace(wordApp, "<result2>", AED.result2);
+                this.FindAndReplace(wordApp, "<result3>", AED.result3);
+                this.FindAndReplace(wordApp, "<result4>", AED.result4);
+                this.FindAndReplace(wordApp, "<Comments>", AED.comments);
+                #endregion
+            }
+            //Regulator
+            if (PTRegulator2Completed == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", RegulatorPT.items);
+                this.FindAndReplace(wordApp, "<result1>", RegulatorPT.result1);
+                this.FindAndReplace(wordApp, "<result2>", RegulatorPT.result2);
+                this.FindAndReplace(wordApp, "<result3>", RegulatorPT.result3);
+                this.FindAndReplace(wordApp, "<result4>", RegulatorPT.result4);
+                this.FindAndReplace(wordApp, "<result5>", RegulatorPT.result5);
+                this.FindAndReplace(wordApp, "<Comments>", RegulatorPT.comments);
+                #endregion
+            }
 
             //create PDF
             if (PerformPerformanceTest == true)

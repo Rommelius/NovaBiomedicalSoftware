@@ -18,12 +18,18 @@ namespace NovaBiomedicalSoftware.Performance_Test
         public static string result1, result2, result3, result4, result5, result6, result7, result8, result9, result10, result11, result12, result13, result14, result15, result16,
             result17, result18, result19, result20, result21, result22, result23;
 
+        //comment box and item box
+        public static string comments, items;
+
         private void submitBtn_Click(object sender, EventArgs e)
         {
             //check if the combobox are answered
             if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
                 result_4.SelectedItem == null || result_5.SelectedItem == null || result_6.SelectedItem == null || result_7.SelectedItem == null ||
-                result_8.SelectedItem == null)
+                result_8.SelectedItem == null || result_9.SelectedItem == null || result_10.SelectedItem == null || result_11.SelectedItem == null ||
+                result_12.SelectedItem == null || result_13.SelectedItem == null || result_14.SelectedItem == null || result_15.SelectedItem == null ||
+                result_16.SelectedItem == null || result_17.SelectedItem == null || result_18.SelectedItem == null || result_19.SelectedItem == null ||
+                result_20.SelectedItem == null || result_21.SelectedItem == null || result_22.SelectedItem == null || result_23.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -82,8 +88,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
             this.Close();
         }
 
-        //comment box and item box
-        public static string comments, items;
+
 
 
 
