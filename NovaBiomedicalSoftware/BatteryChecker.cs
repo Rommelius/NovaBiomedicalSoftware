@@ -38,6 +38,14 @@ namespace NovaBiomedicalSoftware
             {
                 year = 2010;
             }
+            if (inputLetter.Text == "O")
+            {
+                year = 2014;
+            }
+            if (inputLetter.Text == "P")
+            {
+                year = 2015;
+            }
 
             Int32.TryParse(inputDigits.Text, out digits);
 

@@ -261,6 +261,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7B7E838C95464C28A69DD8E9901F0CEA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7D1D448765B441388E462903129FFF78"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -357,6 +363,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9D36D8F9C27A4CE8A4A49587F8522BAE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A00DB0B0C9AF47F5BEF3EF17E0116565"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -429,7 +441,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C3075AB6128549DF8B412D5A448491E4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C33AA54572C54170A3133C1C5E943CFE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C6436B894A36417BA07CC9ED55ADC58E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -855,6 +879,11 @@
             "AssemblyAsmDisplayName" = "8:MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_1FA2FB0BD85620D49DC2C9DEE018E35F"
+                    {
+                    "Name" = "8:MetroFramework.Fonts.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:MetroFramework.Fonts.dll"
             "TargetName" = "8:"
@@ -952,6 +981,11 @@
             "AssemblyAsmDisplayName" = "8:MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_27E3D0CBAA57E78A53A16AC5730BA80B"
+                    {
+                    "Name" = "8:MetroFramework.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:MetroFramework.dll"
             "TargetName" = "8:"
@@ -1482,6 +1516,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7B7E838C95464C28A69DD8E9901F0CEA"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Oxy Viva Resus Box-TEMPLATE.docx"
+            "TargetName" = "8:Oxy Viva Resus Box-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D1D448765B441388E462903129FFF78"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\QAS Templates\\Residual Current Device-TEMPLATE.docx"
@@ -1629,6 +1683,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_899D5CE17014F1C6509894344CDD2398"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -1830,6 +1889,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D36D8F9C27A4CE8A4A49587F8522BAE"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\PhilipsPatientMonitor-TEMPLATE.docx"
+            "TargetName" = "8:PhilipsPatientMonitor-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A00DB0B0C9AF47F5BEF3EF17E0116565"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Accusonic AP170-TEMPLATE.docx"
@@ -1917,6 +1996,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Office.Tools.Word.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_B171123FD3AC4C8E9483EC061DAEFBEF"
+                    {
+                    "Name" = "8:Microsoft.Office.Tools.Word.v4.0.Utilities.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Office.Tools.Word.v4.0.Utilities.dll"
             "TargetName" = "8:"
@@ -2076,10 +2160,50 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C3075AB6128549DF8B412D5A448491E4"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Soft Pack Rescue Bag-TEMPLATE.docx"
+            "TargetName" = "8:Soft Pack Rescue Bag-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C33AA54572C54170A3133C1C5E943CFE"
             {
             "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\Regulator-TEMPLATE.docx"
             "TargetName" = "8:Regulator-TEMPLATE.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C6436B894A36417BA07CC9ED55ADC58E"
+            {
+            "SourcePath" = "8:..\\NovaBiomedicalSoftware\\Report Templates\\VitalsMonitor-TEMPLATE.docx"
+            "TargetName" = "8:VitalsMonitor-TEMPLATE.docx"
             "Tag" = "8:"
             "Folder" = "8:_C120E39101B54D21885D99A54FDF7803"
             "Condition" = "8:"
@@ -2183,6 +2307,11 @@
             "AssemblyAsmDisplayName" = "8:MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_CD15ADB9A40B2384ABD6508F4F16F179"
+                    {
+                    "Name" = "8:MetroFramework.Design.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:MetroFramework.Design.dll"
             "TargetName" = "8:"
@@ -2626,15 +2755,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Nova Biomedical Software"
-        "ProductCode" = "8:{EAAA2DFB-A311-4CE7-A92C-1F2FA0152EA4}"
-        "PackageCode" = "8:{F1666120-9B96-4965-9AB3-5AA003D5B611}"
+        "ProductCode" = "8:{921E45DB-9848-4B0C-B15B-670EB96371AE}"
+        "PackageCode" = "8:{A9FC9646-B89F-4975-A2B6-2549AED2B912}"
         "UpgradeCode" = "8:{84396F51-E20A-408D-B3BC-DCA32E63C1F4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:5.1"
+        "ProductVersion" = "8:6.0"
         "Manufacturer" = "8:Nova Biomedical"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

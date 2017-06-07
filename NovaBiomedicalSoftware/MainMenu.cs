@@ -27,8 +27,8 @@ namespace NovaBiomedicalSoftware
     {
 
         //Location of Project
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
 
         //List for QAS
         #region List for QAS
@@ -56,7 +56,8 @@ namespace NovaBiomedicalSoftware
         public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
             PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted, PTScalesCompleted, PTVarpVueCompleted, PTPulseOximeter2Completed, PTSpirometerCompleted,
-            PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed, PTPhilipsMonitorCompleted, PTVitalsMonitorCompleted;
+            PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed, PTPhilipsMonitorCompleted, PTVitalsMonitorCompleted,
+            PTOxyVivaCompleted, PTSoftPackRescueCompleted;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
         public bool PTMultiFlowRegulatorCompleted, PTOutletPointCompleted, PTOxygenReticulationCompleted, PTRegulatorCompleted,
@@ -75,8 +76,6 @@ namespace NovaBiomedicalSoftware
         DateTime date = DateTime.Today;
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
             _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
-
-
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
             _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double, _PLC1_double, _PLC2_double, _PLC3_double, _MMC_double;
 
@@ -127,7 +126,8 @@ namespace NovaBiomedicalSoftware
             PTRegulator2Completed = false;
             PTPhilipsMonitorCompleted = false;
             PTVitalsMonitorCompleted = false;
-
+            PTOxyVivaCompleted = false;
+            PTSoftPackRescueCompleted = false;
 
             navigateToMainMenu();
         }
@@ -137,6 +137,9 @@ namespace NovaBiomedicalSoftware
         }
         private void qas_btn_Click(object sender, EventArgs e)
         {
+            //Exit Word First
+            ExitWord();
+
             tabMenu.Visible = true;
             espt_btn.Visible = false;
             est_btn.Visible = false;
@@ -195,6 +198,10 @@ namespace NovaBiomedicalSoftware
         }
         private void espt_btn_Click(object sender, EventArgs e)
         {
+
+            //Exit Word First
+            ExitWord();
+
             valuesPanel.Visible = true;
             tabMenu.Visible = true;
             espt_btn.Visible = true;
@@ -218,6 +225,12 @@ namespace NovaBiomedicalSoftware
         }
         private void est_btn_Click(object sender, EventArgs e)
         {
+            ClearPanelValues();
+            //Exit Word First
+            ExitWord();
+
+            ClearPanelValues();
+
             valuesPanel.Visible = true;
             espt_btn.Visible = false;
             est_btn.Visible = true;
@@ -243,7 +256,10 @@ namespace NovaBiomedicalSoftware
 }
         private void pt_btn_Click(object sender, EventArgs e)
         {
-           
+
+            //Exit Word First
+            ExitWord();
+
             espt_btn.Visible = false;
             est_btn.Visible = false;
             qas_btn.Visible = false;
@@ -434,17 +450,20 @@ namespace NovaBiomedicalSoftware
                 editElectricalSafetyTemplate(appRootDir + "/Report Templates/temp.docx");
                 editPerformanceTemplate(appRootDir + "/Report Templates/temp2.docx");
                 combineBothTemplate();
-                MetroFramework.MetroMessageBox.Show(this, "", "Report is done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MetroFramework.MetroMessageBox.Show(this, "", "Report is done for - " + EquipmentDetails.assetNumber, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if (PerformPerformanceTest == true)
             {
                 editPerformanceTemplate(appRootDir + "/Report Templates/temp2.docx");
-                MetroFramework.MetroMessageBox.Show(this, "", "Report is done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MetroFramework.MetroMessageBox.Show(this, "", "Report is done for - " + EquipmentDetails.assetNumber, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             if (PerformElectricalSafetyTest == true)
             {
                 editElectricalSafetyTemplate(appRootDir + "/Report Templates/temp.docx");
-                MetroFramework.MetroMessageBox.Show(this, "", "Report is done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MetroFramework.MetroMessageBox.Show(this, "", "Report is done for - " + EquipmentDetails.assetNumber, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                class1testBtn.Enabled = false;
+                class2testBtn.Enabled = false;
             }
 
 
@@ -1122,7 +1141,72 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
+        private void oxyvivaresusbox_btn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    OxyVivaResusBox dg = new OxyVivaResusBox();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.oxyvivaTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTOxyVivaCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
 
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void softpackrescue_btn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    SoftPackRescueBag dg = new SoftPackRescueBag();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.softpackrescueTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTSoftPackRescueCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         #endregion
         // Serial Communication for the FLUKE ESA620 with real-time checker
         #region CommunicationToFluke
@@ -2525,6 +2609,16 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/PhilipsPatientMonitor-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //Oxy Viva
+                if (PTOxyVivaCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Oxy Viva Resus Box-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Soft Pack
+                if (PTSoftPackRescueCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Soft Pack Rescue Bag-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
 
             }
             object missing = System.Reflection.Missing.Value;
@@ -3088,6 +3182,97 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result13>", PhilipsMonitors.result13);
                 this.FindAndReplace(wordApp, "<result14>", PhilipsMonitors.result14);
                 this.FindAndReplace(wordApp, "<Comments>", PhilipsMonitors.comments);
+                #endregion
+            }
+            //OxyViva
+            if (PTOxyVivaCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", OxyVivaResusBox.items);
+                this.FindAndReplace(wordApp, "<result1>", OxyVivaResusBox.result1);
+                this.FindAndReplace(wordApp, "<result2>", OxyVivaResusBox.result2);
+                this.FindAndReplace(wordApp, "<result3>", OxyVivaResusBox.result3);
+                this.FindAndReplace(wordApp, "<result4>", OxyVivaResusBox.result4);
+                this.FindAndReplace(wordApp, "<result5>", OxyVivaResusBox.result5);
+                this.FindAndReplace(wordApp, "<result6>", OxyVivaResusBox.result6);
+                this.FindAndReplace(wordApp, "<manufacturer1>", OxyVivaResusBox.manu1);
+                this.FindAndReplace(wordApp, "<manufacturer2>", OxyVivaResusBox.manu2);
+                this.FindAndReplace(wordApp, "<manufacturer3>", OxyVivaResusBox.manu3);
+                this.FindAndReplace(wordApp, "<manufacturer4>", OxyVivaResusBox.manu4);
+                this.FindAndReplace(wordApp, "<manufacturer5>", OxyVivaResusBox.manu5);
+                this.FindAndReplace(wordApp, "<manufacturer6>", OxyVivaResusBox.manu6);
+                this.FindAndReplace(wordApp, "<model1>", OxyVivaResusBox.modelbox1);
+                this.FindAndReplace(wordApp, "<model2>", OxyVivaResusBox.modelbox2);
+                this.FindAndReplace(wordApp, "<model3>", OxyVivaResusBox.modelbox3);
+                this.FindAndReplace(wordApp, "<model4>", OxyVivaResusBox.modelbox4);
+                this.FindAndReplace(wordApp, "<model5>", OxyVivaResusBox.modelbox5);
+                this.FindAndReplace(wordApp, "<model6>", OxyVivaResusBox.modelbox6);
+                this.FindAndReplace(wordApp, "<type1>", OxyVivaResusBox.typebox1);
+                this.FindAndReplace(wordApp, "<type2>", OxyVivaResusBox.typebox2);
+                this.FindAndReplace(wordApp, "<type3>", OxyVivaResusBox.typebox3);
+                this.FindAndReplace(wordApp, "<type4>", OxyVivaResusBox.typebox4);
+                this.FindAndReplace(wordApp, "<type5>", OxyVivaResusBox.typebox5);
+                this.FindAndReplace(wordApp, "<type6>", OxyVivaResusBox.typebox6);
+                this.FindAndReplace(wordApp, "<serial1>", OxyVivaResusBox.serialnum1);
+                this.FindAndReplace(wordApp, "<serial2>", OxyVivaResusBox.serialnum2);
+                this.FindAndReplace(wordApp, "<serial3>", OxyVivaResusBox.serialnum3);
+                this.FindAndReplace(wordApp, "<serial4>", OxyVivaResusBox.serialnum4);
+                this.FindAndReplace(wordApp, "<serial5>", OxyVivaResusBox.serialnum5);
+                this.FindAndReplace(wordApp, "<serial6>", OxyVivaResusBox.serialnum6);
+                this.FindAndReplace(wordApp, "<pressure>", OxyVivaResusBox.pressure1);
+                this.FindAndReplace(wordApp, "<Comments>", OxyVivaResusBox.comments);
+                #endregion
+            }
+            //Soft Pack
+            if (PTSoftPackRescueCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Items>", SoftPackRescueBag.items);
+                this.FindAndReplace(wordApp, "<result1>", SoftPackRescueBag.result1);
+                this.FindAndReplace(wordApp, "<result2>", SoftPackRescueBag.result2);
+                this.FindAndReplace(wordApp, "<result3>", SoftPackRescueBag.result3);
+                this.FindAndReplace(wordApp, "<result4>", SoftPackRescueBag.result4);
+                this.FindAndReplace(wordApp, "<result5>", SoftPackRescueBag.result5);
+                this.FindAndReplace(wordApp, "<manufacturer1>", SoftPackRescueBag.manu1);
+                this.FindAndReplace(wordApp, "<manufacturer2>", SoftPackRescueBag.manu2);
+                this.FindAndReplace(wordApp, "<manufacturer3>", SoftPackRescueBag.manu3);
+                this.FindAndReplace(wordApp, "<manufacturer4>", SoftPackRescueBag.manu4);
+                this.FindAndReplace(wordApp, "<manufacturer5>", SoftPackRescueBag.manu5);
+                this.FindAndReplace(wordApp, "<model1>", SoftPackRescueBag.modelbox1);
+                this.FindAndReplace(wordApp, "<model2>", SoftPackRescueBag.modelbox2);
+                this.FindAndReplace(wordApp, "<model3>", SoftPackRescueBag.modelbox3);
+                this.FindAndReplace(wordApp, "<model4>", SoftPackRescueBag.modelbox4);
+                this.FindAndReplace(wordApp, "<model5>", SoftPackRescueBag.modelbox5);
+                this.FindAndReplace(wordApp, "<type1>", SoftPackRescueBag.typebox1);
+                this.FindAndReplace(wordApp, "<type2>", SoftPackRescueBag.typebox2);
+                this.FindAndReplace(wordApp, "<type3>", SoftPackRescueBag.typebox3);
+                this.FindAndReplace(wordApp, "<type4>", SoftPackRescueBag.typebox4);
+                this.FindAndReplace(wordApp, "<type5>", SoftPackRescueBag.typebox5);
+                this.FindAndReplace(wordApp, "<serial1>", SoftPackRescueBag.serialnum1);
+                this.FindAndReplace(wordApp, "<serial2>", SoftPackRescueBag.serialnum2);
+                this.FindAndReplace(wordApp, "<serial3>", SoftPackRescueBag.serialnum3);
+                this.FindAndReplace(wordApp, "<serial4>", SoftPackRescueBag.serialnum4);
+                this.FindAndReplace(wordApp, "<serial5>", SoftPackRescueBag.serialnum5);
+                this.FindAndReplace(wordApp, "<pressure>", SoftPackRescueBag.pressure1);
+                this.FindAndReplace(wordApp, "<Comments>", SoftPackRescueBag.comments);
                 #endregion
             }
 
@@ -3724,7 +3909,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             if (PTMultiFlowRegulatorCompleted == true)
                 File.Copy(MainMenu.appRootDir + "/Report Templates/QAS Templates/Multi-Flow Regulator-TEMPLATE.docx", MainMenu.appRootDir + "/Report Templates/QAS Templates/temp2.docx");
 
-
             //Setup the Word.Application class.
             Word.Application wordApp =
                 new Word.Application();
@@ -4301,6 +4485,57 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 ref replace, ref matchKashida,
                 ref matchDiacritics, ref matchAlefHamza,
                 ref matchControl);
+        }
+
+        //Exit MSWORD
+        private void ExitWord()
+        {
+            try
+            {
+                foreach (Process proc in Process.GetProcessesByName("WINWORD"))
+                {
+                    proc.Kill();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void ClearPanelValues()
+        {
+            labelAnsurVersion.Text = "";
+            labelM1.Text = "";
+            labelM2.Text = "";
+            labelM3.Text = "";
+            labelIR.Text = "";
+            labelPE.Text = "";
+            labelEnL1.Text = "";
+            labelEnL2.Text = "";
+            labelEnL3.Text = "";
+            labelEnL4.Text = "";
+            labelEnL5.Text = "";
+            labelEnL6.Text = "";
+            labelEL1.Text = "";
+            labelEL2.Text = "";
+            PLClabel1.Text = "";
+            PLClabel2.Text = "";
+            PLClabel3.Text = "";
+            MCClabel1.Text = "";
+            buttonEnL1.Visible = false;
+            buttonEnL2.Visible = false;
+            buttonEnL3.Visible = false;
+            buttonEnL4.Visible = false;
+            buttonEnL5.Visible = false;
+            buttonEnL6.Visible = false;
+            buttonPE.Visible = false;
+            buttonIR.Visible = false;
+            buttonEL1.Visible = false;
+            buttonEL2.Visible = false;
+            buttonPLC1.Visible = false;
+            buttonPLC2.Visible = false;
+            buttonPLC3.Visible = false;
+            buttonMCC.Visible = false;
         }
     }
 }

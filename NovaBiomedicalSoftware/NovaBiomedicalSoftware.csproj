@@ -197,6 +197,12 @@
     <Compile Include="Performance Test\Manifold.Designer.cs">
       <DependentUpon>Manifold.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\OxyVivaResusBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\OxyVivaResusBox.Designer.cs">
+      <DependentUpon>OxyVivaResusBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\perfusorSpace.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,12 @@
     </Compile>
     <Compile Include="Performance Test\Scales.Designer.cs">
       <DependentUpon>Scales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\SoftPackRescueBag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\SoftPackRescueBag.Designer.cs">
+      <DependentUpon>SoftPackRescueBag.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\Spirometer.cs">
       <SubType>Form</SubType>
@@ -409,6 +421,9 @@
     <EmbeddedResource Include="Performance Test\Manifold.resx">
       <DependentUpon>Manifold.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\OxyVivaResusBox.resx">
+      <DependentUpon>OxyVivaResusBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\perfusorSpace.resx">
       <DependentUpon>perfusorSpace.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\Scales.resx">
       <DependentUpon>Scales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\SoftPackRescueBag.resx">
+      <DependentUpon>SoftPackRescueBag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\Spirometer.resx">
       <DependentUpon>Spirometer.cs</DependentUpon>
@@ -502,6 +520,7 @@
     </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -531,6 +550,7 @@
     <None Include="Report Templates\Heine NT300-TEMPLATE.docx" />
     <None Include="Report Templates\Manifold-TEMPLATE.docx" />
     <None Include="Report Templates\NIBP Monitor-TEMPLATE.docx" />
+    <None Include="Report Templates\Oxy Viva Resus Box-TEMPLATE.docx" />
     <None Include="Report Templates\Philips MRx Defibrillator-TEMPLATE.docx" />
     <None Include="Report Templates\PhilipsPatientMonitor-TEMPLATE.docx" />
     <None Include="Report Templates\Pulse Oximeter-TEMPLATE.docx" />
@@ -552,6 +572,7 @@
     <None Include="Report Templates\QAS Templates\Twin-O-Vac Suction Device-TEMPLATE.docx" />
     <None Include="Report Templates\Regulator-TEMPLATE.docx" />
     <None Include="Report Templates\Scales-TEMPLATE.docx" />
+    <None Include="Report Templates\Soft Pack Rescue Bag-TEMPLATE.docx" />
     <None Include="Report Templates\Spirometer-TEMPLATE.docx" />
     <None Include="Report Templates\temp.docx" />
     <None Include="Report Templates\temp2.docx" />

@@ -203,3 +203,7 @@ C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Queensland_Ambulance_Service.SphygmoWall.resources
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Queensland_Ambulance_Service.TwinOVac.resources
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.GenerateResource.Cache
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.GenericVitalsMonitor.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.PhilipsMonitors.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.OxyVivaResusBox.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.SoftPackRescueBag.resources

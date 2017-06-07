@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using System.Text.RegularExpressions;
 
 namespace NovaBiomedicalSoftware
 {
@@ -64,6 +65,15 @@ namespace NovaBiomedicalSoftware
         {
             if (e.KeyCode == Keys.Enter)
                 _serialNumberBox.Focus();
+        }
+
+        private void _assetNumberBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            if (regex.IsMatch(e.KeyChar.ToString()))
+            {
+                e.Handled = true;
+            }
         }
 
         public void serialNumber_KeyDown(object sender, KeyEventArgs e)

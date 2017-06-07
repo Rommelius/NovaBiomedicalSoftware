@@ -98,6 +98,7 @@ namespace NovaBiomedicalSoftware
                     }
                 }
 
+                
                 MainMenu _main = new NovaBiomedicalSoftware.MainMenu();
                 _main.Show();
                 this.Hide();
