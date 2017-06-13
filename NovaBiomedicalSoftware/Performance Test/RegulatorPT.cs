@@ -75,70 +75,70 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 this.Hide();
             }
         }
+        public static List<string> testequipment = new List<string>();
         private void addItems()
         {
             //items
             if (metroCheckBox1.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox1.Text + "\n");
+                testequipment.Add(metroCheckBox1.Text);
             }
             if (metroCheckBox2.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox2.Text + "\n");
+                testequipment.Add(metroCheckBox2.Text);
             }
             if (metroCheckBox3.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox3.Text + "\n");
+                testequipment.Add(metroCheckBox3.Text);
             }
             if (metroCheckBox4.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox4.Text + "\n");
+                testequipment.Add(metroCheckBox4.Text);
             }
             if (metroCheckBox5.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox5.Text + "\n");
+                testequipment.Add(metroCheckBox5.Text);
             }
             if (metroCheckBox6.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox6.Text + "\n");
+                testequipment.Add(metroCheckBox6.Text);
             }
             if (metroCheckBox7.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox7.Text + "\n");
+                testequipment.Add(metroCheckBox7.Text);
             }
             if (metroCheckBox8.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox8.Text + "\n");
+                testequipment.Add(metroCheckBox8.Text);
             }
             if (metroCheckBox8.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox8.Text + "\n");
+                testequipment.Add(metroCheckBox8.Text);
             }
             if (metroCheckBox9.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox9.Text + "\n");
+                testequipment.Add(metroCheckBox9.Text);
             }
             if (metroCheckBox10.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox10.Text + "\n");
+                testequipment.Add(metroCheckBox10.Text);
             }
             if (metroCheckBox11.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox11.Text + "\n");
+                testequipment.Add(metroCheckBox11.Text);
             }
             if (metroCheckBox12.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox12.Text + "\n");
+                testequipment.Add(metroCheckBox12.Text);
             }
             if (metroCheckBox13.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox13.Text + "\n");
+                testequipment.Add(metroCheckBox13.Text);
             }
             if (metroCheckBox14.Checked == true)
             {
-                itemsBox.AppendText(metroCheckBox14.Text);
+                testequipment.Add(metroCheckBox14.Text);
             }
         }
-
     }
 }

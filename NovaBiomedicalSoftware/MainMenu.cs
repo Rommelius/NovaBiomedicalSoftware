@@ -27,8 +27,8 @@ namespace NovaBiomedicalSoftware
     {
 
         //Location of Project
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
 
         //List for QAS
         #region List for QAS
@@ -57,7 +57,7 @@ namespace NovaBiomedicalSoftware
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
             PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted, PTScalesCompleted, PTVarpVueCompleted, PTPulseOximeter2Completed, PTSpirometerCompleted,
             PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed, PTPhilipsMonitorCompleted, PTVitalsMonitorCompleted,
-            PTOxyVivaCompleted, PTSoftPackRescueCompleted;
+            PTOxyVivaCompleted, PTSoftPackRescueCompleted, PTOxylogCompleted;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
         public bool PTMultiFlowRegulatorCompleted, PTOutletPointCompleted, PTOxygenReticulationCompleted, PTRegulatorCompleted,
@@ -76,6 +76,9 @@ namespace NovaBiomedicalSoftware
         DateTime date = DateTime.Today;
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
             _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
+
+
+
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
             _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double, _PLC1_double, _PLC2_double, _PLC3_double, _MMC_double;
 
@@ -128,6 +131,7 @@ namespace NovaBiomedicalSoftware
             PTVitalsMonitorCompleted = false;
             PTOxyVivaCompleted = false;
             PTSoftPackRescueCompleted = false;
+            PTOxylogCompleted = false;
 
             navigateToMainMenu();
         }
@@ -198,7 +202,7 @@ namespace NovaBiomedicalSoftware
         }
         private void espt_btn_Click(object sender, EventArgs e)
         {
-
+            ClearPanelValues();
             //Exit Word First
             ExitWord();
 
@@ -225,7 +229,6 @@ namespace NovaBiomedicalSoftware
         }
         private void est_btn_Click(object sender, EventArgs e)
         {
-            ClearPanelValues();
             //Exit Word First
             ExitWord();
 
@@ -236,6 +239,9 @@ namespace NovaBiomedicalSoftware
             est_btn.Visible = true;
             qas_btn.Visible = false;
             pt_btn.Visible = false;
+
+            class1testBtn.Enabled = true;
+            class2testBtn.Enabled = true;
 
             tabMenu.Visible = true;
             PerformElectricalSafetyTest = true;
@@ -1072,7 +1078,6 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
-
         private void genericVitalsMonitor_btn_Click(object sender, EventArgs e)
         {
             if (PerformPerformanceTest == true || PerformBothTest == true)
@@ -1106,8 +1111,6 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
-
-
         private void philipsMonitor_btn_Click(object sender, EventArgs e)
         {
             if (PerformPerformanceTest == true || PerformBothTest == true)
@@ -1189,6 +1192,39 @@ namespace NovaBiomedicalSoftware
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTSoftPackRescueCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void oxylogBtn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    Oxylog dg = new Oxylog();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.oxylogTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTOxylogCompleted = true;
                             createReport();
                         }
                         else
@@ -2487,7 +2523,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             //wordApp.Selection.InsertNewPage();
             wordApp.Selection.Paste();
 
-            wDoc1.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.location + "- Electrical Safety Test and Performance Test.pdf", Word.WdExportFormat.wdExportFormatPDF);
+            wDoc1.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-"+ EquipmentDetails.serialNumber+ "-" + EquipmentDetails.model + "-"+ EquipmentDetails.manufacturer + "-"+ "- Electrical Safety Test and Performance Test.pdf", Word.WdExportFormat.wdExportFormatPDF);
 
             GC.Collect();
             wDoc1.Close();
@@ -2619,6 +2655,11 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/Soft Pack Rescue Bag-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //Oxylog
+                if (PTOxylogCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Oxylog-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
 
             }
             object missing = System.Reflection.Missing.Value;
@@ -2632,14 +2673,10 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
 
             // for changing signatures
-            int count = wDoc.Bookmarks.Count;
-            for (int i = 1; i < count + 1; i++)
-            {
-                object oRange = wDoc.Bookmarks[i].Range;
-                object saveWithDocument = true;
-                string pictureName = appRootDir + "/Signatures/" + LogInPage.currentUser + ".png";
-                wDoc.InlineShapes.AddPicture(pictureName, ref missing, ref saveWithDocument, ref oRange);
-            }
+            wDoc.Bookmarks["image"].Select();
+            string pictureName = appRootDir + "/Signatures/" + LogInPage.currentUser + ".png";
+            wordApp.Selection.InlineShapes.AddPicture(pictureName);
+
 
 
             ///if statements on what kind of performance test
@@ -2657,7 +2694,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", perfusorSpace.items);
                 this.FindAndReplace(wordApp, "<visualresult1>", perfusorSpace.visualoption1);
                 this.FindAndReplace(wordApp, "<visualresult2>", perfusorSpace.visualoption2);
                 this.FindAndReplace(wordApp, "<visualresult3>", perfusorSpace.visualoption3);
@@ -2700,6 +2736,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<funcresult35>", perfusorSpace.functionaloption35);
                 this.FindAndReplace(wordApp, "<funcresult36>", perfusorSpace.functionaloption36);
                 this.FindAndReplace(wordApp, "<Comments>", perfusorSpace.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = perfusorSpace.testequipment.Last();
+                foreach (string item in perfusorSpace.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Generic ECG
@@ -2715,12 +2769,32 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", GenericECG.items);
                 this.FindAndReplace(wordApp, "<result1>", GenericECG.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericECG.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericECG.result3);
                 this.FindAndReplace(wordApp, "<result4>", GenericECG.result4);
                 this.FindAndReplace(wordApp, "<Comments>", GenericECG.comments);
+
+
+
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = GenericECG.testequipment.Last();
+                foreach (string item in GenericECG.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Generic NIBP
@@ -2736,7 +2810,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", GenericNIBPMonitor.items);
                 this.FindAndReplace(wordApp, "<result1>", GenericNIBPMonitor.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericNIBPMonitor.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericNIBPMonitor.result3);
@@ -2746,6 +2819,23 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result7>", GenericNIBPMonitor.result3);
                 this.FindAndReplace(wordApp, "<result8>", GenericNIBPMonitor.result4);
                 this.FindAndReplace(wordApp, "<Comments>", GenericNIBPMonitor.comments);
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = GenericNIBPMonitor.testequipment.Last();
+                foreach (string item in GenericNIBPMonitor.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Edan Doppler
@@ -2761,10 +2851,27 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", EdanDoppler.items);
                 this.FindAndReplace(wordApp, "<result1>", EdanDoppler.result1);
                 this.FindAndReplace(wordApp, "<result2>", EdanDoppler.result2);
                 this.FindAndReplace(wordApp, "<Comments>", EdanDoppler.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = EdanDoppler.testequipment.Last();
+                foreach (string item in EdanDoppler.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Generic Sphygmomanometer
@@ -2780,7 +2887,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", GenericSphygmomanometer.items);
                 this.FindAndReplace(wordApp, "<result1>", GenericSphygmomanometer.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericSphygmomanometer.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericSphygmomanometer.result3);
@@ -2789,6 +2895,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result6>", GenericSphygmomanometer.result6);
                 this.FindAndReplace(wordApp, "<result7>", GenericSphygmomanometer.result7);
                 this.FindAndReplace(wordApp, "<Comments>", GenericSphygmomanometer.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = GenericSphygmomanometer.testequipment.Last();
+                foreach (string item in GenericSphygmomanometer.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Edan Doppler
@@ -2804,10 +2928,27 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", Genius2Thermometer.items);
                 this.FindAndReplace(wordApp, "<result1>", Genius2Thermometer.result1);
                 this.FindAndReplace(wordApp, "<result2>", Genius2Thermometer.result2);
                 this.FindAndReplace(wordApp, "<Comments>", Genius2Thermometer.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = Genius2Thermometer.testequipment.Last();
+                foreach (string item in Genius2Thermometer.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Heine NT300
@@ -2823,7 +2964,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", HeineNT300.items);
                 this.FindAndReplace(wordApp, "<result1>", HeineNT300.result1);
                 this.FindAndReplace(wordApp, "<result2>", HeineNT300.result2);
                 this.FindAndReplace(wordApp, "<result3>", HeineNT300.result3);
@@ -2833,6 +2973,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result7>", HeineNT300.result7);
                 this.FindAndReplace(wordApp, "<result8>", HeineNT300.result8);
                 this.FindAndReplace(wordApp, "<Comments>", HeineNT300.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = HeineNT300.testequipment.Last();
+                foreach (string item in HeineNT300.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Generic Defib
@@ -2848,7 +3006,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", GenericDefibrillator.items);
                 this.FindAndReplace(wordApp, "<result1>", GenericDefibrillator.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericDefibrillator.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericDefibrillator.result3);
@@ -2873,6 +3030,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result22>", GenericDefibrillator.result22);
                 this.FindAndReplace(wordApp, "<result23>", GenericDefibrillator.result23);
                 this.FindAndReplace(wordApp, "<Comments>", GenericDefibrillator.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = GenericDefibrillator.testequipment.Last();
+                foreach (string item in GenericDefibrillator.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Accusonic AP170
@@ -2888,13 +3063,29 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", AccusonicAP170.items);
                 this.FindAndReplace(wordApp, "<result1>", AccusonicAP170.result1);
                 this.FindAndReplace(wordApp, "<result2>", AccusonicAP170.result2);
                 this.FindAndReplace(wordApp, "<result3>", AccusonicAP170.result3);
                 this.FindAndReplace(wordApp, "<result4>", AccusonicAP170.result4);
                 this.FindAndReplace(wordApp, "<result5>", AccusonicAP170.result5);
                 this.FindAndReplace(wordApp, "<Comments>", AccusonicAP170.comments);
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = AccusonicAP170.testequipment.Last();
+                foreach (string item in AccusonicAP170.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Comweld Oxygen Flowmeter
@@ -2910,7 +3101,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", ComweldOxygenFlowmeter.items);
                 this.FindAndReplace(wordApp, "<result1>", ComweldOxygenFlowmeter.result1);
                 this.FindAndReplace(wordApp, "<result2>", ComweldOxygenFlowmeter.result2);
                 this.FindAndReplace(wordApp, "<result3>", ComweldOxygenFlowmeter.result3);
@@ -2921,6 +3111,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result8>", ComweldOxygenFlowmeter.result8);
                 this.FindAndReplace(wordApp, "<result9>", ComweldOxygenFlowmeter.result9);
                 this.FindAndReplace(wordApp, "<Comments>", ComweldOxygenFlowmeter.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = ComweldOxygenFlowmeter.testequipment.Last();
+                foreach (string item in ComweldOxygenFlowmeter.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Varp Vue
@@ -2935,7 +3143,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", VarpVue.items);
                 this.FindAndReplace(wordApp, "<result1>", VarpVue.result1);
                 this.FindAndReplace(wordApp, "<result2>", VarpVue.result2);
                 this.FindAndReplace(wordApp, "<result3>", VarpVue.result3);
@@ -2954,6 +3161,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<value8>", VarpVue.value8);
                 this.FindAndReplace(wordApp, "<result9>", VarpVue.result9);
                 this.FindAndReplace(wordApp, "<Comments>", VarpVue.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = VarpVue.testequipment.Last();
+                foreach (string item in VarpVue.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Scales
@@ -2968,7 +3193,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", Scales.items);
                 this.FindAndReplace(wordApp, "<result1>", Scales.result1);
                 this.FindAndReplace(wordApp, "<result2>", Scales.result2);
                 this.FindAndReplace(wordApp, "<result3>", Scales.result3);
@@ -2978,6 +3202,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result7>", Scales.result7);
                 this.FindAndReplace(wordApp, "<result8>", Scales.result8);
                 this.FindAndReplace(wordApp, "<Comments>", Scales.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = Scales.testequipment.Last();
+                foreach (string item in Scales.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Vaccine Fridge
@@ -2992,12 +3234,29 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", VaccineFridge.items);
                 this.FindAndReplace(wordApp, "<result1>", VaccineFridge.result1);
                 this.FindAndReplace(wordApp, "<result2>", VaccineFridge.result2);
                 this.FindAndReplace(wordApp, "<result3>", VaccineFridge.result3);
                 this.FindAndReplace(wordApp, "<result4>", VaccineFridge.result4);
                 this.FindAndReplace(wordApp, "<Comments>", VaccineFridge.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = VaccineFridge.testequipment.Last();
+                foreach (string item in VaccineFridge.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Spirometer
@@ -3012,13 +3271,30 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", Spirometer.items);
                 this.FindAndReplace(wordApp, "<result1>", Spirometer.result1);
                 this.FindAndReplace(wordApp, "<result2>", Spirometer.result2);
                 this.FindAndReplace(wordApp, "<result3>", Spirometer.result3);
                 this.FindAndReplace(wordApp, "<result4>", Spirometer.result4);
                 this.FindAndReplace(wordApp, "<result5>", Spirometer.result5);
                 this.FindAndReplace(wordApp, "<Comments>", Spirometer.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = Spirometer.testequipment.Last();
+                foreach (string item in Spirometer.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Pulse Oximeter
@@ -3033,7 +3309,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", PulseOximeter2.items);
                 this.FindAndReplace(wordApp, "<result1>", PulseOximeter2.result1);
                 this.FindAndReplace(wordApp, "<result2>", PulseOximeter2.result2);
                 this.FindAndReplace(wordApp, "<result3>", PulseOximeter2.result3);
@@ -3043,6 +3318,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result7>", PulseOximeter2.result7);
                 this.FindAndReplace(wordApp, "<result8>", PulseOximeter2.result8);
                 this.FindAndReplace(wordApp, "<Comments>", PulseOximeter2.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = PulseOximeter2.testequipment.Last();
+                foreach (string item in PulseOximeter2.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Manifold
@@ -3058,7 +3351,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", Manifold.items);
                 this.FindAndReplace(wordApp, "<result1>", Manifold.result1);
                 this.FindAndReplace(wordApp, "<result2>", Manifold.result2);
                 this.FindAndReplace(wordApp, "<result3>", Manifold.result3);
@@ -3077,6 +3369,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result16>", Manifold.result16);
                 this.FindAndReplace(wordApp, "<typeofManifold>", Manifold.typeofmanifold);
                 this.FindAndReplace(wordApp, "<Comments>", Manifold.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = Manifold.testequipment.Last();
+                foreach (string item in Manifold.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //AED
@@ -3092,12 +3402,29 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", AED.items);
                 this.FindAndReplace(wordApp, "<result1>", AED.result1);
                 this.FindAndReplace(wordApp, "<result2>", AED.result2);
                 this.FindAndReplace(wordApp, "<result3>", AED.result3);
                 this.FindAndReplace(wordApp, "<result4>", AED.result4);
                 this.FindAndReplace(wordApp, "<Comments>", AED.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = AED.testequipment.Last();
+                foreach (string item in AED.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Regulator
@@ -3113,13 +3440,30 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", RegulatorPT.items);
                 this.FindAndReplace(wordApp, "<result1>", RegulatorPT.result1);
                 this.FindAndReplace(wordApp, "<result2>", RegulatorPT.result2);
                 this.FindAndReplace(wordApp, "<result3>", RegulatorPT.result3);
                 this.FindAndReplace(wordApp, "<result4>", RegulatorPT.result4);
                 this.FindAndReplace(wordApp, "<result5>", RegulatorPT.result5);
                 this.FindAndReplace(wordApp, "<Comments>", RegulatorPT.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = RegulatorPT.testequipment.Last();
+                foreach (string item in RegulatorPT.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Generic Vitals
@@ -3135,7 +3479,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", GenericVitalsMonitor.items);
                 this.FindAndReplace(wordApp, "<result1>", GenericVitalsMonitor.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericVitalsMonitor.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericVitalsMonitor.result3);
@@ -3151,6 +3494,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result13>", GenericVitalsMonitor.result13);
                 this.FindAndReplace(wordApp, "<result14>", GenericVitalsMonitor.result14);
                 this.FindAndReplace(wordApp, "<Comments>", GenericVitalsMonitor.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = GenericVitalsMonitor.testequipment.Last();
+                foreach (string item in GenericVitalsMonitor.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Philips Monitors
@@ -3166,7 +3527,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", PhilipsMonitors.items);
                 this.FindAndReplace(wordApp, "<result1>", PhilipsMonitors.result1);
                 this.FindAndReplace(wordApp, "<result2>", PhilipsMonitors.result2);
                 this.FindAndReplace(wordApp, "<result3>", PhilipsMonitors.result3);
@@ -3182,6 +3542,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result13>", PhilipsMonitors.result13);
                 this.FindAndReplace(wordApp, "<result14>", PhilipsMonitors.result14);
                 this.FindAndReplace(wordApp, "<Comments>", PhilipsMonitors.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = PhilipsMonitors.testequipment.Last();
+                foreach (string item in PhilipsMonitors.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //OxyViva
@@ -3197,7 +3575,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", OxyVivaResusBox.items);
                 this.FindAndReplace(wordApp, "<result1>", OxyVivaResusBox.result1);
                 this.FindAndReplace(wordApp, "<result2>", OxyVivaResusBox.result2);
                 this.FindAndReplace(wordApp, "<result3>", OxyVivaResusBox.result3);
@@ -3230,6 +3607,24 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<serial6>", OxyVivaResusBox.serialnum6);
                 this.FindAndReplace(wordApp, "<pressure>", OxyVivaResusBox.pressure1);
                 this.FindAndReplace(wordApp, "<Comments>", OxyVivaResusBox.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = OxyVivaResusBox.testequipment.Last();
+                foreach (string item in OxyVivaResusBox.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
             //Soft Pack
@@ -3245,7 +3640,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
-                this.FindAndReplace(wordApp, "<Items>", SoftPackRescueBag.items);
                 this.FindAndReplace(wordApp, "<result1>", SoftPackRescueBag.result1);
                 this.FindAndReplace(wordApp, "<result2>", SoftPackRescueBag.result2);
                 this.FindAndReplace(wordApp, "<result3>", SoftPackRescueBag.result3);
@@ -3273,13 +3667,86 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<serial5>", SoftPackRescueBag.serialnum5);
                 this.FindAndReplace(wordApp, "<pressure>", SoftPackRescueBag.pressure1);
                 this.FindAndReplace(wordApp, "<Comments>", SoftPackRescueBag.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = SoftPackRescueBag.testequipment.Last();
+                foreach (string item in SoftPackRescueBag.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
                 #endregion
             }
+            //Oxylog
+            if (PTOxylogCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", Oxylog.result1);
+                this.FindAndReplace(wordApp, "<result2>", Oxylog.result2);
+                this.FindAndReplace(wordApp, "<result3>", Oxylog.result3);
+                this.FindAndReplace(wordApp, "<result4>", Oxylog.result4);
+                this.FindAndReplace(wordApp, "<result5>", Oxylog.result5);
+                this.FindAndReplace(wordApp, "<result6>", Oxylog.result6);
+                this.FindAndReplace(wordApp, "<result7>", Oxylog.result7);
+                this.FindAndReplace(wordApp, "<result8>", Oxylog.result8);
+                this.FindAndReplace(wordApp, "<result9>", Oxylog.result9);
+                this.FindAndReplace(wordApp, "<result10>", Oxylog.result10);
+                this.FindAndReplace(wordApp, "<result11>", Oxylog.result11);
+                this.FindAndReplace(wordApp, "<result12>", Oxylog.result12);
+                this.FindAndReplace(wordApp, "<result13>", Oxylog.result13);
+                this.FindAndReplace(wordApp, "<result14>", Oxylog.result14);
+                this.FindAndReplace(wordApp, "<text1>", Oxylog.text_result1);
+                this.FindAndReplace(wordApp, "<text2>", Oxylog.text_result2);
+                this.FindAndReplace(wordApp, "<text3>", Oxylog.text_result3);
+                this.FindAndReplace(wordApp, "<text4>", Oxylog.text_result4);
+                this.FindAndReplace(wordApp, "<text5>", Oxylog.text_result5);
+                this.FindAndReplace(wordApp, "<text6>", Oxylog.text_result6);
+                this.FindAndReplace(wordApp, "<Comments>", Oxylog.comments);
 
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = Oxylog.testequipment.Last();
+                foreach (string item in Oxylog.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
+
+
+                #endregion
+            }
             //create PDF
             if (PerformPerformanceTest == true)
             {
-                wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.location + "- Performance Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
+                wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.serialNumber + "-" + EquipmentDetails.model + "-"+ EquipmentDetails.manufacturer + "-"+ EquipmentDetails.location + "- Performance Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
             }
 
             //Close the document - you have to do this.
@@ -3428,7 +3895,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             //export to pdf
             if (PerformElectricalSafetyTest == true)
             {
-                wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.location + "- Electrical Safety Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
+                wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.serialNumber +"-"+ EquipmentDetails.model + "-" + EquipmentDetails.manufacturer + "-"+ EquipmentDetails.location + "- Electrical Safety Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
             }
 
 
@@ -3978,7 +4445,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
                 foreach (string item in AutomaticExternalDefib.parts)
                 {
-                    para.Range.Text = item + "\n";
+                    para.Range.Text = item + "\r";
                     _PartsCounter.Add(item);
 
                 }

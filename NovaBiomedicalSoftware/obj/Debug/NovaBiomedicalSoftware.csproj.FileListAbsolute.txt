@@ -207,3 +207,4 @@ C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftwa
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.PhilipsMonitors.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.OxyVivaResusBox.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.SoftPackRescueBag.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.Oxylog.resources

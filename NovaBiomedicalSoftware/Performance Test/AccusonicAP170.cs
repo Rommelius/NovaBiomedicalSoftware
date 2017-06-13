@@ -22,9 +22,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
         public AccusonicAP170()
         {
             InitializeComponent();
-            itemsBox.ResetText();
             commentBox.ResetText();
-            itemsBox.Visible = false;
             safetyCheck.SelectedTab = performanceVerification;
             this.StyleManager = msmain;
             msmain.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -34,6 +32,12 @@ namespace NovaBiomedicalSoftware.Performance_Test
         {
             AccusonicAP170Test_Submit = false;
             this.Close();
+        }
+
+        private void AccusonicAP170_SizeChanged(object sender, EventArgs e)
+        {
+            commentBox.Width = safetyCheck.Width - 10;
+            listBox1.Width = safetyCheck.Width - 10;
         }
 
         private void nextBtn_Click(object sender, EventArgs e)
@@ -67,74 +71,19 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 comments = commentBox.Text;
 
                 addItems();
-                items = itemsBox.Text;
+
 
                 AccusonicAP170Test_Submit = true;
                 this.Hide();
             }
         }
+        public static List<string> testequipment = new List<string>();
+
         private void addItems()
         {
-            //items
-            if (metroCheckBox1.Checked == true)
+            foreach (var item in listBox1.SelectedItems)
             {
-                itemsBox.AppendText(metroCheckBox1.Text + "\n");
-            }
-            if (metroCheckBox2.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox2.Text + "\n");
-            }
-            if (metroCheckBox3.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox3.Text + "\n");
-            }
-            if (metroCheckBox4.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox4.Text + "\n");
-            }
-            if (metroCheckBox5.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox5.Text + "\n");
-            }
-            if (metroCheckBox6.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox6.Text + "\n");
-            }
-            if (metroCheckBox7.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox7.Text + "\n");
-            }
-            if (metroCheckBox8.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox8.Text + "\n");
-            }
-            if (metroCheckBox8.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox8.Text + "\n");
-            }
-            if (metroCheckBox9.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox9.Text + "\n");
-            }
-            if (metroCheckBox10.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox10.Text + "\n");
-            }
-            if (metroCheckBox11.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox11.Text + "\n");
-            }
-            if (metroCheckBox12.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox12.Text + "\n");
-            }
-            if (metroCheckBox13.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox13.Text + "\n");
-            }
-            if (metroCheckBox14.Checked == true)
-            {
-                itemsBox.AppendText(metroCheckBox14.Text);
+                testequipment.Add(item.ToString());
             }
         }
     }

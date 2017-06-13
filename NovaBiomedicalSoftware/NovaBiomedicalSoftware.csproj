@@ -197,6 +197,12 @@
     <Compile Include="Performance Test\Manifold.Designer.cs">
       <DependentUpon>Manifold.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\Oxylog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\Oxylog.Designer.cs">
+      <DependentUpon>Oxylog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\OxyVivaResusBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -421,6 +427,9 @@
     <EmbeddedResource Include="Performance Test\Manifold.resx">
       <DependentUpon>Manifold.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\Oxylog.resx">
+      <DependentUpon>Oxylog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\OxyVivaResusBox.resx">
       <DependentUpon>OxyVivaResusBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -521,6 +530,7 @@
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="ClassDiagram3.cd" />
+    <None Include="ClassDiagram4.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -551,6 +561,7 @@
     <None Include="Report Templates\Manifold-TEMPLATE.docx" />
     <None Include="Report Templates\NIBP Monitor-TEMPLATE.docx" />
     <None Include="Report Templates\Oxy Viva Resus Box-TEMPLATE.docx" />
+    <None Include="Report Templates\Oxylog-TEMPLATE.docx" />
     <None Include="Report Templates\Philips MRx Defibrillator-TEMPLATE.docx" />
     <None Include="Report Templates\PhilipsPatientMonitor-TEMPLATE.docx" />
     <None Include="Report Templates\Pulse Oximeter-TEMPLATE.docx" />
