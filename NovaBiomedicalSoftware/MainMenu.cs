@@ -57,7 +57,8 @@ namespace NovaBiomedicalSoftware
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
             PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted, PTScalesCompleted, PTVarpVueCompleted, PTPulseOximeter2Completed, PTSpirometerCompleted,
             PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed, PTPhilipsMonitorCompleted, PTVitalsMonitorCompleted,
-            PTOxyVivaCompleted, PTSoftPackRescueCompleted, PTOxylogCompleted;
+            PTOxyVivaCompleted, PTSoftPackRescueCompleted, PTOxylogCompleted, PTtwinOvacCompleted, PTNeopuffCompleted, PTiStatCompleted, PTbelmontFluidCompleted, PTVaccumValveCompleted,
+            PTWallSuctionCompleted, PTThroatCameraCompleted, PTInfantTransportCompleted, PTElectricSuction2Completed, PTBloodGlucoseCompleted, PTInfusorSpaceCompleted;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
         public bool PTMultiFlowRegulatorCompleted, PTOutletPointCompleted, PTOxygenReticulationCompleted, PTRegulatorCompleted,
@@ -76,7 +77,6 @@ namespace NovaBiomedicalSoftware
         DateTime date = DateTime.Today;
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
             _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
-
 
 
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
@@ -132,6 +132,18 @@ namespace NovaBiomedicalSoftware
             PTOxyVivaCompleted = false;
             PTSoftPackRescueCompleted = false;
             PTOxylogCompleted = false;
+            PTtwinOvacCompleted = false;
+            PTNeopuffCompleted = false;
+            PTiStatCompleted = false;
+            PTbelmontFluidCompleted = false;
+            PTVaccumValveCompleted = false;
+            PTWallSuctionCompleted = false;
+            PTThroatCameraCompleted = false;
+            PTInfantTransportCompleted = false;
+            PTElectricSuction2Completed = false;
+            PTBloodGlucoseCompleted = false;
+            PTInfusorSpaceCompleted = false;
+
 
             navigateToMainMenu();
         }
@@ -1243,6 +1255,237 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
+
+        private void TwinOVacBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NeopuffBtn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    NeoPuff dg = new NeoPuff();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTNeopuffCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void iStatBtn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    iStat dg = new iStat();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTiStatCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void belmontFluidWarmerBtn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    BelmontFluidWarmer dg = new BelmontFluidWarmer();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.nt300Test_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTbelmontFluidCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void VaccumValveBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WallSuctionBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ThroatCameraBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void infantTransportBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void electricSuctionBtn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    ElectricSuction2 dg = new ElectricSuction2();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTElectricSuction2Completed = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void bloodglucose_btn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    BloodGlucose dg = new BloodGlucose();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTBloodGlucoseCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void infusorSpaceBtn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    InfusorSpace dg = new InfusorSpace();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.infusorTest_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTInfusorSpaceCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
         #endregion
         // Serial Communication for the FLUKE ESA620 with real-time checker
         #region CommunicationToFluke
@@ -2660,6 +2903,36 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/Oxylog-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //neopuff
+                if (PTNeopuffCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Neopuff-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Electric suction 2
+                if (PTElectricSuction2Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/Electric Suction-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Infusor Space
+                if (PTInfusorSpaceCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/BBraun Infusor Space-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //blood glucose
+                if (PTBloodGlucoseCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/BloodGlucose-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //belmont
+                if (PTbelmontFluidCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/BelmontFluidWarmer-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //istat
+                if (PTiStatCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/ISTAT-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
 
             }
             object missing = System.Reflection.Missing.Value;
@@ -3739,10 +4012,290 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                         wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
                     }
                 }
-
-
                 #endregion
             }
+
+            //Belmont Fluid Warmer
+            if (PTbelmontFluidCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", BelmontFluidWarmer.result1);
+                this.FindAndReplace(wordApp, "<result2>", BelmontFluidWarmer.result2);
+                this.FindAndReplace(wordApp, "<result3>", BelmontFluidWarmer.result3);
+                this.FindAndReplace(wordApp, "<result4>", BelmontFluidWarmer.result4);
+                this.FindAndReplace(wordApp, "<result5>", BelmontFluidWarmer.result5);
+                this.FindAndReplace(wordApp, "<Comments>", BelmontFluidWarmer.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = BelmontFluidWarmer.testequipment.Last();
+                foreach (string item in BelmontFluidWarmer.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
+                #endregion
+            }
+
+            //Blood Glucose
+            if (PTBloodGlucoseCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", BloodGlucose.result1);
+                this.FindAndReplace(wordApp, "<result2>", BloodGlucose.result2);
+                this.FindAndReplace(wordApp, "<result3>", BloodGlucose.result3);
+                this.FindAndReplace(wordApp, "<Comments>", BloodGlucose.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = BloodGlucose.testequipment.Last();
+                foreach (string item in BloodGlucose.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
+                #endregion
+            }
+
+            //Electric Suction 2
+            if (PTElectricSuction2Completed == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", ElectricSuction2.result1);
+                this.FindAndReplace(wordApp, "<result2>", ElectricSuction2.result2);
+                this.FindAndReplace(wordApp, "<result3>", ElectricSuction2.result3);
+                this.FindAndReplace(wordApp, "<Comments>", ElectricSuction2.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = ElectricSuction2.testequipment.Last();
+                foreach (string item in ElectricSuction2.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
+                #endregion
+            }
+            //NeoPuff
+            if (PTNeopuffCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", NeoPuff.result1);
+                this.FindAndReplace(wordApp, "<result2>", NeoPuff.result2);
+                this.FindAndReplace(wordApp, "<result3>", NeoPuff.result3);
+                this.FindAndReplace(wordApp, "<result4>", NeoPuff.result4);
+                this.FindAndReplace(wordApp, "<result5>", NeoPuff.result5);
+                this.FindAndReplace(wordApp, "<result6>", NeoPuff.result6);
+                this.FindAndReplace(wordApp, "<result7>", NeoPuff.result7);
+                this.FindAndReplace(wordApp, "<result8>", NeoPuff.result8);
+                this.FindAndReplace(wordApp, "<result9>", NeoPuff.result9);
+                this.FindAndReplace(wordApp, "<result10>", NeoPuff.result10);
+                this.FindAndReplace(wordApp, "<result11>", NeoPuff.result11);
+                this.FindAndReplace(wordApp, "<result12>", NeoPuff.result12);
+                this.FindAndReplace(wordApp, "<result13>", NeoPuff.result13);
+                this.FindAndReplace(wordApp, "<result14>", NeoPuff.result14);
+                this.FindAndReplace(wordApp, "<Comments>", NeoPuff.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = NeoPuff.testequipment.Last();
+                foreach (string item in NeoPuff.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
+                #endregion
+            }
+            //iStat
+            if (PTiStatCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", iStat.result1);
+                this.FindAndReplace(wordApp, "<result2>", iStat.result2);
+                this.FindAndReplace(wordApp, "<result3>", iStat.result3);
+                this.FindAndReplace(wordApp, "<result4>", iStat.result4);
+                this.FindAndReplace(wordApp, "<result5>", iStat.result5);
+                this.FindAndReplace(wordApp, "<Comments>", iStat.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = iStat.testequipment.Last();
+                foreach (string item in iStat.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
+                #endregion
+            }
+            //infusor Space
+            if (PTInfusorSpaceCompleted == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<visualresult1>", InfusorSpace.visualoption1);
+                this.FindAndReplace(wordApp, "<visualresult2>", InfusorSpace.visualoption2);
+                this.FindAndReplace(wordApp, "<visualresult3>", InfusorSpace.visualoption3);
+                this.FindAndReplace(wordApp, "<visualresult4>", InfusorSpace.visualoption4);
+                this.FindAndReplace(wordApp, "<visualresult5>", InfusorSpace.visualoption5);
+                this.FindAndReplace(wordApp, "<visualresult6>", InfusorSpace.visualoption6);
+                this.FindAndReplace(wordApp, "<visualresult7>", InfusorSpace.visualoption7);
+                this.FindAndReplace(wordApp, "<visualresult8>", InfusorSpace.visualoption8);
+                this.FindAndReplace(wordApp, "<funcresult1>", InfusorSpace.functionaloption1);
+                this.FindAndReplace(wordApp, "<funcresult2>", InfusorSpace.functionaloption2);
+                this.FindAndReplace(wordApp, "<funcresult3>", InfusorSpace.functionaloption3);
+                this.FindAndReplace(wordApp, "<funcresult4>", InfusorSpace.functionaloption4);
+                this.FindAndReplace(wordApp, "<funcresult5>", InfusorSpace.functionaloption5);
+                this.FindAndReplace(wordApp, "<funcresult6>", InfusorSpace.functionaloption6);
+                this.FindAndReplace(wordApp, "<funcresult7>", InfusorSpace.functionaloption7);
+                this.FindAndReplace(wordApp, "<funcresult8>", InfusorSpace.functionaloption8);
+                this.FindAndReplace(wordApp, "<funcresult9>", InfusorSpace.functionaloption9);
+                this.FindAndReplace(wordApp, "<funcresult10>", InfusorSpace.functionaloption10);
+                this.FindAndReplace(wordApp, "<funcresult11>", InfusorSpace.functionaloption11);
+                this.FindAndReplace(wordApp, "<funcresult12>", InfusorSpace.functionaloption12);
+                this.FindAndReplace(wordApp, "<funcresult13>", InfusorSpace.functionaloption13);
+                this.FindAndReplace(wordApp, "<funcresult14>", InfusorSpace.functionaloption14);
+                this.FindAndReplace(wordApp, "<funcresult16>", InfusorSpace.functionaloption16);
+                this.FindAndReplace(wordApp, "<funcresult17>", InfusorSpace.functionaloption17);
+                this.FindAndReplace(wordApp, "<funcresult18>", InfusorSpace.functionaloption18);
+                this.FindAndReplace(wordApp, "<funcresult19>", InfusorSpace.functionaloption19);
+                this.FindAndReplace(wordApp, "<funcresult20>", InfusorSpace.functionaloption20);
+                this.FindAndReplace(wordApp, "<funcresult21>", InfusorSpace.functionaloption21);
+                this.FindAndReplace(wordApp, "<funcresult25>", InfusorSpace.functionaloption25);
+                this.FindAndReplace(wordApp, "<funcresult26>", InfusorSpace.functionaloption26);
+                this.FindAndReplace(wordApp, "<funcresult27>", InfusorSpace.functionaloption27);
+                this.FindAndReplace(wordApp, "<funcresult28>", InfusorSpace.functionaloption28);
+                this.FindAndReplace(wordApp, "<funcresult29>", InfusorSpace.functionaloption29);
+                this.FindAndReplace(wordApp, "<funcresult30>", InfusorSpace.functionaloption30);
+                this.FindAndReplace(wordApp, "<funcresult31>", InfusorSpace.functionaloption31);
+                this.FindAndReplace(wordApp, "<funcresult32>", InfusorSpace.functionaloption32);
+                this.FindAndReplace(wordApp, "<funcresult33>", InfusorSpace.functionaloption33);
+                this.FindAndReplace(wordApp, "<funcresult34>", InfusorSpace.functionaloption34);
+                this.FindAndReplace(wordApp, "<funcresult35>", InfusorSpace.functionaloption35);
+                this.FindAndReplace(wordApp, "<funcresult36>", InfusorSpace.functionaloption36);
+                this.FindAndReplace(wordApp, "<funcresult37>", InfusorSpace.functionaloption37);
+                this.FindAndReplace(wordApp, "<funcresult38>", InfusorSpace.functionaloption38);
+                this.FindAndReplace(wordApp, "<funcresult39>", InfusorSpace.functionaloption39);
+                this.FindAndReplace(wordApp, "<funcresult40>", InfusorSpace.functionaloption40);
+                this.FindAndReplace(wordApp, "<Comments>", InfusorSpace.comments);
+
+                wDoc.Bookmarks["testequipment"].Select();
+                object moveUnit = Word.WdUnits.wdCell;
+                object moveExend = Word.WdMovementType.wdMove;
+                string last = InfusorSpace.testequipment.Last();
+                foreach (string item in InfusorSpace.testequipment)
+                {
+                    // do something with each item
+                    if (item.Equals(last))
+                    {
+                        wordApp.Selection.TypeText(item);
+                    }
+                    else
+                    {
+                        wordApp.Selection.TypeText(item);
+                        wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                    }
+                }
+                #endregion
+            }
+
             //create PDF
             if (PerformPerformanceTest == true)
             {

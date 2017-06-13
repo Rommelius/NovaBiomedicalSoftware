@@ -16,9 +16,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
         public GenericSphygmomanometer()
         {
             InitializeComponent();
-            itemsBox.ResetText();
             commentBox.ResetText();
-            itemsBox.Visible = false;
             safetyCheck.SelectedTab = performanceVerification;
             this.StyleManager = metroStyleManager1;
             metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -28,6 +26,14 @@ namespace NovaBiomedicalSoftware.Performance_Test
 
         public static string result1, result2, result3, result4, result5, result6, result7, result8;
 
+        private void GenericSphygmomanometer_SizeChanged(object sender, EventArgs e)
+        {
+            commentBox.Width = safetyCheck.Width - 10;
+            listBox1.Width = safetyCheck.Width - 10;
+        }
+
+
+
         //comment box and item box
         public static string comments, items;
 
@@ -36,71 +42,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
             safetyCheck.SelectedTab = commentsTab;
         }
 
-        public static List<string> testequipment = new List<string>();
-        private void addItems()
-        {
-            //items
-            if (metroCheckBox1.Checked == true)
-            {
-                testequipment.Add(metroCheckBox1.Text);
-            }
-            if (metroCheckBox2.Checked == true)
-            {
-                testequipment.Add(metroCheckBox2.Text);
-            }
-            if (metroCheckBox3.Checked == true)
-            {
-                testequipment.Add(metroCheckBox3.Text);
-            }
-            if (metroCheckBox4.Checked == true)
-            {
-                testequipment.Add(metroCheckBox4.Text);
-            }
-            if (metroCheckBox5.Checked == true)
-            {
-                testequipment.Add(metroCheckBox5.Text);
-            }
-            if (metroCheckBox6.Checked == true)
-            {
-                testequipment.Add(metroCheckBox6.Text);
-            }
-            if (metroCheckBox7.Checked == true)
-            {
-                testequipment.Add(metroCheckBox7.Text);
-            }
-            if (metroCheckBox8.Checked == true)
-            {
-                testequipment.Add(metroCheckBox8.Text);
-            }
-            if (metroCheckBox8.Checked == true)
-            {
-                testequipment.Add(metroCheckBox8.Text);
-            }
-            if (metroCheckBox9.Checked == true)
-            {
-                testequipment.Add(metroCheckBox9.Text);
-            }
-            if (metroCheckBox10.Checked == true)
-            {
-                testequipment.Add(metroCheckBox10.Text);
-            }
-            if (metroCheckBox11.Checked == true)
-            {
-                testequipment.Add(metroCheckBox11.Text);
-            }
-            if (metroCheckBox12.Checked == true)
-            {
-                testequipment.Add(metroCheckBox12.Text);
-            }
-            if (metroCheckBox13.Checked == true)
-            {
-                testequipment.Add(metroCheckBox13.Text);
-            }
-            if (metroCheckBox14.Checked == true)
-            {
-                testequipment.Add(metroCheckBox14.Text);
-            }
-        }
+     
         private void close1_btn_Click(object sender, EventArgs e)
         {
             sphygmomanometerTest_Submit = false;
@@ -113,7 +55,15 @@ namespace NovaBiomedicalSoftware.Performance_Test
             this.Close();
         }
 
+        public static List<string> testequipment = new List<string>();
 
+        private void addItems()
+        {
+            foreach (var item in listBox1.SelectedItems)
+            {
+                testequipment.Add(item.ToString());
+            }
+        }
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
@@ -138,7 +88,6 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 comments = commentBox.Text;
 
                 addItems();
-                items = itemsBox.Text;
 
                 sphygmomanometerTest_Submit = true;
                 this.Hide();

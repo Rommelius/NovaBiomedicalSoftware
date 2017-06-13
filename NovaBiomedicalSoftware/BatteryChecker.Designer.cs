@@ -44,7 +44,7 @@
             // 
             this.pictureBox1.Image = global::NovaBiomedicalSoftware.Properties.Resources.batteryChecker;
             this.pictureBox1.Location = new System.Drawing.Point(389, 22);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(279, 226);
             this.pictureBox1.TabIndex = 0;
@@ -59,6 +59,7 @@
             this.metroLabel1.Size = new System.Drawing.Size(103, 20);
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Type the letter:";
+            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroLabel2
             // 
@@ -69,6 +70,7 @@
             this.metroLabel2.Size = new System.Drawing.Size(128, 20);
             this.metroLabel2.TabIndex = 3;
             this.metroLabel2.Text = "Type the two digits:";
+            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // resultsAge
             // 
@@ -80,16 +82,18 @@
             this.resultsAge.Size = new System.Drawing.Size(190, 25);
             this.resultsAge.TabIndex = 5;
             this.resultsAge.Text = "Please fill in the details";
+            this.resultsAge.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // checkBattery_btn
             // 
             this.checkBattery_btn.Location = new System.Drawing.Point(223, 231);
-            this.checkBattery_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBattery_btn.Margin = new System.Windows.Forms.Padding(4);
             this.checkBattery_btn.Name = "checkBattery_btn";
             this.checkBattery_btn.Size = new System.Drawing.Size(159, 28);
             this.checkBattery_btn.Style = MetroFramework.MetroColorStyle.Blue;
             this.checkBattery_btn.TabIndex = 7;
             this.checkBattery_btn.Text = "Check";
+            this.checkBattery_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.checkBattery_btn.UseSelectable = true;
             this.checkBattery_btn.UseStyleColors = true;
             this.checkBattery_btn.Click += new System.EventHandler(this.checkBattery_btn_Click);
@@ -103,6 +107,7 @@
             this.yearBattery.Size = new System.Drawing.Size(35, 20);
             this.yearBattery.TabIndex = 8;
             this.yearBattery.Text = "Year";
+            this.yearBattery.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // monthBattery
             // 
@@ -113,6 +118,7 @@
             this.monthBattery.Size = new System.Drawing.Size(122, 20);
             this.monthBattery.TabIndex = 9;
             this.monthBattery.Text = "Number of Weeks";
+            this.monthBattery.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // inputDigits
             // 
@@ -174,10 +180,11 @@
             "52",
             "53"});
             this.inputDigits.Location = new System.Drawing.Point(281, 193);
-            this.inputDigits.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputDigits.Margin = new System.Windows.Forms.Padding(4);
             this.inputDigits.Name = "inputDigits";
             this.inputDigits.Size = new System.Drawing.Size(99, 27);
             this.inputDigits.TabIndex = 10;
+            this.inputDigits.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.inputDigits.UseSelectable = true;
             // 
             // inputLetter
@@ -200,10 +207,11 @@
             "O",
             "P"});
             this.inputLetter.Location = new System.Drawing.Point(281, 155);
-            this.inputLetter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputLetter.Margin = new System.Windows.Forms.Padding(4);
             this.inputLetter.Name = "inputLetter";
             this.inputLetter.Size = new System.Drawing.Size(99, 27);
             this.inputLetter.TabIndex = 11;
+            this.inputLetter.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.inputLetter.UseSelectable = true;
             // 
             // BatteryChecker
@@ -220,10 +228,11 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BatteryChecker";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Age of battery";
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

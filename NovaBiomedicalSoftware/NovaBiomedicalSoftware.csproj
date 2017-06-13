@@ -143,6 +143,18 @@
     <Compile Include="Performance Test\AED.Designer.cs">
       <DependentUpon>AED.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\BelmontFluidWarmer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\BelmontFluidWarmer.Designer.cs">
+      <DependentUpon>BelmontFluidWarmer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\BloodGlucose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\BloodGlucose.Designer.cs">
+      <DependentUpon>BloodGlucose.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\ComweldOxygenFlowmeter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +166,12 @@
     </Compile>
     <Compile Include="Performance Test\EdanDoppler.Designer.cs">
       <DependentUpon>EdanDoppler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\ElectricSuction2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\ElectricSuction2.Designer.cs">
+      <DependentUpon>ElectricSuction2.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\GenericECG.cs">
       <SubType>Form</SubType>
@@ -191,11 +209,29 @@
     <Compile Include="Performance Test\HeineNT300.Designer.cs">
       <DependentUpon>HeineNT300.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\InfusorSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\InfusorSpace.Designer.cs">
+      <DependentUpon>InfusorSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\iStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\iStat.Designer.cs">
+      <DependentUpon>iStat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\Manifold.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Performance Test\Manifold.Designer.cs">
       <DependentUpon>Manifold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\NeoPuff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\NeoPuff.Designer.cs">
+      <DependentUpon>NeoPuff.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\Oxylog.cs">
       <SubType>Form</SubType>
@@ -400,11 +436,20 @@
     <EmbeddedResource Include="Performance Test\AED.resx">
       <DependentUpon>AED.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\BelmontFluidWarmer.resx">
+      <DependentUpon>BelmontFluidWarmer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\BloodGlucose.resx">
+      <DependentUpon>BloodGlucose.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\ComweldOxygenFlowmeter.resx">
       <DependentUpon>ComweldOxygenFlowmeter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\EdanDoppler.resx">
       <DependentUpon>EdanDoppler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\ElectricSuction2.resx">
+      <DependentUpon>ElectricSuction2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\GenericECG.resx">
       <DependentUpon>GenericECG.cs</DependentUpon>
@@ -424,8 +469,17 @@
     <EmbeddedResource Include="Performance Test\HeineNT300.resx">
       <DependentUpon>HeineNT300.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\InfusorSpace.resx">
+      <DependentUpon>InfusorSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\iStat.resx">
+      <DependentUpon>iStat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\Manifold.resx">
       <DependentUpon>Manifold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\NeoPuff.resx">
+      <DependentUpon>NeoPuff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\Oxylog.resx">
       <DependentUpon>Oxylog.cs</DependentUpon>
@@ -551,14 +605,21 @@
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE1.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE2.docx" />
     <None Include="Report Templates\ASNZCLASS2-TEMPLATE.docx" />
+    <None Include="Report Templates\BBraun Infusor Space-TEMPLATE.docx" />
     <None Include="Report Templates\BBraun Perfusor Space-TEMPLATE.docx" />
+    <None Include="Report Templates\BelmontFluidWarmer-TEMPLATE.docx" />
+    <None Include="Report Templates\BloodGlucose-TEMPLATE.docx" />
     <None Include="Report Templates\Comweld Oxygen Flowmeter-TEMPLATE.docx" />
     <None Include="Report Templates\Edan Doppler-TEMPLATE.docx" />
+    <None Include="Report Templates\Electric Suction-TEMPLATE.docx" />
     <None Include="Report Templates\Generic ECG-TEMPLATE.docx" />
     <None Include="Report Templates\Generic Sphygmomanometer-TEMPLATE.docx" />
     <None Include="Report Templates\Genius 2 Thermometer-TEMPLATE.docx" />
     <None Include="Report Templates\Heine NT300-TEMPLATE.docx" />
+    <None Include="Report Templates\InfantTransportIncubator-TEMPLATE.docx" />
+    <None Include="Report Templates\ISTAT-TEMPLATE.docx" />
     <None Include="Report Templates\Manifold-TEMPLATE.docx" />
+    <None Include="Report Templates\Neopuff-TEMPLATE.docx" />
     <None Include="Report Templates\NIBP Monitor-TEMPLATE.docx" />
     <None Include="Report Templates\Oxy Viva Resus Box-TEMPLATE.docx" />
     <None Include="Report Templates\Oxylog-TEMPLATE.docx" />
@@ -587,9 +648,13 @@
     <None Include="Report Templates\Spirometer-TEMPLATE.docx" />
     <None Include="Report Templates\temp.docx" />
     <None Include="Report Templates\temp2.docx" />
+    <None Include="Report Templates\Throat Camera-TEMPLATE.docx" />
+    <None Include="Report Templates\Twin-o-Vac-TEMPLATE.docx" />
     <None Include="Report Templates\VaccineFridge-TEMPLATE.docx" />
+    <None Include="Report Templates\VaccumValve-TEMPLATE.docx" />
     <None Include="Report Templates\VAPR VUE Generator-TEMPLATE.docx" />
     <None Include="Report Templates\VitalsMonitor-TEMPLATE.docx" />
+    <None Include="Report Templates\WallSuction-TEMPLATE.docx" />
     <None Include="Resources\background.png" />
   </ItemGroup>
   <ItemGroup>

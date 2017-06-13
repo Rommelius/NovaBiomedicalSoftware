@@ -19,13 +19,17 @@ namespace NovaBiomedicalSoftware.Performance_Test
 
         //comment box and item box
         public static string comments, items;
-        
+
+        private void HeineNT300_SizeChanged(object sender, EventArgs e)
+        {
+            commentBox.Width = safetyCheck.Width - 10;
+            listBox1.Width = safetyCheck.Width - 10;
+        }
+
         public HeineNT300()
         {
             InitializeComponent();
-            itemsBox.ResetText();
             commentBox.ResetText();
-            itemsBox.Visible = false;
             safetyCheck.SelectedTab = performanceVerification;
             this.StyleManager = metroStyleManager1;
             metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -56,7 +60,6 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 comments = commentBox.Text;
 
                 addItems();
-                items = itemsBox.Text;
 
                 nt300Test_Submit = true;
                 this.Hide();
@@ -81,68 +84,12 @@ namespace NovaBiomedicalSoftware.Performance_Test
         }
 
         public static List<string> testequipment = new List<string>();
+
         private void addItems()
         {
-            //items
-            if (metroCheckBox1.Checked == true)
+            foreach (var item in listBox1.SelectedItems)
             {
-                testequipment.Add(metroCheckBox1.Text);
-            }
-            if (metroCheckBox2.Checked == true)
-            {
-                testequipment.Add(metroCheckBox2.Text);
-            }
-            if (metroCheckBox3.Checked == true)
-            {
-                testequipment.Add(metroCheckBox3.Text);
-            }
-            if (metroCheckBox4.Checked == true)
-            {
-                testequipment.Add(metroCheckBox4.Text);
-            }
-            if (metroCheckBox5.Checked == true)
-            {
-                testequipment.Add(metroCheckBox5.Text);
-            }
-            if (metroCheckBox6.Checked == true)
-            {
-                testequipment.Add(metroCheckBox6.Text);
-            }
-            if (metroCheckBox7.Checked == true)
-            {
-                testequipment.Add(metroCheckBox7.Text);
-            }
-            if (metroCheckBox8.Checked == true)
-            {
-                testequipment.Add(metroCheckBox8.Text);
-            }
-            if (metroCheckBox8.Checked == true)
-            {
-                testequipment.Add(metroCheckBox8.Text);
-            }
-            if (metroCheckBox9.Checked == true)
-            {
-                testequipment.Add(metroCheckBox9.Text);
-            }
-            if (metroCheckBox10.Checked == true)
-            {
-                testequipment.Add(metroCheckBox10.Text);
-            }
-            if (metroCheckBox11.Checked == true)
-            {
-                testequipment.Add(metroCheckBox11.Text);
-            }
-            if (metroCheckBox12.Checked == true)
-            {
-                testequipment.Add(metroCheckBox12.Text);
-            }
-            if (metroCheckBox13.Checked == true)
-            {
-                testequipment.Add(metroCheckBox13.Text);
-            }
-            if (metroCheckBox14.Checked == true)
-            {
-                testequipment.Add(metroCheckBox14.Text);
+                testequipment.Add(item.ToString());
             }
         }
     }

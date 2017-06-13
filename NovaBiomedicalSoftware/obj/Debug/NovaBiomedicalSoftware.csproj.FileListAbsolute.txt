@@ -208,3 +208,12 @@ C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftwa
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.OxyVivaResusBox.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.SoftPackRescueBag.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.Oxylog.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.Oxylog.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.OxyVivaResusBox.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.SoftPackRescueBag.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.InfusorSpace.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.BloodGlucose.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.BelmontFluidWarmer.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.iStat.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.ElectricSuction2.resources
+C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.NeoPuff.resources
