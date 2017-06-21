@@ -13,6 +13,14 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
 {
     public partial class AutomaticExternalDefib : MetroForm
     {
+        //comment box and item box
+        public static string comments, items;
+
+        public bool AutomaticExternalDefibTest_Submit;
+
+        public static string assetNumberText, modelBoxText, makeBoxText, serialNumberText;
+        public static string result1, result2, result3;
+
         public AutomaticExternalDefib()
         {
             InitializeComponent();
@@ -35,10 +43,6 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             }
         }
 
-        public bool AutomaticExternalDefibTest_Submit;
-
-        public static string assetNumberText, modelBoxText, makeBoxText, serialNumberText;
-        public static string result1, result2, result3;
 
         private void close_btn_Click(object sender, EventArgs e)
         {
@@ -79,7 +83,5 @@ namespace NovaBiomedicalSoftware.Queensland_Ambulance_Service
             }
         }
 
-        //comment box and item box
-        public static string comments, items;
     }
 }

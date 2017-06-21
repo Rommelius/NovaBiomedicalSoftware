@@ -15,10 +15,21 @@ namespace NovaBiomedicalSoftware.Performance_Test
     {
         public bool nt300Test_Submit;
 
-        public static string result1, result2, result3, result4, result5, result6, result7, result8;
+        public static string result1, result2, result3, result4, result5, result6, result7, result8, performanceresult;
 
         //comment box and item box
         public static string comments, items;
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         private void HeineNT300_SizeChanged(object sender, EventArgs e)
         {
@@ -46,6 +57,8 @@ namespace NovaBiomedicalSoftware.Performance_Test
             }
             else
             {
+
+                performanceresult = result_8.Text;
                 //visual
                 result1 = result_1.Text;
                 result2 = result_2.Text;

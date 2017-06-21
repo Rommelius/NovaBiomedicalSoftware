@@ -28,7 +28,18 @@ namespace NovaBiomedicalSoftware.Performance_Test
         }
         public bool Test_Submit;
 
-        public static string result1, result2, result3, result4, result5, result6, result7, result8, result9, result10, result11, result12, result13, result14;
+        public static string result1, result2, result3, result4, result5, result6, result7, result8, result9, result10, result11, result12, result13, result14, performanceresult;
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         //comment box and item box
         public static string comments, items;
@@ -60,12 +71,14 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result_8.SelectedItem == null || result_9.SelectedItem == null || result_10.SelectedItem == null || result_11.SelectedItem == null ||
                 result_12.SelectedItem == null ||
                 result_13.SelectedItem == null ||
-                result_14.SelectedItem == null)
+                result_14.SelectedItem == null || overall.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+
+                performanceresult = overall.Text;
                 //visual
                 result1 = result_1.Text;
                 result2 = result_2.Text;

@@ -217,3 +217,18 @@ C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.iStat.resources
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.ElectricSuction2.resources
 C:\Users\Rommel Lapuz\Source\Repos\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.NeoPuff.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.BelmontFluidWarmer.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.BloodGlucose.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.ElectricSuction2.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.InfusorSpace.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.iStat.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.NeoPuff.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.infantTransport.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.TwinOVac2.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Gas_Panel_Test.AirGasPanel.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Gas_Panel_Test.NitrousGasPanel.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Gas_Panel_Test.OxygenGasPanel.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Gas_Panel_Test.SuctionGasPanel.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.RCDForm.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.Aespire7900.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2015\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.AlarisSyringePumpForm.resources

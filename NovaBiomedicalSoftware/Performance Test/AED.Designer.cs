@@ -42,12 +42,13 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.visual1 = new MetroFramework.Controls.MetroLabel();
             this.commentsTab = new MetroFramework.Controls.MetroTabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.submitBtn = new MetroFramework.Controls.MetroButton();
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
@@ -60,7 +61,7 @@
             this.safetyCheck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.safetyCheck.Location = new System.Drawing.Point(15, 60);
             this.safetyCheck.Name = "safetyCheck";
-            this.safetyCheck.SelectedIndex = 1;
+            this.safetyCheck.SelectedIndex = 0;
             this.safetyCheck.Size = new System.Drawing.Size(806, 590);
             this.safetyCheck.TabIndex = 5;
             this.safetyCheck.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -68,6 +69,7 @@
             // 
             // performanceVerification
             // 
+            this.performanceVerification.Controls.Add(this.metroButton1);
             this.performanceVerification.Controls.Add(this.nextBtn);
             this.performanceVerification.Controls.Add(this.close1_btn);
             this.performanceVerification.Controls.Add(this.result_4);
@@ -131,7 +133,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_4.Location = new System.Drawing.Point(674, 168);
+            this.result_4.Location = new System.Drawing.Point(674, 198);
             this.result_4.Name = "result_4";
             this.result_4.Size = new System.Drawing.Size(121, 25);
             this.result_4.TabIndex = 11;
@@ -148,7 +150,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_3.Location = new System.Drawing.Point(674, 123);
+            this.result_3.Location = new System.Drawing.Point(674, 153);
             this.result_3.Name = "result_3";
             this.result_3.Size = new System.Drawing.Size(121, 25);
             this.result_3.TabIndex = 11;
@@ -165,7 +167,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_2.Location = new System.Drawing.Point(674, 62);
+            this.result_2.Location = new System.Drawing.Point(674, 92);
             this.result_2.Name = "result_2";
             this.result_2.Size = new System.Drawing.Size(121, 25);
             this.result_2.TabIndex = 11;
@@ -182,7 +184,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_1.Location = new System.Drawing.Point(674, 14);
+            this.result_1.Location = new System.Drawing.Point(674, 44);
             this.result_1.Name = "result_1";
             this.result_1.Size = new System.Drawing.Size(121, 25);
             this.result_1.TabIndex = 11;
@@ -192,7 +194,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(-3, 174);
+            this.metroLabel10.Location = new System.Drawing.Point(-3, 204);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(131, 19);
             this.metroLabel10.TabIndex = 3;
@@ -202,7 +204,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(-3, 112);
+            this.metroLabel4.Location = new System.Drawing.Point(-3, 142);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(543, 38);
             this.metroLabel4.TabIndex = 3;
@@ -213,7 +215,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(-3, 51);
+            this.metroLabel5.Location = new System.Drawing.Point(-3, 81);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(507, 38);
             this.metroLabel5.TabIndex = 3;
@@ -224,7 +226,7 @@
             // visual1
             // 
             this.visual1.AutoSize = true;
-            this.visual1.Location = new System.Drawing.Point(-3, 20);
+            this.visual1.Location = new System.Drawing.Point(-3, 50);
             this.visual1.Name = "visual1";
             this.visual1.Size = new System.Drawing.Size(197, 19);
             this.visual1.TabIndex = 3;
@@ -254,6 +256,40 @@
             this.commentsTab.VerticalScrollbarBarColor = true;
             this.commentsTab.VerticalScrollbarHighlightOnWheel = false;
             this.commentsTab.VerticalScrollbarSize = 10;
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.Black;
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.ForeColor = System.Drawing.Color.White;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 18;
+            this.listBox1.Items.AddRange(new object[] {
+            "FLUKE PROSIM 3 VITAL SIGN SIMULATOR (SN 3102018)",
+            "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 2629025)",
+            "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 3357047)",
+            "DALE 3000 ELECTROSURGICAL ANALYSER (SN 0485)",
+            "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 22811)",
+            "PRONK TECHNOLOGIES SIMCUBE SC-5 (SN5813)",
+            "HUATO HE704 THERMOMETER (SN HE20103717)",
+            "OXITEST PLUS 7 PULSE OXIMETER TESTER (SN D0S04090718)",
+            "TSI 4000 SERIES SPIROMETER (SN 40401327005)",
+            "NETECH UNIMANO PRESSURE/VACCUM METER (SN 15377)",
+            "FLUKE VT305 GAS FLOW ANALYSER (SN BF102055)",
+            "OHAUS SCOUT PRO SCALES (SN 7132081821)",
+            "INFUTESTER SOLO INFUSION ANALYSER (SN 1504120001)",
+            "FLUKE VT02 VISUAL IR THERMOMETER (SN VT02-13064149)",
+            "FLUKE 117 (SN 23092259)",
+            "BIO-TEK ULTRASOUND WATTMETER UW-11 (SN 0309)",
+            "COOL TECH CT-960 RCD TESTER (SN 10019363)",
+            "RIKEN F1-21 GAS DETECTOR TYPE O5 (SN 499030026)",
+            "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 19478)"});
+            this.listBox1.Location = new System.Drawing.Point(0, 107);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBox1.Size = new System.Drawing.Size(779, 344);
+            this.listBox1.TabIndex = 113;
             // 
             // metroLabel2
             // 
@@ -337,39 +373,17 @@
             this.metroLabel3.Text = "Parts and Comments:";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // listBox1
+            // metroButton1
             // 
-            this.listBox1.BackColor = System.Drawing.Color.Black;
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.ForeColor = System.Drawing.Color.White;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 18;
-            this.listBox1.Items.AddRange(new object[] {
-            "FLUKE PROSIM 3 VITAL SIGN SIMULATOR (SN 3102018)",
-            "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 2629025)",
-            "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 3357047)",
-            "DALE 3000 ELECTROSURGICAL ANALYSER (SN 0485)",
-            "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 22811)",
-            "PRONK TECHNOLOGIES SIMCUBE SC-5 (SN5813)",
-            "HUATO HE704 THERMOMETER (SN HE20103717)",
-            "OXITEST PLUS 7 PULSE OXIMETER TESTER (SN D0S04090718)",
-            "TSI 4000 SERIES SPIROMETER (SN 40401327005)",
-            "NETECH UNIMANO PRESSURE/VACCUM METER (SN 15377)",
-            "FLUKE VT305 GAS FLOW ANALYSER (SN BF102055)",
-            "OHAUS SCOUT PRO SCALES (SN 7132081821)",
-            "INFUTESTER SOLO INFUSION ANALYSER (SN 1504120001)",
-            "FLUKE VT02 VISUAL IR THERMOMETER (SN VT02-13064149)",
-            "FLUKE 117 (SN 23092259)",
-            "BIO-TEK ULTRASOUND WATTMETER UW-11 (SN 0309)",
-            "COOL TECH CT-960 RCD TESTER (SN 10019363)",
-            "RIKEN F1-21 GAS DETECTOR TYPE O5 (SN 499030026)",
-            "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 19478)"});
-            this.listBox1.Location = new System.Drawing.Point(0, 107);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(779, 344);
-            this.listBox1.TabIndex = 113;
+            this.metroButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroButton1.Location = new System.Drawing.Point(0, 0);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(798, 23);
+            this.metroButton1.TabIndex = 38;
+            this.metroButton1.Text = "Pass All";
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // AED
             // 
@@ -415,5 +429,6 @@
         private MetroFramework.Controls.MetroTextBox commentBox;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.ListBox listBox1;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

@@ -15,7 +15,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
     {
         public bool AEDTest_Submit;
 
-        public static string result1, result2, result3, result4;
+        public static string result1, result2, result3, result4, performanceresult;
 
         //comment box and item box
         public static string comments, items;
@@ -47,6 +47,17 @@ namespace NovaBiomedicalSoftware.Performance_Test
             listBox1.Width = safetyCheck.Width - 10;
         }
 
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
+
         private void close3_btn_Click(object sender, EventArgs e)
         {
             AEDTest_Submit = false;
@@ -68,7 +79,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result2 = result_2.Text;
                 result3 = result_3.Text;
                 result4 = result_4.Text;
-
+                performanceresult = result_4.Text;
                 //comments box
                 comments = commentBox.Text;
 

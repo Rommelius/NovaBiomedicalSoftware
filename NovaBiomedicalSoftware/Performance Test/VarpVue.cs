@@ -17,7 +17,18 @@ namespace NovaBiomedicalSoftware.Performance_Test
         public bool VarpVueTest_Submit;
 
         public static string result1, result2, result3, result4, result5, result6, result7, result8,
-            result9, value1, value2, value3, value4, value5, value6, value7, value8;
+            result9, value1, value2, value3, value4, value5, value6, value7, value8, performanceresult;
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         private void VarpVue_SizeChanged(object sender, EventArgs e)
         {
@@ -60,12 +71,13 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result_5.SelectedItem == null || result_6.SelectedItem == null || result_7.SelectedItem == null ||
                 result_8.SelectedItem == null || result_9.SelectedItem == null || metroTextBox1.Text == "" || metroTextBox2.Text == "" ||
                 metroTextBox3.Text == "" || metroTextBox4.Text == "" || metroTextBox5.Text == "" || metroTextBox6.Text == "" ||
-                metroTextBox7.Text == "" || metroTextBox8.Text == "")
+                metroTextBox7.Text == "" || metroTextBox8.Text == "" || overall.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                performanceresult = overall.Text;
                 //visual
                 result1 = result_1.Text;
                 result2 = result_2.Text;

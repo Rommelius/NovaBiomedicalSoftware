@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenericNIBPMonitor));
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
@@ -55,13 +56,15 @@
             this.visual3 = new MetroFramework.Controls.MetroLabel();
             this.visual1 = new MetroFramework.Controls.MetroLabel();
             this.commentsTab = new MetroFramework.Controls.MetroTabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.submitBtn = new MetroFramework.Controls.MetroButton();
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.overall = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
@@ -73,17 +76,19 @@
             this.safetyCheck.Controls.Add(this.performanceVerification);
             this.safetyCheck.Controls.Add(this.commentsTab);
             this.safetyCheck.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.safetyCheck.Location = new System.Drawing.Point(20, 60);
-            this.safetyCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.safetyCheck.Location = new System.Drawing.Point(15, 60);
             this.safetyCheck.Name = "safetyCheck";
             this.safetyCheck.SelectedIndex = 0;
-            this.safetyCheck.Size = new System.Drawing.Size(1075, 740);
+            this.safetyCheck.Size = new System.Drawing.Size(806, 590);
             this.safetyCheck.TabIndex = 2;
             this.safetyCheck.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.safetyCheck.UseSelectable = true;
             // 
             // performanceVerification
             // 
+            this.performanceVerification.Controls.Add(this.overall);
+            this.performanceVerification.Controls.Add(this.metroLabel11);
+            this.performanceVerification.Controls.Add(this.metroButton1);
             this.performanceVerification.Controls.Add(this.metroLabel9);
             this.performanceVerification.Controls.Add(this.metroLabel7);
             this.performanceVerification.Controls.Add(this.metroLabel4);
@@ -109,27 +114,37 @@
             this.performanceVerification.HorizontalScrollbar = true;
             this.performanceVerification.HorizontalScrollbarBarColor = true;
             this.performanceVerification.HorizontalScrollbarHighlightOnWheel = false;
-            this.performanceVerification.HorizontalScrollbarSize = 12;
+            this.performanceVerification.HorizontalScrollbarSize = 10;
             this.performanceVerification.Location = new System.Drawing.Point(4, 38);
-            this.performanceVerification.Margin = new System.Windows.Forms.Padding(4);
             this.performanceVerification.Name = "performanceVerification";
-            this.performanceVerification.Size = new System.Drawing.Size(1067, 698);
+            this.performanceVerification.Size = new System.Drawing.Size(798, 548);
             this.performanceVerification.TabIndex = 0;
             this.performanceVerification.Text = "Performance Verification";
             this.performanceVerification.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.performanceVerification.VerticalScrollbar = true;
             this.performanceVerification.VerticalScrollbarBarColor = true;
             this.performanceVerification.VerticalScrollbarHighlightOnWheel = false;
-            this.performanceVerification.VerticalScrollbarSize = 13;
+            this.performanceVerification.VerticalScrollbarSize = 10;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroButton1.Location = new System.Drawing.Point(0, 0);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(798, 23);
+            this.metroButton1.TabIndex = 39;
+            this.metroButton1.Text = "Pass All";
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
             this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel9.Location = new System.Drawing.Point(0, 383);
-            this.metroLabel9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel9.Location = new System.Drawing.Point(-1, 333);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(121, 20);
+            this.metroLabel9.Size = new System.Drawing.Size(114, 19);
             this.metroLabel9.TabIndex = 38;
             this.metroLabel9.Text = "Simulation Test:";
             this.metroLabel9.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -138,10 +153,9 @@
             // 
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel7.Location = new System.Drawing.Point(0, 300);
-            this.metroLabel7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel7.Location = new System.Drawing.Point(-1, 266);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(78, 20);
+            this.metroLabel7.Size = new System.Drawing.Size(74, 19);
             this.metroLabel7.TabIndex = 38;
             this.metroLabel7.Text = "Leak Test:";
             this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -150,10 +164,9 @@
             // 
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel4.Location = new System.Drawing.Point(0, 160);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel4.Location = new System.Drawing.Point(-1, 152);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(112, 20);
+            this.metroLabel4.Size = new System.Drawing.Size(107, 19);
             this.metroLabel4.TabIndex = 38;
             this.metroLabel4.Text = "Sphygmo Test:";
             this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -161,10 +174,9 @@
             // close1_btn
             // 
             this.close1_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.close1_btn.Location = new System.Drawing.Point(0, 644);
-            this.close1_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.close1_btn.Location = new System.Drawing.Point(0, 512);
             this.close1_btn.Name = "close1_btn";
-            this.close1_btn.Size = new System.Drawing.Size(161, 50);
+            this.close1_btn.Size = new System.Drawing.Size(121, 41);
             this.close1_btn.Style = MetroFramework.MetroColorStyle.Blue;
             this.close1_btn.TabIndex = 37;
             this.close1_btn.Text = "Cancel";
@@ -177,10 +189,9 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(0, 17);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(-1, 36);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(101, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(97, 19);
             this.metroLabel1.TabIndex = 36;
             this.metroLabel1.Text = "Visual Check:";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -188,10 +199,9 @@
             // nextBtn
             // 
             this.nextBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.nextBtn.Location = new System.Drawing.Point(902, 644);
-            this.nextBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.nextBtn.Location = new System.Drawing.Point(676, 512);
             this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(161, 50);
+            this.nextBtn.Size = new System.Drawing.Size(121, 41);
             this.nextBtn.Style = MetroFramework.MetroColorStyle.Blue;
             this.nextBtn.TabIndex = 19;
             this.nextBtn.Text = "Next";
@@ -205,15 +215,14 @@
             this.result_8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result_8.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.result_8.FormattingEnabled = true;
-            this.result_8.ItemHeight = 21;
+            this.result_8.ItemHeight = 19;
             this.result_8.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.result_8.Location = new System.Drawing.Point(903, 412);
-            this.result_8.Margin = new System.Windows.Forms.Padding(4);
+            this.result_8.Location = new System.Drawing.Point(676, 357);
             this.result_8.Name = "result_8";
-            this.result_8.Size = new System.Drawing.Size(160, 27);
+            this.result_8.Size = new System.Drawing.Size(121, 25);
             this.result_8.TabIndex = 15;
             this.result_8.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_8.UseSelectable = true;
@@ -223,15 +232,14 @@
             this.result_7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result_7.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.result_7.FormattingEnabled = true;
-            this.result_7.ItemHeight = 21;
+            this.result_7.ItemHeight = 19;
             this.result_7.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.result_7.Location = new System.Drawing.Point(903, 333);
-            this.result_7.Margin = new System.Windows.Forms.Padding(4);
+            this.result_7.Location = new System.Drawing.Point(676, 293);
             this.result_7.Name = "result_7";
-            this.result_7.Size = new System.Drawing.Size(160, 27);
+            this.result_7.Size = new System.Drawing.Size(121, 25);
             this.result_7.TabIndex = 15;
             this.result_7.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_7.UseSelectable = true;
@@ -241,15 +249,14 @@
             this.result_6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result_6.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.result_6.FormattingEnabled = true;
-            this.result_6.ItemHeight = 21;
+            this.result_6.ItemHeight = 19;
             this.result_6.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.result_6.Location = new System.Drawing.Point(903, 256);
-            this.result_6.Margin = new System.Windows.Forms.Padding(4);
+            this.result_6.Location = new System.Drawing.Point(676, 230);
             this.result_6.Name = "result_6";
-            this.result_6.Size = new System.Drawing.Size(160, 27);
+            this.result_6.Size = new System.Drawing.Size(121, 25);
             this.result_6.TabIndex = 15;
             this.result_6.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_6.UseSelectable = true;
@@ -259,15 +266,14 @@
             this.result_5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result_5.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.result_5.FormattingEnabled = true;
-            this.result_5.ItemHeight = 21;
+            this.result_5.ItemHeight = 19;
             this.result_5.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.result_5.Location = new System.Drawing.Point(903, 221);
-            this.result_5.Margin = new System.Windows.Forms.Padding(4);
+            this.result_5.Location = new System.Drawing.Point(676, 202);
             this.result_5.Name = "result_5";
-            this.result_5.Size = new System.Drawing.Size(160, 27);
+            this.result_5.Size = new System.Drawing.Size(121, 25);
             this.result_5.TabIndex = 15;
             this.result_5.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_5.UseSelectable = true;
@@ -277,15 +283,14 @@
             this.result_4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result_4.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.result_4.FormattingEnabled = true;
-            this.result_4.ItemHeight = 21;
+            this.result_4.ItemHeight = 19;
             this.result_4.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.result_4.Location = new System.Drawing.Point(903, 186);
-            this.result_4.Margin = new System.Windows.Forms.Padding(4);
+            this.result_4.Location = new System.Drawing.Point(676, 173);
             this.result_4.Name = "result_4";
-            this.result_4.Size = new System.Drawing.Size(160, 27);
+            this.result_4.Size = new System.Drawing.Size(121, 25);
             this.result_4.TabIndex = 15;
             this.result_4.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_4.UseSelectable = true;
@@ -295,15 +300,14 @@
             this.result_3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result_3.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.result_3.FormattingEnabled = true;
-            this.result_3.ItemHeight = 21;
+            this.result_3.ItemHeight = 19;
             this.result_3.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.result_3.Location = new System.Drawing.Point(903, 110);
-            this.result_3.Margin = new System.Windows.Forms.Padding(4);
+            this.result_3.Location = new System.Drawing.Point(676, 111);
             this.result_3.Name = "result_3";
-            this.result_3.Size = new System.Drawing.Size(160, 27);
+            this.result_3.Size = new System.Drawing.Size(121, 25);
             this.result_3.TabIndex = 14;
             this.result_3.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_3.UseSelectable = true;
@@ -313,15 +317,14 @@
             this.result_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result_2.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.result_2.FormattingEnabled = true;
-            this.result_2.ItemHeight = 21;
+            this.result_2.ItemHeight = 19;
             this.result_2.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.result_2.Location = new System.Drawing.Point(903, 75);
-            this.result_2.Margin = new System.Windows.Forms.Padding(4);
+            this.result_2.Location = new System.Drawing.Point(676, 83);
             this.result_2.Name = "result_2";
-            this.result_2.Size = new System.Drawing.Size(160, 27);
+            this.result_2.Size = new System.Drawing.Size(121, 25);
             this.result_2.TabIndex = 13;
             this.result_2.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_2.UseSelectable = true;
@@ -331,15 +334,14 @@
             this.result_1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.result_1.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.result_1.FormattingEnabled = true;
-            this.result_1.ItemHeight = 21;
+            this.result_1.ItemHeight = 19;
             this.result_1.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.result_1.Location = new System.Drawing.Point(903, 40);
-            this.result_1.Margin = new System.Windows.Forms.Padding(4);
+            this.result_1.Location = new System.Drawing.Point(676, 54);
             this.result_1.Name = "result_1";
-            this.result_1.Size = new System.Drawing.Size(160, 27);
+            this.result_1.Size = new System.Drawing.Size(121, 25);
             this.result_1.TabIndex = 11;
             this.result_1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_1.UseSelectable = true;
@@ -347,10 +349,9 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(0, 418);
-            this.metroLabel10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel10.Location = new System.Drawing.Point(-1, 362);
             this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(188, 20);
+            this.metroLabel10.Size = new System.Drawing.Size(181, 19);
             this.metroLabel10.TabIndex = 7;
             this.metroLabel10.Text = "Simulation Normal BP 120/80";
             this.metroLabel10.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -358,10 +359,9 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(0, 339);
-            this.metroLabel8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel8.Location = new System.Drawing.Point(-1, 297);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(321, 20);
+            this.metroLabel8.Size = new System.Drawing.Size(301, 19);
             this.metroLabel8.TabIndex = 7;
             this.metroLabel8.Text = "Leak Test no Significant Drop in Press @200mmhg";
             this.metroLabel8.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -369,10 +369,9 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(0, 262);
-            this.metroLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel6.Location = new System.Drawing.Point(-1, 235);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(277, 20);
+            this.metroLabel6.Size = new System.Drawing.Size(262, 19);
             this.metroLabel6.TabIndex = 7;
             this.metroLabel6.Text = "Sphygmo with zero press. Reads 200mmhg";
             this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -380,10 +379,9 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(0, 227);
-            this.metroLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel5.Location = new System.Drawing.Point(-1, 206);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(274, 20);
+            this.metroLabel5.Size = new System.Drawing.Size(260, 19);
             this.metroLabel5.TabIndex = 7;
             this.metroLabel5.Text = "Sphygmo with zero press. Reads 100mmhg";
             this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -391,10 +389,9 @@
             // visual5
             // 
             this.visual5.AutoSize = true;
-            this.visual5.Location = new System.Drawing.Point(0, 192);
-            this.visual5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.visual5.Location = new System.Drawing.Point(-1, 178);
             this.visual5.Name = "visual5";
-            this.visual5.Size = new System.Drawing.Size(261, 20);
+            this.visual5.Size = new System.Drawing.Size(248, 19);
             this.visual5.TabIndex = 7;
             this.visual5.Text = "Sphygmo with zero press. Reads 0mmhg";
             this.visual5.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -402,10 +399,9 @@
             // visual4
             // 
             this.visual4.AutoSize = true;
-            this.visual4.Location = new System.Drawing.Point(0, 116);
-            this.visual4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.visual4.Location = new System.Drawing.Point(-1, 116);
             this.visual4.Name = "visual4";
-            this.visual4.Size = new System.Drawing.Size(178, 20);
+            this.visual4.Size = new System.Drawing.Size(165, 19);
             this.visual4.TabIndex = 6;
             this.visual4.Text = "Check overpressure cut-off";
             this.visual4.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -413,10 +409,9 @@
             // visual3
             // 
             this.visual3.AutoSize = true;
-            this.visual3.Location = new System.Drawing.Point(0, 81);
-            this.visual3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.visual3.Location = new System.Drawing.Point(-1, 88);
             this.visual3.Name = "visual3";
-            this.visual3.Size = new System.Drawing.Size(102, 20);
+            this.visual3.Size = new System.Drawing.Size(96, 19);
             this.visual3.TabIndex = 5;
             this.visual3.Text = "Velcro integrity";
             this.visual3.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -424,10 +419,9 @@
             // visual1
             // 
             this.visual1.AutoSize = true;
-            this.visual1.Location = new System.Drawing.Point(0, 47);
-            this.visual1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.visual1.Location = new System.Drawing.Point(-1, 60);
             this.visual1.Name = "visual1";
-            this.visual1.Size = new System.Drawing.Size(185, 20);
+            this.visual1.Size = new System.Drawing.Size(179, 19);
             this.visual1.TabIndex = 3;
             this.visual1.Text = "No damage to cuff or tubing";
             this.visual1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -442,110 +436,16 @@
             this.commentsTab.Controls.Add(this.metroLabel3);
             this.commentsTab.HorizontalScrollbarBarColor = true;
             this.commentsTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.commentsTab.HorizontalScrollbarSize = 12;
+            this.commentsTab.HorizontalScrollbarSize = 10;
             this.commentsTab.Location = new System.Drawing.Point(4, 38);
-            this.commentsTab.Margin = new System.Windows.Forms.Padding(4);
             this.commentsTab.Name = "commentsTab";
-            this.commentsTab.Size = new System.Drawing.Size(1067, 698);
+            this.commentsTab.Size = new System.Drawing.Size(798, 559);
             this.commentsTab.TabIndex = 2;
             this.commentsTab.Text = "Comments";
             this.commentsTab.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.commentsTab.VerticalScrollbarBarColor = true;
             this.commentsTab.VerticalScrollbarHighlightOnWheel = false;
-            this.commentsTab.VerticalScrollbarSize = 13;
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel2.Location = new System.Drawing.Point(0, 93);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(129, 20);
-            this.metroLabel2.TabIndex = 104;
-            this.metroLabel2.Text = "Test Equipments:";
-            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // submitBtn
-            // 
-            this.submitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.submitBtn.Location = new System.Drawing.Point(902, 644);
-            this.submitBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.submitBtn.Name = "submitBtn";
-            this.submitBtn.Size = new System.Drawing.Size(161, 50);
-            this.submitBtn.Style = MetroFramework.MetroColorStyle.Blue;
-            this.submitBtn.TabIndex = 103;
-            this.submitBtn.Text = "Submit";
-            this.submitBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.submitBtn.UseSelectable = true;
-            this.submitBtn.UseStyleColors = true;
-            this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
-            // 
-            // close3_btn
-            // 
-            this.close3_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.close3_btn.Location = new System.Drawing.Point(4, 644);
-            this.close3_btn.Margin = new System.Windows.Forms.Padding(4);
-            this.close3_btn.Name = "close3_btn";
-            this.close3_btn.Size = new System.Drawing.Size(161, 50);
-            this.close3_btn.Style = MetroFramework.MetroColorStyle.Blue;
-            this.close3_btn.TabIndex = 102;
-            this.close3_btn.Text = "Cancel";
-            this.close3_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.close3_btn.UseSelectable = true;
-            this.close3_btn.UseStyleColors = true;
-            this.close3_btn.Click += new System.EventHandler(this.close3_btn_Click);
-            // 
-            // commentBox
-            // 
-            // 
-            // 
-            // 
-            this.commentBox.CustomButton.Image = null;
-            this.commentBox.CustomButton.Location = new System.Drawing.Point(753, 2);
-            this.commentBox.CustomButton.Margin = new System.Windows.Forms.Padding(5);
-            this.commentBox.CustomButton.Name = "";
-            this.commentBox.CustomButton.Size = new System.Drawing.Size(45, 45);
-            this.commentBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.commentBox.CustomButton.TabIndex = 1;
-            this.commentBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.commentBox.CustomButton.UseSelectable = true;
-            this.commentBox.CustomButton.Visible = false;
-            this.commentBox.Lines = new string[0];
-            this.commentBox.Location = new System.Drawing.Point(0, 39);
-            this.commentBox.Margin = new System.Windows.Forms.Padding(4);
-            this.commentBox.MaxLength = 32767;
-            this.commentBox.Multiline = true;
-            this.commentBox.Name = "commentBox";
-            this.commentBox.PasswordChar = '\0';
-            this.commentBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.commentBox.SelectedText = "";
-            this.commentBox.SelectionLength = 0;
-            this.commentBox.SelectionStart = 0;
-            this.commentBox.ShortcutsEnabled = true;
-            this.commentBox.Size = new System.Drawing.Size(801, 50);
-            this.commentBox.TabIndex = 40;
-            this.commentBox.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.commentBox.UseSelectable = true;
-            this.commentBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.commentBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(0, 11);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(159, 20);
-            this.metroLabel3.TabIndex = 39;
-            this.metroLabel3.Text = "Parts and Comments:";
-            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // metroStyleManager1
-            // 
-            this.metroStyleManager1.Owner = this;
-            this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.commentsTab.VerticalScrollbarSize = 10;
             // 
             // listBox1
             // 
@@ -554,7 +454,7 @@
             this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.ForeColor = System.Drawing.Color.White;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 24;
+            this.listBox1.ItemHeight = 18;
             this.listBox1.Items.AddRange(new object[] {
             "FLUKE PROSIM 3 VITAL SIGN SIMULATOR (SN 3102018)",
             "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 2629025)",
@@ -575,21 +475,136 @@
             "COOL TECH CT-960 RCD TESTER (SN 10019363)",
             "RIKEN F1-21 GAS DETECTOR TYPE O5 (SN 499030026)",
             "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 19478)"});
-            this.listBox1.Location = new System.Drawing.Point(0, 117);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox1.Location = new System.Drawing.Point(0, 95);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(1047, 410);
+            this.listBox1.Size = new System.Drawing.Size(786, 326);
             this.listBox1.TabIndex = 112;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel2.Location = new System.Drawing.Point(0, 76);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(120, 19);
+            this.metroLabel2.TabIndex = 104;
+            this.metroLabel2.Text = "Test Equipments:";
+            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // submitBtn
+            // 
+            this.submitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.submitBtn.Location = new System.Drawing.Point(676, 523);
+            this.submitBtn.Name = "submitBtn";
+            this.submitBtn.Size = new System.Drawing.Size(121, 41);
+            this.submitBtn.Style = MetroFramework.MetroColorStyle.Blue;
+            this.submitBtn.TabIndex = 103;
+            this.submitBtn.Text = "Submit";
+            this.submitBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.submitBtn.UseSelectable = true;
+            this.submitBtn.UseStyleColors = true;
+            this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
+            // 
+            // close3_btn
+            // 
+            this.close3_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.close3_btn.Location = new System.Drawing.Point(3, 523);
+            this.close3_btn.Name = "close3_btn";
+            this.close3_btn.Size = new System.Drawing.Size(121, 41);
+            this.close3_btn.Style = MetroFramework.MetroColorStyle.Blue;
+            this.close3_btn.TabIndex = 102;
+            this.close3_btn.Text = "Cancel";
+            this.close3_btn.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.close3_btn.UseSelectable = true;
+            this.close3_btn.UseStyleColors = true;
+            this.close3_btn.Click += new System.EventHandler(this.close3_btn_Click);
+            // 
+            // commentBox
+            // 
+            // 
+            // 
+            // 
+            this.commentBox.CustomButton.Image = null;
+            this.commentBox.CustomButton.Location = new System.Drawing.Point(561, 1);
+            this.commentBox.CustomButton.Name = "";
+            this.commentBox.CustomButton.Size = new System.Drawing.Size(39, 39);
+            this.commentBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.commentBox.CustomButton.TabIndex = 1;
+            this.commentBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.commentBox.CustomButton.UseSelectable = true;
+            this.commentBox.CustomButton.Visible = false;
+            this.commentBox.Lines = new string[0];
+            this.commentBox.Location = new System.Drawing.Point(0, 32);
+            this.commentBox.MaxLength = 32767;
+            this.commentBox.Multiline = true;
+            this.commentBox.Name = "commentBox";
+            this.commentBox.PasswordChar = '\0';
+            this.commentBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.commentBox.SelectedText = "";
+            this.commentBox.SelectionLength = 0;
+            this.commentBox.SelectionStart = 0;
+            this.commentBox.ShortcutsEnabled = true;
+            this.commentBox.Size = new System.Drawing.Size(601, 41);
+            this.commentBox.TabIndex = 40;
+            this.commentBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.commentBox.UseSelectable = true;
+            this.commentBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.commentBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.Location = new System.Drawing.Point(0, 9);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(151, 19);
+            this.metroLabel3.TabIndex = 39;
+            this.metroLabel3.Text = "Parts and Comments:";
+            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroStyleManager1
+            // 
+            this.metroStyleManager1.Owner = this;
+            this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // overall
+            // 
+            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.overall.FormattingEnabled = true;
+            this.overall.ItemHeight = 19;
+            this.overall.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.overall.Location = new System.Drawing.Point(676, 388);
+            this.overall.Name = "overall";
+            this.overall.Size = new System.Drawing.Size(121, 25);
+            this.overall.TabIndex = 42;
+            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.overall.UseSelectable = true;
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(0, 394);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel11.TabIndex = 41;
+            this.metroLabel11.Text = "Overall Result";
+            this.metroLabel11.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // GenericNIBPMonitor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 820);
+            this.ClientSize = new System.Drawing.Size(836, 666);
             this.Controls.Add(this.safetyCheck);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GenericNIBPMonitor";
+            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Resizable = false;
             this.Text = "Technical Safety Check - Generic NIBP Monitors";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -639,5 +654,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
         private System.Windows.Forms.ListBox listBox1;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroComboBox overall;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
     }
 }

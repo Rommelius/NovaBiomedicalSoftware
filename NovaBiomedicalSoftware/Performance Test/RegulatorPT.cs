@@ -15,7 +15,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
     {
         public bool RegulatorTest_Submit;
 
-        public static string result1, result2, result3, result4, result5;
+        public static string result1, result2, result3, result4, result5, performanceresult;
 
         //comment box and item box
         public static string comments, items;
@@ -40,6 +40,17 @@ namespace NovaBiomedicalSoftware.Performance_Test
             listBox1.Width = safetyCheck.Width - 10;
         }
 
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
+
         private void nextBtn_Click(object sender, EventArgs e)
         {
             safetyCheck.SelectedTab = commentsTab;
@@ -62,6 +73,8 @@ namespace NovaBiomedicalSoftware.Performance_Test
             }
             else
             {
+
+                performanceresult = result_5.Text;
                 //visual
                 result1 = result_1.Text;
                 result2 = result_2.Text;

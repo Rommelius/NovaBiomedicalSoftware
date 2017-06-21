@@ -15,7 +15,6 @@ namespace NovaBiomedicalSoftware.Performance_Test
         public BelmontFluidWarmer()
         {
             InitializeComponent();
-            InitializeComponent();
             commentBox.ResetText();
             safetyCheck.SelectedTab = performanceVerification;
         }
@@ -27,7 +26,18 @@ namespace NovaBiomedicalSoftware.Performance_Test
         }
         public bool nt300Test_Submit;
 
-        public static string result1, result2, result3, result4, result5, result6, result7, result8;
+        public static string result1, result2, result3, result4, result5, result6, result7, performanceresult;
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         //comment box and item box
         public static string comments, items;
@@ -47,6 +57,8 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result3 = result_3.Text;
                 result4 = result_4.Text;
                 result5 = result_5.Text;
+
+                performanceresult = result_5.Text;
 
 
                 //comments box

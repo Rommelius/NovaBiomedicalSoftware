@@ -16,7 +16,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
 
         public bool ecgTest_Submit;
 
-        public static string result1, result2, result3, result4;
+        public static string result1, result2, result3, result4, performanceresult;
        
         //comment box and item box
         public static string comments, items;
@@ -26,7 +26,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
         {
             //check if the combobox are answered
             if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
-                result_4.SelectedItem == null)
+                result_4.SelectedItem == null|| overall.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -37,6 +37,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result2 = result_2.Text;
                 result3 = result_3.Text;
                 result4 = result_4.Text;
+                performanceresult = overall.Text;
 
                 //comments box
                 comments = commentBox.Text;
@@ -63,6 +64,17 @@ namespace NovaBiomedicalSoftware.Performance_Test
         {
             commentBox.Width = safetyCheck.Width - 10;
             listBox1.Width = safetyCheck.Width - 10;
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
         }
 
         private void close1_btn_Click(object sender, EventArgs e)

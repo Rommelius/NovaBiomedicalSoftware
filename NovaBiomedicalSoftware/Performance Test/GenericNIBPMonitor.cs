@@ -15,10 +15,21 @@ namespace NovaBiomedicalSoftware.Performance_Test
     {
         public bool nibpTest_Submit;
 
-        public static string result1, result2, result3, result4, result5, result6, result7, result8;
+        public static string result1, result2, result3, result4, result5, result6, result7, result8, performanceresult;
 
         //comment box and item box
         public static string comments, items;
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         private void GenericNIBPMonitor_SizeChanged(object sender, EventArgs e)
         {
@@ -50,7 +61,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
             //check if the combobox are answered
             if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
                 result_4.SelectedItem == null || result_5.SelectedItem == null || result_6.SelectedItem == null || result_7.SelectedItem == null ||
-                result_8.SelectedItem == null)
+                result_8.SelectedItem == null || overall.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -65,6 +76,8 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result6 = result_6.Text;
                 result7 = result_7.Text;
                 result8 = result_8.Text;
+
+                performanceresult = overall.Text;
 
                 //comments box
                 comments = commentBox.Text;

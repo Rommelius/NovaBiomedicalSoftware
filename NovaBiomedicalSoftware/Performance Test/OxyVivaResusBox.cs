@@ -17,7 +17,18 @@ namespace NovaBiomedicalSoftware.Performance_Test
 
         public static string result1, result2, result3, result4, result5, result6, manu1, manu2, manu3,manu4,manu5,manu6,
             modelbox1, modelbox2, modelbox3, modelbox4, modelbox5, modelbox6,typebox1, typebox2, typebox3, typebox4, typebox5, typebox6,
-            serialnum1, serialnum2, serialnum3, serialnum4, serialnum5, serialnum6, pressure1;
+            serialnum1, serialnum2, serialnum3, serialnum4, serialnum5, serialnum6, pressure1, performanceresult;
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         private void OxyVivaResusBox_SizeChanged(object sender, EventArgs e)
         {
@@ -60,12 +71,13 @@ namespace NovaBiomedicalSoftware.Performance_Test
             if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
                 result_4.SelectedItem == null || result_5.SelectedItem == null || result_6.SelectedItem == null || manufacturer1.Text == null || manufacturer2.Text== null || manufacturer3.Text == null || manufacturer4.Text == null || manufacturer5.Text == null || manufacturer6.Text == null ||
                 type1.Text == null || type2.Text == null || type3.Text == null || type4.Text == null || type5.Text == null || type6.Text == null || model1.Text == null || model2.Text == null || model3.Text == null ||
-                model4.Text == null || model5.Text == null || model6.Text == null || serial1.Text == null|| serial2.Text == null || serial3.Text == null || serial4.Text == null || serial5.Text == null || serial6.Text == null || pressure.Text == null)
+                model4.Text == null || model5.Text == null || model6.Text == null || serial1.Text == null|| serial2.Text == null || serial3.Text == null || serial4.Text == null || serial5.Text == null || serial6.Text == null || pressure.Text == null || overall.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                performanceresult = overall.Text;
                 //visual
                 result1 = result_1.Text;
                 result2 = result_2.Text;

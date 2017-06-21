@@ -16,8 +16,18 @@ namespace NovaBiomedicalSoftware.Performance_Test
         public bool philipsMrxTest_Submit;
 
         public static string result1, result2, result3, result4, result5, result6, result7, result8, result9, result10, result11, result12, result13, result14, result15, result16,
-            result17, result18, result19, result20, result21, result22, result23;
+            result17, result18, result19, result20, result21, result22, result23, performanceresult;
 
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in panel1.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         private void GenericDefibrillator_SizeChanged(object sender, EventArgs e)
         {
@@ -38,7 +48,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result_8.SelectedItem == null || result_9.SelectedItem == null || result_10.SelectedItem == null || result_11.SelectedItem == null ||
                 result_12.SelectedItem == null || result_13.SelectedItem == null || result_14.SelectedItem == null || result_15.SelectedItem == null ||
                 result_16.SelectedItem == null || result_17.SelectedItem == null || result_18.SelectedItem == null || result_19.SelectedItem == null ||
-                result_20.SelectedItem == null || result_21.SelectedItem == null || result_22.SelectedItem == null || result_23.SelectedItem == null)
+                result_20.SelectedItem == null || result_21.SelectedItem == null || result_22.SelectedItem == null || result_23.SelectedItem == null||overall.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -68,6 +78,8 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 result21= result_21.Text;
                 result22= result_22.Text;
                 result23= result_23.Text;
+
+                performanceresult = overall.Text;
 
                 //comments box
                 comments = commentBox.Text;

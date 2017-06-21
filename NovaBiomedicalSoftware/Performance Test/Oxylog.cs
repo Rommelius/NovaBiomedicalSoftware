@@ -14,7 +14,18 @@ namespace NovaBiomedicalSoftware.Performance_Test
     {
         public bool oxylogTest_Submit;
 
-        public static string result1, result2, result3, result4, result5, result6, result7, result8, result9, result10, result11, result12,result13,result14, text_result1, text_result2, text_result3, text_result4,text_result5, text_result6;
+        public static string result1, result2, performanceresult, result3, result4, result5, result6, result7, result8, result9, result10, result11, result12,result13,result14, text_result1, text_result2, text_result3, text_result4,text_result5, text_result6;
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in performanceVerification.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         private void Oxylog_SizeChanged(object sender, EventArgs e)
         {
@@ -67,12 +78,14 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 text3.Text == "" ||
                 text4.Text == "" ||
                 text5.Text == "" ||
-                text6.Text == "")
+                text6.Text == "" || overall.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+
+                performanceresult = overall.Text;
                 //visual
                 result1 = result_1.Text;
                 result2 = result_2.Text;

@@ -33,7 +33,29 @@ namespace NovaBiomedicalSoftware
             functionaloption20, functionaloption21, functionaloption25, functionaloption26, functionaloption27, 
             functionaloption28, functionaloption29, 
             functionaloption30, functionaloption31, functionaloption32, functionaloption33, functionaloption34, 
-            functionaloption35, functionaloption36, comments, items;
+            functionaloption35, functionaloption36, comments, items, performanceresult;
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in visualCheck.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            foreach (Control item in functionalCheck.Controls)
+            {
+                if (item is MetroFramework.Controls.MetroComboBox)
+                {
+                    (item as MetroFramework.Controls.MetroComboBox).SelectedIndex = 0;
+                }
+            }
+        }
 
         private void perfusorSpace_SizeChanged(object sender, EventArgs e)
         {
@@ -91,12 +113,14 @@ namespace NovaBiomedicalSoftware
                 || functionalOption26.SelectedItem == null || functionalOption27.SelectedItem == null || functionalOption28.SelectedItem == null
                 || functionalOption29.SelectedItem == null || functionalOption30.SelectedItem == null || functionalOption31.SelectedItem == null
                 || functionalOption32.SelectedItem == null || functionalOption33.SelectedItem == null || functionalOption34.SelectedItem == null
-                || functionalOption35.SelectedItem == null || functionalOption36.SelectedItem == null)
+                || functionalOption35.SelectedItem == null || functionalOption36.SelectedItem == null || overall.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+
+                performanceresult = overall.Text;
                 //visual
                 visualoption1 = visual_option1.Text;
                 visualoption2 = visual_option2.Text;
