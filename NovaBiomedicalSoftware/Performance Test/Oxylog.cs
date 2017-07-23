@@ -16,7 +16,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
 
         public static string result1, result2, performanceresult, result3, result4, result5, result6, result7, result8, result9, result10, result11, result12,result13,result14, text_result1, text_result2, text_result3, text_result4,text_result5, text_result6;
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void PassAll_Click(object sender, EventArgs e)
         {
             foreach (Control item in performanceVerification.Controls)
             {

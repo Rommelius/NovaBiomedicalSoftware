@@ -28,9 +28,8 @@ namespace NovaBiomedicalSoftware
     {
 
         //Location of Project
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
-
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
         //List for QAS
         #region List for QAS
         public static List<string> _EquipmentCounter = new List<string>();
@@ -60,7 +59,7 @@ namespace NovaBiomedicalSoftware
             PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed, PTPhilipsMonitorCompleted, PTVitalsMonitorCompleted,
             PTOxyVivaCompleted, PTSoftPackRescueCompleted, PTOxylogCompleted, PTtwinOvac2Completed, PTNeopuffCompleted, PTiStatCompleted, PTbelmontFluidCompleted, PTVaccumValveCompleted,
             PTWallSuctionCompleted, PTThroatCameraCompleted, PTInfantTransportCompleted, PTElectricSuction2Completed, PTBloodGlucoseCompleted, PTInfusorSpaceCompleted, PTRCDCompleted,
-            PTAespire7900Completed, PTAlarisSyringePumpCompleted;
+            PTAespire7900Completed, PTAlarisSyringePumpCompleted, PTBodyGuardPumpCompleted,PTAlarisInfusionCompleted,PTExaminationLightCompleted;
         public bool medicalGasCompleted;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
@@ -82,7 +81,6 @@ namespace NovaBiomedicalSoftware
             _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
 
 
-
         //gas panel boolean
         public bool PTAirGasPanelCompleted, PTOxygenGasPanelCompleted, PTNitrousGasPanelCompleted, PTSuctionGasPanelCompleted, GasPanelTestisDone;
         public static List<string> Gastestequipment = new List<string>();
@@ -91,7 +89,6 @@ namespace NovaBiomedicalSoftware
         public double _earthResistance_double, _EL1_double, _EL2_double, _EnL1_double, _EnL2_double, _EnL3_double,
             _EnL4_double, _EnL5_double, _EnL6_double, PLT1_double, PLT2_double, PLT3_double, SFN_double, _PLC1_double, _PLC2_double, _PLC3_double, _MMC_double;
         #endregion
-
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -154,8 +151,11 @@ namespace NovaBiomedicalSoftware
             PTRCDCompleted = false;
             PTAespire7900Completed = false;
             PTAlarisSyringePumpCompleted = false;
-
+            PTBodyGuardPumpCompleted = false;
+            PTAlarisInfusionCompleted = false;
+            PTExaminationLightCompleted = false;
             //get rid of all test equipment list
+            ExaminationLightForm.testequipment.Clear();
             InfusorSpace.testequipment.Clear();
             AccusonicAP170.testequipment.Clear();
             AED.testequipment.Clear();
@@ -188,7 +188,9 @@ namespace NovaBiomedicalSoftware
             RCDForm.testequipment.Clear();
             Aespire7900.testequipment.Clear();
             AlarisSyringePumpForm.testequipment.Clear();
-
+            BodyGuardForm.testequipment.Clear();
+            AlarisInfusionForm.testequipment.Clear();
+        
             //gas panel
             Gastestequipment.Clear();
 
@@ -1792,6 +1794,105 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
+        private void bodyguardBtn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    BodyGuardForm dg = new BodyGuardForm();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTBodyGuardPumpCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void alarisinfusionBtn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    AlarisInfusionForm dg = new AlarisInfusionForm();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTAlarisInfusionCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void examinationLight_btn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    ExaminationLightForm dg = new ExaminationLightForm();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTExaminationLightCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         #endregion
         // Serial Communication for the FLUKE ESA620 with real-time checker
@@ -2946,7 +3047,6 @@ namespace NovaBiomedicalSoftware
         {
 
         }
-
         // Electrical Test Complete Function
         private void testComplete()
         {
@@ -3272,6 +3372,22 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/AlarisSyringePump-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //Body Guard Pump
+                if (PTBodyGuardPumpCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/BodyGuard-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Alaris Infunsion
+                if (PTAlarisInfusionCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/AlarisInfusionPump-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Examination Light
+                if (PTExaminationLightCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/ExaminationLight-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+
 
             }
             object missing = System.Reflection.Missing.Value;
@@ -5355,16 +5471,10 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
                 #endregion
             }
-
             //Alaris Syringe Pump
-            if (PTRCDCompleted == true)
+            if (PTAlarisSyringePumpCompleted == true)
             {
-                if (AlarisSyringePumpForm.performanceresult == "Fail")
-                {
-                    wDoc.Bookmarks["color"].Select();
-                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
-                }
-                this.FindAndReplace(wordApp, "<PerformanceTest>", AlarisSyringePumpForm.performanceresult);
+
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
@@ -5373,7 +5483,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", AlarisSyringePumpForm.functionaloption1);
                 this.FindAndReplace(wordApp, "<result2>", AlarisSyringePumpForm.functionaloption2);
@@ -5403,6 +5512,13 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result8>", AlarisSyringePumpForm.functionaloption26);
                 this.FindAndReplace(wordApp, "<Comments>", AlarisSyringePumpForm.comments);
 
+                if (AlarisSyringePumpForm.performanceresult1 == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result69>", AlarisSyringePumpForm.result);
+
                 if (AlarisSyringePumpForm.testequipment.Count != 0)
                 {
                     wDoc.Bookmarks["testequipment"].Select();
@@ -5430,7 +5546,202 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 }
                 #endregion
             }
+            //BodyGuardPump
+            if (PTBodyGuardPumpCompleted == true)
+            {
 
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", BodyGuardForm.result_1);
+                this.FindAndReplace(wordApp, "<result2>", BodyGuardForm.result_2);
+                this.FindAndReplace(wordApp, "<result3>", BodyGuardForm.result_3);
+                this.FindAndReplace(wordApp, "<result4>", BodyGuardForm.result_4);
+                this.FindAndReplace(wordApp, "<result5>", BodyGuardForm.result_5);
+                this.FindAndReplace(wordApp, "<result6>", BodyGuardForm.result_6);
+                this.FindAndReplace(wordApp, "<result7>", BodyGuardForm.result_7);
+                this.FindAndReplace(wordApp, "<result8>", BodyGuardForm.result_8);
+                this.FindAndReplace(wordApp, "<result9>", BodyGuardForm.result_9);
+                this.FindAndReplace(wordApp, "<result10>", BodyGuardForm.result_10);
+                this.FindAndReplace(wordApp, "<result11>", BodyGuardForm.result_11);
+                this.FindAndReplace(wordApp, "<result12>", BodyGuardForm.result_12);
+                this.FindAndReplace(wordApp, "<result13>", BodyGuardForm.result_13);
+                this.FindAndReplace(wordApp, "<result14>", BodyGuardForm.result_14);
+                this.FindAndReplace(wordApp, "<result15>", BodyGuardForm.result_15);
+                this.FindAndReplace(wordApp, "<result16>", BodyGuardForm.result_16);
+                this.FindAndReplace(wordApp, "<result17>", BodyGuardForm.result_17);
+                this.FindAndReplace(wordApp, "<result18>", BodyGuardForm.result_18);
+                this.FindAndReplace(wordApp, "<result19>", BodyGuardForm.result_19);
+                this.FindAndReplace(wordApp, "<serial>", BodyGuardForm.serialnum);
+                this.FindAndReplace(wordApp, "<volume1>", BodyGuardForm.volume1);
+                this.FindAndReplace(wordApp, "<volume2>", BodyGuardForm.volume2);
+                this.FindAndReplace(wordApp, "<percentage1>", BodyGuardForm.percent1);
+                this.FindAndReplace(wordApp, "<calibrationfactor>", BodyGuardForm.calibrationfactor);
+
+                this.FindAndReplace(wordApp, "<Comments>", BodyGuardForm.comments);
+
+                if (BodyGuardForm.result_20 == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result69>", BodyGuardForm.result_20);
+
+                if (BodyGuardForm.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = BodyGuardForm.testequipment.Last();
+                    foreach (string item in BodyGuardForm.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
+            //Alaris Infusion
+            if (PTAlarisInfusionCompleted == true)
+            {
+                if (AlarisInfusionForm.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<RESULT69>", AlarisInfusionForm.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", AlarisInfusionForm.result1);
+                this.FindAndReplace(wordApp, "<result2>", AlarisInfusionForm.result2);
+                this.FindAndReplace(wordApp, "<result3>", AlarisInfusionForm.result3);
+                this.FindAndReplace(wordApp, "<result4>", AlarisInfusionForm.result4);
+                this.FindAndReplace(wordApp, "<result5>", AlarisInfusionForm.result5);
+                this.FindAndReplace(wordApp, "<result6>", AlarisInfusionForm.result6);
+                this.FindAndReplace(wordApp, "<result7>", AlarisInfusionForm.result7);
+                this.FindAndReplace(wordApp, "<result8>", AlarisInfusionForm.result8);
+                this.FindAndReplace(wordApp, "<result9>", AlarisInfusionForm.result9);
+                this.FindAndReplace(wordApp, "<result10>", AlarisInfusionForm.result10);
+                this.FindAndReplace(wordApp, "<text1>", AlarisInfusionForm.text_result1);
+                this.FindAndReplace(wordApp, "<text2>", AlarisInfusionForm.text_result2);
+                this.FindAndReplace(wordApp, "<text3>", AlarisInfusionForm.text_result3);
+                this.FindAndReplace(wordApp, "<text4>", AlarisInfusionForm.text_result4);
+                this.FindAndReplace(wordApp, "<text5>", AlarisInfusionForm.text_result5);
+                this.FindAndReplace(wordApp, "<text6>", AlarisInfusionForm.text_result6);
+                this.FindAndReplace(wordApp, "<text7>", AlarisInfusionForm.text_result7);
+                this.FindAndReplace(wordApp, "<Comments>", AlarisInfusionForm.comments);
+
+                if (AlarisInfusionForm.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = AlarisInfusionForm.testequipment.Last();
+                    foreach (string item in AlarisInfusionForm.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
+            //Examination Light
+            if (PTExaminationLightCompleted == true)
+            {
+                if (ExaminationLightForm.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result69>", ExaminationLightForm.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", ExaminationLightForm.result1);
+                this.FindAndReplace(wordApp, "<result2>", ExaminationLightForm.result2);
+                this.FindAndReplace(wordApp, "<result3>", ExaminationLightForm.result3);
+                this.FindAndReplace(wordApp, "<result4>", ExaminationLightForm.result4);
+                this.FindAndReplace(wordApp, "<result5>", ExaminationLightForm.result5);
+                this.FindAndReplace(wordApp, "<result6>", ExaminationLightForm.result6);
+                this.FindAndReplace(wordApp, "<result7>", ExaminationLightForm.result7);
+                this.FindAndReplace(wordApp, "<result8>", ExaminationLightForm.result8);
+                this.FindAndReplace(wordApp, "<result9>", ExaminationLightForm.result9);
+                this.FindAndReplace(wordApp, "<Comments>", ExaminationLightForm.comments);
+
+                if (ExaminationLightForm.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = ExaminationLightForm.testequipment.Last();
+                    foreach (string item in ExaminationLightForm.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
 
             //create PDF
             if (PerformPerformanceTest == true)
@@ -6274,8 +6585,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             MetroFramework.MetroMessageBox.Show(this, "", "Report is Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ExitWord();
         }
-
-
         //QAS edit document
         private void QASeditDocument()
         {
@@ -6864,39 +7173,13 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 _EquipmentCounter.Add(counter_multiflowregulator.ToString() + "x - Multi-Flow Regulator: (" + string.Join(", ", MultiFlowRegulatorAssets) + ")");
 
         }
-
         //Medical Gas Panel
-
-        private void GasaddItems()
-        {
-            foreach (var item in AirGasPanel.testequipment)
-            {
-                Gastestequipment.Add(item.ToString());
-            }
-            foreach (var item in OxygenGasPanel.testequipment)
-            {
-                Gastestequipment.Add(item.ToString());
-            }
-            foreach (var item in NitrousGasPanel.testequipment)
-            {
-                Gastestequipment.Add(item.ToString());
-            }
-            foreach (var item in SuctionGasPanel.testequipment)
-            {
-                Gastestequipment.Add(item.ToString());
-            }
-
-            removeDuplicatedGasTestEquipmentList = Gastestequipment.Distinct().ToList();
-        }
-
         private void medical_BackBtn_Click(object sender, EventArgs e)
         {
             medicalGasCompleted = false;
             tabMenu.SelectedTab = _PerformanceTestTab;
             
         }
-
-
         private void medicalGasBtn_Click(object sender, EventArgs e)
         {
             if (PTtestIsDone == false)
@@ -6913,8 +7196,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 SuctionBtn.Enabled = true;
                 finaliseMedicalReport.Enabled = true;
             }
-        }
 
+
+        }
         private void finaliseMedicalReport_Click(object sender, EventArgs e)
         {
             if (overall.SelectedItem==null)
@@ -6933,9 +7217,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
           
         }
-
-
-
 
         //Function to Edit
         private void FindAndReplace(Word.Application WordApp, object findText, object replaceWithText)
@@ -6965,7 +7246,6 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 ref matchDiacritics, ref matchAlefHamza,
                 ref matchControl);
         }
-
         //Exit MSWORD
         private void ExitWord()
         {

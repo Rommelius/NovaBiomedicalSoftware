@@ -33,7 +33,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
             functionaloption10, functionaloption11, functionaloption12, functionaloption13, functionaloption14,
             functionaloption15, functionaloption16, functionaloption17, functionaloption18, functionaloption19,
             functionaloption20, functionaloption21, functionaloption22, functionaloption23,
-            functionaloption24, functionaloption25, functionaloption26, comments, items, performanceresult;
+            functionaloption24, functionaloption25, functionaloption26, comments, items, performanceresult1, result;
 
         private void PassAll_Click(object sender, EventArgs e)
         {
@@ -75,13 +75,13 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 || functionalOption14.SelectedItem == null || functionalOption15.Text == "" || functionalOption16.Text == "" ||
                 functionalOption17.SelectedItem == null || functionalOption18.SelectedItem == null || functionalOption19.SelectedItem == null
                 || functionalOption20.SelectedItem == null || functionalOption21.SelectedItem == null || functionalOption22.SelectedItem == null || functionalOption23.SelectedItem == null
-                || functionalOption24.SelectedItem == null || functionalOption25.SelectedItem == null || functionalOption26.SelectedItem == null || overall.SelectedItem==null)
+                || functionalOption24.SelectedItem == null || functionalOption25.SelectedItem == null || functionalOption26.SelectedItem == null || functionalOption48.SelectedItem==null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-
+                
                 //functional
                 functionaloption1 = functionalOption1.Text;
                 functionaloption2 = functionalOption2.Text;
@@ -100,6 +100,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 functionaloption15 = functionalOption15.Text;
                 functionaloption16 = functionalOption16.Text;
                 functionaloption17 = functionalOption17.Text;
+                result = functionalOption48.Text;
                 functionaloption18 = functionalOption18.Text;
                 functionaloption19 = functionalOption19.Text;
                 functionaloption20 = functionalOption20.Text;
@@ -110,7 +111,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 functionaloption25 = functionalOption25.Text;
                 functionaloption26 = functionalOption26.Text;
 
-                performanceresult = overall.Text;
+
                 //comments box
                 comments = commentBox.Text;
 

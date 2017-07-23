@@ -137,6 +137,7 @@
     <Compile Include="Gas Panel Test\SuctionGasPanel.Designer.cs">
       <DependentUpon>SuctionGasPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="LogInPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +174,12 @@
     <Compile Include="Performance Test\Aespire7900.Designer.cs">
       <DependentUpon>Aespire7900.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\AlarisInfusionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\AlarisInfusionForm.Designer.cs">
+      <DependentUpon>AlarisInfusionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\AlarisSyringePumpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +198,12 @@
     <Compile Include="Performance Test\BloodGlucose.Designer.cs">
       <DependentUpon>BloodGlucose.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\BodyGuardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\BodyGuardForm.Designer.cs">
+      <DependentUpon>BodyGuardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\ComweldOxygenFlowmeter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +221,12 @@
     </Compile>
     <Compile Include="Performance Test\ElectricSuction2.Designer.cs">
       <DependentUpon>ElectricSuction2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\ExaminationLightForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\ExaminationLightForm.Designer.cs">
+      <DependentUpon>ExaminationLightForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\GenericECG.cs">
       <SubType>Form</SubType>
@@ -505,6 +524,9 @@
     <EmbeddedResource Include="Performance Test\Aespire7900.resx">
       <DependentUpon>Aespire7900.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\AlarisInfusionForm.resx">
+      <DependentUpon>AlarisInfusionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\AlarisSyringePumpForm.resx">
       <DependentUpon>AlarisSyringePumpForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -514,6 +536,9 @@
     <EmbeddedResource Include="Performance Test\BloodGlucose.resx">
       <DependentUpon>BloodGlucose.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\BodyGuardForm.resx">
+      <DependentUpon>BodyGuardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\ComweldOxygenFlowmeter.resx">
       <DependentUpon>ComweldOxygenFlowmeter.cs</DependentUpon>
     </EmbeddedResource>
@@ -522,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\ElectricSuction2.resx">
       <DependentUpon>ElectricSuction2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\ExaminationLightForm.resx">
+      <DependentUpon>ExaminationLightForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\GenericECG.resx">
       <DependentUpon>GenericECG.cs</DependentUpon>
@@ -684,6 +712,7 @@
     <None Include="Report Templates\Accusonic AP170-TEMPLATE.docx" />
     <None Include="Report Templates\AED-TEMPLATE.docx" />
     <None Include="Report Templates\Aespire 7900 Anesthesia Machine-TEMPLATE.docx" />
+    <None Include="Report Templates\AlarisInfusionPump-TEMPLATE.docx" />
     <None Include="Report Templates\AlarisSyringePump-TEMPLATE.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE1.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE2.docx" />
@@ -692,9 +721,11 @@
     <None Include="Report Templates\BBraun Perfusor Space-TEMPLATE.docx" />
     <None Include="Report Templates\BelmontFluidWarmer-TEMPLATE.docx" />
     <None Include="Report Templates\BloodGlucose-TEMPLATE.docx" />
+    <None Include="Report Templates\BodyGuard-TEMPLATE.docx" />
     <None Include="Report Templates\Comweld Oxygen Flowmeter-TEMPLATE.docx" />
     <None Include="Report Templates\Edan Doppler-TEMPLATE.docx" />
     <None Include="Report Templates\Electric Suction-TEMPLATE.docx" />
+    <None Include="Report Templates\ExaminationLight-TEMPLATE.docx" />
     <None Include="Report Templates\Gas Panel Templates\Medical Gas Type TEMPLATE.docx" />
     <None Include="Report Templates\Gas Panel Templates\MedicalGasPanel-TEMPLATE.docx" />
     <None Include="Report Templates\Gas Panel Templates\MedicalPanelWallSuction-TEMPLATE.docx" />
