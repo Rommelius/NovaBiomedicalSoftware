@@ -26,6 +26,11 @@ namespace NovaBiomedicalSoftware.Performance_Test
             InitializeComponent();
             commentBox.ResetText();
             safetyCheck.SelectedTab = performanceVerification;
+            listBox1.Items.Clear();
+            foreach (var item in MainMenu.testequipmentlist)
+            {
+                listBox1.Items.Add(item);
+            }
         }
 
         private void close1_btn_Click(object sender, EventArgs e)

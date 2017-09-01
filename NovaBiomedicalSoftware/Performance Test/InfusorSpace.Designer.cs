@@ -52,6 +52,8 @@
             this.visual2 = new MetroFramework.Controls.MetroLabel();
             this.visual1 = new MetroFramework.Controls.MetroLabel();
             this.functionalCheck = new MetroFramework.Controls.MetroTabPage();
+            this.overall = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
@@ -146,8 +148,6 @@
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.overall = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.safetyCheck.SuspendLayout();
             this.visualCheck.SuspendLayout();
             this.functionalCheck.SuspendLayout();
@@ -397,9 +397,9 @@
             this.visual8.AutoSize = true;
             this.visual8.Location = new System.Drawing.Point(3, 284);
             this.visual8.Name = "visual8";
-            this.visual8.Size = new System.Drawing.Size(285, 19);
+            this.visual8.Size = new System.Drawing.Size(202, 19);
             this.visual8.TabIndex = 10;
-            this.visual8.Text = "Check the unit and accessories for compatibility";
+            this.visual8.Text = "Air inline sensor and Drop sensor";
             this.visual8.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // visual7
@@ -407,9 +407,9 @@
             this.visual7.AutoSize = true;
             this.visual7.Location = new System.Drawing.Point(3, 253);
             this.visual7.Name = "visual7";
-            this.visual7.Size = new System.Drawing.Size(175, 19);
+            this.visual7.Size = new System.Drawing.Size(331, 19);
             this.visual7.TabIndex = 9;
-            this.visual7.Text = "Protection cap at drive head";
+            this.visual7.Text = "Coding of pump slide guide and pump connecting rod";
             this.visual7.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // visual6
@@ -417,9 +417,9 @@
             this.visual6.AutoSize = true;
             this.visual6.Location = new System.Drawing.Point(3, 222);
             this.visual6.Name = "visual6";
-            this.visual6.Size = new System.Drawing.Size(159, 19);
+            this.visual6.Size = new System.Drawing.Size(74, 19);
             this.visual6.TabIndex = 8;
-            this.visual6.Text = "Connectors “P2” and “P3”";
+            this.visual6.Text = "Pump slide";
             this.visual6.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // visual5
@@ -427,9 +427,9 @@
             this.visual5.AutoSize = true;
             this.visual5.Location = new System.Drawing.Point(3, 190);
             this.visual5.Name = "visual5";
-            this.visual5.Size = new System.Drawing.Size(84, 19);
+            this.visual5.Size = new System.Drawing.Size(113, 19);
             this.visual5.TabIndex = 7;
-            this.visual5.Text = "Screw covers";
+            this.visual5.Text = "Pump membrane";
             this.visual5.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // visual4
@@ -437,9 +437,9 @@
             this.visual4.AutoSize = true;
             this.visual4.Location = new System.Drawing.Point(3, 159);
             this.visual4.Name = "visual4";
-            this.visual4.Size = new System.Drawing.Size(145, 19);
+            this.visual4.Size = new System.Drawing.Size(236, 19);
             this.visual4.TabIndex = 6;
-            this.visual4.Text = "Axial clearance of drive";
+            this.visual4.Text = "Pressure sensor, upstream (membrane)";
             this.visual4.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // visual3
@@ -447,9 +447,9 @@
             this.visual3.AutoSize = true;
             this.visual3.Location = new System.Drawing.Point(3, 129);
             this.visual3.Name = "visual3";
-            this.visual3.Size = new System.Drawing.Size(154, 19);
+            this.visual3.Size = new System.Drawing.Size(253, 19);
             this.visual3.TabIndex = 5;
-            this.visual3.Text = "Membrane in drive head";
+            this.visual3.Text = "Pressure sensor, downstream (membrane)";
             this.visual3.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // visual2
@@ -457,9 +457,9 @@
             this.visual2.AutoSize = true;
             this.visual2.Location = new System.Drawing.Point(3, 98);
             this.visual2.Name = "visual2";
-            this.visual2.Size = new System.Drawing.Size(108, 19);
+            this.visual2.Size = new System.Drawing.Size(84, 19);
             this.visual2.TabIndex = 4;
-            this.visual2.Text = "Syringe fastening";
+            this.visual2.Text = "Safety clamp";
             this.visual2.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // visual1
@@ -467,9 +467,9 @@
             this.visual1.AutoSize = true;
             this.visual1.Location = new System.Drawing.Point(3, 67);
             this.visual1.Name = "visual1";
-            this.visual1.Size = new System.Drawing.Size(158, 19);
+            this.visual1.Size = new System.Drawing.Size(159, 19);
             this.visual1.TabIndex = 3;
-            this.visual1.Text = "Syringe holder with blade";
+            this.visual1.Text = "Connectors “P2” and “P3”";
             this.visual1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // functionalCheck
@@ -578,6 +578,33 @@
             this.functionalCheck.VerticalScrollbarBarColor = true;
             this.functionalCheck.VerticalScrollbarHighlightOnWheel = false;
             this.functionalCheck.VerticalScrollbarSize = 10;
+            // 
+            // overall
+            // 
+            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.overall.FormattingEnabled = true;
+            this.overall.ItemHeight = 19;
+            this.overall.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.overall.Location = new System.Drawing.Point(644, 1426);
+            this.overall.Name = "overall";
+            this.overall.Size = new System.Drawing.Size(121, 25);
+            this.overall.TabIndex = 112;
+            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.overall.UseSelectable = true;
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(3, 1432);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel14.TabIndex = 111;
+            this.metroLabel14.Text = "Overall Result";
+            this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroButton2
             // 
@@ -1864,33 +1891,6 @@
             this.metroLabel3.TabIndex = 39;
             this.metroLabel3.Text = "Comments:";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // overall
-            // 
-            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.overall.FormattingEnabled = true;
-            this.overall.ItemHeight = 19;
-            this.overall.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.overall.Location = new System.Drawing.Point(644, 1426);
-            this.overall.Name = "overall";
-            this.overall.Size = new System.Drawing.Size(121, 25);
-            this.overall.TabIndex = 112;
-            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.overall.UseSelectable = true;
-            // 
-            // metroLabel14
-            // 
-            this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(3, 1432);
-            this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(89, 19);
-            this.metroLabel14.TabIndex = 111;
-            this.metroLabel14.Text = "Overall Result";
-            this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // InfusorSpace
             // 

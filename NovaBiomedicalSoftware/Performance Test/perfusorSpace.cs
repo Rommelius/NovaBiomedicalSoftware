@@ -70,6 +70,11 @@ namespace NovaBiomedicalSoftware
             commentBox.ResetText();
             this.StyleManager = metroStyleManager1;
             metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            listBox1.Items.Clear();
+            foreach (var item in MainMenu.testequipmentlist)
+            {
+                listBox1.Items.Add(item);
+            }
         }
 
 

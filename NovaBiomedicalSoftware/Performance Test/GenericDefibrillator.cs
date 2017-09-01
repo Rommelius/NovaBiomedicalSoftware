@@ -43,10 +43,10 @@ namespace NovaBiomedicalSoftware.Performance_Test
         private void submitBtn_Click(object sender, EventArgs e)
         {
             //check if the combobox are answered
-            if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
-                result_4.SelectedItem == null || result_5.SelectedItem == null || result_6.SelectedItem == null || result_7.SelectedItem == null ||
-                result_8.SelectedItem == null || result_9.SelectedItem == null || result_10.SelectedItem == null || result_11.SelectedItem == null ||
-                result_12.SelectedItem == null || result_13.SelectedItem == null || result_14.SelectedItem == null || result_15.SelectedItem == null ||
+            if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.Text == "" ||
+                result_4.Text == "" || result_5.Text == "" || result_6.Text == "" || result_7.Text == "" ||
+                result_8.Text == "" || result_9.Text == "" || result_10.Text == "" || result_11.Text == "" ||
+                result_12.Text == "" || result_13.Text == "" || result_14.SelectedItem == null || result_15.SelectedItem == null ||
                 result_16.SelectedItem == null || result_17.SelectedItem == null || result_18.SelectedItem == null || result_19.SelectedItem == null ||
                 result_20.SelectedItem == null || result_21.SelectedItem == null || result_22.SelectedItem == null || result_23.SelectedItem == null||overall.SelectedItem == null)
             {
@@ -119,6 +119,11 @@ namespace NovaBiomedicalSoftware.Performance_Test
             safetyCheck.SelectedTab = performanceVerification;
             this.StyleManager = metroStyleManager1;
             metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            listBox1.Items.Clear();
+            foreach (var item in MainMenu.testequipmentlist)
+            {
+                listBox1.Items.Add(item);
+            }
         }
         public static List<string> testequipment = new List<string>();
 

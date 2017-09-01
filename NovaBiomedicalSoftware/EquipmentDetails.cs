@@ -14,30 +14,74 @@ namespace NovaBiomedicalSoftware
 {
     public partial class EquipmentDetails : MetroForm
     {
-        public static string assetNumber, serialNumber, location, model, manufacturer;
+        public static string assetNumber, serialNumber, location, model, manufacturer, type;
 
         public EquipmentDetails()
         {
             InitializeComponent();
+
+            if (MainMenu.PerformElectricalSafetyTest == true)
+            {
+                typeBox.Visible = true;
+                metroLabel1.Visible = true;
+            }
+            if (MainMenu.PerformBothTest == true)
+            {
+                typeBox.Visible = true;
+                metroLabel1.Visible = true;
+            }
+            if (MainMenu.PerformPerformanceTest == true)
+            {
+                typeBox.Visible = false;
+                metroLabel1.Visible = false;
+            }
+            if (MainMenu.PerformQAS == true)
+            {
+                typeBox.Visible = false;
+                metroLabel1.Visible = false;
+            }
         }
 
         private void validation()
         {
-            if (_assetNumberBox.Text == "" || _serialNumberBox.Text == "" || _locationBox.Text == "" || _modelBox.Text == "" ||
-                _manufacturerBox.Text == "")
+            if (MainMenu.PerformElectricalSafetyTest == true || MainMenu.PerformBothTest == true)
             {
-                MetroFramework.MetroMessageBox.Show(this, "", "Please fill all the details required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (_assetNumberBox.Text == "" || _serialNumberBox.Text == "" || _locationBox.Text == "" || _modelBox.Text == "" ||
+                _manufacturerBox.Text == "" || typeBox.Text == "")
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "", "Please fill all the details required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    assetNumber = _assetNumberBox.Text;
+                    serialNumber = _serialNumberBox.Text;
+                    location = _locationBox.Text;
+                    model = _modelBox.Text;
+                    type = typeBox.Text;
+                    manufacturer = _manufacturerBox.Text;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
             else
             {
-                assetNumber = _assetNumberBox.Text;
-                serialNumber = _serialNumberBox.Text;
-                location = _locationBox.Text;
-                model = _modelBox.Text;
-                manufacturer = _manufacturerBox.Text;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (_assetNumberBox.Text == "" || _serialNumberBox.Text == "" || _locationBox.Text == "" || _modelBox.Text == "" ||
+                _manufacturerBox.Text == "")
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "", "Please fill all the details required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    assetNumber = _assetNumberBox.Text;
+                    serialNumber = _serialNumberBox.Text;
+                    location = _locationBox.Text;
+                    model = _modelBox.Text;
+                    manufacturer = _manufacturerBox.Text;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
+            
         }
 
         private void submitBtn_Click(object sender, EventArgs e)
@@ -69,7 +113,7 @@ namespace NovaBiomedicalSoftware
 
         private void _assetNumberBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            var regex = new Regex(@"^[!#$%&'()*+,./:;?@[\]^_]*$");
             if (regex.IsMatch(e.KeyChar.ToString()))
             {
                 e.Handled = true;
@@ -78,7 +122,7 @@ namespace NovaBiomedicalSoftware
 
         private void _serialNumberBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            var regex = new Regex(@"^[!#$%&'()*+,./:;?@[\]^_]*$");
             if (regex.IsMatch(e.KeyChar.ToString()))
             {
                 e.Handled = true;
@@ -87,7 +131,7 @@ namespace NovaBiomedicalSoftware
 
         private void _modelBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            var regex = new Regex(@"^[!#$%&'()*+,./:;?@[\]^_]*$");
             if (regex.IsMatch(e.KeyChar.ToString()))
             {
                 e.Handled = true;
@@ -96,7 +140,7 @@ namespace NovaBiomedicalSoftware
 
         private void _manufacturerBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            var regex = new Regex(@"^[!#$%&'()*+,./:;?@[\]^_]*$");
             if (regex.IsMatch(e.KeyChar.ToString()))
             {
                 e.Handled = true;
@@ -105,11 +149,17 @@ namespace NovaBiomedicalSoftware
 
         private void _locationBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var regex = new Regex(@"[^a-zA-Z0-9\s\b]");
+            var regex = new Regex(@"^[!#$%&'()*+,./:;?@[\]^_]*$");
             if (regex.IsMatch(e.KeyChar.ToString()))
             {
                 e.Handled = true;
             }
+        }
+
+        private void typeBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                validation();
         }
 
         public void serialNumber_KeyDown(object sender, KeyEventArgs e)
@@ -131,8 +181,17 @@ namespace NovaBiomedicalSoftware
         }
         private void _locationBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-                validation();
+            if (MainMenu.eletricaltestYes == true)
+            {
+                if (e.KeyCode == Keys.Enter)
+                    typeBox.Focus();
+            }
+            else
+            {
+                if (e.KeyCode == Keys.Enter)
+                    validation();
+            }
+
 
         }
         #endregion

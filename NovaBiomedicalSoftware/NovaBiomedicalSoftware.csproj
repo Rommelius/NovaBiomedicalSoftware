@@ -318,11 +318,41 @@
     <Compile Include="Performance Test\GenericDefibrillator.Designer.cs">
       <DependentUpon>GenericDefibrillator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\PhilipsCO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsCO.Designer.cs">
+      <DependentUpon>PhilipsCO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsCO2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsCO2.Designer.cs">
+      <DependentUpon>PhilipsCO2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\PhilipsMonitors.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Performance Test\PhilipsMonitors.Designer.cs">
       <DependentUpon>PhilipsMonitors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsMXMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsMXMonitor.Designer.cs">
+      <DependentUpon>PhilipsMXMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsNMT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsNMT.Designer.cs">
+      <DependentUpon>PhilipsNMT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsX2X3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsX2X3.Designer.cs">
+      <DependentUpon>PhilipsX2X3.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\PulseOximeter2.cs">
       <SubType>Form</SubType>
@@ -596,8 +626,23 @@
     <EmbeddedResource Include="Performance Test\GenericDefibrillator.resx">
       <DependentUpon>GenericDefibrillator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PhilipsCO.resx">
+      <DependentUpon>PhilipsCO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PhilipsCO2.resx">
+      <DependentUpon>PhilipsCO2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\PhilipsMonitors.resx">
       <DependentUpon>PhilipsMonitors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PhilipsMXMonitor.resx">
+      <DependentUpon>PhilipsMXMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PhilipsNMT.resx">
+      <DependentUpon>PhilipsNMT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PhilipsX2X3.resx">
+      <DependentUpon>PhilipsX2X3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\PulseOximeter2.resx">
       <DependentUpon>PulseOximeter2.cs</DependentUpon>
@@ -714,6 +759,10 @@
     <None Include="Report Templates\Aespire 7900 Anesthesia Machine-TEMPLATE.docx" />
     <None Include="Report Templates\AlarisInfusionPump-TEMPLATE.docx" />
     <None Include="Report Templates\AlarisSyringePump-TEMPLATE.docx" />
+    <None Include="Report Templates\APCLASS1-TEMPLATE.docx" />
+    <None Include="Report Templates\APCLASS1-TEMPLATE2.docx" />
+    <None Include="Report Templates\APCLASS2-TEMPLATE.docx" />
+    <None Include="Report Templates\APCLASS2-TEMPLATE2.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE1.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE2.docx" />
     <None Include="Report Templates\ASNZCLASS2-TEMPLATE.docx" />
@@ -741,7 +790,12 @@
     <None Include="Report Templates\Oxy Viva Resus Box-TEMPLATE.docx" />
     <None Include="Report Templates\Oxylog-TEMPLATE.docx" />
     <None Include="Report Templates\Philips MRx Defibrillator-TEMPLATE.docx" />
+    <None Include="Report Templates\PhilipsCO.docx" />
+    <None Include="Report Templates\PhilipsCO2Microstream.docx" />
+    <None Include="Report Templates\PhilipsMXMonitors.docx" />
+    <None Include="Report Templates\PhilipsNMT.docx" />
     <None Include="Report Templates\PhilipsPatientMonitor-TEMPLATE.docx" />
+    <None Include="Report Templates\PhilipsX2X3.docx" />
     <None Include="Report Templates\Pulse Oximeter-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Template-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Aspirator-TEMPLATE.docx" />

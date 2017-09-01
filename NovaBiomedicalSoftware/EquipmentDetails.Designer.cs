@@ -41,6 +41,8 @@
             this._assetNumberBox = new MetroFramework.Controls.MetroTextBox();
             this.clearBtn = new MetroFramework.Controls.MetroButton();
             this.submitBtn = new MetroFramework.Controls.MetroButton();
+            this.typeBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
             // metroLabel10
@@ -65,9 +67,9 @@
             // 
             // 
             this._locationBox.CustomButton.Image = null;
-            this._locationBox.CustomButton.Location = new System.Drawing.Point(130, 1);
+            this._locationBox.CustomButton.Location = new System.Drawing.Point(174, 1);
             this._locationBox.CustomButton.Name = "";
-            this._locationBox.CustomButton.Size = new System.Drawing.Size(17, 19);
+            this._locationBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this._locationBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this._locationBox.CustomButton.TabIndex = 1;
             this._locationBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -98,9 +100,9 @@
             // 
             // 
             this._manufacturerBox.CustomButton.Image = null;
-            this._manufacturerBox.CustomButton.Location = new System.Drawing.Point(130, 1);
+            this._manufacturerBox.CustomButton.Location = new System.Drawing.Point(174, 1);
             this._manufacturerBox.CustomButton.Name = "";
-            this._manufacturerBox.CustomButton.Size = new System.Drawing.Size(17, 19);
+            this._manufacturerBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this._manufacturerBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this._manufacturerBox.CustomButton.TabIndex = 1;
             this._manufacturerBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -131,9 +133,9 @@
             // 
             // 
             this._modelBox.CustomButton.Image = null;
-            this._modelBox.CustomButton.Location = new System.Drawing.Point(130, 1);
+            this._modelBox.CustomButton.Location = new System.Drawing.Point(174, 1);
             this._modelBox.CustomButton.Name = "";
-            this._modelBox.CustomButton.Size = new System.Drawing.Size(17, 19);
+            this._modelBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this._modelBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this._modelBox.CustomButton.TabIndex = 1;
             this._modelBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -164,9 +166,9 @@
             // 
             // 
             this._serialNumberBox.CustomButton.Image = null;
-            this._serialNumberBox.CustomButton.Location = new System.Drawing.Point(130, 1);
+            this._serialNumberBox.CustomButton.Location = new System.Drawing.Point(174, 1);
             this._serialNumberBox.CustomButton.Name = "";
-            this._serialNumberBox.CustomButton.Size = new System.Drawing.Size(17, 19);
+            this._serialNumberBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this._serialNumberBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this._serialNumberBox.CustomButton.TabIndex = 1;
             this._serialNumberBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -215,10 +217,10 @@
             this.metroLabel5.ForeColor = System.Drawing.Color.White;
             this.metroLabel5.Location = new System.Drawing.Point(23, 142);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(51, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(105, 19);
             this.metroLabel5.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel5.TabIndex = 108;
-            this.metroLabel5.Text = "Model:";
+            this.metroLabel5.Text = "Model Number:";
             this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroLabel5.UseCustomBackColor = true;
             this.metroLabel5.UseCustomForeColor = true;
@@ -261,9 +263,9 @@
             // 
             // 
             this._assetNumberBox.CustomButton.Image = null;
-            this._assetNumberBox.CustomButton.Location = new System.Drawing.Point(130, 1);
+            this._assetNumberBox.CustomButton.Location = new System.Drawing.Point(174, 1);
             this._assetNumberBox.CustomButton.Name = "";
-            this._assetNumberBox.CustomButton.Size = new System.Drawing.Size(17, 19);
+            this._assetNumberBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this._assetNumberBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this._assetNumberBox.CustomButton.TabIndex = 1;
             this._assetNumberBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -290,7 +292,7 @@
             // 
             // clearBtn
             // 
-            this.clearBtn.Location = new System.Drawing.Point(23, 253);
+            this.clearBtn.Location = new System.Drawing.Point(23, 288);
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(141, 44);
             this.clearBtn.TabIndex = 105;
@@ -301,7 +303,7 @@
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(231, 253);
+            this.submitBtn.Location = new System.Drawing.Point(231, 288);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(141, 44);
             this.submitBtn.TabIndex = 104;
@@ -310,11 +312,63 @@
             this.submitBtn.UseSelectable = true;
             this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
             // 
+            // typeBox
+            // 
+            // 
+            // 
+            // 
+            this.typeBox.CustomButton.Image = null;
+            this.typeBox.CustomButton.Location = new System.Drawing.Point(174, 1);
+            this.typeBox.CustomButton.Name = "";
+            this.typeBox.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.typeBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.typeBox.CustomButton.TabIndex = 1;
+            this.typeBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.typeBox.CustomButton.UseSelectable = true;
+            this.typeBox.CustomButton.Visible = false;
+            this.typeBox.Lines = new string[0];
+            this.typeBox.Location = new System.Drawing.Point(174, 248);
+            this.typeBox.MaxLength = 32767;
+            this.typeBox.Name = "typeBox";
+            this.typeBox.PasswordChar = '\0';
+            this.typeBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.typeBox.SelectedText = "";
+            this.typeBox.SelectionLength = 0;
+            this.typeBox.SelectionStart = 0;
+            this.typeBox.ShortcutsEnabled = true;
+            this.typeBox.Size = new System.Drawing.Size(198, 25);
+            this.typeBox.TabIndex = 111;
+            this.typeBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.typeBox.UseSelectable = true;
+            this.typeBox.Visible = false;
+            this.typeBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.typeBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.typeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.typeBox_KeyDown);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.ForeColor = System.Drawing.Color.White;
+            this.metroLabel1.Location = new System.Drawing.Point(23, 248);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(40, 19);
+            this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroLabel1.TabIndex = 112;
+            this.metroLabel1.Text = "Type:";
+            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroLabel1.UseCustomBackColor = true;
+            this.metroLabel1.UseCustomForeColor = true;
+            this.metroLabel1.Visible = false;
+            // 
             // EquipmentDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 326);
+            this.ClientSize = new System.Drawing.Size(400, 355);
+            this.Controls.Add(this.typeBox);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this._locationBox);
             this.Controls.Add(this._manufacturerBox);
@@ -354,5 +408,7 @@
         private MetroFramework.Controls.MetroTextBox _assetNumberBox;
         private MetroFramework.Controls.MetroButton clearBtn;
         private MetroFramework.Controls.MetroButton submitBtn;
+        private MetroFramework.Controls.MetroTextBox typeBox;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

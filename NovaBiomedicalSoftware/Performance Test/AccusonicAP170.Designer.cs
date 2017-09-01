@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccusonicAP170));
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
+            this.overall = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.nextBtn = new MetroFramework.Controls.MetroButton();
             this.close1_btn = new MetroFramework.Controls.MetroButton();
@@ -53,8 +55,6 @@
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.msmain = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.overall = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
@@ -68,7 +68,7 @@
             this.safetyCheck.Dock = System.Windows.Forms.DockStyle.Fill;
             this.safetyCheck.Location = new System.Drawing.Point(20, 60);
             this.safetyCheck.Name = "safetyCheck";
-            this.safetyCheck.SelectedIndex = 0;
+            this.safetyCheck.SelectedIndex = 1;
             this.safetyCheck.Size = new System.Drawing.Size(796, 586);
             this.safetyCheck.TabIndex = 5;
             this.safetyCheck.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -106,6 +106,33 @@
             this.performanceVerification.VerticalScrollbarBarColor = true;
             this.performanceVerification.VerticalScrollbarHighlightOnWheel = false;
             this.performanceVerification.VerticalScrollbarSize = 10;
+            // 
+            // overall
+            // 
+            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.overall.FormattingEnabled = true;
+            this.overall.ItemHeight = 19;
+            this.overall.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.overall.Location = new System.Drawing.Point(664, 189);
+            this.overall.Name = "overall";
+            this.overall.Size = new System.Drawing.Size(121, 25);
+            this.overall.TabIndex = 40;
+            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.overall.UseSelectable = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(0, 195);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel1.TabIndex = 39;
+            this.metroLabel1.Text = "Overall Result";
+            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroButton1
             // 
@@ -314,26 +341,6 @@
             this.listBox1.ForeColor = System.Drawing.Color.White;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 18;
-            this.listBox1.Items.AddRange(new object[] {
-            "FLUKE PROSIM 3 VITAL SIGN SIMULATOR (SN 3102018)",
-            "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 2629025)",
-            "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 3357047)",
-            "DALE 3000 ELECTROSURGICAL ANALYSER (SN 0485)",
-            "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 22811)",
-            "PRONK TECHNOLOGIES SIMCUBE SC-5 (SN5813)",
-            "HUATO HE704 THERMOMETER (SN HE20103717)",
-            "OXITEST PLUS 7 PULSE OXIMETER TESTER (SN D0S04090718)",
-            "TSI 4000 SERIES SPIROMETER (SN 40401327005)",
-            "NETECH UNIMANO PRESSURE/VACCUM METER (SN 15377)",
-            "FLUKE VT305 GAS FLOW ANALYSER (SN BF102055)",
-            "OHAUS SCOUT PRO SCALES (SN 7132081821)",
-            "INFUTESTER SOLO INFUSION ANALYSER (SN 1504120001)",
-            "FLUKE VT02 VISUAL IR THERMOMETER (SN VT02-13064149)",
-            "FLUKE 117 (SN 23092259)",
-            "BIO-TEK ULTRASOUND WATTMETER UW-11 (SN 0309)",
-            "COOL TECH CT-960 RCD TESTER (SN 10019363)",
-            "RIKEN F1-21 GAS DETECTOR TYPE O5 (SN 499030026)",
-            "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 19478)"});
             this.listBox1.Location = new System.Drawing.Point(0, 107);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -426,33 +433,6 @@
             // 
             this.msmain.Owner = this;
             this.msmain.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // overall
-            // 
-            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.overall.FormattingEnabled = true;
-            this.overall.ItemHeight = 19;
-            this.overall.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.overall.Location = new System.Drawing.Point(664, 189);
-            this.overall.Name = "overall";
-            this.overall.Size = new System.Drawing.Size(121, 25);
-            this.overall.TabIndex = 40;
-            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.overall.UseSelectable = true;
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(0, 195);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(89, 19);
-            this.metroLabel1.TabIndex = 39;
-            this.metroLabel1.Text = "Overall Result";
-            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // AccusonicAP170
             // 

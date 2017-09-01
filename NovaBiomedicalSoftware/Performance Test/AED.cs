@@ -27,6 +27,11 @@ namespace NovaBiomedicalSoftware.Performance_Test
             InitializeComponent();
             commentBox.ResetText();
             safetyCheck.SelectedTab = performanceVerification;
+            listBox1.Items.Clear();
+            foreach (var item in MainMenu.testequipmentlist)
+            {
+                listBox1.Items.Add(item);
+            }
         }
 
         private void close1_btn_Click(object sender, EventArgs e)
@@ -67,7 +72,7 @@ namespace NovaBiomedicalSoftware.Performance_Test
         private void submitBtn_Click(object sender, EventArgs e)
         {
             //check if the combobox are answered
-            if (result_1.SelectedItem == null || result_2.SelectedItem == null || result_3.SelectedItem == null ||
+            if (result_1.SelectedItem == null || result_2.Text == "" || result_3.SelectedItem == null ||
                 result_4.SelectedItem == null)
             {
                 MetroFramework.MetroMessageBox.Show(this, "", "You need to perform all test.", MessageBoxButtons.OK, MessageBoxIcon.Error);

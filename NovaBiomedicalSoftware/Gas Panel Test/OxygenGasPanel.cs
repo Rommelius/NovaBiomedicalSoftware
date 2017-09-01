@@ -18,6 +18,11 @@ namespace NovaBiomedicalSoftware.Gas_Panel_Test
             InitializeComponent();
             safetyCheck.SelectedTab = functionalCheck;
             commentBox.ResetText();
+            listBox1.Items.Clear();
+            foreach (var item in MainMenu.testequipmentlist)
+            {
+                listBox1.Items.Add(item);
+            }
         }
 
         private void OxygenGasPanel_SizeChanged(object sender, EventArgs e)

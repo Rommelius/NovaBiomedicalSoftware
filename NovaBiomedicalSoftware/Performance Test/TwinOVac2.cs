@@ -18,6 +18,11 @@ namespace NovaBiomedicalSoftware.Performance_Test
             InitializeComponent();
             safetyCheck.SelectedTab = functionalCheck;
             commentBox.ResetText();
+            listBox1.Items.Clear();
+            foreach (var item in MainMenu.testequipmentlist)
+            {
+                listBox1.Items.Add(item);
+            }
         }
 
         //note NO 22,23,24 functional check

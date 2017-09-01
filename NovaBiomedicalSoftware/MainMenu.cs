@@ -28,8 +28,8 @@ namespace NovaBiomedicalSoftware
     {
 
         //Location of Project
-        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
-        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+        //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
+        public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
         //List for QAS
         #region List for QAS
         public static List<string> _EquipmentCounter = new List<string>();
@@ -52,14 +52,19 @@ namespace NovaBiomedicalSoftware
         #endregion
         //Global Variables
         #region Global Variables
-        public bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, PerformQAS, YesNoSaveDestination, YesNoEquipmentDetails;
-        public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
+
+
+        public static List<string> testequipmentlist = new List<string>();
+        public static bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, PerformQAS;
+        public bool  YesNoSaveDestination, YesNoEquipmentDetails;
+        public bool runProgram, yesNoPerformanceTest, PTisSubmitted, _electricaltestResult, _PTStestResult, class1ASNZtest, class2ASNZtest, APclass1ASNZtest, APclass2ASNZtest, ecgclass1ASNZtest, ecgclass2ASNZtest;
         public bool PTpefusorSpaceCompleted, PTECGCompleted, PTNIBPGenericCompleted, PTEdanDopplerCompleted, PTSphygmomanometerCompleted, PTGenius2Completed,
             PTHeineNT300Completed, PTPhilipsMRxCompleted, PTAccusonicAP170Completed, PTComweldOxygenFMCompleted, PTScalesCompleted, PTVarpVueCompleted, PTPulseOximeter2Completed, PTSpirometerCompleted,
             PTVaccineFridgeCompleted, PTManifoldCompleted, PTAEDCompleted, PTRegulator2Completed, PTPhilipsMonitorCompleted, PTVitalsMonitorCompleted,
             PTOxyVivaCompleted, PTSoftPackRescueCompleted, PTOxylogCompleted, PTtwinOvac2Completed, PTNeopuffCompleted, PTiStatCompleted, PTbelmontFluidCompleted, PTVaccumValveCompleted,
             PTWallSuctionCompleted, PTThroatCameraCompleted, PTInfantTransportCompleted, PTElectricSuction2Completed, PTBloodGlucoseCompleted, PTInfusorSpaceCompleted, PTRCDCompleted,
-            PTAespire7900Completed, PTAlarisSyringePumpCompleted, PTBodyGuardPumpCompleted,PTAlarisInfusionCompleted,PTExaminationLightCompleted;
+            PTAespire7900Completed, PTAlarisSyringePumpCompleted, PTBodyGuardPumpCompleted,PTAlarisInfusionCompleted,PTExaminationLightCompleted,
+            PTPhilipsCOCompleted, PTPhilipsCO2Completed, PTPhilipsNMTCompleted, PTPhilipsMXMonitorCompleted, PTPhilipsX2X3Completed;
         public bool medicalGasCompleted;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
@@ -74,13 +79,14 @@ namespace NovaBiomedicalSoftware
         public bool earthResistanceFailed, insulationResistanceFailed, earthLeakageFailed1, earthLeakageFailed2, touchCurrentFailed1, touchCurrentFailed2,
             touchCurrentFailed3, touchCurrentFailed4, touchCurrentFailed5, touchCurrentFailed6, patientLeakageCurrentFailed1, patientLeakageCurrentFailed2, patientLeakageCurrentFailed3,
             mainsContactCurrentFailed;
-        public static string currentUser, saveDestination;
+        public static string currentUser, saveDestination, typeName;
         public static SerialPort mySerialPort;
         DateTime date = DateTime.Today;
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
             _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
 
 
+        public static bool eletricaltestYes, bothtestYes;
         //gas panel boolean
         public bool PTAirGasPanelCompleted, PTOxygenGasPanelCompleted, PTNitrousGasPanelCompleted, PTSuctionGasPanelCompleted, GasPanelTestisDone;
         public static List<string> Gastestequipment = new List<string>();
@@ -104,7 +110,32 @@ namespace NovaBiomedicalSoftware
 
             tabMenu.Appearance = TabAppearance.FlatButtons;
             tabMenu.ItemSize = new Size(1, 1);
+            addtotestequipmentlist();
         }
+        public void addtotestequipmentlist()
+        {
+            testequipmentlist.Add("BBRAUN CALIBRATION KIT REF: 7705204, 7705166, 7705174, 7705190, 8713230");
+            testequipmentlist.Add("FLUKE PROSIM 3 VITAL SIGN SIMULATOR(SN 3102018)");
+            testequipmentlist.Add("FLUKE ESA620 ELECTRICAL SAFETY ANALYSER(SN 2629025)");
+            testequipmentlist.Add("FLUKE ESA620 ELECTRICAL SAFETY ANALYSER(SN 3357047)");
+            testequipmentlist.Add("DALE 3000 ELECTROSURGICAL ANALYSER(SN 0485)");
+            testequipmentlist.Add("NETECH DELTA 3000 DEFIBRILLATOR / PACER ANALYSER(SN 22811)");
+            testequipmentlist.Add("PRONK TECHNOLOGIES SIMCUBE SC-5(SN5813)");
+            testequipmentlist.Add("HUATO HE704 THERMOMETER(SN HE20103717)");
+            testequipmentlist.Add("OXITEST PLUS 7 PULSE OXIMETER TESTER(SN D0S04090718)");
+            testequipmentlist.Add("TSI 4000 SERIES SPIROMETER(SN 40401327005)");
+            testequipmentlist.Add("NETECH UNIMANO PRESSURE / VACCUM METER(SN 15377)");
+            testequipmentlist.Add("FLUKE VT305 GAS FLOW ANALYSER(SN BF102055)");
+            testequipmentlist.Add("OHAUS SCOUT PRO SCALES(SN 7132081821)");
+            testequipmentlist.Add("INFUTESTER SOLO INFUSION ANALYSER(SN 1504120001)");
+            testequipmentlist.Add("FLUKE VT02 VISUAL IR THERMOMETER(SN VT02 - 13064149)");
+            testequipmentlist.Add("FLUKE 117(SN 23092259)");
+            testequipmentlist.Add("BIO - TEK ULTRASOUND WATTMETER UW - 11(SN 0309)");
+            testequipmentlist.Add("COOL TECH CT - 960 RCD TESTER(SN 10019363)");
+            testequipmentlist.Add("RIKEN F1-21 GAS DETECTOR TYPE O5(SN 499030026)");
+            testequipmentlist.Add("NETECH DELTA 3000 DEFIBRILLATOR / PACER ANALYSER(SN 19478)");
+        }
+
         private void _qasBackButton_Click(object sender, EventArgs e)
         {
             navigateToMainMenu();
@@ -154,6 +185,13 @@ namespace NovaBiomedicalSoftware
             PTBodyGuardPumpCompleted = false;
             PTAlarisInfusionCompleted = false;
             PTExaminationLightCompleted = false;
+            PTPhilipsCOCompleted = false;
+            PTPhilipsCO2Completed = false;
+            PTPhilipsNMTCompleted = false;
+            PTPhilipsMXMonitorCompleted = false;
+            PTPhilipsX2X3Completed = false;
+
+
             //get rid of all test equipment list
             ExaminationLightForm.testequipment.Clear();
             InfusorSpace.testequipment.Clear();
@@ -190,7 +228,11 @@ namespace NovaBiomedicalSoftware
             AlarisSyringePumpForm.testequipment.Clear();
             BodyGuardForm.testequipment.Clear();
             AlarisInfusionForm.testequipment.Clear();
-        
+            PhilipsCO.testequipment.Clear();
+            PhilipsCO2.testequipment.Clear();
+            PhilipsNMT.testequipment.Clear();
+            PhilipsMXMonitor.testequipment.Clear();
+            PhilipsX2X3.testequipment.Clear();
             //gas panel
             Gastestequipment.Clear();
 
@@ -289,6 +331,8 @@ namespace NovaBiomedicalSoftware
 
             topPanel.Visible = true;
             statusBar.Visible = false;
+
+            bothtestYes = PerformBothTest;
             askForEquipmentDetails();
         }
         private void est_btn_Click(object sender, EventArgs e)
@@ -321,8 +365,9 @@ namespace NovaBiomedicalSoftware
             topPanel.Visible = true;
             statusBar.Visible = false;
 
-
+            eletricaltestYes = PerformElectricalSafetyTest;
             askForEquipmentDetails();
+            MessageBox.Show(EquipmentDetails.type.ToString());
 }
         private void pt_btn_Click(object sender, EventArgs e)
         {
@@ -362,6 +407,7 @@ namespace NovaBiomedicalSoftware
                 if (result == DialogResult.Cancel)
                 {
                     navigateToMainMenu();
+                    eletricaltestYes = false;
                 }
                 else if (result == DialogResult.OK)
                 {
@@ -507,6 +553,34 @@ namespace NovaBiomedicalSoftware
 
                 }
             }
+            if (class1AppliedParts == true)
+            {
+                if (earthResistanceFailed == true || touchCurrentFailed1 == true || touchCurrentFailed1 == true || touchCurrentFailed2 == true
+                    || touchCurrentFailed3 == true || touchCurrentFailed4 == true || touchCurrentFailed5 == true || touchCurrentFailed6 == true || _insulationResistance == "FAILED"
+                    || earthLeakageFailed1 == true || earthLeakageFailed2 == true || patientLeakageCurrentFailed1 == true || patientLeakageCurrentFailed2 == true || patientLeakageCurrentFailed3 == true || mainsContactCurrentFailed == true)
+                {
+                    ESTResults = "FAIL";
+                }
+                else
+                {
+                    ESTResults = "PASS";
+
+                }
+            }
+            if (class2AppliedParts == true)
+            {
+                if (touchCurrentFailed1 == true || touchCurrentFailed1 == true || touchCurrentFailed2 == true
+                    || touchCurrentFailed3 == true || touchCurrentFailed4 == true || touchCurrentFailed5 == true || touchCurrentFailed6 == true || _insulationResistance == "FAILED"
+                    || patientLeakageCurrentFailed1 == true || patientLeakageCurrentFailed2 == true || patientLeakageCurrentFailed3 == true || mainsContactCurrentFailed == true)
+                {
+                    ESTResults = "FAIL";
+                }
+                else
+                {
+                    ESTResults = "PASS";
+
+                }
+            }
 
             if (PerformBothTest == true)
             {
@@ -527,6 +601,8 @@ namespace NovaBiomedicalSoftware
 
                 class1testBtn.Enabled = false;
                 class2testBtn.Enabled = false;
+                APClass1.Enabled = false;
+                APClass2.Enabled = false;
             }
 
 
@@ -544,7 +620,7 @@ namespace NovaBiomedicalSoftware
             {
                 if (dg.Test_Submit == true)
                 {
-
+                    typeName = "Medical Gas Panel";
                     GasPanelTestisDone = true;
                     PTSuctionGasPanelCompleted = true;
 
@@ -572,7 +648,7 @@ namespace NovaBiomedicalSoftware
             {
                 if (dg.Test_Submit == true)
                 {
-
+                    typeName = "Medical Gas Panel";
                     GasPanelTestisDone = true;
                     PTNitrousGasPanelCompleted = true;
 
@@ -600,7 +676,7 @@ namespace NovaBiomedicalSoftware
             {
                 if (dg.Test_Submit == true)
                 {
-
+                    typeName = "Medical Gas Panel";
                     GasPanelTestisDone = true;
                     PTOxygenGasPanelCompleted = true;
 
@@ -628,7 +704,7 @@ namespace NovaBiomedicalSoftware
             {
                 if (dg.Test_Submit == true)
                 {
-
+                    typeName = "Medical Gas Panel";
                     GasPanelTestisDone = true;
                     PTAirGasPanelCompleted = true;
 
@@ -649,6 +725,171 @@ namespace NovaBiomedicalSoftware
             }
         }
 
+        private void philipsX2X3Btn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                PhilipsX2X3 window = new PhilipsX2X3();
+                DialogResult windowsDR = window.ShowDialog();
+                if (windowsDR == DialogResult.Cancel)
+                {
+                    if (window.philipsMonitorTest_Submit == true)
+                    {
+                        typeName = "Philips Patient Monitor";
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+
+                        PTPhilipsX2X3Completed = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void philipsNMTBtn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                PhilipsNMT window = new PhilipsNMT();
+                DialogResult windowsDR = window.ShowDialog();
+                if (windowsDR == DialogResult.Cancel)
+                {
+                    if (window.Test_Submit == true)
+                    {
+                        typeName = "Philips NMT";
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+
+                        PTPhilipsNMTCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void philipsMXBtn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                PhilipsMXMonitor window = new PhilipsMXMonitor();
+                DialogResult windowsDR = window.ShowDialog();
+                if (windowsDR == DialogResult.Cancel)
+                {
+                    if (window.Test_Submit == true)
+                    {
+                        typeName = "Philips MX Monitor";
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+
+                        PTPhilipsMXMonitorCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void philipsCO2Btn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                PhilipsCO2 window = new PhilipsCO2();
+                DialogResult windowsDR = window.ShowDialog();
+                if (windowsDR == DialogResult.Cancel)
+                {
+                    if (window.Test_Submit == true)
+                    {
+                        typeName = "Philips CO2";
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+
+                        PTPhilipsCO2Completed = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void philipsCOBtn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                PhilipsCO window = new PhilipsCO();
+                DialogResult windowsDR = window.ShowDialog();
+                if (windowsDR == DialogResult.Cancel)
+                {
+                    if (window.Test_Submit == true)
+                    {
+                        typeName = "Philips CO";
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+
+                        PTPhilipsCOCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
         private void bbraunPerfusor_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -659,6 +900,7 @@ namespace NovaBiomedicalSoftware
                 {
                     if (perfusorSpaceTest.perfusorTest_Submit == true)
                     {
+                        typeName = "Perfusor Space";
                         yesNoPerformanceTest = true;
                         PTtestIsDone = true;
 
@@ -693,6 +935,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (ecg.ecgTest_Submit == true)
                         {
+                            typeName = "ECG Machine";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTECGCompleted = true;
@@ -728,6 +971,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.nibpTest_Submit == true)
                         {
+                            typeName = "NIBP Monitor";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTNIBPGenericCompleted = true;
@@ -762,6 +1006,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.edanTest_Submit == true)
                         {
+                            typeName = "Doppler";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTEdanDopplerCompleted = true;
@@ -796,6 +1041,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.sphygmomanometerTest_Submit == true)
                         {
+                            typeName = "Sphygmomanometer";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTSphygmomanometerCompleted = true;
@@ -830,6 +1076,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.genius2Test_Submit == true)
                         {
+                            typeName = "Thermometer";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTGenius2Completed = true;
@@ -864,6 +1111,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.nt300Test_Submit == true)
                         {
+                            typeName = "Heine NT300";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTHeineNT300Completed = true;
@@ -898,6 +1146,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.philipsMrxTest_Submit == true)
                         {
+                            typeName = "Defibrillator";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTPhilipsMRxCompleted = true;
@@ -921,6 +1170,7 @@ namespace NovaBiomedicalSoftware
         }
         private void accusonicAP170_btn_Click(object sender, EventArgs e)
         {
+            var b = sender as Button;
             if (PerformPerformanceTest == true || PerformBothTest == true)
             {
                 while (PTtestIsDone == false)
@@ -931,6 +1181,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.AccusonicAP170Test_Submit == true)
                         {
+                            typeName = "Accusonic AP170";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTAccusonicAP170Completed = true;
@@ -964,6 +1215,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.ComweldOxygenFlowmeterTest_Submit == true)
                         {
+                            typeName = "Comweld Oxygen Regulator";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTComweldOxygenFMCompleted = true;
@@ -997,6 +1249,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Scales_Submit == true)
                         {
+                            typeName = "Scales";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTScalesCompleted = true;
@@ -1030,6 +1283,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.VarpVueTest_Submit == true)
                         {
+                            typeName = "Varp Vue";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTVarpVueCompleted = true;
@@ -1064,6 +1318,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.VaccineFridge_Submit == true)
                         {
+                            typeName = "Vaccine Fridge";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTVaccineFridgeCompleted = true;
@@ -1097,6 +1352,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Spirometer_Submit == true)
                         {
+                            typeName = "Spirometer";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTSpirometerCompleted = true;
@@ -1130,6 +1386,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.PulseOximeter_Submit == true)
                         {
+                            typeName = "Pulse Oximeter";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTPulseOximeter2Completed = true;
@@ -1164,6 +1421,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.manifold_Submit == true)
                         {
+                            typeName = "Manifold";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTManifoldCompleted = true;
@@ -1197,6 +1455,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.RegulatorTest_Submit == true)
                         {
+                            typeName = "Regulator";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTRegulator2Completed = true;
@@ -1230,6 +1489,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.AEDTest_Submit == true)
                         {
+                            typeName = "AED";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTAEDCompleted = true;
@@ -1263,6 +1523,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.genericVitalsTest_Submit == true)
                         {
+                            typeName = "Vitals Monitor";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTVitalsMonitorCompleted = true;
@@ -1296,6 +1557,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.philipsMonitorTest_Submit == true)
                         {
+                            typeName = "Philips Patient Monitor";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTPhilipsMonitorCompleted = true;
@@ -1329,6 +1591,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.oxyvivaTest_Submit == true)
                         {
+                            typeName = "Oxy Viva Resus Box";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTOxyVivaCompleted = true;
@@ -1362,6 +1625,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.softpackrescueTest_Submit == true)
                         {
+                            typeName = "Soft Pack Rescue Bag";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTSoftPackRescueCompleted = true;
@@ -1395,6 +1659,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.oxylogTest_Submit == true)
                         {
+                            typeName = "Oxylog";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTOxylogCompleted = true;
@@ -1428,6 +1693,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Twin O Vac";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTtwinOvac2Completed = true;
@@ -1461,6 +1727,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Neopuff";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTNeopuffCompleted = true;
@@ -1494,6 +1761,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "iStat";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTiStatCompleted = true;
@@ -1527,6 +1795,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.nt300Test_Submit == true)
                         {
+                            typeName = "Belmont Fluid Warmer";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTbelmontFluidCompleted = true;
@@ -1560,6 +1829,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Asepire 7900";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTAespire7900Completed = true;
@@ -1608,6 +1878,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Infant Transport";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTInfantTransportCompleted = true;
@@ -1641,6 +1912,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Electric Suction";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTElectricSuction2Completed = true;
@@ -1674,6 +1946,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Blood Glucose";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTBloodGlucoseCompleted = true;
@@ -1707,6 +1980,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.infusorTest_Submit == true)
                         {
+                            typeName = "Infusor Space";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTInfusorSpaceCompleted = true;
@@ -1740,6 +2014,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "RCD";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTRCDCompleted = true;
@@ -1773,6 +2048,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Alaris Syringe Pump";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTAlarisSyringePumpCompleted = true;
@@ -1806,6 +2082,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Body Guard Pumps";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTBodyGuardPumpCompleted = true;
@@ -1839,6 +2116,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Alaris Infusion Pump";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTAlarisInfusionCompleted = true;
@@ -1872,6 +2150,7 @@ namespace NovaBiomedicalSoftware
                     {
                         if (dg.Test_Submit == true)
                         {
+                            typeName = "Examination Light";
                             yesNoPerformanceTest = true;
                             PTtestIsDone = true;
                             PTExaminationLightCompleted = true;
@@ -2068,9 +2347,9 @@ namespace NovaBiomedicalSoftware
             Thread.Sleep(1500);
             mySerialPort.WriteLine("POL=N");
             Thread.Sleep(1500);
-            mySerialPort.WriteLine("EARTH=C");
+            mySerialPort.WriteLine("EARTH=O");
             Thread.Sleep(1500);
-            mySerialPort.WriteLine("NEUT=O");
+            mySerialPort.WriteLine("NEUT=C");
             Thread.Sleep(1500);
             mySerialPort.WriteLine("MODE=ACDC");
             Thread.Sleep(1500);
@@ -2126,73 +2405,73 @@ namespace NovaBiomedicalSoftware
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(5000);
         }
-        //private void mainsContactCurrent()
-        //{
-        //    //normal condition
-        //    mySerialPort.WriteLine("REMOTE");
-        //    Thread.Sleep(1000);
-        //    mySerialPort.WriteLine("STD=ASNZ");
-        //    Thread.Sleep(1000);
-        //    mySerialPort.WriteLine("MAP");
-        //    Thread.Sleep(1500);
-        //    mySerialPort.WriteLine("MAP=LOW");
-        //    Thread.Sleep(1500);
-        //    mySerialPort.WriteLine("MAP=NORM");
-        //    Thread.Sleep(1500);
-        //    mySerialPort.WriteLine("EARTH=C");
-        //    Thread.Sleep(1500);
-        //    mySerialPort.WriteLine("AP=RA,LL,LA,RL,V1,V2,V3,V4,V5,V6//OPEN");
-        //    Thread.Sleep(1500);
-        //    mySerialPort.WriteLine("MDUAL=OFF");
-        //    Thread.Sleep(1500);
-        //    mySerialPort.Close();
-        //    mySerialPort.Open();
-        //    mySerialPort.WriteLine("READ");
-        //    Thread.Sleep(1500);
-        //    _MMC = mySerialPort.ReadExisting();
-        //    Match _MMC_m = Regex.Match(_MMC, @"^-?\d*\.?\d*");
-        //    _MMC_double = Double.Parse(_MMC_m.Value);
-        //    this.Invoke((MethodInvoker)delegate
-        //    {
-        //        if (typeCF == true)
-        //        {
-        //            if (_MMC_double > 50)
-        //            {
-        //                patientLeakageCurrentFailed1 = true;
-        //                Thread.CurrentThread.Interrupt();
-        //                MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                PLClabel1.Text = _MMC_double.ToString() + " uA";
-        //                PLClabel1.ForeColor = Color.Red;
-        //                buttonPLC1.Visible = true;
-        //            }
-        //            else
-        //            {
-        //                 = false;
-        //                PLClabel1.Text = _MMC_double.ToString() + " uA";
-        //            }
-        //        }
-        //        if (typeBF == true || typeB == true)
-        //        {
-        //            if (_PLC1_double > 100)
-        //            {
-        //                patientLeakageCurrentFailed1 = true;
-        //                Thread.CurrentThread.Interrupt();
-        //                MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                PLClabel1.Text = _PLC1_double.ToString() + " uA";
-        //                PLClabel1.ForeColor = Color.Red;
-        //                buttonPLC1.Visible = true;
-        //            }
-        //            else
-        //            {
-        //                patientLeakageCurrentFailed1 = false;
-        //                PLClabel1.Text = _PLC1_double.ToString() + " uA";
-        //            }
-        //        }
+        private void mainsContactCurrent()
+        {
+            //normal condition
+            mySerialPort.WriteLine("REMOTE");
+            Thread.Sleep(1000);
+            mySerialPort.WriteLine("STD=ASNZ");
+            Thread.Sleep(1000);
+            mySerialPort.WriteLine("MAP");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MAP=LOW");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MAP=NORM");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("EARTH=C");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("AP=RA,LL,LA,RL,V1,V2,V3,V4,V5,V6//OPEN");
+            Thread.Sleep(1500);
+            mySerialPort.WriteLine("MDUAL=OFF");
+            Thread.Sleep(1500);
+            mySerialPort.Close();
+            mySerialPort.Open();
+            mySerialPort.WriteLine("READ");
+            Thread.Sleep(1500);
+            _MMC = mySerialPort.ReadExisting();
+            Match _MMC_m = Regex.Match(_MMC, @"^-?\d*\.?\d*");
+            _MMC_double = Double.Parse(_MMC_m.Value);
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (typeCF == true)
+                {
+                    if (_MMC_double > 50)
+                    {
+                        mainsContactCurrentFailed = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MCClabel1.Text = _MMC_double.ToString() + " uA";
+                        MCClabel1.ForeColor = Color.Red;
+                        buttonMCC.Visible = true;
+                    }
+                    else
+                    {
+                        mainsContactCurrentFailed = false;
+                        MCClabel1.Text = _MMC_double.ToString() + " uA";
+                    }
+                }
+                if (typeBF == true || typeB == true)
+                {
+                    if (_PLC1_double > 100)
+                    {
+                        mainsContactCurrentFailed = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "Manually do the test to try again", "Patient Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MCClabel1.Text = _MMC_double.ToString() + " uA";
+                        MCClabel1.ForeColor = Color.Red;
+                        buttonMCC.Visible = true;
+                    }
+                    else
+                    {
+                        mainsContactCurrentFailed = false;
+                        MCClabel1.Text = _PLC1_double.ToString() + " uA";
+                    }
+                }
 
-        //    });
-        //    mySerialPort.WriteLine("LOCAL");
-        //    Thread.Sleep(1000);
-        //}
+            });
+            mySerialPort.WriteLine("LOCAL");
+            Thread.Sleep(1000);
+        }
         private void initialisedDevice()
         {
             this.Invoke((MethodInvoker)delegate
@@ -2923,6 +3202,17 @@ namespace NovaBiomedicalSoftware
         }
         private void APClass2_Click(object sender, EventArgs e)
         {
+            topPanel_right.Visible = true;
+            _programStatus.Visible = true;
+
+            //hide earth tests
+            el1.Visible = false;
+            el1Panel.Visible = false;
+            el2.Visible = false;
+            el2Panel.Visible = false;
+            _PELabel.Visible = false;
+            PEPanel.Visible = false;
+
             class2AppliedParts = true;
             PatientLeakageCurrentType plctype = new PatientLeakageCurrentType();
 
@@ -2957,11 +3247,12 @@ namespace NovaBiomedicalSoftware
             MCC.Visible = true;
             MCCpanel.Visible = true;
             labelPE.Visible = true;
-
+            _PELabel.Visible = true;
+            PEPanel.Visible = true;
 
             class1AppliedParts = true;
 
-            ProtectiveEarthOptions class1option = new ProtectiveEarthOptions();
+            PatientLeakageCurrentType class1option = new PatientLeakageCurrentType();
 
             DialogResult dialogResult1 = class1option.ShowDialog();
             if (dialogResult1 == DialogResult.Cancel)
@@ -2970,15 +3261,6 @@ namespace NovaBiomedicalSoftware
             }
             else if (dialogResult1 == DialogResult.OK)
             {
-                PatientLeakageCurrentType plctype = new PatientLeakageCurrentType();
-
-                DialogResult dialogResult2 = plctype.ShowDialog();
-                if (dialogResult2 == DialogResult.Cancel)
-                {
-                    //navigateToMainMenu();
-                }
-                else if (dialogResult2 == DialogResult.OK)
-                {
                     statusBar.Show();
                     statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
                     statusBar.MarqueeAnimationSpeed = 30;
@@ -2987,7 +3269,6 @@ namespace NovaBiomedicalSoftware
                     Thread patientleakage = new Thread(class1withAppliedParts);
 
                     patientleakage.Start();
-                }
             }
 
 
@@ -3029,6 +3310,7 @@ namespace NovaBiomedicalSoftware
             touchCurrent();
             earthLeakage();
             patientLeakageCurrent();
+            mainsContactCurrent();
             testComplete();
         }
         private void class2withAppliedParts()
@@ -3036,11 +3318,10 @@ namespace NovaBiomedicalSoftware
             initialisedDevice();
             getVersionNumber();
             mainsVoltage();
-            earthResistance();
             insulationResistance();
             touchCurrent();
-            earthLeakage();
             patientLeakageCurrent();
+            mainsContactCurrent();
             testComplete();
         }
         private void ecgSimulation()
@@ -3067,13 +3348,7 @@ namespace NovaBiomedicalSoftware
                     buttonEnL4.Visible = true;
                     buttonEnL5.Visible = true;
                     buttonEnL6.Visible = true;
-                    if (class1AppliedParts == true)
-                    {
-                        buttonPLC1.Visible = true;
-                        buttonPLC2.Visible = true;
-                        buttonPLC3.Visible = true;
-                        buttonMCC.Visible = true;
-                    }
+
 
                     while (earthResistanceFailed == false && insulationResistanceFailed == false && earthLeakageFailed1 == false && earthLeakageFailed2 == false && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
             touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false)
@@ -3112,16 +3387,94 @@ namespace NovaBiomedicalSoftware
                     buttonEnL4.Visible = true;
                     buttonEnL5.Visible = true;
                     buttonEnL6.Visible = true;
-                    if (class2AppliedParts == true)
-                    {
-                        buttonPLC1.Visible = true;
-                        buttonPLC2.Visible = true;
-                        buttonPLC3.Visible = true;
-                        buttonMCC.Visible = true;
-                    }
 
                     while (insulationResistanceFailed == false  && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
 touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false)
+                    {
+                        if (PerformBothTest == true)
+                        {
+                            _programStatus.Text = "Please select the equipment";
+                            valuesPanel.Visible = false;
+                            tabMenu.SelectedTab = _PerformanceTestTab;
+                            yesNoPerformanceTest = true;
+                        }
+
+                        if (PerformPerformanceTest == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            createReport();
+                        }
+
+                        if (PerformElectricalSafetyTest == true)
+                        {
+                            yesNoPerformanceTest = false;
+                            createReport();
+                        }
+
+                        break;
+                    }
+                }
+                if (class1AppliedParts == true)
+                {
+                    buttonPE.Visible = true;
+                    buttonIR.Visible = true;
+                    buttonEL1.Visible = true;
+                    buttonEL2.Visible = true;
+                    buttonEnL1.Visible = true;
+                    buttonEnL2.Visible = true;
+                    buttonEnL3.Visible = true;
+                    buttonEnL4.Visible = true;
+                    buttonEnL5.Visible = true;
+                    buttonEnL6.Visible = true;
+                    buttonPLC1.Visible = true;
+                    buttonPLC2.Visible = true;
+                    buttonPLC3.Visible = true;
+                    buttonMCC.Visible = true;
+
+                while (earthResistanceFailed == false && insulationResistanceFailed == false && earthLeakageFailed1 == false && earthLeakageFailed2 == false && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
+        touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false && patientLeakageCurrentFailed1 == false && patientLeakageCurrentFailed2 == false && patientLeakageCurrentFailed3 == false
+        && mainsContactCurrentFailed == false)
+                    {
+                        if (PerformBothTest == true)
+                        {
+                            _programStatus.Text = "Please select the equipment";
+                            valuesPanel.Visible = false;
+                            tabMenu.SelectedTab = _PerformanceTestTab;
+                            yesNoPerformanceTest = true;
+                        }
+
+                        if (PerformPerformanceTest == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            createReport();
+                        }
+
+                        if (PerformElectricalSafetyTest == true)
+                        {
+                            yesNoPerformanceTest = false;
+                            createReport();
+                        }
+
+                        break;
+                    }
+                }
+                if (class2AppliedParts == true)
+                {
+                    buttonIR.Visible = true;
+                    buttonEnL1.Visible = true;
+                    buttonEnL2.Visible = true;
+                    buttonEnL3.Visible = true;
+                    buttonEnL4.Visible = true;
+                    buttonEnL5.Visible = true;
+                    buttonEnL6.Visible = true;
+                    buttonPLC1.Visible = true;
+                    buttonPLC2.Visible = true;
+                    buttonPLC3.Visible = true;
+                    buttonMCC.Visible = true;
+
+                    while (insulationResistanceFailed == false && touchCurrentFailed1 == false && touchCurrentFailed2 == false &&
+            touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFailed5 == false && touchCurrentFailed6 == false && patientLeakageCurrentFailed1 == false && patientLeakageCurrentFailed2 == false && patientLeakageCurrentFailed3 == false
+            && mainsContactCurrentFailed == false)
                     {
                         if (PerformBothTest == true)
                         {
@@ -3179,11 +3532,12 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             //wordApp.Selection.InsertNewPage();
             wordApp.Selection.Paste();
 
-            wDoc1.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-"+ EquipmentDetails.serialNumber+ "-" + EquipmentDetails.model + "-"+ EquipmentDetails.manufacturer + "- Electrical Safety Test and Performance Test.pdf", Word.WdExportFormat.wdExportFormatPDF);
+            wDoc1.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "~" + EquipmentDetails.serialNumber + "~" + EquipmentDetails.model + "~" + EquipmentDetails.manufacturer + "~" + EquipmentDetails.location + "~Electrical Safety Test and Performance Test.pdf", Word.WdExportFormat.wdExportFormatPDF);
 
             GC.Collect();
-            wDoc1.Close();
-            wDoc2.Close();
+            
+            wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc2.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
             wordApp.Quit();
             ExitWord();
         }
@@ -3387,7 +3741,31 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/ExaminationLight-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
-
+                //Philips CO
+                if (PTPhilipsCOCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/PhilipsCO.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Philips CO2
+                if (PTPhilipsCO2Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/PhilipsCO2Microstream.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Philips MX Monitor
+                if (PTPhilipsMXMonitorCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/PhilipsMXMonitors.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Philips NMT
+                if (PTPhilipsNMTCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/PhilipsNMT.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Philips X2 or X3
+                if (PTPhilipsX2X3Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/PhilipsX2X3.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
 
             }
             object missing = System.Reflection.Missing.Value;
@@ -3420,13 +3798,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", perfusorSpace.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<visualresult1>", perfusorSpace.visualoption1);
                 this.FindAndReplace(wordApp, "<visualresult2>", perfusorSpace.visualoption2);
@@ -3511,13 +3890,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", GenericECG.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericECG.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericECG.result2);
@@ -3525,12 +3905,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result4>", GenericECG.result4);
                 this.FindAndReplace(wordApp, "<Comments>", GenericECG.comments);
 
-
-
-
-
-
-
+                
                 if (GenericECG.testequipment.Count != 0)
                 {
                     wDoc.Bookmarks["testequipment"].Select();
@@ -3569,13 +3944,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", GenericNIBPMonitor.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericNIBPMonitor.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericNIBPMonitor.result2);
@@ -3624,13 +4000,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", EdanDoppler.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", EdanDoppler.result1);
                 this.FindAndReplace(wordApp, "<result2>", EdanDoppler.result2);
@@ -3674,13 +4051,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", GenericSphygmomanometer.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericSphygmomanometer.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericSphygmomanometer.result2);
@@ -3729,13 +4107,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", Genius2Thermometer.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Genius2Thermometer.result1);
                 this.FindAndReplace(wordApp, "<result2>", Genius2Thermometer.result2);
@@ -3780,12 +4159,13 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", HeineNT300.result1);
                 this.FindAndReplace(wordApp, "<result2>", HeineNT300.result2);
@@ -3836,12 +4216,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericDefibrillator.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericDefibrillator.result2);
@@ -3907,12 +4289,13 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", AccusonicAP170.result1);
                 this.FindAndReplace(wordApp, "<result2>", AccusonicAP170.result2);
@@ -3959,13 +4342,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", ComweldOxygenFlowmeter.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", ComweldOxygenFlowmeter.result1);
                 this.FindAndReplace(wordApp, "<result2>", ComweldOxygenFlowmeter.result2);
@@ -4015,7 +4399,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", VarpVue.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -4079,7 +4465,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", Scales.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -4135,7 +4523,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", VaccineFridge.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -4186,7 +4576,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", Spirometer.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -4238,7 +4630,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", PulseOximeter2.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -4293,13 +4687,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", Manifold.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Manifold.result1);
                 this.FindAndReplace(wordApp, "<result2>", Manifold.result2);
@@ -4358,13 +4753,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", AED.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", AED.result1);
                 this.FindAndReplace(wordApp, "<result2>", AED.result2);
@@ -4410,13 +4806,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", RegulatorPT.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", RegulatorPT.result1);
                 this.FindAndReplace(wordApp, "<result2>", RegulatorPT.result2);
@@ -4464,13 +4861,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", GenericVitalsMonitor.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericVitalsMonitor.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericVitalsMonitor.result2);
@@ -4526,13 +4924,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", PhilipsMonitors.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", PhilipsMonitors.result1);
                 this.FindAndReplace(wordApp, "<result2>", PhilipsMonitors.result2);
@@ -4588,13 +4987,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", OxyVivaResusBox.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", OxyVivaResusBox.result1);
                 this.FindAndReplace(wordApp, "<result2>", OxyVivaResusBox.result2);
@@ -4667,13 +5067,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", SoftPackRescueBag.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", SoftPackRescueBag.result1);
                 this.FindAndReplace(wordApp, "<result2>", SoftPackRescueBag.result2);
@@ -4741,13 +5142,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", Oxylog.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Oxylog.result1);
                 this.FindAndReplace(wordApp, "<result2>", Oxylog.result2);
@@ -4810,13 +5212,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", BelmontFluidWarmer.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", BelmontFluidWarmer.result1);
                 this.FindAndReplace(wordApp, "<result2>", BelmontFluidWarmer.result2);
@@ -4864,13 +5267,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", BloodGlucose.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", BloodGlucose.result1);
                 this.FindAndReplace(wordApp, "<result2>", BloodGlucose.result2);
@@ -4915,13 +5319,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 }
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", ElectricSuction2.result1);
                 this.FindAndReplace(wordApp, "<result2>", ElectricSuction2.result2);
@@ -4967,13 +5372,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", NeoPuff.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", NeoPuff.result1);
                 this.FindAndReplace(wordApp, "<result2>", NeoPuff.result2);
@@ -5029,13 +5435,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", iStat.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", iStat.result1);
                 this.FindAndReplace(wordApp, "<result2>", iStat.result2);
@@ -5082,13 +5490,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", InfusorSpace.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<visualresult1>", InfusorSpace.visualoption1);
                 this.FindAndReplace(wordApp, "<visualresult2>", InfusorSpace.visualoption2);
@@ -5175,13 +5585,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", infantTransport.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<funcresult1>", infantTransport.functionaloption1);
                 this.FindAndReplace(wordApp, "<funcresult2>", infantTransport.functionaloption2);
@@ -5242,13 +5654,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", TwinOVac2.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<funcresult1>", TwinOVac2.functionaloption1);
                 this.FindAndReplace(wordApp, "<funcresult2>", TwinOVac2.functionaloption2);
@@ -5299,13 +5713,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", RCDForm.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", RCDForm.functionaloption1);
                 this.FindAndReplace(wordApp, "<result2>", RCDForm.functionaloption2);
@@ -5385,13 +5801,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<PerformanceTest>", Aespire7900.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Aespire7900.functionaloption1);
                 this.FindAndReplace(wordApp, "<result2>", Aespire7900.functionaloption2);
@@ -5477,7 +5895,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -5552,7 +5972,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -5631,13 +6053,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<RESULT69>", AlarisInfusionForm.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", AlarisInfusionForm.result1);
                 this.FindAndReplace(wordApp, "<result2>", AlarisInfusionForm.result2);
@@ -5696,13 +6120,15 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result69>", ExaminationLightForm.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<PerformanceTestResult>", ESTResults);
+
                 this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", ExaminationLightForm.result1);
                 this.FindAndReplace(wordApp, "<result2>", ExaminationLightForm.result2);
@@ -5743,15 +6169,304 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 #endregion
             }
 
+            //Philips CO
+            if (PTPhilipsCOCompleted == true)
+            {
+                if (PhilipsCO.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                else
+                {
+                    this.FindAndReplace(wordApp, "<result_69>", PhilipsCO.performanceresult);            
+                }
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", PhilipsCO.result1);
+                this.FindAndReplace(wordApp, "<result2>", PhilipsCO.result2);
+                this.FindAndReplace(wordApp, "<result3>", PhilipsCO.result3);
+                this.FindAndReplace(wordApp, "<Comments>", PhilipsCO.comments);
+
+
+                if (PhilipsCO.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = PhilipsCO.testequipment.Last();
+                    foreach (string item in PhilipsCO.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
+            //Philips CO2
+            if (PTPhilipsCO2Completed == true)
+            {
+                if (PhilipsCO2.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result_69>", PhilipsCO2.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", PhilipsCO2.result1);
+                this.FindAndReplace(wordApp, "<result2>", PhilipsCO2.result2);
+                this.FindAndReplace(wordApp, "<result3>", PhilipsCO2.result3);
+                this.FindAndReplace(wordApp, "<result4>", PhilipsCO2.result4);
+                this.FindAndReplace(wordApp, "<result5>", PhilipsCO2.result5);
+                this.FindAndReplace(wordApp, "<result6>", PhilipsCO2.result6);
+                this.FindAndReplace(wordApp, "<result7>", PhilipsCO2.result7);
+                this.FindAndReplace(wordApp, "<result8>", PhilipsCO2.result8);
+                this.FindAndReplace(wordApp, "<Comments>", PhilipsCO2.comments);
+
+
+                if (PhilipsCO2.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = PhilipsCO2.testequipment.Last();
+                    foreach (string item in PhilipsCO2.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
+            //Philips MX Monitor
+            if (PTPhilipsMXMonitorCompleted)
+            {
+                if (PhilipsMXMonitor.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result_69>", PhilipsMXMonitor.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", EquipmentDetails.type);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", PhilipsMXMonitor.result1);
+                this.FindAndReplace(wordApp, "<result2>", PhilipsMXMonitor.result2);
+                this.FindAndReplace(wordApp, "<result3>", PhilipsMXMonitor.result3);
+                this.FindAndReplace(wordApp, "<result4>", PhilipsMXMonitor.result4);
+                this.FindAndReplace(wordApp, "<result5>", PhilipsMXMonitor.result5);
+                this.FindAndReplace(wordApp, "<result6>", PhilipsMXMonitor.result6);
+                this.FindAndReplace(wordApp, "<result7>", PhilipsMXMonitor.result7);
+                this.FindAndReplace(wordApp, "<Comments>", PhilipsMXMonitor.comments);
+
+
+                if (PhilipsMXMonitor.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = PhilipsMXMonitor.testequipment.Last();
+                    foreach (string item in PhilipsMXMonitor.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
+            //Philips NMT
+            if (PTPhilipsNMTCompleted)
+            {
+                if (PhilipsNMT.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result_69>", PhilipsNMT.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", PhilipsNMT.result1);
+                this.FindAndReplace(wordApp, "<result2>", PhilipsNMT.result2);
+                this.FindAndReplace(wordApp, "<result3>", PhilipsNMT.result3);
+                this.FindAndReplace(wordApp, "<result4>", PhilipsNMT.result4);
+                this.FindAndReplace(wordApp, "<Comments>", PhilipsNMT.comments);
+
+
+                if (PhilipsNMT.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = PhilipsNMT.testequipment.Last();
+                    foreach (string item in PhilipsNMT.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
+            //Philips X2 or X3
+            if (PTPhilipsX2X3Completed == true)
+            {
+                if (PhilipsX2X3.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<PerformanceTest>", PhilipsX2X3.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", PhilipsX2X3.result1);
+                this.FindAndReplace(wordApp, "<result2>", PhilipsX2X3.result2);
+                this.FindAndReplace(wordApp, "<result3>", PhilipsX2X3.result3);
+                this.FindAndReplace(wordApp, "<result4>", PhilipsX2X3.result4);
+                this.FindAndReplace(wordApp, "<result5>", PhilipsX2X3.result5);
+                this.FindAndReplace(wordApp, "<result6>", PhilipsX2X3.result6);
+                this.FindAndReplace(wordApp, "<result7>", PhilipsX2X3.result7);
+                this.FindAndReplace(wordApp, "<result8>", PhilipsX2X3.result8);
+                this.FindAndReplace(wordApp, "<result9>", PhilipsX2X3.result9);
+                this.FindAndReplace(wordApp, "<result10>", PhilipsX2X3.result10);
+                this.FindAndReplace(wordApp, "<result11>", PhilipsX2X3.result11);
+                this.FindAndReplace(wordApp, "<result12>", PhilipsX2X3.result12);
+                this.FindAndReplace(wordApp, "<result13>", PhilipsX2X3.result13);
+                this.FindAndReplace(wordApp, "<result14>", PhilipsX2X3.result14);
+                this.FindAndReplace(wordApp, "<result15>", PhilipsX2X3.result15);
+                this.FindAndReplace(wordApp, "<Comments>", PhilipsX2X3.comments);
+
+                if (PhilipsX2X3.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = PhilipsX2X3.testequipment.Last();
+                    foreach (string item in PhilipsX2X3.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
             //create PDF
             if (PerformPerformanceTest == true)
             {
-                wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.serialNumber + "-" + EquipmentDetails.model + "-"+ EquipmentDetails.manufacturer + "-"+ EquipmentDetails.location + "- Performance Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
+                wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "~" + EquipmentDetails.serialNumber + "~" + EquipmentDetails.model + "~"+ EquipmentDetails.manufacturer + "~"+ EquipmentDetails.location + "~Performance Test Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
             }
 
             //Close the document - you have to do this.
             GC.Collect();
-            wDoc.Close();
+            wDoc.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
             wordApp.Quit();
             ExitWord();
 
@@ -5777,8 +6492,43 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/ASNZCLASS1-TEMPLATE2.docx", appRootDir + "/Report Templates/temp.docx");
                 }
-
             }
+
+            if (class1AppliedParts == true)
+            {
+                if (File.Exists(appRootDir + "/Report Templates/temp.docx"))
+                {
+                    File.Delete(appRootDir + "/Report Templates/temp.docx");
+                }
+
+                if (PatientLeakageCurrentType.typeB == true || PatientLeakageCurrentType.typeBF == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/APCLASS1-TEMPLATE2.docx", appRootDir + "/Report Templates/temp.docx");
+                }
+                else if (PatientLeakageCurrentType.typeCF == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/APCLASS1-TEMPLATE.docx", appRootDir + "/Report Templates/temp.docx");
+                }
+            }
+
+            if (class2AppliedParts == true)
+            {
+                if (File.Exists(appRootDir + "/Report Templates/temp.docx"))
+                {
+                    File.Delete(appRootDir + "/Report Templates/temp.docx");
+                }
+
+                if (PatientLeakageCurrentType.typeB == true || PatientLeakageCurrentType.typeBF == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/APCLASS2-TEMPLATE2.docx", appRootDir + "/Report Templates/temp.docx");
+                }
+                else if (PatientLeakageCurrentType.typeCF == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/APCLASS2-TEMPLATE.docx", appRootDir + "/Report Templates/temp.docx");
+                }
+            }
+
+
             if (class2ASNZtest == true)
             {
                 if (File.Exists(appRootDir + "/Report Templates/temp.docx"))
@@ -5788,6 +6538,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 File.Copy(appRootDir + "/Report Templates/ASNZCLASS2-TEMPLATE.docx", appRootDir + "/Report Templates/temp.docx");
 
             }
+
+
 
             object missing = System.Reflection.Missing.Value;
 
@@ -5805,7 +6557,9 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             {
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", EquipmentDetails.type);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -5831,11 +6585,51 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 #endregion
             }
 
-            if (class2ASNZtest == true)
+            if (class1AppliedParts == true)
             {
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", EquipmentDetails.type);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<ElectricalSafetyTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<AnsurVersion>", _versionNumber);
+                this.FindAndReplace(wordApp, "<ClassStandard>", _kindofElectricalSafetyTest);
+                this.FindAndReplace(wordApp, "<MainsLN>", _MV1);
+                this.FindAndReplace(wordApp, "<MainsNE>", _MV2);
+                this.FindAndReplace(wordApp, "<MainsLE>", _MV3);
+                this.FindAndReplace(wordApp, "<ProtectiveEarth>", _earthResistance_double + " OHMS");
+                this.FindAndReplace(wordApp, "<InsulationResistance>", _insulationResistance);
+                this.FindAndReplace(wordApp, "<EarthLeakageNC>", _EL1_double + " uA");
+                this.FindAndReplace(wordApp, "<EarthLeakageON>", _EL2_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageNC>", _EnL1_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageON>", _EnL2_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageOE>", _EnL3_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageNCRM>", _EnL4_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageONR>", _EnL5_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageOER>", _EnL6_double + " uA");
+                this.FindAndReplace(wordApp, "<PLCNormal>", _PLC1_double + " uA");
+                this.FindAndReplace(wordApp, "<PLCON>", _PLC2_double + " uA");
+                this.FindAndReplace(wordApp, "<PLCOE>", _PLC3_double + " uA");
+                this.FindAndReplace(wordApp, "<MCC>", _MMC_double + " uA");
+
+                #endregion
+            }
+
+
+            if (class2ASNZtest == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", EquipmentDetails.type);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
                 this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -5858,23 +6652,51 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 #endregion
             }
 
+            if (class2AppliedParts == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", EquipmentDetails.type);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<ElectricalSafetyTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<AnsurVersion>", _versionNumber);
+                this.FindAndReplace(wordApp, "<ClassStandard>", _kindofElectricalSafetyTest);
+                this.FindAndReplace(wordApp, "<MainsLN>", _MV1);
+                this.FindAndReplace(wordApp, "<MainsNE>", _MV2);
+                this.FindAndReplace(wordApp, "<MainsLE>", _MV3);
+                this.FindAndReplace(wordApp, "<InsulationResistance>", _insulationResistance);
+                this.FindAndReplace(wordApp, "<EnLeakageNC>", _EnL1_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageON>", _EnL2_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageOE>", _EnL3_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageNCRM>", _EnL4_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageONR>", _EnL5_double + " uA");
+                this.FindAndReplace(wordApp, "<EnLeakageOER>", _EnL6_double + " uA");
+                this.FindAndReplace(wordApp, "<PLCNormal>", _PLC1_double + " uA");
+                this.FindAndReplace(wordApp, "<PLCON>", _PLC2_double + " uA");
+                this.FindAndReplace(wordApp, "<PLCOE>", _PLC3_double + " uA");
+                this.FindAndReplace(wordApp, "<MCC>", _MMC_double + " uA");
+                #endregion
+            }
 
             
-
-
-
-
             //as where to save the files
             //export to pdf
             if (PerformElectricalSafetyTest == true)
             {
-                wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.serialNumber +"-"+ EquipmentDetails.model + "-" + EquipmentDetails.manufacturer + "-"+ EquipmentDetails.location + "- Electrical Safety Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
+                wDoc.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "~" + EquipmentDetails.serialNumber +"~"+ EquipmentDetails.model + "~" + EquipmentDetails.manufacturer + "~"+ EquipmentDetails.location + "~Electrical Safety Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
             }
 
 
             //Close the document - you have to do this.
             GC.Collect();
-            wDoc.Close();
+            wDoc.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
             wordApp.Quit();
             ExitWord();
 
@@ -6520,8 +7342,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                     ref missing, ref missing, ref missing, ref missing);
 
             GC.Collect();
-            wDoc1.Close();
-            wDoc2.Close();
+            wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc2.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
             wordApp.Quit();
 
             MetroFramework.MetroMessageBox.Show(this, "", "Added on the report", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -6559,6 +7381,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
             //find and replace first before copying everything
             this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+            this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+            this.FindAndReplace(wordApp, "<Type>", typeName);
             this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
             this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
             this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
@@ -6577,10 +7401,10 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             string pictureName = appRootDir + "/Signatures/" + LogInPage.currentUser + ".png";
             wordApp.Selection.InlineShapes.AddPicture(pictureName, ref missing, ref saveWithDocument, missing);
 
-            wDoc1.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "-" + EquipmentDetails.serialNumber + "-" + EquipmentDetails.model + "-" + EquipmentDetails.location + "- Performance Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
+            wDoc1.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "~" + EquipmentDetails.serialNumber + "~" + EquipmentDetails.model + "~" + EquipmentDetails.location + "- Performance Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
 
             GC.Collect();
-            wDoc1.Close();
+            wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
             wordApp.Quit();
             MetroFramework.MetroMessageBox.Show(this, "", "Report is Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ExitWord();
@@ -7018,8 +7842,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                     ref missing, ref missing, ref missing, ref missing);
 
             GC.Collect();
-            wDoc1.Close();
-            wDoc2.Close();
+            wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc2.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
             wordApp.Quit();
 
             MetroFramework.MetroMessageBox.Show(this, "", "Added on the report", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -7098,7 +7922,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Station>", QASEquipmentDetails.station);
                 this.FindAndReplace(wordApp, "<VehicleNumber>", QASEquipmentDetails.vehiclenumber);
                 this.FindAndReplace(wordApp, "<RegoNumber>", QASEquipmentDetails.registrationnumber);
-                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
 
 
                 // for changing signatures
@@ -7130,7 +7954,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 wDoc1.ExportAsFixedFormat(saveDestination + "/Station " + QASEquipmentDetails.station + "-Vehicle Number " + QASEquipmentDetails.vehiclenumber  + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
                 
                 GC.Collect();
-                wDoc1.Close();
+                wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
                 wordApp.Quit();
                 MetroFramework.MetroMessageBox.Show(this, "", "Report is Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Process.Start(saveDestination + "/Station " + QASEquipmentDetails.station + "-Vehicle Number " + QASEquipmentDetails.vehiclenumber + "- QAS Report.pdf");

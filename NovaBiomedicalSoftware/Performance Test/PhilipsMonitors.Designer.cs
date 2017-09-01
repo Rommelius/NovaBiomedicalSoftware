@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhilipsMonitors));
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
+            this.overall = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
@@ -76,8 +78,6 @@
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.overall = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
@@ -153,6 +153,33 @@
             this.performanceVerification.VerticalScrollbarBarColor = true;
             this.performanceVerification.VerticalScrollbarHighlightOnWheel = false;
             this.performanceVerification.VerticalScrollbarSize = 10;
+            // 
+            // overall
+            // 
+            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.overall.FormattingEnabled = true;
+            this.overall.ItemHeight = 19;
+            this.overall.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.overall.Location = new System.Drawing.Point(622, 609);
+            this.overall.Name = "overall";
+            this.overall.Size = new System.Drawing.Size(121, 25);
+            this.overall.TabIndex = 47;
+            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.overall.UseSelectable = true;
+            // 
+            // metroLabel23
+            // 
+            this.metroLabel23.AutoSize = true;
+            this.metroLabel23.Location = new System.Drawing.Point(18, 615);
+            this.metroLabel23.Name = "metroLabel23";
+            this.metroLabel23.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel23.TabIndex = 46;
+            this.metroLabel23.Text = "Overall Result";
+            this.metroLabel23.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroButton1
             // 
@@ -246,7 +273,7 @@
             // nextBtn
             // 
             this.nextBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nextBtn.Location = new System.Drawing.Point(656, 646);
+            this.nextBtn.Location = new System.Drawing.Point(622, 646);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(121, 41);
             this.nextBtn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -280,7 +307,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_14.Location = new System.Drawing.Point(657, 578);
+            this.result_14.Location = new System.Drawing.Point(623, 578);
             this.result_14.Name = "result_14";
             this.result_14.Size = new System.Drawing.Size(121, 25);
             this.result_14.TabIndex = 14;
@@ -297,7 +324,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_13.Location = new System.Drawing.Point(657, 528);
+            this.result_13.Location = new System.Drawing.Point(623, 528);
             this.result_13.Name = "result_13";
             this.result_13.Size = new System.Drawing.Size(121, 25);
             this.result_13.TabIndex = 13;
@@ -314,7 +341,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_12.Location = new System.Drawing.Point(657, 460);
+            this.result_12.Location = new System.Drawing.Point(623, 460);
             this.result_12.Name = "result_12";
             this.result_12.Size = new System.Drawing.Size(121, 25);
             this.result_12.TabIndex = 12;
@@ -331,7 +358,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_11.Location = new System.Drawing.Point(657, 429);
+            this.result_11.Location = new System.Drawing.Point(623, 429);
             this.result_11.Name = "result_11";
             this.result_11.Size = new System.Drawing.Size(121, 25);
             this.result_11.TabIndex = 11;
@@ -348,7 +375,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_10.Location = new System.Drawing.Point(657, 397);
+            this.result_10.Location = new System.Drawing.Point(623, 397);
             this.result_10.Name = "result_10";
             this.result_10.Size = new System.Drawing.Size(121, 25);
             this.result_10.TabIndex = 10;
@@ -365,7 +392,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_9.Location = new System.Drawing.Point(657, 366);
+            this.result_9.Location = new System.Drawing.Point(623, 366);
             this.result_9.Name = "result_9";
             this.result_9.Size = new System.Drawing.Size(121, 25);
             this.result_9.TabIndex = 9;
@@ -382,7 +409,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_8.Location = new System.Drawing.Point(657, 319);
+            this.result_8.Location = new System.Drawing.Point(623, 319);
             this.result_8.Name = "result_8";
             this.result_8.Size = new System.Drawing.Size(121, 25);
             this.result_8.TabIndex = 8;
@@ -399,7 +426,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_7.Location = new System.Drawing.Point(657, 257);
+            this.result_7.Location = new System.Drawing.Point(623, 257);
             this.result_7.Name = "result_7";
             this.result_7.Size = new System.Drawing.Size(121, 25);
             this.result_7.TabIndex = 7;
@@ -416,7 +443,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_6.Location = new System.Drawing.Point(657, 226);
+            this.result_6.Location = new System.Drawing.Point(623, 226);
             this.result_6.Name = "result_6";
             this.result_6.Size = new System.Drawing.Size(121, 25);
             this.result_6.TabIndex = 6;
@@ -433,7 +460,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_5.Location = new System.Drawing.Point(657, 195);
+            this.result_5.Location = new System.Drawing.Point(623, 195);
             this.result_5.Name = "result_5";
             this.result_5.Size = new System.Drawing.Size(121, 25);
             this.result_5.TabIndex = 5;
@@ -450,7 +477,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_4.Location = new System.Drawing.Point(657, 145);
+            this.result_4.Location = new System.Drawing.Point(623, 145);
             this.result_4.Name = "result_4";
             this.result_4.Size = new System.Drawing.Size(121, 25);
             this.result_4.TabIndex = 4;
@@ -467,7 +494,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_3.Location = new System.Drawing.Point(657, 114);
+            this.result_3.Location = new System.Drawing.Point(623, 114);
             this.result_3.Name = "result_3";
             this.result_3.Size = new System.Drawing.Size(121, 25);
             this.result_3.TabIndex = 3;
@@ -484,7 +511,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_2.Location = new System.Drawing.Point(657, 84);
+            this.result_2.Location = new System.Drawing.Point(623, 84);
             this.result_2.Name = "result_2";
             this.result_2.Size = new System.Drawing.Size(121, 25);
             this.result_2.TabIndex = 2;
@@ -501,7 +528,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_1.Location = new System.Drawing.Point(657, 38);
+            this.result_1.Location = new System.Drawing.Point(623, 38);
             this.result_1.Name = "result_1";
             this.result_1.Size = new System.Drawing.Size(121, 25);
             this.result_1.TabIndex = 1;
@@ -663,7 +690,7 @@
             this.commentsTab.HorizontalScrollbarSize = 10;
             this.commentsTab.Location = new System.Drawing.Point(4, 38);
             this.commentsTab.Name = "commentsTab";
-            this.commentsTab.Size = new System.Drawing.Size(798, 559);
+            this.commentsTab.Size = new System.Drawing.Size(798, 548);
             this.commentsTab.TabIndex = 2;
             this.commentsTab.Text = "Comments";
             this.commentsTab.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -679,26 +706,6 @@
             this.listBox1.ForeColor = System.Drawing.Color.White;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 18;
-            this.listBox1.Items.AddRange(new object[] {
-            "FLUKE PROSIM 3 VITAL SIGN SIMULATOR (SN 3102018)",
-            "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 2629025)",
-            "FLUKE ESA620 ELECTRICAL SAFETY ANALYSER (SN 3357047)",
-            "DALE 3000 ELECTROSURGICAL ANALYSER (SN 0485)",
-            "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 22811)",
-            "PRONK TECHNOLOGIES SIMCUBE SC-5 (SN5813)",
-            "HUATO HE704 THERMOMETER (SN HE20103717)",
-            "OXITEST PLUS 7 PULSE OXIMETER TESTER (SN D0S04090718)",
-            "TSI 4000 SERIES SPIROMETER (SN 40401327005)",
-            "NETECH UNIMANO PRESSURE/VACCUM METER (SN 15377)",
-            "FLUKE VT305 GAS FLOW ANALYSER (SN BF102055)",
-            "OHAUS SCOUT PRO SCALES (SN 7132081821)",
-            "INFUTESTER SOLO INFUSION ANALYSER (SN 1504120001)",
-            "FLUKE VT02 VISUAL IR THERMOMETER (SN VT02-13064149)",
-            "FLUKE 117 (SN 23092259)",
-            "BIO-TEK ULTRASOUND WATTMETER UW-11 (SN 0309)",
-            "COOL TECH CT-960 RCD TESTER (SN 10019363)",
-            "RIKEN F1-21 GAS DETECTOR TYPE O5 (SN 499030026)",
-            "NETECH DELTA 3000 DEFIBRILLATOR/PACER ANALYSER (SN 19478)"});
             this.listBox1.Location = new System.Drawing.Point(-3, 105);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -786,33 +793,6 @@
             this.metroLabel3.TabIndex = 39;
             this.metroLabel3.Text = "Comments:";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // overall
-            // 
-            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.overall.FormattingEnabled = true;
-            this.overall.ItemHeight = 19;
-            this.overall.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.overall.Location = new System.Drawing.Point(656, 609);
-            this.overall.Name = "overall";
-            this.overall.Size = new System.Drawing.Size(121, 25);
-            this.overall.TabIndex = 47;
-            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.overall.UseSelectable = true;
-            // 
-            // metroLabel23
-            // 
-            this.metroLabel23.AutoSize = true;
-            this.metroLabel23.Location = new System.Drawing.Point(18, 615);
-            this.metroLabel23.Name = "metroLabel23";
-            this.metroLabel23.Size = new System.Drawing.Size(89, 19);
-            this.metroLabel23.TabIndex = 46;
-            this.metroLabel23.Text = "Overall Result";
-            this.metroLabel23.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // PhilipsMonitors
             // 

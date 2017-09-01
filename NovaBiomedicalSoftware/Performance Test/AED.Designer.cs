@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AED));
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.nextBtn = new MetroFramework.Controls.MetroButton();
             this.close1_btn = new MetroFramework.Controls.MetroButton();
             this.result_4 = new MetroFramework.Controls.MetroComboBox();
             this.result_3 = new MetroFramework.Controls.MetroComboBox();
-            this.result_2 = new MetroFramework.Controls.MetroComboBox();
             this.result_1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
@@ -48,7 +48,7 @@
             this.close3_btn = new MetroFramework.Controls.MetroButton();
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.result_2 = new MetroFramework.Controls.MetroTextBox();
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
@@ -69,12 +69,12 @@
             // 
             // performanceVerification
             // 
+            this.performanceVerification.Controls.Add(this.result_2);
             this.performanceVerification.Controls.Add(this.metroButton1);
             this.performanceVerification.Controls.Add(this.nextBtn);
             this.performanceVerification.Controls.Add(this.close1_btn);
             this.performanceVerification.Controls.Add(this.result_4);
             this.performanceVerification.Controls.Add(this.result_3);
-            this.performanceVerification.Controls.Add(this.result_2);
             this.performanceVerification.Controls.Add(this.result_1);
             this.performanceVerification.Controls.Add(this.metroLabel10);
             this.performanceVerification.Controls.Add(this.metroLabel4);
@@ -94,6 +94,18 @@
             this.performanceVerification.VerticalScrollbarBarColor = true;
             this.performanceVerification.VerticalScrollbarHighlightOnWheel = false;
             this.performanceVerification.VerticalScrollbarSize = 10;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.metroButton1.Location = new System.Drawing.Point(0, 0);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(798, 23);
+            this.metroButton1.TabIndex = 38;
+            this.metroButton1.Text = "Pass All";
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // nextBtn
             // 
@@ -156,23 +168,6 @@
             this.result_3.TabIndex = 11;
             this.result_3.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.result_3.UseSelectable = true;
-            // 
-            // result_2
-            // 
-            this.result_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.result_2.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.result_2.FormattingEnabled = true;
-            this.result_2.ItemHeight = 19;
-            this.result_2.Items.AddRange(new object[] {
-            "Pass",
-            "Fail",
-            "N/A"});
-            this.result_2.Location = new System.Drawing.Point(674, 92);
-            this.result_2.Name = "result_2";
-            this.result_2.Size = new System.Drawing.Size(121, 25);
-            this.result_2.TabIndex = 11;
-            this.result_2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.result_2.UseSelectable = true;
             // 
             // result_1
             // 
@@ -373,17 +368,36 @@
             this.metroLabel3.Text = "Parts and Comments:";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // metroButton1
+            // result_2
             // 
-            this.metroButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.metroButton1.Location = new System.Drawing.Point(0, 0);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(798, 23);
-            this.metroButton1.TabIndex = 38;
-            this.metroButton1.Text = "Pass All";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // 
+            // 
+            this.result_2.CustomButton.Image = null;
+            this.result_2.CustomButton.Location = new System.Drawing.Point(97, 1);
+            this.result_2.CustomButton.Name = "";
+            this.result_2.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.result_2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.result_2.CustomButton.TabIndex = 1;
+            this.result_2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.result_2.CustomButton.UseSelectable = true;
+            this.result_2.CustomButton.Visible = false;
+            this.result_2.Lines = new string[0];
+            this.result_2.Location = new System.Drawing.Point(674, 94);
+            this.result_2.MaxLength = 32767;
+            this.result_2.Name = "result_2";
+            this.result_2.PasswordChar = '\0';
+            this.result_2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.result_2.SelectedText = "";
+            this.result_2.SelectionLength = 0;
+            this.result_2.SelectionStart = 0;
+            this.result_2.ShortcutsEnabled = true;
+            this.result_2.Size = new System.Drawing.Size(121, 25);
+            this.result_2.TabIndex = 39;
+            this.result_2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.result_2.UseSelectable = true;
+            this.result_2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.result_2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // AED
             // 
@@ -416,7 +430,6 @@
         private MetroFramework.Controls.MetroButton close1_btn;
         private MetroFramework.Controls.MetroComboBox result_4;
         private MetroFramework.Controls.MetroComboBox result_3;
-        private MetroFramework.Controls.MetroComboBox result_2;
         private MetroFramework.Controls.MetroComboBox result_1;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel4;
@@ -430,5 +443,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.ListBox listBox1;
         private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroTextBox result_2;
     }
 }

@@ -21,7 +21,7 @@ namespace NovaBiomedicalSoftware
 
         public bool YesNoSaveDestination;
 
-        public static string currentUser;
+        public static string currentUser, clientName;
 
         //public static string appRootDir = new DirectoryInfo(Environment.CurrentDirectory).FullName;
         public static string saveDestination;
@@ -69,13 +69,14 @@ namespace NovaBiomedicalSoftware
 
         private void submit_btn_Click(object sender, EventArgs e)
         {
-            if (userName.Text == "")
+            if (userName.Text == "" || clientBox.Text=="")
             {
-                MetroFramework.MetroMessageBox.Show(this, "", "Select your Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroFramework.MetroMessageBox.Show(this, "", "Please fill in the details required", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 currentUser = userName.Text;
+                clientName = clientBox.Text;
                 if (YesNoSaveDestination != true)
                 {
                     while (YesNoSaveDestination != true)
