@@ -8086,7 +8086,10 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             }
         }
         private void ClearPanelValues()
-        {
+        
+            /// <summary>
+            /// 
+            /// </summary>
             labelAnsurVersion.Text = "";
             labelM1.Text = "";
             labelM2.Text = "";
