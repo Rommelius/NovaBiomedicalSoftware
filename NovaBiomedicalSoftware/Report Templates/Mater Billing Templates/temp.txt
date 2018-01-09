@@ -1,0 +1,322 @@
+Asset ID-112777----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-108889----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-117258----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-117256----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-117257----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-TABA010----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-142372----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-142374----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-142373----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-142375----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-142381----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-142379----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-PLUGPACK----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-142380----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-PLUGPACK----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-140927----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-158845----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-111452----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-UNKNOWN----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-TABA015----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-145442----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-151078----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-100875----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-163081----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-PLUGPACK----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-142286----
+Test sequence- Class II - No Applied Parts
+Asset ID-RCD----
+Test sequence- Cable - Class I
+Asset ID-136552----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-122657----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-163082----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-163084----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-PLUGPACK----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-100902----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-100863----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-163080----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-144394----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-122766----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-143067----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-169149----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-119458----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-123068----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-BME EST----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-136292----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-136243----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-BME EST----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-122829----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-132626----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-BME EST----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-151075----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-136249----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-BME EST----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-PSANA007----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-136282----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-BME EST----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-100948----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-107017----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-155369----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-PLUGPACK----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-135358----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-151955----
+Test sequence- Class II - No Applied Parts
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-163079----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-162010----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-100869----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-100926----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-100911----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-163076----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-PLUGPACK----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-PLUGPACK----
+Test sequence- Class II - Plug Packs
+Asset ID-163077----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-162008----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-100861----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-100862----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Detachable Cable
+Asset ID-163078----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-PLUGPACK----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Class I - No Applied Parts Fixed Cable
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-CABLE----
+Test sequence- Cable - Class I
+Asset ID-PLUGPACK----
+Test sequence- Class II - Plug Packs

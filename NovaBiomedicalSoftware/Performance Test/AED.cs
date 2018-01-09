@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using System.IO.Ports;
+using System.IO;
 
 namespace NovaBiomedicalSoftware.Performance_Test
 {
     public partial class AED : MetroForm
     {
+        public static SerialPort mySerialPort;
         public bool AEDTest_Submit;
 
         public static string result1, result2, result3, result4, performanceresult;
@@ -50,6 +53,13 @@ namespace NovaBiomedicalSoftware.Performance_Test
         {
             commentBox.Width = safetyCheck.Width - 10;
             listBox1.Width = safetyCheck.Width - 10;
+        }
+
+        private void netechTestBtn_Click(object sender, EventArgs e)
+        {
+            ConnectToSerial();
+            mySerialPort.WriteLine("PRN");
+            Console.WriteLine(mySerialPort.ReadExisting());
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -102,5 +112,43 @@ namespace NovaBiomedicalSoftware.Performance_Test
                 testequipment.Add(item.ToString());
             }
         }
+
+        private void ConnectToSerial()
+        {
+            mySerialPort = new SerialPort();
+
+            //serial setup
+            mySerialPort.PortName = "COM8";
+            mySerialPort.BaudRate = 9600;
+            mySerialPort.Parity = Parity.None;
+            mySerialPort.DataBits = 8;
+            mySerialPort.StopBits = StopBits.One;
+            mySerialPort.Handshake = Handshake.XOnXOff;
+            mySerialPort.DtrEnable = true;
+            mySerialPort.RtsEnable = true;
+
+            try
+            {
+                mySerialPort.Close();
+                mySerialPort.Open();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Error - No Netech Defib Tester Found");
+
+                DialogResult noDefibTesterQuestion = MetroFramework.MetroMessageBox.Show(this, "", "Please connect the Netech Defib Tester on your computer and try again", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+
+                if (noDefibTesterQuestion == DialogResult.Retry)
+                {
+                    ConnectToSerial();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+        }
+
+
     }
 }

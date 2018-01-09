@@ -186,7 +186,7 @@
             this.result_15.CustomButton.UseSelectable = true;
             this.result_15.CustomButton.Visible = false;
             this.result_15.Lines = new string[0];
-            this.result_15.Location = new System.Drawing.Point(595, 772);
+            this.result_15.Location = new System.Drawing.Point(595, 778);
             this.result_15.MaxLength = 32767;
             this.result_15.Name = "result_15";
             this.result_15.PasswordChar = '\0';
@@ -250,7 +250,7 @@
             this.result_12.CustomButton.UseSelectable = true;
             this.result_12.CustomButton.Visible = false;
             this.result_12.Lines = new string[0];
-            this.result_12.Location = new System.Drawing.Point(595, 556);
+            this.result_12.Location = new System.Drawing.Point(595, 562);
             this.result_12.MaxLength = 32767;
             this.result_12.Name = "result_12";
             this.result_12.PasswordChar = '\0';
@@ -282,7 +282,7 @@
             this.result_10.CustomButton.UseSelectable = true;
             this.result_10.CustomButton.Visible = false;
             this.result_10.Lines = new string[0];
-            this.result_10.Location = new System.Drawing.Point(595, 491);
+            this.result_10.Location = new System.Drawing.Point(595, 497);
             this.result_10.MaxLength = 32767;
             this.result_10.Name = "result_10";
             this.result_10.PasswordChar = '\0';
@@ -314,7 +314,7 @@
             this.result_9.CustomButton.UseSelectable = true;
             this.result_9.CustomButton.Visible = false;
             this.result_9.Lines = new string[0];
-            this.result_9.Location = new System.Drawing.Point(595, 456);
+            this.result_9.Location = new System.Drawing.Point(595, 462);
             this.result_9.MaxLength = 32767;
             this.result_9.Name = "result_9";
             this.result_9.PasswordChar = '\0';
@@ -429,9 +429,10 @@
             // metroLabel31
             // 
             this.metroLabel31.AutoSize = true;
+            this.metroLabel31.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel31.Location = new System.Drawing.Point(19, 809);
             this.metroLabel31.Name = "metroLabel31";
-            this.metroLabel31.Size = new System.Drawing.Size(130, 19);
+            this.metroLabel31.Size = new System.Drawing.Size(149, 19);
             this.metroLabel31.TabIndex = 59;
             this.metroLabel31.Text = "Overall Performance";
             this.metroLabel31.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -488,7 +489,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.overall.Location = new System.Drawing.Point(595, 803);
+            this.overall.Location = new System.Drawing.Point(595, 809);
             this.overall.Name = "overall";
             this.overall.Size = new System.Drawing.Size(121, 25);
             this.overall.TabIndex = 52;
@@ -668,7 +669,7 @@
             "Pass",
             "Fail",
             "N/A"});
-            this.result_11.Location = new System.Drawing.Point(595, 522);
+            this.result_11.Location = new System.Drawing.Point(595, 528);
             this.result_11.Name = "result_11";
             this.result_11.Size = new System.Drawing.Size(121, 25);
             this.result_11.TabIndex = 11;
@@ -775,9 +776,9 @@
             this.metroLabel14.AutoSize = true;
             this.metroLabel14.Location = new System.Drawing.Point(19, 562);
             this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(439, 19);
+            this.metroLabel14.Size = new System.Drawing.Size(448, 19);
             this.metroLabel14.TabIndex = 3;
-            this.metroLabel14.Text = "Valve Test. Set to 280mmHg. Closed Valves: OFF. Displayed value 10mmHg";
+            this.metroLabel14.Text = "Valve Test. Set to 280mmHg. Closed Valves: OFF. Displayed value <10mmHg";
             this.metroLabel14.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroLabel1

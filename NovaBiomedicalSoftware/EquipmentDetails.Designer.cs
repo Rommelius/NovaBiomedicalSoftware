@@ -295,7 +295,7 @@
             this.clearBtn.Location = new System.Drawing.Point(23, 288);
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(141, 44);
-            this.clearBtn.TabIndex = 105;
+            this.clearBtn.TabIndex = 106;
             this.clearBtn.Text = "Clear";
             this.clearBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.clearBtn.UseSelectable = true;
@@ -306,7 +306,7 @@
             this.submitBtn.Location = new System.Drawing.Point(231, 288);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(141, 44);
-            this.submitBtn.TabIndex = 104;
+            this.submitBtn.TabIndex = 105;
             this.submitBtn.Text = "Submit";
             this.submitBtn.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.submitBtn.UseSelectable = true;
@@ -337,7 +337,7 @@
             this.typeBox.SelectionStart = 0;
             this.typeBox.ShortcutsEnabled = true;
             this.typeBox.Size = new System.Drawing.Size(198, 25);
-            this.typeBox.TabIndex = 111;
+            this.typeBox.TabIndex = 104;
             this.typeBox.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.typeBox.UseSelectable = true;
             this.typeBox.Visible = false;

@@ -94,6 +94,12 @@
     <Compile Include="AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlarisSoftwareManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlarisSoftwareManagementForm.Designer.cs">
+      <DependentUpon>AlarisSoftwareManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AppliedPartsSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
       <DependentUpon>BatteryChecker.cs</DependentUpon>
     </Compile>
     <Compile Include="COMFinder.cs" />
+    <Compile Include="CreateSpreadsheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSpreadsheet.Designer.cs">
+      <DependentUpon>CreateSpreadsheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="EquipmentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +240,12 @@
     <Compile Include="Performance Test\ExaminationLightForm.Designer.cs">
       <DependentUpon>ExaminationLightForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\ExergenIRThermometer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\ExergenIRThermometer.Designer.cs">
+      <DependentUpon>ExergenIRThermometer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\GenericECG.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +312,12 @@
     <Compile Include="Performance Test\NeoPuff.Designer.cs">
       <DependentUpon>NeoPuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\NursingCallSystems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\NursingCallSystems.Designer.cs">
+      <DependentUpon>NursingCallSystems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\Oxylog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,6 +354,12 @@
     <Compile Include="Performance Test\PhilipsCO2.Designer.cs">
       <DependentUpon>PhilipsCO2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Performance Test\PhilipsFMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\PhilipsFMS.Designer.cs">
+      <DependentUpon>PhilipsFMS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Performance Test\PhilipsMonitors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,6 +389,12 @@
     </Compile>
     <Compile Include="Performance Test\PulseOximeter2.Designer.cs">
       <DependentUpon>PulseOximeter2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Performance Test\RCD2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Performance Test\RCD2.Designer.cs">
+      <DependentUpon>RCD2.cs</DependentUpon>
     </Compile>
     <Compile Include="Performance Test\RCDForm.cs">
       <SubType>Form</SubType>
@@ -515,11 +551,17 @@
     <EmbeddedResource Include="AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AlarisSoftwareManagementForm.resx">
+      <DependentUpon>AlarisSoftwareManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AppliedPartsSelection.resx">
       <DependentUpon>AppliedPartsSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BatteryChecker.resx">
       <DependentUpon>BatteryChecker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateSpreadsheet.resx">
+      <DependentUpon>CreateSpreadsheet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EquipmentDetails.resx">
       <DependentUpon>EquipmentDetails.cs</DependentUpon>
@@ -581,6 +623,9 @@
     <EmbeddedResource Include="Performance Test\ExaminationLightForm.resx">
       <DependentUpon>ExaminationLightForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\ExergenIRThermometer.resx">
+      <DependentUpon>ExergenIRThermometer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\GenericECG.resx">
       <DependentUpon>GenericECG.cs</DependentUpon>
     </EmbeddedResource>
@@ -614,6 +659,9 @@
     <EmbeddedResource Include="Performance Test\NeoPuff.resx">
       <DependentUpon>NeoPuff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\NursingCallSystems.resx">
+      <DependentUpon>NursingCallSystems.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\Oxylog.resx">
       <DependentUpon>Oxylog.cs</DependentUpon>
     </EmbeddedResource>
@@ -632,6 +680,9 @@
     <EmbeddedResource Include="Performance Test\PhilipsCO2.resx">
       <DependentUpon>PhilipsCO2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\PhilipsFMS.resx">
+      <DependentUpon>PhilipsFMS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\PhilipsMonitors.resx">
       <DependentUpon>PhilipsMonitors.cs</DependentUpon>
     </EmbeddedResource>
@@ -646,6 +697,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\PulseOximeter2.resx">
       <DependentUpon>PulseOximeter2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Performance Test\RCD2.resx">
+      <DependentUpon>RCD2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Performance Test\RCDForm.resx">
       <DependentUpon>RCDForm.cs</DependentUpon>
@@ -763,6 +817,11 @@
     <None Include="Report Templates\APCLASS1-TEMPLATE2.docx" />
     <None Include="Report Templates\APCLASS2-TEMPLATE.docx" />
     <None Include="Report Templates\APCLASS2-TEMPLATE2.docx" />
+    <None Include="Report Templates\ASM Templates\ALARIS 8015 TEMPLATE.docx" />
+    <None Include="Report Templates\ASM Templates\ALARIS 8100 TEMPLATE.docx" />
+    <None Include="Report Templates\ASM Templates\ALARIS 8110 TEMPLATE.docx" />
+    <None Include="Report Templates\ASNZ3760CLASS1-TEMPLATE.docx" />
+    <None Include="Report Templates\ASNZ3760CLASS2-TEMPLATE.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE1.docx" />
     <None Include="Report Templates\ASNZCLASS1-TEMPLATE2.docx" />
     <None Include="Report Templates\ASNZCLASS2-TEMPLATE.docx" />
@@ -775,6 +834,11 @@
     <None Include="Report Templates\Edan Doppler-TEMPLATE.docx" />
     <None Include="Report Templates\Electric Suction-TEMPLATE.docx" />
     <None Include="Report Templates\ExaminationLight-TEMPLATE.docx" />
+    <None Include="Report Templates\Excel Templates\Excel Creator.xlsx" />
+    <None Include="Report Templates\Excel Templates\Listofequipment.docx" />
+    <None Include="Report Templates\Excel Templates\temp.docx" />
+    <None Include="Report Templates\ExergenIRThermometer-TEMPLATE.docx" />
+    <None Include="Report Templates\FMSRacks.docx" />
     <None Include="Report Templates\Gas Panel Templates\Medical Gas Type TEMPLATE.docx" />
     <None Include="Report Templates\Gas Panel Templates\MedicalGasPanel-TEMPLATE.docx" />
     <None Include="Report Templates\Gas Panel Templates\MedicalPanelWallSuction-TEMPLATE.docx" />
@@ -785,8 +849,10 @@
     <None Include="Report Templates\InfantTransportIncubator-TEMPLATE.docx" />
     <None Include="Report Templates\ISTAT-TEMPLATE.docx" />
     <None Include="Report Templates\Manifold-TEMPLATE.docx" />
+    <None Include="Report Templates\Mater Billing Templates\MaterBillingTEMPLATE.docx" />
     <None Include="Report Templates\Neopuff-TEMPLATE.docx" />
     <None Include="Report Templates\NIBP Monitor-TEMPLATE.docx" />
+    <None Include="Report Templates\NusingCallSystems-TEMPLATE.docx" />
     <None Include="Report Templates\Oxy Viva Resus Box-TEMPLATE.docx" />
     <None Include="Report Templates\Oxylog-TEMPLATE.docx" />
     <None Include="Report Templates\Philips MRx Defibrillator-TEMPLATE.docx" />
@@ -814,6 +880,7 @@
     <None Include="Report Templates\QAS Templates\Sphygmo Wall-TEMPLATE.docx" />
     <None Include="Report Templates\QAS Templates\Twin-O-Vac Suction Device-TEMPLATE.docx" />
     <None Include="Report Templates\RCD-TEMPLATE.docx" />
+    <None Include="Report Templates\RCD2-TEMPLATE.docx" />
     <None Include="Report Templates\Regulator-TEMPLATE.docx" />
     <None Include="Report Templates\Scales-TEMPLATE.docx" />
     <None Include="Report Templates\Soft Pack Rescue Bag-TEMPLATE.docx" />
@@ -866,6 +933,7 @@
     <None Include="Resources\typeCF.png" />
     <None Include="Resources\typeBF.png" />
     <None Include="Resources\typeB.png" />
+    <Content Include="Signatures\Eric Chu.png" />
     <Content Include="Signatures\Joe Welch.png" />
     <Content Include="Signatures\Ken Welch.png" />
     <Content Include="Signatures\Khoi Duong.png" />
@@ -895,6 +963,15 @@
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>

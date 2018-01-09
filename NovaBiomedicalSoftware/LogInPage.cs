@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using System.IO;
 using System.Reflection;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace NovaBiomedicalSoftware
 {
@@ -53,19 +55,14 @@ namespace NovaBiomedicalSoftware
             }
         }
 
-        private void btnAdduser_Click(object sender, EventArgs e)
+
+        private void createSpreadsheet_Click(object sender, EventArgs e)
         {
-
-            AddUserForm newuser = new AddUserForm();
-
-            DialogResult newuserdg = newuser.ShowDialog();
-            if (newuserdg == DialogResult.Cancel)
-            {
-                userName.Items.Clear();
-                listUserNames.Clear();
-                loadUserName();
-            }
+            CreateSpreadsheet _main = new CreateSpreadsheet();
+            _main.Show();
         }
+
+
 
         private void submit_btn_Click(object sender, EventArgs e)
         {

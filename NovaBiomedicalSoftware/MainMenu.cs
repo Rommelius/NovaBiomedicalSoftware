@@ -21,6 +21,9 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.CSharp;
 using Microsoft.Office.Core;
 using NovaBiomedicalSoftware.Gas_Panel_Test;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+
 
 namespace NovaBiomedicalSoftware
 {
@@ -52,7 +55,26 @@ namespace NovaBiomedicalSoftware
         #endregion
         //Global Variables
         #region Global Variables
+        public static List<string> editedList = new List<string>();
+        public static List<string> oddLines = new List<string>();
+        public static List<string> evenLines = new List<string>();
+        public static List<string> combinedLines = new List<string>();
+        public static List<string> assetIDListClassIinit = new List<string>();
+        public static List<string> assetIDListClassIIinit = new List<string>();
+        public static List<string> assetIDListClassIfinal = new List<string>();
+        public static List<string> assetIDListClassIIfinal = new List<string>();
+        public static int classIcounter;
+        public static int classIIcounter;
+        public static int classICableBillablecounter;
+        public static int classIIPlugPacksBillablecounter;
+        public static int numberoflinescounter2;
+        public static string path;
+        public static string editedPath = MainMenu.appRootDir + "/Report Templates/Mater Billing Templates/temp.txt";
+        public static string justFileName;
 
+        public static List<string> pdfFileNames = new List<string>();
+        public static int counterForPDFFileNames = 1;
+        public static string folderLocationPDFFilesNames;
 
         public static List<string> testequipmentlist = new List<string>();
         public static bool PerformElectricalSafetyTest, PerformPerformanceTest, PerformBothTest, PerformQAS;
@@ -64,7 +86,8 @@ namespace NovaBiomedicalSoftware
             PTOxyVivaCompleted, PTSoftPackRescueCompleted, PTOxylogCompleted, PTtwinOvac2Completed, PTNeopuffCompleted, PTiStatCompleted, PTbelmontFluidCompleted, PTVaccumValveCompleted,
             PTWallSuctionCompleted, PTThroatCameraCompleted, PTInfantTransportCompleted, PTElectricSuction2Completed, PTBloodGlucoseCompleted, PTInfusorSpaceCompleted, PTRCDCompleted,
             PTAespire7900Completed, PTAlarisSyringePumpCompleted, PTBodyGuardPumpCompleted,PTAlarisInfusionCompleted,PTExaminationLightCompleted,
-            PTPhilipsCOCompleted, PTPhilipsCO2Completed, PTPhilipsNMTCompleted, PTPhilipsMXMonitorCompleted, PTPhilipsX2X3Completed;
+            PTPhilipsCOCompleted, PTPhilipsCO2Completed, PTPhilipsNMTCompleted, PTPhilipsMXMonitorCompleted, PTPhilipsX2X3Completed, PTPhilipsFMSCompleted, PTRCD2Completed, PTNursingCompeleted, PTExergenIRCompleted;
+        public bool class13760test, class23760test;
         public bool medicalGasCompleted;
         public bool QASTestisDone;
         public bool typeCF, typeBF, typeB;
@@ -81,14 +104,210 @@ namespace NovaBiomedicalSoftware
             mainsContactCurrentFailed;
         public static string currentUser, saveDestination, typeName;
         public static SerialPort mySerialPort;
-        DateTime date = DateTime.Today;
         public string kindofPerformanceTest, ESTResults, COMPORTNUMBER, _kindofElectricalSafetyTest, _earthResistance, _versionNumber, _MV1, _MV2, _MV3, _insulationResistance,
             _EL1, _EL2, _EnL1, _EnL2, _EnL3, _EnL4, _EnL5, _EnL6, PLT1, PLT2, PLT3, SFN, _PTSResult, _currentCOMPort, set_sig, _PLC1, _PLC2, _PLC3, _MMC;
 
 
         public static bool eletricaltestYes, bothtestYes;
+
+        private void createExcel_btn_Click(object sender, EventArgs e)
+        {
+            ExitWord();
+
+            CreateSpreadsheet _main = new CreateSpreadsheet();
+            _main.Show();
+        }
+
+        public void PDF2Excel()
+        {
+            DirectoryInfo d = new DirectoryInfo(folderLocationPDFFilesNames);
+            FileInfo[] Files = d.GetFiles("*.pdf");
+            string str = "";
+            string heading = "Asset Number, Serial Number,Model,Manufacturer,Location";
+            pdfFileNames.Add(heading);
+
+            foreach (FileInfo file in Files)
+            {
+                if (file.Name.Contains("Electrical Safety Test and Performance Test.pdf") ||
+                    file.Name.Contains("Electrical Safety Test Report.pdf") ||
+                    file.Name.Contains("Performance Test Report.pdf"))
+                {
+                    str = file.Name;
+                    str = str.Replace('~', ',');
+                    str = str.Replace("Electrical Safety Test and Performance Test.pdf", "");
+                    str = str.Replace("Electrical Safety Test Report.pdf", "");
+                    str = str.Replace("Performance Test Report.pdf", "");
+                    str = str.Remove(str.Length - 1);
+                    pdfFileNames.Add(str);
+                }
+            }
+            ExcelAutomation();
+
+
+        }
+
+        public void ExcelAutomation()
+        {
+            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+
+            foreach (string item in pdfFileNames)
+            {
+                xlWorkSheet.Cells[counterForPDFFileNames, 1] = item;
+                counterForPDFFileNames++;
+            }
+
+            Array fieldInfoArray = new int[,] { { 1, 2 }, { 2, 2 }, { 3, 2 }, { 4, 2 }, { 5, 2 } };
+
+            xlWorkSheet.Range["A1", ("A" + xlWorkSheet.UsedRange.Rows.Count)].TextToColumns(Type.Missing,
+                Excel.XlTextParsingType.xlDelimited,
+                Excel.XlTextQualifier.xlTextQualifierDoubleQuote,
+                true,        // Consecutive Delimiter
+                Type.Missing,// Tab
+                Type.Missing,// Semicolon
+                true,        // Comma
+                false,       // Space
+                Type.Missing,// Other
+                ",",         // Other Char
+                fieldInfoArray,// Field Info
+                Type.Missing,// Decimal Separator
+                Type.Missing,// Thousands Separator
+                Type.Missing);// Trailing Minus Numbers 
+
+
+            xlWorkSheet.Range["A1:E1"].Style = "Neutral";
+            xlWorkSheet.Range["A1:E1"].Font.Bold = true;
+            xlWorkSheet.Range["A1:E1"].Font.Size = 14;
+
+            Excel.Range AllColumns = xlWorkSheet.UsedRange;
+            AllColumns.Columns.AutoFit();
+
+            xlWorkBook.SaveAs(saveDestination+"\\"+LogInPage.clientName+".xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+
+            MetroFramework.MetroMessageBox.Show(this, "", "Excel File is Created at " + saveDestination + "\\" + LogInPage.clientName + ".xlsx", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Marshal.ReleaseComObject(xlWorkSheet);
+            Marshal.ReleaseComObject(xlWorkBook);
+            Marshal.ReleaseComObject(xlApp);
+
+            counterForPDFFileNames = 1;
+            pdfFileNames.Clear();
+        }
+
+        private void asnz3760Class1_btn_Click(object sender, EventArgs e)
+        {
+            topPanel_right.Visible = true;
+            _programStatus.Visible = true;
+            class13760test = true;
+            el1.Visible = true;
+            el1Panel.Visible = true;
+            _PELabel.Visible = true;
+            PEPanel.Visible = true;
+            labelPE.Visible = true;
+            IRPanel.Visible = true;
+            labelIR.Visible = true;
+            PLC1.Visible = false;
+            PLC2.Visible = false;
+            PLC3.Visible = false;
+            PLCpanel1.Visible = false;
+            PLCpanel2.Visible = false;
+            PLCpanel3.Visible = false;
+            MCC.Visible = false;
+            MCCpanel.Visible = false;
+            el1.Visible = true;
+            el1Panel.Visible = true;
+            el2.Visible = false;
+            el2Panel.Visible = false;
+            tc1.Visible = false;
+            tc2.Visible = false;
+            tc3.Visible = false;
+            tc4.Visible = false;
+            tc5.Visible = false;
+            tc6.Visible = false;
+            tc1Panel.Visible = false;
+            tc2Panel.Visible = false;
+            tc3Panel.Visible = false;
+            tc4Panel.Visible = false;
+            tc5Panel.Visible = false;
+            tc6Panel.Visible = false;
+
+            statusBar.Show();
+            statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+            statusBar.MarqueeAnimationSpeed = 30;
+
+            _kindofElectricalSafetyTest = "AS NZS 3760 – Class 1";
+            Thread class13760NTest = new Thread(class1_3760NormalTest);
+
+            class13760NTest.Start();
+        }
+
+        private void asnz3760Class2_btn_Click(object sender, EventArgs e)
+        {
+            topPanel_right.Visible = true;
+            _programStatus.Visible = true;
+            class23760test = true;
+            el1.Visible = true;
+            el1Panel.Visible = true;
+            _PELabel.Visible = true;
+            PEPanel.Visible = true;
+            labelPE.Visible = true;
+            IRPanel.Visible = true;
+            labelIR.Visible = true;
+            PLC1.Visible = false;
+            PLC2.Visible = false;
+            PLC3.Visible = false;
+            PLCpanel1.Visible = false;
+            PLCpanel2.Visible = false;
+            PLCpanel3.Visible = false;
+            MCC.Visible = false;
+            MCCpanel.Visible = false;
+            el1.Visible = true;
+            el1Panel.Visible = true;
+            el2.Visible = false;
+            el2Panel.Visible = false;
+            tc1.Visible = false;
+            tc2.Visible = false;
+            tc3.Visible = false;
+            tc4.Visible = false;
+            tc5.Visible = false;
+            tc6.Visible = false;
+            tc1Panel.Visible = false;
+            tc2Panel.Visible = false;
+            tc3Panel.Visible = false;
+            tc4Panel.Visible = false;
+            tc5Panel.Visible = false;
+            tc6Panel.Visible = false;
+
+            statusBar.Show();
+            statusBar.ProgressBarStyle = ProgressBarStyle.Marquee;
+            statusBar.MarqueeAnimationSpeed = 30;
+
+            _kindofElectricalSafetyTest = "AS NZS 3760 – Class 2";
+            Thread class23760NTest = new Thread(class2_3760NormalTest);
+
+            class23760NTest.Start();
+        }
+
+
+
         //gas panel boolean
         public bool PTAirGasPanelCompleted, PTOxygenGasPanelCompleted, PTNitrousGasPanelCompleted, PTSuctionGasPanelCompleted, GasPanelTestisDone;
+
+        private void asmBtn_Click(object sender, EventArgs e)
+        {
+            AlarisSoftwareManagementForm window = new AlarisSoftwareManagementForm();
+            window.Show();
+        }
+
         public static List<string> Gastestequipment = new List<string>();
         public static List<string> removeDuplicatedGasTestEquipmentList = new List<string>();
 
@@ -97,7 +316,7 @@ namespace NovaBiomedicalSoftware
         #endregion
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
         public MainMenu()
         {
@@ -190,7 +409,10 @@ namespace NovaBiomedicalSoftware
             PTPhilipsNMTCompleted = false;
             PTPhilipsMXMonitorCompleted = false;
             PTPhilipsX2X3Completed = false;
-
+            PTPhilipsFMSCompleted = false;
+            PTRCD2Completed = false;
+            PTNursingCompeleted = false;
+            PTExergenIRCompleted = false;
 
             //get rid of all test equipment list
             ExaminationLightForm.testequipment.Clear();
@@ -206,6 +428,7 @@ namespace NovaBiomedicalSoftware
             GenericECG.testequipment.Clear();
             GenericNIBPMonitor.testequipment.Clear();
             GenericSphygmomanometer.testequipment.Clear();
+            GenericVitalsMonitor.testequipment.Clear();
             Genius2Thermometer.testequipment.Clear();
             HeineNT300.testequipment.Clear();
             infantTransport.testequipment.Clear();
@@ -233,11 +456,17 @@ namespace NovaBiomedicalSoftware
             PhilipsNMT.testequipment.Clear();
             PhilipsMXMonitor.testequipment.Clear();
             PhilipsX2X3.testequipment.Clear();
+            PhilipsFMS.testequipment.Clear();
+            RCD2.testequipment.Clear();
+            NursingCallSystems.testequipment.Clear();
+            ExergenIRThermometer.testequipment.Clear();
             //gas panel
             Gastestequipment.Clear();
 
             navigateToMainMenu();
         }
+
+
         private void _estBackButton_Click(object sender, EventArgs e)
         {
             navigateToMainMenu();
@@ -311,6 +540,11 @@ namespace NovaBiomedicalSoftware
 
             class1testBtn.Enabled = true;
             class2testBtn.Enabled = true;
+            APClass1.Enabled = true;
+            APClass2.Enabled = true;
+            asnz3760Class1_btn.Enabled = true;
+            asnz3760Class2_btn.Enabled = true;
+
 
             valuesPanel.Visible = true;
             tabMenu.Visible = true;
@@ -332,7 +566,6 @@ namespace NovaBiomedicalSoftware
             topPanel.Visible = true;
             statusBar.Visible = false;
 
-            bothtestYes = PerformBothTest;
             askForEquipmentDetails();
         }
         private void est_btn_Click(object sender, EventArgs e)
@@ -350,6 +583,10 @@ namespace NovaBiomedicalSoftware
 
             class1testBtn.Enabled = true;
             class2testBtn.Enabled = true;
+            APClass1.Enabled = true;
+            APClass2.Enabled = true;
+            asnz3760Class1_btn.Enabled = true;
+            asnz3760Class2_btn.Enabled = true;
 
             tabMenu.Visible = true;
             PerformElectricalSafetyTest = true;
@@ -367,7 +604,6 @@ namespace NovaBiomedicalSoftware
 
             eletricaltestYes = PerformElectricalSafetyTest;
             askForEquipmentDetails();
-            MessageBox.Show(EquipmentDetails.type.ToString());
 }
         private void pt_btn_Click(object sender, EventArgs e)
         {
@@ -395,6 +631,70 @@ namespace NovaBiomedicalSoftware
 
             askForEquipmentDetails();
         }
+
+        private void materBilling_Btn_Click(object sender, EventArgs e)
+        {
+            tabMenu.SelectedTab = materBillingPanel;
+            ExitWord();
+
+
+        }
+        private void materBillingBackBtn_Click(object sender, EventArgs e)
+        {
+            tabMenu.SelectedTab = _tabMainmenu;
+            ExitWord();
+            
+
+
+        }
+        private void openTxtFileBtn_Click(object sender, EventArgs e)
+        {
+            ExitWord();
+
+            openFileDialog.InitialDirectory = @"C:\";
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                textFileLocation.Text = openFileDialog.FileName;
+                path = openFileDialog.FileName;
+                justFileName = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
+                editedList.Clear();
+                oddLines.Clear();
+                evenLines.Clear();
+                combinedLines.Clear();
+                assetIDListClassIfinal.Clear();
+                assetIDListClassIIfinal.Clear();
+                assetIDListClassIIinit.Clear();
+                assetIDListClassIinit.Clear();
+                numberoflinescounter2 = 0;
+                classIcounter = 0;
+                classIIcounter=0;
+                classICableBillablecounter=0;
+                classIIPlugPacksBillablecounter=0;
+
+                if (File.Exists(appRootDir + "/Report Templates/Mater Billing Templates/temp.docx"))
+                {
+                    File.Delete(appRootDir + "/Report Templates/Mater Billing Templates/temp.docx");
+                }
+                File.Copy(appRootDir + "/Report Templates/Mater Billing Templates/MaterBillingTEMPLATE.docx", appRootDir + "/Report Templates/Mater Billing Templates/temp.docx");
+
+            }
+
+
+
+            materBillingProcess();
+
+        }
+
+        private void materBillingProcess()
+        {
+            GetRidofUnneccessaryInfo();
+            mergeToOneLine();
+            CounterYAY();
+            GetAllAssetID();
+        }
+
         private void askForEquipmentDetails()
         {
 
@@ -459,6 +759,10 @@ namespace NovaBiomedicalSoftware
             _QASTab.Enabled = false;
             valuesPanel.Visible = false;
             topPanel_right.Visible = false;
+            class1ASNZtest = false;
+            class2ASNZtest = false;
+            class1AppliedParts = false;
+            class2AppliedParts = false;
             try
             {
                 if (mySerialPort.IsOpen == true)
@@ -540,6 +844,30 @@ namespace NovaBiomedicalSoftware
 
                 }
             }
+            if (class13760test == true)
+            {
+                if (earthResistanceFailed == true || _insulationResistance == "FAILED" || earthLeakageFailed1 == true)
+                {
+                    ESTResults = "FAIL";
+                }
+                else
+                {
+                    ESTResults = "PASS";
+
+                }
+            }
+            if (class23760test == true)
+            {
+                if (earthResistanceFailed == true || _insulationResistance == "FAILED" || earthLeakageFailed1 == true)
+                {
+                    ESTResults = "FAIL";
+                }
+                else
+                {
+                    ESTResults = "PASS";
+
+                }
+            }
             if (class2ASNZtest == true)
             {
                 if (touchCurrentFailed1 == true || touchCurrentFailed1 == true || touchCurrentFailed2 == true
@@ -603,6 +931,8 @@ namespace NovaBiomedicalSoftware
                 class2testBtn.Enabled = false;
                 APClass1.Enabled = false;
                 APClass2.Enabled = false;
+                asnz3760Class1_btn.Enabled = false;
+                asnz3760Class2_btn.Enabled = false;
             }
 
 
@@ -724,7 +1054,72 @@ namespace NovaBiomedicalSoftware
 
             }
         }
+        private void CPA_btn_Click(object sender, EventArgs e)
+        {
+            while (PTRCD2Completed == false)
+            {
+                RCD2 window = new RCD2();
+                DialogResult windowsDR = window.ShowDialog();
+                if (windowsDR == DialogResult.Cancel)
+                {
+                    if (window.Test_Submit == true)
+                    {
+                        typeName = "Cardiac Protected Area";
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
 
+                        PTRCD2Completed = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private void philipsFMSBtn_Click(object sender, EventArgs e)
+        {
+            while (PTtestIsDone == false)
+            {
+                PhilipsFMS window = new PhilipsFMS();
+                DialogResult windowsDR = window.ShowDialog();
+                if (windowsDR == DialogResult.Cancel)
+                {
+                    if (window.philipsFMS_Submit == true)
+                    {
+                        typeName = "Philips FMS";
+                        yesNoPerformanceTest = true;
+                        PTtestIsDone = true;
+
+                        PTPhilipsFMSCompleted = true;
+                        createReport();
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            yesNoPerformanceTest = false;
+                            PTtestIsDone = false;
+
+                            MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         private void philipsX2X3Btn_Click(object sender, EventArgs e)
         {
             while (PTtestIsDone == false)
@@ -1511,6 +1906,41 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
+        private void exergen_btn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    ExergenIRThermometer dg = new ExergenIRThermometer();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            typeName = "Vitals Monitor";
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTExergenIRCompleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void genericVitalsMonitor_btn_Click(object sender, EventArgs e)
         {
             if (PerformPerformanceTest == true || PerformBothTest == true)
@@ -1715,6 +2145,43 @@ namespace NovaBiomedicalSoftware
                 }
             }
         }
+
+        private void nursingCall_btn_Click(object sender, EventArgs e)
+        {
+            if (PerformPerformanceTest == true || PerformBothTest == true)
+            {
+                while (PTtestIsDone == false)
+                {
+                    NursingCallSystems dg = new NursingCallSystems();
+                    DialogResult dialog1 = dg.ShowDialog();
+                    if (dialog1 == DialogResult.Cancel)
+                    {
+                        if (dg.Test_Submit == true)
+                        {
+                            typeName = "Nurse Call System";
+                            yesNoPerformanceTest = true;
+                            PTtestIsDone = true;
+                            PTNursingCompeleted = true;
+                            createReport();
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Continue?", "Performance test is not completed!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                yesNoPerformanceTest = false;
+                                PTtestIsDone = false;
+
+                                MetroFramework.MetroMessageBox.Show(this, "No Report will be generated", "Performance Test Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
         private void NeopuffBtn_Click(object sender, EventArgs e)
         {
             if (PerformPerformanceTest == true || PerformBothTest == true)
@@ -2651,6 +3118,24 @@ namespace NovaBiomedicalSoftware
                         labelPE.ForeColor = Color.Green;
                     }
                 }
+                else
+                {
+                    if (_earthResistance_double > 0.1)
+                    {
+                        earthResistanceFailed = true;
+                        //buttonPE.Visible = true;
+                        Thread.CurrentThread.Interrupt();
+                        labelPE.Text = _earthResistance_double.ToString() + " OHMS";
+                        labelPE.ForeColor = Color.Red;
+                        MetroFramework.MetroMessageBox.Show(this, "", "Earth Resistance Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        earthResistanceFailed = false;
+                        labelPE.Text = _earthResistance_double.ToString() + " OHMS";
+                        labelPE.ForeColor = Color.Green;
+                    }
+                }
 
 
             });
@@ -2732,64 +3217,91 @@ namespace NovaBiomedicalSoftware
             _EL1_double = Double.Parse(_el1_m.Value);
             this.Invoke((MethodInvoker)delegate
             {
-                if (_EL1_double > 500)
+                
+
+                if (class23760test==true)
                 {
-                    earthLeakageFailed1 = true;
-                    Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "", "Earth Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    labelEL1.Text = _EL1_double.ToString() + " uA";
-                    labelEL1.ForeColor = Color.Red;
-                    //buttonEL1.Visible = true;
+                    if (_EL1_double > 1000)
+                    {
+                        earthLeakageFailed1 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "", "Earth Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        labelEL1.Text = _EL1_double.ToString() + " uA";
+                        labelEL1.ForeColor = Color.Red;
+                        //buttonEL1.Visible = true;
+                    }
+                    else
+                    {
+                        earthLeakageFailed1 = false;
+                        labelEL1.Text = _EL1_double.ToString() + " uA";
+                    }
                 }
                 else
                 {
-                    earthLeakageFailed1 = false;
-                    labelEL1.Text = _EL1_double.ToString() + " uA";
+                    if (_EL1_double > 5000)
+                    {
+                        earthLeakageFailed1 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "", "Earth Leakage Current (Normal Condition) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        labelEL1.Text = _EL1_double.ToString() + " uA";
+                        labelEL1.ForeColor = Color.Red;
+                        //buttonEL1.Visible = true;
+                    }
+                    else
+                    {
+                        earthLeakageFailed1 = false;
+                        labelEL1.Text = _EL1_double.ToString() + " uA";
+                    }
                 }
+
             });
             mySerialPort.WriteLine("LOCAL");
             Thread.Sleep(5000);
 
-            //send command
-            mySerialPort.WriteLine("REMOTE");
-            Thread.Sleep(1000);
-            mySerialPort.WriteLine("STD=ASNZ");
-            Thread.Sleep(1000);
-            mySerialPort.WriteLine("EARTHL");
-            Thread.Sleep(1500);
-            mySerialPort.WriteLine("POL=N");
-            Thread.Sleep(1500);
-            mySerialPort.WriteLine("NEUT=O");
-            Thread.Sleep(1500);
-            mySerialPort.WriteLine("MODE=ACDC");
-            Thread.Sleep(1500);
-            mySerialPort.Close();
-            mySerialPort.Open();
-            mySerialPort.WriteLine("READ");
-            Thread.Sleep(1500);
-            _EL2 = mySerialPort.ReadExisting();
-            Match _el2_m = Regex.Match(_EL2, @"^-?\d*\.?\d*");
-            _EL2_double = Double.Parse(_el2_m.Value);
-            this.Invoke((MethodInvoker)delegate
+            if (class13760test!=true || class23760test !=true)
             {
-                if (_EL2_double > 1000)
+                //send command
+                mySerialPort.WriteLine("REMOTE");
+                Thread.Sleep(1000);
+                mySerialPort.WriteLine("STD=ASNZ");
+                Thread.Sleep(1000);
+                mySerialPort.WriteLine("EARTHL");
+                Thread.Sleep(1500);
+                mySerialPort.WriteLine("POL=N");
+                Thread.Sleep(1500);
+                mySerialPort.WriteLine("NEUT=O");
+                Thread.Sleep(1500);
+                mySerialPort.WriteLine("MODE=ACDC");
+                Thread.Sleep(1500);
+                mySerialPort.Close();
+                mySerialPort.Open();
+                mySerialPort.WriteLine("READ");
+                Thread.Sleep(1500);
+                _EL2 = mySerialPort.ReadExisting();
+                Match _el2_m = Regex.Match(_EL2, @"^-?\d*\.?\d*");
+                _EL2_double = Double.Parse(_el2_m.Value);
+                this.Invoke((MethodInvoker)delegate
                 {
-                    earthLeakageFailed2 = true;
-                    Thread.CurrentThread.Interrupt();
-                    MetroFramework.MetroMessageBox.Show(this, "", "Earth Leakage Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    labelEL2.Text = _EL2_double.ToString() + " uA";
-                    labelEL2.ForeColor = Color.Red;
-                    //buttonEL2.Visible = true;
-                }
-                else
-                {
-                    earthLeakageFailed2 = false;
-                    labelEL2.Text = _EL2_double.ToString() + " uA";
+                    if (_EL2_double > 1000)
+                    {
+                        earthLeakageFailed2 = true;
+                        Thread.CurrentThread.Interrupt();
+                        MetroFramework.MetroMessageBox.Show(this, "", "Earth Leakage Current (Open Neutral) Test Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        labelEL2.Text = _EL2_double.ToString() + " uA";
+                        labelEL2.ForeColor = Color.Red;
+                        //buttonEL2.Visible = true;
+                    }
+                    else
+                    {
+                        earthLeakageFailed2 = false;
+                        labelEL2.Text = _EL2_double.ToString() + " uA";
 
-                }
-            });
-            mySerialPort.WriteLine("LOCAL");
-            Thread.Sleep(5000);
+                    }
+                });
+                mySerialPort.WriteLine("LOCAL");
+                Thread.Sleep(5000);
+            }
+            
         }
         private void touchCurrent()
         {
@@ -3280,6 +3792,27 @@ namespace NovaBiomedicalSoftware
         }
         #endregion
         // Test Functions:
+        private void class1_3760NormalTest()
+        {
+            initialisedDevice();
+            getVersionNumber();
+            mainsVoltage();
+            earthResistance();
+            insulationResistance();
+            earthLeakage();
+            testComplete();
+        }
+        private void class2_3760NormalTest()
+        {
+            initialisedDevice();
+            getVersionNumber();
+            mainsVoltage();
+            earthResistance();
+            insulationResistance();
+            earthLeakage();
+            testComplete();
+        }
+
         private void class1NormalTest()
         {
             initialisedDevice();
@@ -3499,6 +4032,72 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                         break;
                     }
                 }
+                if (class13760test == true)
+                {
+                    buttonPE.Visible = true;
+                    buttonIR.Visible = true;
+                    buttonEL1.Visible = true;
+
+
+                    while (earthResistanceFailed == false && insulationResistanceFailed == false && earthLeakageFailed1 == false)
+                    {
+                        if (PerformBothTest == true)
+                        {
+                            _programStatus.Text = "Please select the equipment";
+                            valuesPanel.Visible = false;
+                            tabMenu.SelectedTab = _PerformanceTestTab;
+                            yesNoPerformanceTest = true;
+                        }
+
+                        if (PerformPerformanceTest == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            createReport();
+                        }
+
+                        if (PerformElectricalSafetyTest == true)
+                        {
+                            yesNoPerformanceTest = false;
+                            createReport();
+                        }
+
+                        break;
+                    }
+
+                }
+                if (class23760test == true)
+                {
+                    buttonPE.Visible = true;
+                    buttonIR.Visible = true;
+                    buttonEL1.Visible = true;
+
+
+                    while (earthResistanceFailed == false && insulationResistanceFailed == false && earthLeakageFailed1 == false)
+                    {
+                        if (PerformBothTest == true)
+                        {
+                            _programStatus.Text = "Please select the equipment";
+                            valuesPanel.Visible = false;
+                            tabMenu.SelectedTab = _PerformanceTestTab;
+                            yesNoPerformanceTest = true;
+                        }
+
+                        if (PerformPerformanceTest == true)
+                        {
+                            yesNoPerformanceTest = true;
+                            createReport();
+                        }
+
+                        if (PerformElectricalSafetyTest == true)
+                        {
+                            yesNoPerformanceTest = false;
+                            createReport();
+                        }
+
+                        break;
+                    }
+
+                }
 
 
             });
@@ -3529,15 +4128,18 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
             wDoc1.Activate();
             wordApp.Selection.GoTo(what, which, missing, missing);
-            //wordApp.Selection.InsertNewPage();
+            if (class1AppliedParts == true || class2AppliedParts == true)
+            {
+                wordApp.Selection.InsertBreak();
+            }
             wordApp.Selection.Paste();
 
             wDoc1.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "~" + EquipmentDetails.serialNumber + "~" + EquipmentDetails.model + "~" + EquipmentDetails.manufacturer + "~" + EquipmentDetails.location + "~Electrical Safety Test and Performance Test.pdf", Word.WdExportFormat.wdExportFormatPDF);
 
             GC.Collect();
             
-            wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
-            wDoc2.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc1.Close(Word.WdSaveOptions.wdSaveChanges);
+            wDoc2.Close(Word.WdSaveOptions.wdSaveChanges);
             wordApp.Quit();
             ExitWord();
         }
@@ -3555,7 +4157,11 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 }
 
                 ///add different performance test
-
+                //Exergen IR Thermometer
+                if (PTExergenIRCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/ExergenIRThermometer-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
                 //bbraun perfusor space
                 if (PTpefusorSpaceCompleted == true)
                 {
@@ -3766,6 +4372,22 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/PhilipsX2X3.docx", appRootDir + "/Report Templates/temp2.docx");
                 }
+                //PhilipsFMS
+                if (PTPhilipsFMSCompleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/FMSRacks.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //Cardiac Protected Area
+                if (PTRCD2Completed == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/RCD2-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+                //NurseCall
+                if (PTNursingCompeleted == true)
+                {
+                    File.Copy(appRootDir + "/Report Templates/NusingCallSystems-TEMPLATE.docx", appRootDir + "/Report Templates/temp2.docx");
+                }
+
 
             }
             object missing = System.Reflection.Missing.Value;
@@ -3806,7 +4428,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<visualresult1>", perfusorSpace.visualoption1);
                 this.FindAndReplace(wordApp, "<visualresult2>", perfusorSpace.visualoption2);
                 this.FindAndReplace(wordApp, "<visualresult3>", perfusorSpace.visualoption3);
@@ -3898,7 +4520,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericECG.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericECG.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericECG.result3);
@@ -3952,7 +4574,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericNIBPMonitor.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericNIBPMonitor.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericNIBPMonitor.result3);
@@ -4008,9 +4630,14 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", EdanDoppler.result1);
                 this.FindAndReplace(wordApp, "<result2>", EdanDoppler.result2);
+                this.FindAndReplace(wordApp, "<result3>", EdanDoppler.result3);
+                this.FindAndReplace(wordApp, "<result4>", EdanDoppler.result4);
+                this.FindAndReplace(wordApp, "<result5>", EdanDoppler.result5);
+                this.FindAndReplace(wordApp, "<result6>", EdanDoppler.result6);
+                this.FindAndReplace(wordApp, "<result7>", EdanDoppler.result7);
                 this.FindAndReplace(wordApp, "<Comments>", EdanDoppler.comments);
 
                 if (EdanDoppler.testequipment.Count != 0)
@@ -4059,7 +4686,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericSphygmomanometer.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericSphygmomanometer.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericSphygmomanometer.result3);
@@ -4115,7 +4742,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Genius2Thermometer.result1);
                 this.FindAndReplace(wordApp, "<result2>", Genius2Thermometer.result2);
                 this.FindAndReplace(wordApp, "<Comments>", Genius2Thermometer.comments);
@@ -4166,7 +4793,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", HeineNT300.result1);
                 this.FindAndReplace(wordApp, "<result2>", HeineNT300.result2);
                 this.FindAndReplace(wordApp, "<result3>", HeineNT300.result3);
@@ -4204,6 +4831,64 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 }
                 #endregion
             }
+            //Exergen
+            if (PTExergenIRCompleted == true)
+            {
+                if (ExergenIRThermometer.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<PerformanceTest>", ExergenIRThermometer.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", ExergenIRThermometer.result1);
+                this.FindAndReplace(wordApp, "<result2>", ExergenIRThermometer.result2);
+                this.FindAndReplace(wordApp, "<result3>", ExergenIRThermometer.result3);
+                this.FindAndReplace(wordApp, "<result4>", ExergenIRThermometer.result4);
+                this.FindAndReplace(wordApp, "<result5>", ExergenIRThermometer.result5);
+                this.FindAndReplace(wordApp, "<result6>", ExergenIRThermometer.result6);
+                this.FindAndReplace(wordApp, "<input1>", ExergenIRThermometer.input1);
+                this.FindAndReplace(wordApp, "<input2>", ExergenIRThermometer.input2);
+                this.FindAndReplace(wordApp, "<Comments>", ExergenIRThermometer.comments);
+
+                if (ExergenIRThermometer.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = ExergenIRThermometer.testequipment.Last();
+                    foreach (string item in ExergenIRThermometer.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
+
             //Generic Defib
             if (PTPhilipsMRxCompleted == true)
             {
@@ -4224,7 +4909,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericDefibrillator.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericDefibrillator.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericDefibrillator.result3);
@@ -4296,7 +4981,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", AccusonicAP170.result1);
                 this.FindAndReplace(wordApp, "<result2>", AccusonicAP170.result2);
                 this.FindAndReplace(wordApp, "<result3>", AccusonicAP170.result3);
@@ -4350,7 +5035,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", ComweldOxygenFlowmeter.result1);
                 this.FindAndReplace(wordApp, "<result2>", ComweldOxygenFlowmeter.result2);
                 this.FindAndReplace(wordApp, "<result3>", ComweldOxygenFlowmeter.result3);
@@ -4407,7 +5092,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", VarpVue.result1);
                 this.FindAndReplace(wordApp, "<result2>", VarpVue.result2);
                 this.FindAndReplace(wordApp, "<result3>", VarpVue.result3);
@@ -4473,7 +5158,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Scales.result1);
                 this.FindAndReplace(wordApp, "<result2>", Scales.result2);
                 this.FindAndReplace(wordApp, "<result3>", Scales.result3);
@@ -4531,7 +5216,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", VaccineFridge.result1);
                 this.FindAndReplace(wordApp, "<result2>", VaccineFridge.result2);
                 this.FindAndReplace(wordApp, "<result3>", VaccineFridge.result3);
@@ -4584,7 +5269,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Spirometer.result1);
                 this.FindAndReplace(wordApp, "<result2>", Spirometer.result2);
                 this.FindAndReplace(wordApp, "<result3>", Spirometer.result3);
@@ -4638,7 +5323,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", PulseOximeter2.result1);
                 this.FindAndReplace(wordApp, "<result2>", PulseOximeter2.result2);
                 this.FindAndReplace(wordApp, "<result3>", PulseOximeter2.result3);
@@ -4695,7 +5380,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Manifold.result1);
                 this.FindAndReplace(wordApp, "<result2>", Manifold.result2);
                 this.FindAndReplace(wordApp, "<result3>", Manifold.result3);
@@ -4761,7 +5446,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", AED.result1);
                 this.FindAndReplace(wordApp, "<result2>", AED.result2);
                 this.FindAndReplace(wordApp, "<result3>", AED.result3);
@@ -4814,7 +5499,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", RegulatorPT.result1);
                 this.FindAndReplace(wordApp, "<result2>", RegulatorPT.result2);
                 this.FindAndReplace(wordApp, "<result3>", RegulatorPT.result3);
@@ -4869,7 +5554,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", GenericVitalsMonitor.result1);
                 this.FindAndReplace(wordApp, "<result2>", GenericVitalsMonitor.result2);
                 this.FindAndReplace(wordApp, "<result3>", GenericVitalsMonitor.result3);
@@ -4884,6 +5569,18 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<result12>", GenericVitalsMonitor.result12);
                 this.FindAndReplace(wordApp, "<result13>", GenericVitalsMonitor.result13);
                 this.FindAndReplace(wordApp, "<result14>", GenericVitalsMonitor.result14);
+                this.FindAndReplace(wordApp, "<result15>", GenericVitalsMonitor.result15);
+                this.FindAndReplace(wordApp, "<result16>", GenericVitalsMonitor.result16);
+                this.FindAndReplace(wordApp, "<result17>", GenericVitalsMonitor.result17);
+                this.FindAndReplace(wordApp, "<input1>", GenericVitalsMonitor.input1);
+                this.FindAndReplace(wordApp, "<input2>", GenericVitalsMonitor.input2);
+                this.FindAndReplace(wordApp, "<input3>", GenericVitalsMonitor.input3);
+                this.FindAndReplace(wordApp, "<input4>", GenericVitalsMonitor.input4);
+                this.FindAndReplace(wordApp, "<input5>", GenericVitalsMonitor.input5);
+                this.FindAndReplace(wordApp, "<input6>", GenericVitalsMonitor.input6);
+                this.FindAndReplace(wordApp, "<input7>", GenericVitalsMonitor.input7);
+                this.FindAndReplace(wordApp, "<input8>", GenericVitalsMonitor.input8);
+                this.FindAndReplace(wordApp, "<input9>", GenericVitalsMonitor.input9);
                 this.FindAndReplace(wordApp, "<Comments>", GenericVitalsMonitor.comments);
 
                 if (GenericVitalsMonitor.testequipment.Count != 0)
@@ -4932,7 +5629,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", PhilipsMonitors.result1);
                 this.FindAndReplace(wordApp, "<result2>", PhilipsMonitors.result2);
                 this.FindAndReplace(wordApp, "<result3>", PhilipsMonitors.result3);
@@ -4995,7 +5692,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", OxyVivaResusBox.result1);
                 this.FindAndReplace(wordApp, "<result2>", OxyVivaResusBox.result2);
                 this.FindAndReplace(wordApp, "<result3>", OxyVivaResusBox.result3);
@@ -5075,7 +5772,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", SoftPackRescueBag.result1);
                 this.FindAndReplace(wordApp, "<result2>", SoftPackRescueBag.result2);
                 this.FindAndReplace(wordApp, "<result3>", SoftPackRescueBag.result3);
@@ -5150,7 +5847,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Oxylog.result1);
                 this.FindAndReplace(wordApp, "<result2>", Oxylog.result2);
                 this.FindAndReplace(wordApp, "<result3>", Oxylog.result3);
@@ -5220,7 +5917,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", BelmontFluidWarmer.result1);
                 this.FindAndReplace(wordApp, "<result2>", BelmontFluidWarmer.result2);
                 this.FindAndReplace(wordApp, "<result3>", BelmontFluidWarmer.result3);
@@ -5275,7 +5972,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", BloodGlucose.result1);
                 this.FindAndReplace(wordApp, "<result2>", BloodGlucose.result2);
                 this.FindAndReplace(wordApp, "<result3>", BloodGlucose.result3);
@@ -5327,7 +6024,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", ElectricSuction2.result1);
                 this.FindAndReplace(wordApp, "<result2>", ElectricSuction2.result2);
                 this.FindAndReplace(wordApp, "<result3>", ElectricSuction2.result3);
@@ -5380,7 +6077,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", NeoPuff.result1);
                 this.FindAndReplace(wordApp, "<result2>", NeoPuff.result2);
                 this.FindAndReplace(wordApp, "<result3>", NeoPuff.result3);
@@ -5444,7 +6141,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", iStat.result1);
                 this.FindAndReplace(wordApp, "<result2>", iStat.result2);
                 this.FindAndReplace(wordApp, "<result3>", iStat.result3);
@@ -5499,7 +6196,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<visualresult1>", InfusorSpace.visualoption1);
                 this.FindAndReplace(wordApp, "<visualresult2>", InfusorSpace.visualoption2);
                 this.FindAndReplace(wordApp, "<visualresult3>", InfusorSpace.visualoption3);
@@ -5594,7 +6291,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<funcresult1>", infantTransport.functionaloption1);
                 this.FindAndReplace(wordApp, "<funcresult2>", infantTransport.functionaloption2);
                 this.FindAndReplace(wordApp, "<funcresult3>", infantTransport.functionaloption3);
@@ -5663,7 +6360,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<funcresult1>", TwinOVac2.functionaloption1);
                 this.FindAndReplace(wordApp, "<funcresult2>", TwinOVac2.functionaloption2);
                 this.FindAndReplace(wordApp, "<funcresult3>", TwinOVac2.functionaloption3);
@@ -5710,7 +6407,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                     wDoc.Bookmarks["color"].Select();
                     wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
                 }
-                this.FindAndReplace(wordApp, "<PerformanceTest>", RCDForm.performanceresult);
+                this.FindAndReplace(wordApp, "<result_69>", RCDForm.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
                  this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
@@ -5722,7 +6419,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", RCDForm.functionaloption1);
                 this.FindAndReplace(wordApp, "<result2>", RCDForm.functionaloption2);
                 this.FindAndReplace(wordApp, "<result3>", RCDForm.functionaloption3);
@@ -5810,7 +6507,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", Aespire7900.functionaloption1);
                 this.FindAndReplace(wordApp, "<result2>", Aespire7900.functionaloption2);
                 this.FindAndReplace(wordApp, "<result3>", Aespire7900.functionaloption3);
@@ -5903,7 +6600,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", AlarisSyringePumpForm.functionaloption1);
                 this.FindAndReplace(wordApp, "<result2>", AlarisSyringePumpForm.functionaloption2);
                 this.FindAndReplace(wordApp, "<result3>", AlarisSyringePumpForm.functionaloption3);
@@ -5980,7 +6677,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", BodyGuardForm.result_1);
                 this.FindAndReplace(wordApp, "<result2>", BodyGuardForm.result_2);
                 this.FindAndReplace(wordApp, "<result3>", BodyGuardForm.result_3);
@@ -6062,7 +6759,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", AlarisInfusionForm.result1);
                 this.FindAndReplace(wordApp, "<result2>", AlarisInfusionForm.result2);
                 this.FindAndReplace(wordApp, "<result3>", AlarisInfusionForm.result3);
@@ -6129,7 +6826,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", ExaminationLightForm.result1);
                 this.FindAndReplace(wordApp, "<result2>", ExaminationLightForm.result2);
                 this.FindAndReplace(wordApp, "<result3>", ExaminationLightForm.result3);
@@ -6168,7 +6865,65 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 }
                 #endregion
             }
+            //Nurse Call
+            if (PTNursingCompeleted == true)
+            {
+                if (NursingCallSystems.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result69>", NursingCallSystems.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
 
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", NursingCallSystems.result1);
+                this.FindAndReplace(wordApp, "<result2>", NursingCallSystems.result2);
+                this.FindAndReplace(wordApp, "<result3>", NursingCallSystems.result3);
+                this.FindAndReplace(wordApp, "<result4>", NursingCallSystems.result4);
+                this.FindAndReplace(wordApp, "<result5>", NursingCallSystems.result5);
+                this.FindAndReplace(wordApp, "<result6>", NursingCallSystems.result6);
+                this.FindAndReplace(wordApp, "<result7>", NursingCallSystems.result7);
+                this.FindAndReplace(wordApp, "<result8>", NursingCallSystems.result8);
+                this.FindAndReplace(wordApp, "<result9>", NursingCallSystems.result9);
+                this.FindAndReplace(wordApp, "<Comments>", NursingCallSystems.comments);
+
+                if (NursingCallSystems.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = NursingCallSystems.testequipment.Last();
+                    foreach (string item in NursingCallSystems.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
             //Philips CO
             if (PTPhilipsCOCompleted == true)
             {
@@ -6191,7 +6946,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", PhilipsCO.result1);
                 this.FindAndReplace(wordApp, "<result2>", PhilipsCO.result2);
                 this.FindAndReplace(wordApp, "<result3>", PhilipsCO.result3);
@@ -6244,7 +6999,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", PhilipsCO2.result1);
                 this.FindAndReplace(wordApp, "<result2>", PhilipsCO2.result2);
                 this.FindAndReplace(wordApp, "<result3>", PhilipsCO2.result3);
@@ -6302,7 +7057,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", PhilipsMXMonitor.result1);
                 this.FindAndReplace(wordApp, "<result2>", PhilipsMXMonitor.result2);
                 this.FindAndReplace(wordApp, "<result3>", PhilipsMXMonitor.result3);
@@ -6359,7 +7114,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", PhilipsNMT.result1);
                 this.FindAndReplace(wordApp, "<result2>", PhilipsNMT.result2);
                 this.FindAndReplace(wordApp, "<result3>", PhilipsNMT.result3);
@@ -6402,7 +7157,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                     wDoc.Bookmarks["color"].Select();
                     wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
                 }
-                this.FindAndReplace(wordApp, "<PerformanceTest>", PhilipsX2X3.performanceresult);
+                this.FindAndReplace(wordApp, "<result_69>", PhilipsX2X3.performanceresult);
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
@@ -6413,7 +7168,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<result1>", PhilipsX2X3.result1);
                 this.FindAndReplace(wordApp, "<result2>", PhilipsX2X3.result2);
                 this.FindAndReplace(wordApp, "<result3>", PhilipsX2X3.result3);
@@ -6458,6 +7213,152 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 }
                 #endregion
             }
+            //PhilipsFMS
+            if (PTPhilipsFMSCompleted == true)
+            {
+                if (PhilipsFMS.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result_69>", PhilipsFMS.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", PhilipsFMS.result1);
+                this.FindAndReplace(wordApp, "<result2>", PhilipsFMS.result2);
+                this.FindAndReplace(wordApp, "<result3>", PhilipsFMS.result3);
+                this.FindAndReplace(wordApp, "<result4>", PhilipsFMS.result4);
+                this.FindAndReplace(wordApp, "<Comments>", PhilipsFMS.comments);
+
+                if (PhilipsFMS.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = PhilipsFMS.testequipment.Last();
+                    foreach (string item in PhilipsFMS.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
+
+            //Cardiac Protected Area
+            if (PTRCD2Completed == true)
+            {
+                if (RCD2.performanceresult == "Fail")
+                {
+                    wDoc.Bookmarks["color"].Select();
+                    wordApp.Selection.Shading.BackgroundPatternColor = Word.WdColor.wdColorRed;
+                }
+                this.FindAndReplace(wordApp, "<result_69>", RCD2.performanceresult);
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Type>", typeName);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
+                this.FindAndReplace(wordApp, "<result1>", RCD2.functionaloption1);
+                this.FindAndReplace(wordApp, "<result2>", RCD2.functionaloption2);
+                this.FindAndReplace(wordApp, "<result3>", RCD2.functionaloption3);
+                this.FindAndReplace(wordApp, "<result4>", RCD2.functionaloption4);
+                this.FindAndReplace(wordApp, "<result5>", RCD2.functionaloption5);
+                this.FindAndReplace(wordApp, "<result6>", RCD2.functionaloption6);
+                this.FindAndReplace(wordApp, "<result7>", RCD2.functionaloption7);
+                this.FindAndReplace(wordApp, "<result8>", RCD2.functionaloption8);
+                this.FindAndReplace(wordApp, "<result9>", RCD2.functionaloption9);
+                this.FindAndReplace(wordApp, "<result10>", RCD2.functionaloption10);
+                this.FindAndReplace(wordApp, "<result11>", RCD2.functionaloption11);
+                this.FindAndReplace(wordApp, "<result12>", RCD2.functionaloption12);
+                this.FindAndReplace(wordApp, "<result13>", RCD2.functionaloption13);
+                this.FindAndReplace(wordApp, "<result14>", RCD2.functionaloption14);
+                this.FindAndReplace(wordApp, "<result15>", RCD2.functionaloption15);
+                this.FindAndReplace(wordApp, "<result16>", RCD2.functionaloption16);
+                this.FindAndReplace(wordApp, "<result17>", RCD2.functionaloption17);
+                this.FindAndReplace(wordApp, "<result18>", RCD2.functionaloption18);
+                this.FindAndReplace(wordApp, "<result19>", RCD2.functionaloption19);
+                this.FindAndReplace(wordApp, "<result20>", RCD2.functionaloption20);
+                this.FindAndReplace(wordApp, "<result21>", RCD2.functionaloption21);
+                this.FindAndReplace(wordApp, "<result22>", RCD2.functionaloption22);
+                this.FindAndReplace(wordApp, "<result23>", RCD2.functionaloption23);
+                this.FindAndReplace(wordApp, "<result24>", RCD2.functionaloption24);
+                this.FindAndReplace(wordApp, "<result25>", RCD2.functionaloption25);
+                this.FindAndReplace(wordApp, "<result26>", RCD2.functionaloption26);
+                this.FindAndReplace(wordApp, "<result27>", RCD2.functionaloption27);
+                this.FindAndReplace(wordApp, "<result28>", RCD2.functionaloption28);
+                this.FindAndReplace(wordApp, "<result29>", RCD2.functionaloption29);
+                this.FindAndReplace(wordApp, "<result30>", RCD2.functionaloption30);
+                this.FindAndReplace(wordApp, "<result31>", RCD2.functionaloption31);
+                this.FindAndReplace(wordApp, "<result32>", RCD2.functionaloption32);
+                this.FindAndReplace(wordApp, "<result33>", RCD2.functionaloption33);
+                this.FindAndReplace(wordApp, "<result34>", RCD2.functionaloption34);
+                this.FindAndReplace(wordApp, "<result35>", RCD2.functionaloption35);
+                this.FindAndReplace(wordApp, "<result36>", RCD2.functionaloption36);
+                this.FindAndReplace(wordApp, "<result37>", RCD2.functionaloption37);
+                this.FindAndReplace(wordApp, "<result38>", RCD2.functionaloption38);
+                this.FindAndReplace(wordApp, "<result39>", RCD2.functionaloption39);
+                this.FindAndReplace(wordApp, "<test1>", RCD2.inputresult1);
+                this.FindAndReplace(wordApp, "<test2>", RCD2.inputresult2);
+                this.FindAndReplace(wordApp, "<test3>", RCD2.inputresult3);
+                this.FindAndReplace(wordApp, "<Comments>", RCD2.comments);
+
+                if (RCD2.testequipment.Count != 0)
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    object moveUnit = Word.WdUnits.wdCell;
+                    object moveExend = Word.WdMovementType.wdMove;
+                    string last = RCD2.testequipment.Last();
+                    foreach (string item in RCD2.testequipment)
+                    {
+                        // do something with each item
+                        if (item.Equals(last))
+                        {
+                            wordApp.Selection.TypeText(item);
+                        }
+                        else
+                        {
+                            wordApp.Selection.TypeText(item);
+                            wordApp.Selection.MoveRight(moveUnit, 1, moveExend);
+                        }
+                    }
+                }
+                else
+                {
+                    wDoc.Bookmarks["testequipment"].Select();
+                    wordApp.Selection.TypeText("No test equipment was used");
+                }
+                #endregion
+            }
             //create PDF
             if (PerformPerformanceTest == true)
             {
@@ -6466,7 +7367,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
             //Close the document - you have to do this.
             GC.Collect();
-            wDoc.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc.Close(Word.WdSaveOptions.wdSaveChanges);
             wordApp.Quit();
             ExitWord();
 
@@ -6492,6 +7393,27 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 {
                     File.Copy(appRootDir + "/Report Templates/ASNZCLASS1-TEMPLATE2.docx", appRootDir + "/Report Templates/temp.docx");
                 }
+            }
+
+            if (class13760test == true)
+            {
+                if (File.Exists(appRootDir + "/Report Templates/temp.docx"))
+                {
+                    File.Delete(appRootDir + "/Report Templates/temp.docx");
+                }
+
+                File.Copy(appRootDir + "/Report Templates/ASNZ3760CLASS1-TEMPLATE.docx", appRootDir + "/Report Templates/temp.docx");
+
+            }
+            if (class23760test == true)
+            {
+                if (File.Exists(appRootDir + "/Report Templates/temp.docx"))
+                {
+                    File.Delete(appRootDir + "/Report Templates/temp.docx");
+                }
+
+                File.Copy(appRootDir + "/Report Templates/ASNZ3760CLASS2-TEMPLATE.docx", appRootDir + "/Report Templates/temp.docx");
+
             }
 
             if (class1AppliedParts == true)
@@ -6566,7 +7488,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<ElectricalSafetyTestResult>", ESTResults);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<AnsurVersion>", _versionNumber);
                 this.FindAndReplace(wordApp, "<ClassStandard>", _kindofElectricalSafetyTest);
                 this.FindAndReplace(wordApp, "<MainsLN>", _MV1);
@@ -6584,6 +7506,54 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<EnLeakageOER>", _EnL6_double + " uA");
                 #endregion
             }
+            if (class13760test == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", EquipmentDetails.type);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<ElectricalSafetyTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
+                this.FindAndReplace(wordApp, "<AnsurVersion>", _versionNumber);
+                this.FindAndReplace(wordApp, "<ClassStandard>", _kindofElectricalSafetyTest);
+                this.FindAndReplace(wordApp, "<MainsLN>", _MV1);
+                this.FindAndReplace(wordApp, "<MainsNE>", _MV2);
+                this.FindAndReplace(wordApp, "<MainsLE>", _MV3);
+                this.FindAndReplace(wordApp, "<ProtectiveEarth>", _earthResistance_double + " OHMS");
+                this.FindAndReplace(wordApp, "<InsulationResistance>", _insulationResistance);
+                this.FindAndReplace(wordApp, "<EarthLeakageNC>", _EL1_double + " uA");
+                #endregion
+            }
+            if (class23760test == true)
+            {
+                #region Find and Replace
+                // Find Place Holders and Replace them with Values.
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
+                this.FindAndReplace(wordApp, "<Type>", EquipmentDetails.type);
+                this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
+                this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
+                this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
+                this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
+                this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
+                this.FindAndReplace(wordApp, "<ElectricalSafetyTestResult>", ESTResults);
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
+                this.FindAndReplace(wordApp, "<AnsurVersion>", _versionNumber);
+                this.FindAndReplace(wordApp, "<ClassStandard>", _kindofElectricalSafetyTest);
+                this.FindAndReplace(wordApp, "<MainsLN>", _MV1);
+                this.FindAndReplace(wordApp, "<MainsNE>", _MV2);
+                this.FindAndReplace(wordApp, "<MainsLE>", _MV3);
+                this.FindAndReplace(wordApp, "<ProtectiveEarth>", _earthResistance_double + " OHMS");
+                this.FindAndReplace(wordApp, "<InsulationResistance>", _insulationResistance);
+                this.FindAndReplace(wordApp, "<EarthLeakageNC>", _EL1_double + " uA");
+                #endregion
+            }
 
             if (class1AppliedParts == true)
             {
@@ -6598,7 +7568,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<ElectricalSafetyTestResult>", ESTResults);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<AnsurVersion>", _versionNumber);
                 this.FindAndReplace(wordApp, "<ClassStandard>", _kindofElectricalSafetyTest);
                 this.FindAndReplace(wordApp, "<MainsLN>", _MV1);
@@ -6627,7 +7597,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             {
                 #region Find and Replace
                 // Find Place Holders and Replace them with Values.
-                 this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
+                this.FindAndReplace(wordApp, "<Name>", LogInPage.currentUser);
                 this.FindAndReplace(wordApp, "<Type>", EquipmentDetails.type);
                 this.FindAndReplace(wordApp, "<Client>", LogInPage.clientName);
                 this.FindAndReplace(wordApp, "<AssetNumber>", EquipmentDetails.assetNumber);
@@ -6636,7 +7606,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<ElectricalSafetyTestResult>", ESTResults);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<AnsurVersion>", _versionNumber);
                 this.FindAndReplace(wordApp, "<ClassStandard>", _kindofElectricalSafetyTest);
                 this.FindAndReplace(wordApp, "<MainsLN>", _MV1);
@@ -6665,7 +7635,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 this.FindAndReplace(wordApp, "<Manufacturer>", EquipmentDetails.manufacturer);
                 this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
                 this.FindAndReplace(wordApp, "<ElectricalSafetyTestResult>", ESTResults);
-                this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+                this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
                 this.FindAndReplace(wordApp, "<AnsurVersion>", _versionNumber);
                 this.FindAndReplace(wordApp, "<ClassStandard>", _kindofElectricalSafetyTest);
                 this.FindAndReplace(wordApp, "<MainsLN>", _MV1);
@@ -6696,7 +7666,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
 
             //Close the document - you have to do this.
             GC.Collect();
-            wDoc.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc.Close(Word.WdSaveOptions.wdSaveChanges);
             wordApp.Quit();
             ExitWord();
 
@@ -7342,8 +8312,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                     ref missing, ref missing, ref missing, ref missing);
 
             GC.Collect();
-            wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
-            wDoc2.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc1.Close(Word.WdSaveOptions.wdSaveChanges);
+            wDoc2.Close(Word.WdSaveOptions.wdSaveChanges);
             wordApp.Quit();
 
             MetroFramework.MetroMessageBox.Show(this, "", "Added on the report", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -7387,7 +8357,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             this.FindAndReplace(wordApp, "<SerialNumber>", EquipmentDetails.serialNumber);
             this.FindAndReplace(wordApp, "<Location>", EquipmentDetails.location);
             this.FindAndReplace(wordApp, "<Model>", EquipmentDetails.model);
-            this.FindAndReplace(wordApp, "<Date>", date.ToShortDateString());
+            this.FindAndReplace(wordApp, "<Date>", dateTimeMain.Value.ToShortDateString());
             this.FindAndReplace(wordApp, "<PerformanceTest>", overall.Text);
             if (overall.Text == "Fail")
             {
@@ -7404,7 +8374,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             wDoc1.ExportAsFixedFormat(saveDestination + "/" + EquipmentDetails.assetNumber + "~" + EquipmentDetails.serialNumber + "~" + EquipmentDetails.model + "~" + EquipmentDetails.location + "- Performance Test Report" + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
 
             GC.Collect();
-            wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc1.Close(Word.WdSaveOptions.wdSaveChanges);
             wordApp.Quit();
             MetroFramework.MetroMessageBox.Show(this, "", "Report is Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ExitWord();
@@ -7842,8 +8812,8 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                     ref missing, ref missing, ref missing, ref missing);
 
             GC.Collect();
-            wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
-            wDoc2.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+            wDoc1.Close(Word.WdSaveOptions.wdSaveChanges);
+            wDoc2.Close(Word.WdSaveOptions.wdSaveChanges);
             wordApp.Quit();
 
             MetroFramework.MetroMessageBox.Show(this, "", "Added on the report", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -7954,7 +8924,7 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
                 wDoc1.ExportAsFixedFormat(saveDestination + "/Station " + QASEquipmentDetails.station + "-Vehicle Number " + QASEquipmentDetails.vehiclenumber  + "- QAS Report.pdf", Word.WdExportFormat.wdExportFormatPDF);
                 
                 GC.Collect();
-                wDoc1.Close(Word.WdSaveOptions.wdDoNotSaveChanges);
+                wDoc1.Close(Word.WdSaveOptions.wdSaveChanges);
                 wordApp.Quit();
                 MetroFramework.MetroMessageBox.Show(this, "", "Report is Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Process.Start(saveDestination + "/Station " + QASEquipmentDetails.station + "-Vehicle Number " + QASEquipmentDetails.vehiclenumber + "- QAS Report.pdf");
@@ -8120,5 +9090,276 @@ touchCurrentFailed3 == false && touchCurrentFailed4 == false && touchCurrentFail
             buttonPLC3.Visible = false;
             buttonMCC.Visible = false;
         }
+
+        private void mergeToOneLine()
+        {
+
+            int numberoflinescounter = editedList.Count;
+
+            for (int i = 1; i <= numberoflinescounter; i = i + 2)
+            {
+                oddLines.Add(editedList[i]);
+            }
+            for (int i = 0; i < numberoflinescounter; i = i + 2)
+            {
+                numberoflinescounter2++;
+
+                evenLines.Add(editedList[i]);
+            }
+
+            for (int i = 0; i < numberoflinescounter2; i++)
+            {
+                combinedLines.Add(oddLines[i] + ", " + evenLines[i]);
+
+            }
+
+        }
+        private void CounterYAY()
+        {
+
+
+            foreach (string line in combinedLines)
+            {
+                if (line.Contains("Test sequence- Class I - No Applied Parts") && line.Contains("Asset ID-CABLE") == false && line.Contains("PLUGPACK") == false)
+                {
+                    classIcounter++;
+                }
+                if (line.Contains("Test sequence- Class I - Applied Parts") && line.Contains("Asset ID-CABLE") == false && line.Contains("PLUGPACK") == false)
+                {
+                    classIcounter++;
+                }
+
+                if (line.Contains("Test sequence- Class II - No Applied Parts") && line.Contains("Asset ID-PLUGPACK") == false && line.Contains("Asset ID-CABLE") == false)
+                {
+                    classIIcounter++;
+                }
+                if (line.Contains("Test sequence- Class II - Applied Parts") && line.Contains("Asset ID-PLUGPACK") == false && line.Contains("Asset ID-CABLE") == false)
+                {
+                    classIIcounter++;
+                }
+                if (line.Contains("Test sequence- Cable - Class I") && line.Contains("Asset ID-CABLE"))
+                {
+                    classICableBillablecounter++;
+                }
+                if (line.Contains("Test sequence- Class II - Plug Packs"))
+                {
+                    classIIPlugPacksBillablecounter++;
+                }
+
+            }
+        }
+
+        private void GetAllAssetID()
+        {
+            foreach (string line in combinedLines)
+            {
+                //Class 1
+                if (line.Contains("Asset ID") && line.Contains("Test sequence- Class I - No Applied Parts"))
+                {
+                    assetIDListClassIinit.Add(line);
+                }
+                if (line.Contains("Asset ID") && line.Contains("Test sequence- Class I - Applied Parts"))
+                {
+                    assetIDListClassIinit.Add(line);
+                }
+
+                //Class 2
+                if (line.Contains("Asset ID") && line.Contains("Test sequence- Class II - No Applied Parts"))
+                {
+                    assetIDListClassIIinit.Add(line);
+                }
+                if (line.Contains("Asset ID") && line.Contains("Test sequence- Class II - Applied Parts"))
+                {
+                    assetIDListClassIIinit.Add(line);
+                }
+            }
+
+
+            foreach (string item in assetIDListClassIinit)
+            {
+
+                string classNADC = "Test sequence- Class I - No Applied Parts Detachable Cable, Asset ID-";
+                string class1NAFC = "Test sequence- Class I - No Applied Parts Fixed Cable, Asset ID-";
+                string class1APBDC = "Test sequence- Class I - Applied Parts (type B) Detachable Cable, Asset ID-";
+                string class1APBFDC = "Test sequence- Class I - Applied Parts (type BF) Detachable Cable, Asset ID-";
+                string class1APCFDC = "Test sequence- Class I - Applied Parts (type CF) Detachable Cable, Asset ID-";
+                string class1APBFC = "Test sequence- Class I - Applied Parts (type B) Fixed Cable, Asset ID-";
+                string class1APBFFC = "Test sequence- Class I - Applied Parts (type BF) Fixed Cable, Asset ID-";
+                string class1APCFFC = "Test sequence- Class I - Applied Parts (type CF) Fixed Cable, Asset ID-";
+
+                if (item.Contains("CABLE") == false && item.Contains("PLUGPACK") == false)
+                {
+                    if (item.Contains(classNADC))
+                    {
+                        assetIDListClassIfinal.Add(item.Replace(classNADC, ""));
+                    }
+                    if (item.Contains(class1NAFC))
+                    {
+                        assetIDListClassIfinal.Add(item.Replace(class1NAFC, ""));
+                    }
+                    if (item.Contains(class1APBDC))
+                    {
+                        assetIDListClassIfinal.Add(item.Replace(class1APBDC, ""));
+                    }
+                    if (item.Contains(class1APBFDC))
+                    {
+                        assetIDListClassIfinal.Add(item.Replace(class1APBFDC, ""));
+                    }
+                    if (item.Contains(class1APCFDC))
+                    {
+                        assetIDListClassIfinal.Add(item.Replace(class1APCFDC, ""));
+                    }
+                    if (item.Contains(class1APBFC))
+                    {
+                        assetIDListClassIfinal.Add(item.Replace(class1APBFC, ""));
+                    }
+                    if (item.Contains(class1APBFFC))
+                    {
+                        assetIDListClassIfinal.Add(item.Replace(class1APBFFC, ""));
+                    }
+                    if (item.Contains(class1APCFFC))
+                    {
+                        assetIDListClassIfinal.Add(item.Replace(class1APCFFC, ""));
+                    }
+                }
+
+
+            }
+
+
+            foreach (string item in assetIDListClassIIinit)
+            {
+                string classNAP = "Test sequence- Class II - No Applied Parts, Asset ID-";
+                string class2APB = "Test sequence- Class II - Applied Parts (type B), Asset ID-";
+                string class2APBF = "Test sequence- Class II - Applied Parts (type BF), Asset ID-";
+                string class2APCF = "Test sequence- Class II - Applied Parts (type CF), Asset ID-";
+                if (item.Contains("CABLE") == false && item.Contains("PLUGPACK") == false)
+                {
+                    if (item.Contains(classNAP))
+                    {
+                        assetIDListClassIIfinal.Add(item.Replace(classNAP, ""));
+                    }
+                    if (item.Contains(class2APB))
+                    {
+                        assetIDListClassIIfinal.Add(item.Replace(class2APB, ""));
+                    }
+                    if (item.Contains(class2APBF))
+                    {
+                        assetIDListClassIIfinal.Add(item.Replace(class2APBF, ""));
+                    }
+                    if (item.Contains(class2APCF))
+                    {
+                        assetIDListClassIIfinal.Add(item.Replace(class2APCF, ""));
+                    }
+                }
+            }
+            Console.WriteLine("CLASS I ASSET ID:");
+
+
+
+            //Setup the Word.Application class.
+            Word.Application wordApp = new Word.Application();
+
+            //set objects
+            object missing = System.Reflection.Missing.Value;
+            object moveUnit = Word.WdUnits.wdCell;
+            object moveExend = Word.WdMovementType.wdMove;
+            //Set Word to be not visible.
+
+
+            wordApp.Visible = false;
+
+            //open temp1 docx - electrical safety
+            Word.Document wDoc1 = wordApp.Documents.Open(appRootDir + "/Report Templates/Mater Billing Templates/temp.docx");
+
+            wDoc1.Activate();
+
+            //find and replace first before copying everything
+            this.FindAndReplace(wordApp, "<DATE>", dateTimeMain.Value.ToShortDateString());
+            this.FindAndReplace(wordApp, "<CLASSITotal>", classIcounter.ToString());
+            this.FindAndReplace(wordApp, "<CLASSIITotal>", classIIcounter.ToString());
+            this.FindAndReplace(wordApp, "<CABLETotal>", classICableBillablecounter.ToString());
+            this.FindAndReplace(wordApp, "<PLUGPACKTotal>", classIIPlugPacksBillablecounter.ToString());
+
+            wDoc1.Bookmarks["class1"].Select();
+            foreach (string item in assetIDListClassIfinal)
+            {
+                var lastItem = assetIDListClassIfinal.Last();
+                if (item == lastItem)
+                {
+                    wordApp.Selection.TypeText(item.Replace("-", ""));
+                }
+                else
+                {
+                    wordApp.Selection.TypeText(item.Replace("-", ""));
+                    wordApp.Selection.MoveRight(moveUnit, 2, moveExend);
+                }
+
+
+            }
+
+            wDoc1.Bookmarks["class2"].Select();
+            foreach (string item in assetIDListClassIIfinal)
+            {
+                var lastItem = assetIDListClassIIfinal.Last();
+
+                if (item == lastItem)
+                {
+                    wordApp.Selection.TypeText(item.Replace("-", ""));
+                }
+                else
+                {
+                    wordApp.Selection.TypeText(item.Replace("-", ""));
+                    wordApp.Selection.MoveRight(moveUnit, 2, moveExend);
+                }
+            }
+
+
+            wDoc1.ExportAsFixedFormat(saveDestination +"/"+ justFileName + ".pdf", Word.WdExportFormat.wdExportFormatPDF);
+
+            GC.Collect();
+            wDoc1.Close(Word.WdSaveOptions.wdSaveChanges);
+            wordApp.Quit();
+            MetroFramework.MetroMessageBox.Show(this, "", "Billing Report is Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Process.Start(saveDestination + "/"+  justFileName + ".pdf");
+        }
+
+
+
+        private void GetRidofUnneccessaryInfo()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    using (var sw = new StreamWriter(editedPath))
+                    {
+                        string line;
+                        string replacedLine;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            if (line.Contains("ESA 620,") == false && line.Contains("Licence,") == false && line.Contains("Time,") == false
+                                && line.Contains("Earth Resistance") == false && line.Contains("Insulation Resistance") == false && line.Contains("Touch Current") == false
+                                && line.Contains("Earth Leakage") == false && line.Contains("Comments:") == false && line.Contains("Status,") == false && line.Contains("Tag") == false
+                                && line.Contains("Tested on,") == false && line.Contains("Tester SN,") == false)
+                            {
+                                if (line.Contains(','))
+                                {
+                                    replacedLine = line.Replace(',', '-');
+                                    editedList.Add(replacedLine);
+                                    sw.WriteLine(replacedLine);
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+            }
+        }
+
     }
 }

@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EdanDoppler));
             this.safetyCheck = new MetroFramework.Controls.MetroTabControl();
             this.performanceVerification = new MetroFramework.Controls.MetroTabPage();
+            this.overall = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.close1_btn = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -48,8 +50,16 @@
             this.commentBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.overall = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.result_4 = new MetroFramework.Controls.MetroComboBox();
+            this.result_3 = new MetroFramework.Controls.MetroComboBox();
+            this.result_6 = new MetroFramework.Controls.MetroComboBox();
+            this.result_5 = new MetroFramework.Controls.MetroComboBox();
+            this.result_7 = new MetroFramework.Controls.MetroComboBox();
             this.safetyCheck.SuspendLayout();
             this.performanceVerification.SuspendLayout();
             this.commentsTab.SuspendLayout();
@@ -71,6 +81,16 @@
             // 
             // performanceVerification
             // 
+            this.performanceVerification.Controls.Add(this.result_7);
+            this.performanceVerification.Controls.Add(this.result_6);
+            this.performanceVerification.Controls.Add(this.result_5);
+            this.performanceVerification.Controls.Add(this.result_4);
+            this.performanceVerification.Controls.Add(this.result_3);
+            this.performanceVerification.Controls.Add(this.metroLabel9);
+            this.performanceVerification.Controls.Add(this.metroLabel7);
+            this.performanceVerification.Controls.Add(this.metroLabel8);
+            this.performanceVerification.Controls.Add(this.metroLabel5);
+            this.performanceVerification.Controls.Add(this.metroLabel6);
             this.performanceVerification.Controls.Add(this.overall);
             this.performanceVerification.Controls.Add(this.metroLabel4);
             this.performanceVerification.Controls.Add(this.metroButton1);
@@ -95,6 +115,33 @@
             this.performanceVerification.VerticalScrollbarBarColor = true;
             this.performanceVerification.VerticalScrollbarHighlightOnWheel = false;
             this.performanceVerification.VerticalScrollbarSize = 10;
+            // 
+            // overall
+            // 
+            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.overall.FormattingEnabled = true;
+            this.overall.ItemHeight = 19;
+            this.overall.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.overall.Location = new System.Drawing.Point(677, 277);
+            this.overall.Name = "overall";
+            this.overall.Size = new System.Drawing.Size(121, 25);
+            this.overall.TabIndex = 42;
+            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.overall.UseSelectable = true;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(0, 277);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel4.TabIndex = 41;
+            this.metroLabel4.Text = "Overall Result";
+            this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroButton1
             // 
@@ -126,7 +173,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(-1, 33);
+            this.metroLabel1.Location = new System.Drawing.Point(0, 33);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(130, 19);
             this.metroLabel1.TabIndex = 36;
@@ -343,32 +390,142 @@
             this.metroStyleManager1.Owner = this;
             this.metroStyleManager1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // overall
+            // metroLabel5
             // 
-            this.overall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.overall.FontSize = MetroFramework.MetroComboBoxSize.Small;
-            this.overall.FormattingEnabled = true;
-            this.overall.ItemHeight = 19;
-            this.overall.Items.AddRange(new object[] {
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(0, 133);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(587, 38);
+            this.metroLabel5.TabIndex = 44;
+            this.metroLabel5.Text = "With the unit switched on and with a dry faceplate listen for any RFI (Radio Freq" +
+    "uency Interference) \r\nwhilst handling the probe. This shows up as whines or whis" +
+    "tles.";
+            this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(0, 105);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(211, 19);
+            this.metroLabel6.TabIndex = 43;
+            this.metroLabel6.Text = "Check the connection of the probe";
+            this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(0, 215);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(443, 19);
+            this.metroLabel7.TabIndex = 46;
+            this.metroLabel7.Text = "Check for crackling or intermittent audio when probe/retractile are moved";
+            this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(0, 187);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(420, 19);
+            this.metroLabel8.TabIndex = 45;
+            this.metroLabel8.Text = "Background hiss levels should not be greater than the standard probes";
+            this.metroLabel8.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(0, 246);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(404, 19);
+            this.metroLabel9.TabIndex = 47;
+            this.metroLabel9.Text = "Evaluate the performance level of the probe by testing on the body.";
+            this.metroLabel9.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // result_4
+            // 
+            this.result_4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.result_4.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.result_4.FormattingEnabled = true;
+            this.result_4.ItemHeight = 19;
+            this.result_4.Items.AddRange(new object[] {
             "Pass",
             "Fail",
             "N/A"});
-            this.overall.Location = new System.Drawing.Point(677, 105);
-            this.overall.Name = "overall";
-            this.overall.Size = new System.Drawing.Size(121, 25);
-            this.overall.TabIndex = 42;
-            this.overall.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.overall.UseSelectable = true;
+            this.result_4.Location = new System.Drawing.Point(677, 133);
+            this.result_4.Name = "result_4";
+            this.result_4.Size = new System.Drawing.Size(121, 25);
+            this.result_4.TabIndex = 49;
+            this.result_4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.result_4.UseSelectable = true;
             // 
-            // metroLabel4
+            // result_3
             // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(0, 111);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(89, 19);
-            this.metroLabel4.TabIndex = 41;
-            this.metroLabel4.Text = "Overall Result";
-            this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.result_3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.result_3.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.result_3.FormattingEnabled = true;
+            this.result_3.ItemHeight = 19;
+            this.result_3.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.result_3.Location = new System.Drawing.Point(677, 105);
+            this.result_3.Name = "result_3";
+            this.result_3.Size = new System.Drawing.Size(121, 25);
+            this.result_3.TabIndex = 48;
+            this.result_3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.result_3.UseSelectable = true;
+            // 
+            // result_6
+            // 
+            this.result_6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.result_6.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.result_6.FormattingEnabled = true;
+            this.result_6.ItemHeight = 19;
+            this.result_6.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.result_6.Location = new System.Drawing.Point(677, 215);
+            this.result_6.Name = "result_6";
+            this.result_6.Size = new System.Drawing.Size(121, 25);
+            this.result_6.TabIndex = 51;
+            this.result_6.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.result_6.UseSelectable = true;
+            // 
+            // result_5
+            // 
+            this.result_5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.result_5.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.result_5.FormattingEnabled = true;
+            this.result_5.ItemHeight = 19;
+            this.result_5.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.result_5.Location = new System.Drawing.Point(677, 187);
+            this.result_5.Name = "result_5";
+            this.result_5.Size = new System.Drawing.Size(121, 25);
+            this.result_5.TabIndex = 50;
+            this.result_5.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.result_5.UseSelectable = true;
+            // 
+            // result_7
+            // 
+            this.result_7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.result_7.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.result_7.FormattingEnabled = true;
+            this.result_7.ItemHeight = 19;
+            this.result_7.Items.AddRange(new object[] {
+            "Pass",
+            "Fail",
+            "N/A"});
+            this.result_7.Location = new System.Drawing.Point(677, 246);
+            this.result_7.Name = "result_7";
+            this.result_7.Size = new System.Drawing.Size(121, 25);
+            this.result_7.TabIndex = 52;
+            this.result_7.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.result_7.UseSelectable = true;
             // 
             // EdanDoppler
             // 
@@ -416,5 +573,15 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroComboBox overall;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroComboBox result_7;
+        private MetroFramework.Controls.MetroComboBox result_6;
+        private MetroFramework.Controls.MetroComboBox result_5;
+        private MetroFramework.Controls.MetroComboBox result_4;
+        private MetroFramework.Controls.MetroComboBox result_3;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
     }
 }

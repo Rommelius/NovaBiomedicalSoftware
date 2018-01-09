@@ -315,3 +315,10 @@ C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftwa
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.PhilipsMXMonitor.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.PhilipsNMT.resources
 C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.PhilipsX2X3.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.PhilipsFMS.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.csproj.CoreCompileInputs.cache
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.RCD2.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.CreateSpreadsheet.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.NursingCallSystems.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.Performance_Test.ExergenIRThermometer.resources
+C:\Users\Rommel Lapuz\Documents\Visual Studio 2017\Projects\NovaBiomedicalSoftware\NovaBiomedicalSoftware\obj\Debug\NovaBiomedicalSoftware.AlarisSoftwareManagementForm.resources

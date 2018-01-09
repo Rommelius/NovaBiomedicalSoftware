@@ -181,7 +181,7 @@ namespace NovaBiomedicalSoftware
         }
         private void _locationBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (MainMenu.eletricaltestYes == true)
+            if (MainMenu.PerformElectricalSafetyTest == true || MainMenu.PerformBothTest)
             {
                 if (e.KeyCode == Keys.Enter)
                     typeBox.Focus();
